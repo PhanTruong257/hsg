@@ -1,0 +1,4142 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHUYÊN ĐỀ 2: DÃY SỐ, CẤP SỐ & GIỚI HẠN HSG TOÁN 11</title>
+
+<style>
+  :root {
+    --primary: #1a365d;
+    --primary-light: #2b6cb0;
+    --bg: #f7fafc;
+    --card-bg: #ffffff;
+    --text: #2d3748;
+    --border: #e2e8f0;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 20px 40px;
+    line-height: 1.6;
+  }
+  .top-banner {
+    background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 100%);
+    color: white;
+    padding: 26px 32px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+  .top-banner h1 { margin: 0 0 8px 0; font-size: 22px; }
+  .top-banner p { margin: 0; opacity: 0.92; font-size: 14.5px; }
+  .tabs { display: flex; gap: 12px; margin-bottom: 25px; }
+  .tab-btn {
+    padding: 10px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: white;
+    color: #4a5568;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    transition: all 0.2s;
+  }
+  .tab-btn.active {
+    background: #2b6cb0;
+    color: white;
+    box-shadow: 0 3px 8px rgba(43,108,176,0.3);
+  }
+  .section-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: #1a365d;
+    margin: 25px 0 15px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #cbd5e0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    border-bottom: 1px dashed var(--border);
+    padding-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .q-badge {
+    background: #ebf8ff;
+    color: #2b6cb0;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 13.5px;
+  }
+  .q-source {
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 13.5px;
+  }
+  .actions {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+  }
+  .btn-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-pdf { background: #e2e8f0; color: #2d3748; }
+  .btn-pdf:hover { background: #cbd5e0; }
+  .btn-preview { background: #3182ce; color: white; }
+  .btn-preview:hover { background: #2b6cb0; }
+  .btn-copy { background: #edf2f7; color: #4a5568; }
+  .btn-copy:hover { background: #e2e8f0; }
+  .math-box {
+    background: #f8fafc;
+    border-left: 4px solid #3182ce;
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+    font-size: 15.5px;
+  }
+  .raw-box {
+    background: #fdfdfd;
+    border-left: 3px solid #3182ce;
+    padding: 12px 16px;
+    font-family: 'Consolas', monospace;
+    font-size: 13.5px;
+    white-space: pre-wrap;
+    color: #333;
+    margin-top: 10px;
+  }
+  details.preview-collapse {
+    margin-top: 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  details.preview-collapse summary {
+    background: #edf2f7;
+    padding: 10px 16px;
+    font-weight: 600;
+    font-size: 13.5px;
+    cursor: pointer;
+    user-select: none;
+    color: #2b6cb0;
+  }
+  details.preview-collapse summary:hover { background: #e2e8f0; }
+  details.preview-collapse .preview-content {
+    padding: 15px;
+    background: #fff;
+    text-align: center;
+  }
+  details.preview-collapse img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.75);
+    overflow: auto;
+  }
+  .modal-content {
+    background: white;
+    margin: 3% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 1000px;
+    position: relative;
+  }
+  .close-modal {
+    position: absolute;
+    right: 20px; top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #a0aec0;
+    cursor: pointer;
+  }
+  .close-modal:hover { color: #e53e3e; }
+  .modal img { width: 100%; height: auto; border-radius: 6px; }
+  .floating-print {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    padding: 12px 20px;
+    background: #38a169;
+    color: white;
+    font-weight: bold;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(56,161,105,0.4);
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    z-index: 100;
+  }
+  @media print {
+    .floating-print, .actions, .tabs, .top-banner p, details.preview-collapse { display: none !important; }
+    body { padding: 0; background: white; }
+    .card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+  }
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<button class="floating-print" onclick="window.print()">🖨️ In Tuyển Tập Đề</button>
+
+<div class="top-banner">
+  <h1>📚 CHUYÊN ĐỀ 2: DÃY SỐ, CẤP SỐ & GIỚI HẠN HSG TOÁN 11</h1>
+  <p>Tuyển tập câu hỏi Tự luận Dãy số, Cấp số cộng, Cấp số nhân & Giới hạn từ các kỳ thi HSG Toán 11 (2012 – 2026).</p>
+  <p style="margin-top: 8px; font-size: 13.5px; opacity: 0.85;">💡 <i>Mỗi câu hỏi đều tích hợp <b>"Xem nhanh trang đề thi gốc"</b> hoặc <b>"Phóng to đề gốc"</b> để xem hình vẽ, sơ đồ và công thức nguyên bản sắc nét 100%.</i></p>
+</div>
+
+
+            <div class="cards-container">
+              
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 1</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi Toán 11 năm 2012 – 2013 trường THPT Thuận An – TT Huế (Năm học 2012 - 2013)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2012_–_2013_trường_THPT_Thuận_An_–_TT_Huế_trang1.png', 'Đề thi học sinh giỏi Toán 11 năm 2012 – 2013 trường THPT Thuận An – TT Huế')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2012_2013/Đề_thi_học_sinh_giỏi_Toán_11_năm_2012_–_2013_trường_THPT_Thuận_An_–_TT_Huế.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Bài 4:  (2 điểm) Cho dãy số 
+1
+1
+2( ): 54n nnuu uu    . Tìm số hạng tổng quát của nu theo n.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2012_–_2013_trường_THPT_Thuận_An_–_TT_Huế_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 2</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi Toán 11 năm 2012 – 2013 trường THPT Thuận An – TT Huế (Năm học 2012 - 2013)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2012_–_2013_trường_THPT_Thuận_An_–_TT_Huế_trang1.png', 'Đề thi học sinh giỏi Toán 11 năm 2012 – 2013 trường THPT Thuận An – TT Huế')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2012_2013/Đề_thi_học_sinh_giỏi_Toán_11_năm_2012_–_2013_trường_THPT_Thuận_An_–_TT_Huế.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Bài 5: (2 điểm) Ba số x, y, z theo thứ tự lập thành một cấp số nhân; đồng thời chúng theo thứ tự là 
+số hạng thứ nhất, số hạng thứ ba và số hạng thứ chín của một cấp số cộng. Tìm 3 số đó bi ết tổng 
+của chúng bằng 13.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2012_–_2013_trường_THPT_Thuận_An_–_TT_Huế_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 3</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi Toán 11 cấp tỉnh năm 2016 – 2017 sở GD&ĐT Lai Châu (Năm học 2016 - 2017)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2016_–_2017_sở_GD&ĐT_Lai_Châu_trang1.png', 'Đề thi học sinh giỏi Toán 11 cấp tỉnh năm 2016 – 2017 sở GD&ĐT Lai Châu')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2016_2017/Đề_thi_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2016_–_2017_sở_GD&ĐT_Lai_Châu.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 5:  (3 điểm) Cho dãy số { }nu  xác định như sau: 
+1
+2
+1
+1
+.
+,   1,2,...2017nnn
+u
+uu un+
+= = +=  
+Tính: 12
+23 1
+lim  n
+n
+n
+uu u
+uu u→+∞ +
+ + +⋅⋅⋅+
+
+.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2016_–_2017_sở_GD&ĐT_Lai_Châu_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 4</span>
+                <span class="q-source">🏷️ Đề thi KSCL học sinh giỏi Toán 11 năm học 2016 – 2017 cụm thi THPT Yên Thành – Nghệ An (Năm học 2016 - 2017)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_KSCL_học_sinh_giỏi_Toán_11_năm_học_2016_–_2017_cụm_thi_THPT_Yên_Thành_–_Nghệ_An_trang1.png', 'Đề thi KSCL học sinh giỏi Toán 11 năm học 2016 – 2017 cụm thi THPT Yên Thành – Nghệ An')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2016_2017/Đề_thi_KSCL_học_sinh_giỏi_Toán_11_năm_học_2016_–_2017_cụm_thi_THPT_Yên_Thành_–_Nghệ_An.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3 (2,0 điểm). Cho dãy số () nu  xác định bởi:  
+  
+1
+2
+12 1
+2
+( 1) 2 ... ( 1) , 1, .nn
+u
+nn u u u n u n n −
+= − = + + + − ∀> ∈  .  Tìm 39lim ( ).2 nn nu− .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_KSCL_học_sinh_giỏi_Toán_11_năm_học_2016_–_2017_cụm_thi_THPT_Yên_Thành_–_Nghệ_An_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 5</span>
+                <span class="q-source">🏷️ Đề KSCL đội tuyển HSG Toán 11 năm 2017 – 2018 trường Minh Châu – Hưng Yên (Năm học 2017 - 2018)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_KSCL_đội_tuyển_HSG_Toán_11_năm_2017_–_2018_trường_Minh_Châu_–_Hưng_Yên_trang1.png', 'Đề KSCL đội tuyển HSG Toán 11 năm 2017 – 2018 trường Minh Châu – Hưng Yên')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2017_2018/Đề_KSCL_đội_tuyển_HSG_Toán_11_năm_2017_–_2018_trường_Minh_Châu_–_Hưng_Yên.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4 (1,0 điểm). Tính giới hạn: 
+
+ 
+ 
+532
+321
+526 4lim
+1x
+xxxxI
+xxx</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_KSCL_đội_tuyển_HSG_Toán_11_năm_2017_–_2018_trường_Minh_Châu_–_Hưng_Yên_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 6</span>
+                <span class="q-source">🏷️ Đề KSCL đội tuyển HSG Toán 11 năm 2017 – 2018 trường Minh Châu – Hưng Yên (Năm học 2017 - 2018)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_KSCL_đội_tuyển_HSG_Toán_11_năm_2017_–_2018_trường_Minh_Châu_–_Hưng_Yên_trang1.png', 'Đề KSCL đội tuyển HSG Toán 11 năm 2017 – 2018 trường Minh Châu – Hưng Yên')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2017_2018/Đề_KSCL_đội_tuyển_HSG_Toán_11_năm_2017_–_2018_trường_Minh_Châu_–_Hưng_Yên.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 9 (1,0 điểm). Cho dãy số () nu  xác định bởi:  
+1 1;u   1 *2221 2 ,.11nn nu nun n nn        Tìm công thức số hạng tổng quát nu  theo n .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_KSCL_đội_tuyển_HSG_Toán_11_năm_2017_–_2018_trường_Minh_Châu_–_Hưng_Yên_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 7</span>
+                <span class="q-source">🏷️ Đề KSCL đội tuyển HSG Toán 11 năm 2017 – 2018 trường THPT Yên Lạc 2 – Vĩnh Phúc (Năm học 2017 - 2018)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_KSCL_đội_tuyển_HSG_Toán_11_năm_2017_–_2018_trường_THPT_Yên_Lạc_2_–_Vĩnh_Phúc_trang1.png', 'Đề KSCL đội tuyển HSG Toán 11 năm 2017 – 2018 trường THPT Yên Lạc 2 – Vĩnh Phúc')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2017_2018/Đề_KSCL_đội_tuyển_HSG_Toán_11_năm_2017_–_2018_trường_THPT_Yên_Lạc_2_–_Vĩnh_Phúc.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2 (1,0 đi ểm). Một tứ giác có bốn góc tạo thành một cấp số nhân và số đo góc lớn nhất gấp 8 
+lần số đo góc nhỏ nhất. Tính số đo các góc của tứ giác trên.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_KSCL_đội_tuyển_HSG_Toán_11_năm_2017_–_2018_trường_THPT_Yên_Lạc_2_–_Vĩnh_Phúc_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 8</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG Toán 11 cấp trường năm 2017 – 2018 trường Lý Thái Tổ – Bắc Ninh (Năm học 2017 - 2018)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_cấp_trường_năm_2017_–_2018_trường_Lý_Thái_Tổ_–_Bắc_Ninh_trang1.png', 'Đề thi chọn HSG Toán 11 cấp trường năm 2017 – 2018 trường Lý Thái Tổ – Bắc Ninh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2017_2018/Đề_thi_chọn_HSG_Toán_11_cấp_trường_năm_2017_–_2018_trường_Lý_Thái_Tổ_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu II. (6,0 điểm) 
+1) Giải phương trình      
+                      2s i n 2 s i n c o s 14xx x pæö ÷ç ÷-= + -ç ÷ç ÷çèø   
+ 2 )  Tìm số nguyên dương lẻ n  sao cho 
+1 2 23 34 12.2 3.2 4.2 ... .2 2019. nnnn n n nCC C C n C --+ - + + =  
+ 3) Tính giới hạn 
+2
+1
+2017(2018 ) 2017lim 1x xI x --= -</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_cấp_trường_năm_2017_–_2018_trường_Lý_Thái_Tổ_–_Bắc_Ninh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 9</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG tỉnh Toán 11 năm học 2017 – 2018 sở GD và ĐT Hà Tĩnh (Năm học 2017 - 2018)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_tỉnh_Toán_11_năm_học_2017_–_2018_sở_GD_và_ĐT_Hà_Tĩnh_trang1.png', 'Đề thi chọn HSG tỉnh Toán 11 năm học 2017 – 2018 sở GD và ĐT Hà Tĩnh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2017_2018/Đề_thi_chọn_HSG_tỉnh_Toán_11_năm_học_2017_–_2018_sở_GD_và_ĐT_Hà_Tĩnh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 1. (5 điểm) 
+a) Giải phương trình  3s i n c o s3tan2 2cos 2 2 cos 2 sin cosx xxx x xx   . 
+ b) Tính giới hạn   
+2 5
+0
+2017 1 5 2017
+Ll i m
+x
+xx
+x
+ 
+  .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_tỉnh_Toán_11_năm_học_2017_–_2018_sở_GD_và_ĐT_Hà_Tĩnh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 10</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG tỉnh Toán 11 năm học 2017 – 2018 sở GD và ĐT Hà Tĩnh (Năm học 2017 - 2018)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_tỉnh_Toán_11_năm_học_2017_–_2018_sở_GD_và_ĐT_Hà_Tĩnh_trang1.png', 'Đề thi chọn HSG tỉnh Toán 11 năm học 2017 – 2018 sở GD và ĐT Hà Tĩnh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2017_2018/Đề_thi_chọn_HSG_tỉnh_Toán_11_năm_học_2017_–_2018_sở_GD_và_ĐT_Hà_Tĩnh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4. (2,5 điểm) 
+  Cho 1a  và dãy số () nx   xác  định  như  sau: 
+1x a ;  21 . 3 2018nn nxa x x     với 1,2,...n  
+           Tìm a  để 1lim 2018n
+n
+x
+x
+  .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_tỉnh_Toán_11_năm_học_2017_–_2018_sở_GD_và_ĐT_Hà_Tĩnh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 11</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi Toán 11 cấp tỉnh năm 2017 – 2018 sở GD&ĐT Lai Châu (Năm học 2017 - 2018)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2017_–_2018_sở_GD&ĐT_Lai_Châu_trang1.png', 'Đề thi học sinh giỏi Toán 11 cấp tỉnh năm 2017 – 2018 sở GD&ĐT Lai Châu')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2017_2018/Đề_thi_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2017_–_2018_sở_GD&ĐT_Lai_Châu.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4. (4,0 điểm) 
+Cho dãy số ( )nu  xác định bởi 1nu >  và 21 1nnnuu+ = +  với 1,2,3,...n=  
+Tính giới hạn lim nn u→+∞ .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2017_–_2018_sở_GD&ĐT_Lai_Châu_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 12</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG cấp tỉnh Toán 11 năm 2018 – 2019 sở GD&ĐT Bắc Ninh (Năm học 2018 - 2019)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_cấp_tỉnh_Toán_11_năm_2018_–_2019_sở_GD&ĐT_Bắc_Ninh_trang1.png', 'Đề thi chọn HSG cấp tỉnh Toán 11 năm 2018 – 2019 sở GD&ĐT Bắc Ninh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_chọn_HSG_cấp_tỉnh_Toán_11_năm_2018_–_2019_sở_GD&ĐT_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3. (4,0 điểm)   
+1) Tìm a  để hàm số    
+2
+31 3 khi 1
+1
+2
+khi 14
+xx x
+xfx ax
+x
+         liên tục tại điểm 1x  . 
+2) Cho dãy số  nu  xác định bởi 112 1 22019; 2020; , 2,3nnn uuu u u nn      . Tính lim nu .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_cấp_tỉnh_Toán_11_năm_2018_–_2019_sở_GD&ĐT_Bắc_Ninh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 13</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG Toán 11 năm 2018 – 2019 trường THPT Thị xã Quảng Trị (Năm học 2018 - 2019)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2018_–_2019_trường_THPT_Thị_xã_Quảng_Trị_trang1.png', 'Đề thi chọn HSG Toán 11 năm 2018 – 2019 trường THPT Thị xã Quảng Trị')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_chọn_HSG_Toán_11_năm_2018_–_2019_trường_THPT_Thị_xã_Quảng_Trị.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu I (5,0 điểm). 
+1. Giải phương trình: 22sin 3 cos 2 sin 0.xx x    
+2. Cho 1x  và 2x là hai nghiệm của phương trình: 
+2
+30xx a  , 3x  và 4x là hai nghiệm của 
+phương trình: 
+2
+12 0xx b  . Biết rằng 1234,,,x xxx  theo thứ tự lập thành một cấp số nhân. Hãy 
+tìm ,ab .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2018_–_2019_trường_THPT_Thị_xã_Quảng_Trị_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 14</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG Toán 11 năm 2018 – 2019 trường THPT Thị xã Quảng Trị (Năm học 2018 - 2019)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2018_–_2019_trường_THPT_Thị_xã_Quảng_Trị_trang1.png', 'Đề thi chọn HSG Toán 11 năm 2018 – 2019 trường THPT Thị xã Quảng Trị')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_chọn_HSG_Toán_11_năm_2018_–_2019_trường_THPT_Thị_xã_Quảng_Trị.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu III (3,0 điểm).  
+Cho dãy số  nu  được xác định bởi: 11 2
+sinsin1; nn nuu u n  , với ,2nn  .  
+Chứng minh rằng dãy số  nu  xác định như trên là một dãy số bị chặn.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2018_–_2019_trường_THPT_Thị_xã_Quảng_Trị_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 15</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG Toán 11 năm 2018 – 2019 trường THPT Thị xã Quảng Trị (Năm học 2018 - 2019)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2018_–_2019_trường_THPT_Thị_xã_Quảng_Trị_trang1.png', 'Đề thi chọn HSG Toán 11 năm 2018 – 2019 trường THPT Thị xã Quảng Trị')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_chọn_HSG_Toán_11_năm_2018_–_2019_trường_THPT_Thị_xã_Quảng_Trị.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu I. 
+(5đ) 
+Giải phương trình: 22sin 3 cos 2 sin 0.xx x    
+1. (3đ) 22sin 3 cos 2 sin 0xx x   (1) 
+Ta có: sin 3 (1 2cos 2 )sinx.xx   
+22
+22
+(1) ((1 2 cos 2 ) cos2 1) sin 0
+(1 os2x)(1+4cos 2 )sin 0
+sin 0
+cos2x=-1 2
+xx x
+cx x
+x kx 
+  
+ 
+ 
+  
+ 
+ 
+1.0đ 
+ 
+1.0đ 
+ 
+1.0đ 
+2. (2đ) Cho 1x  v à  2x là hai nghiệm của phương trình: 2 30xx a  , 3x  v à  4x là hai 
+nghiệm của phương trình: 2 12 0xx b  . Biết rằng 1234,,,x xxx  theo thứ tự lập 
+thành một cấp số nhân. Hãy tìm ,ab . 
+ 
+Gọi q là công bội của CSN 2321 31 41 ;;x xq x xq x xq     
+Theo viet ta có: 
+112
+1212
+2
+34 1
+34 34
+(1 ) 33
+12 (1 ) 12
+xqxx
+xx axx a
+xx xq q
+xx b xx b
+ 
+    
+   
+ 
+Suy ra 2 4q    
++ q = 2 1 1x  , giải ra được a = 2, b = 32 
++q = -2 1 3x  , giải ra được a = -18, b = -288 
+ 
+ 
+ 
+ 
+1.0đ 
+ 
+ 
+ 
+ 
+1.0đ</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2018_–_2019_trường_THPT_Thị_xã_Quảng_Trị_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 16</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG Toán THPT cấp tỉnh năm học 2018 – 2019 sở GD&ĐT Phú Yên (Năm học 2018 - 2019)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_Toán_THPT_cấp_tỉnh_năm_học_2018_–_2019_sở_GD&ĐT_Phú_Yên_trang1.png', 'Đề thi chọn HSG Toán THPT cấp tỉnh năm học 2018 – 2019 sở GD&ĐT Phú Yên')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_chọn_HSG_Toán_THPT_cấp_tỉnh_năm_học_2018_–_2019_sở_GD&ĐT_Phú_Yên.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 5.(3,00 điểm) Cho dãy số thực  nx thỏa mãn điều kiện 
+1
+01
+, 1,2,3,...11 4
+n
+nn
+x
+n
+xx
+    
+a) Chứng minh rằng 11 , 1,2,3,...22nxn n    
+b) Tìm giới hạn của dãy  nx .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_Toán_THPT_cấp_tỉnh_năm_học_2018_–_2019_sở_GD&ĐT_Phú_Yên_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 17</span>
+                <span class="q-source">🏷️ Đề thi HSG Toán 11 cấp trường năm 2018 – 2019 trường Thuận Thành 2 – Bắc Ninh (Năm học 2018 - 2019)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_HSG_Toán_11_cấp_trường_năm_2018_–_2019_trường_Thuận_Thành_2_–_Bắc_Ninh_trang1.png', 'Đề thi HSG Toán 11 cấp trường năm 2018 – 2019 trường Thuận Thành 2 – Bắc Ninh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_HSG_Toán_11_cấp_trường_năm_2018_–_2019_trường_Thuận_Thành_2_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 
+I 
+(
+4
+,0 đi
+ểm).
+ 
+1.
+Gi
+ải ph
+ương tr
+ình 
+2 2
+2cos 2 3 cos 4 4cos 1
+4
+x x x
+
+ 
+   
+ 
+ 
+ 
+ 
+2.
+Cho các s
+ố 
+5 ;5 2 ;8
+x y x y x y
+  
+ 
+theo th
+ứ tự 
+đó l
+ập thành một cấp số cộng; 
+đ
+ồng thời các số 
+
+
+2
+2
+( 1) ; 1; 2
+y xy x
+  
+ 
+theo th
+ứ tự lập thành một cấp số nhân. Hãy tìm 
+,
+x y
+.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_HSG_Toán_11_cấp_trường_năm_2018_–_2019_trường_Thuận_Thành_2_–_Bắc_Ninh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 18</span>
+                <span class="q-source">🏷️ Đề thi HSG Toán 11 cấp trường năm 2018 – 2019 trường Thuận Thành 2 – Bắc Ninh (Năm học 2018 - 2019)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_HSG_Toán_11_cấp_trường_năm_2018_–_2019_trường_Thuận_Thành_2_–_Bắc_Ninh_trang1.png', 'Đề thi HSG Toán 11 cấp trường năm 2018 – 2019 trường Thuận Thành 2 – Bắc Ninh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_HSG_Toán_11_cấp_trường_năm_2018_–_2019_trường_Thuận_Thành_2_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 
+III 
+(
+5,0
+ 
+đi
+ểm)
+.
+ 
+1.
+ 
+Tìm 
+2
+2
+lim
+4 3 2
+n n n
+n n n
+ 
+ 
+ 
+2.
+ 
+Gi
+ải hệ ph
+ương tr
+ình 
+2 2
+4 8 17 1
+21 1 2 4 3
+x x x y y
+x y y y x
+
+      
+
+
+     
+
+</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_HSG_Toán_11_cấp_trường_năm_2018_–_2019_trường_Thuận_Thành_2_–_Bắc_Ninh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 19</span>
+                <span class="q-source">🏷️ Đề thi HSG Toán 11 năm 2018 – 2019 trường Phùng Khắc Khoan – Hà Nội (Năm học 2018 - 2019)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2018_–_2019_trường_Phùng_Khắc_Khoan_–_Hà_Nội_trang1.png', 'Đề thi HSG Toán 11 năm 2018 – 2019 trường Phùng Khắc Khoan – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_HSG_Toán_11_năm_2018_–_2019_trường_Phùng_Khắc_Khoan_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3 ( 4 điểm) 
+1-Trong mặt phẳng tọa độ 
+Oxy , cho các điểm 
+   2;3 , 1 ;5AA   và 
+   5; 3 , 7; 2BB  . Phép quay tâm 
+ ;I x y
+ biến 
+A  thành 
+A  và 
+B  thành 
+B , tính 
+xy . 
+2- Cho đường tròn 
+ ;OR  đường kính 
+AB . Một đường tròn 
+ O  tiếp xúc v ới đường tròn 
+ O  và  
+đoạn 
+AB lần lượt tại 
+C  và 
+D  . Đường thẳng 
+CD  cắt 
+ ;OR  tại 
+I . Tính độ dài đoạn 
+AI  . 
+Câu4 (4điểm) 
+Cho hình chóp 
+.S ABC , 
+M  là một điểm nằm trong tam giác 
+ABC . Các đư ờng thẳng qua 
+M  song 
+song với 
+,,SA SB SC  cắt các mặt phẳng 
+     ,,SBC SAC SAB  lần lượt tại 
+,,A B C   . 
+a) Chứng minh rằng   
+   
+   
+       
+       . 
+b) Chứng minh rằng   
+   
+   
+   
+   
+   
+      khi 
+M  di động trong tam giác 
+ABC  
+c) Tìm vị trí của 
+M  trong tam giác 
+ABC  để  
+..MA MB MCSA SB SC  
+ 
+đạt giá trị lớn nhất. 
+Câu5 (2điểm)   Cho a, b, c là ba hằng số và 
+() nu  là dãy số được xác định bởi công thức: 
+1 2 3 ( *).    nu a n b n c n n       
+ Chứng minh rằng 
+lim 0nn u   khi và chỉ khi 
+0.abc  </div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2018_–_2019_trường_Phùng_Khắc_Khoan_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 20</span>
+                <span class="q-source">🏷️ Đề thi HSG Toán 11 năm 2018 – 2019 trường Phùng Khắc Khoan – Hà Nội (Năm học 2018 - 2019)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2018_–_2019_trường_Phùng_Khắc_Khoan_–_Hà_Nội_trang1.png', 'Đề thi HSG Toán 11 năm 2018 – 2019 trường Phùng Khắc Khoan – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_HSG_Toán_11_năm_2018_–_2019_trường_Phùng_Khắc_Khoan_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 1                                                 Nội dung 
+Tính tổng các nghiệm của phương trình  trên  
+Thang 
+điểm 
+ 
+ 
+ 
+ 
+ 
+2 
+điểm 
+ (3)  
+Đặt  
+ 
+Với  
+ 
+Suy ra phương trình có 3 nghiệm trên   là  
+Vậy tổng 3 nghiệm là  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+1,0  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+1,0 
+ 2 - Tìm tất cả các giá trị của tham số 
+m  để phương trình sau có ba nghiệm phân biệt lập thành một cấp 
+số  nhân: 
+ 
+3 2 27 2 6 8 0.x x m m x      
+ 
+ 
+2 
+điểm 
++ Điều kiện cần: Giả sử phương trình đã cho có ba nghi ệm phân bi ệt 
+1 2 3,,x x x  lập thành m ột 
+cấp số nhân.Theo định lý Vi-ét, ta có 
+1 2 3 8.x x x   
+Theo tính chất của cấp số nhân, ta có 
+2
+1 3 2x x x . Suy ra ta có 
+3
+22 8 2.xx    
++ Điều kiện đủ: Với 
+1m  và 
+7m  thì 
+2 67mm  nên ta có phương trình 
+ 
+32 7 14 8 0.x x x     
+Giải phương trình này, ta đư ợc các nghiệm là 
+1, 2, 4.  Hiển nhiên ba nghiệm này lập thành một 
+cấp số nhân với công bôị 
+2.q  
+Vậy, 
+1m  và 
+7m  là các giá trị cần tìm. 
+ 
+ 
+ 
+1,0  
+ 
+ 
+1,0 
+ 
+ 
+ 
+sin cos cos sin 1x x x x  
+ 0;2
+sin cos cos sin 1x x x x  
+sin cos 2 sin 0; 2 . 4t x x x t         
+   
+22
+22 1111 2sin cos sin cos 3 1 2 3 0 322 tttt x x x x t t t tl              
+2sin 421: 2 sin 1 4 2sin 42xtx x              
+2 244
+224 4 2
+224 4 2
+2244
+xk xk
+x k x k
+x k x k
+xkxk
+  
+    
+   
+   
+                         
+ 0;2
+3;;22x x x   
+3 3.22   </div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2018_–_2019_trường_Phùng_Khắc_Khoan_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 21</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi cấp tỉnh Toán 11 THPT năm 2018 – 2019 sở GD&ĐT Thanh Hóa (Năm học 2018 - 2019)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_cấp_tỉnh_Toán_11_THPT_năm_2018_–_2019_sở_GD&ĐT_Thanh_Hóa_trang1.png', 'Đề thi học sinh giỏi cấp tỉnh Toán 11 THPT năm 2018 – 2019 sở GD&ĐT Thanh Hóa')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_học_sinh_giỏi_cấp_tỉnh_Toán_11_THPT_năm_2018_–_2019_sở_GD&ĐT_Thanh_Hóa.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu III (4,0 điểm) 
+1. Cho ba số dương x, y, z thỏa mãn:
+ 
+22 2 2 14 4 2 2 2    x y z x y z . Tìm giá trị lớn nhất của biểu thức: 
+  
+3 3 388
+2 2 4 2 2
+    x y zP x y z xy yz zx
+. 
+2. Cho dãy số xác định bởi: 
+1
+*
+1
+2
+4 3.4 ,
+
+   
+ n
+nn
+u
+u u n . Tìm số hạng tổng quát un và tính giới hạn 
+22 3 1lim 
+n
+nn
+u .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_cấp_tỉnh_Toán_11_THPT_năm_2018_–_2019_sở_GD&ĐT_Thanh_Hóa_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 22</span>
+                <span class="q-source">🏷️ Đề giao lưu HSG Toán 11 cấp tỉnh năm 2019 – 2020 cụm Gia Bình – Lương Tài – Bắc Ninh (Năm học 2019 - 2020)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_giao_lưu_HSG_Toán_11_cấp_tỉnh_năm_2019_–_2020_cụm_Gia_Bình_–_Lương_Tài_–_Bắc_Ninh_trang1.png', 'Đề giao lưu HSG Toán 11 cấp tỉnh năm 2019 – 2020 cụm Gia Bình – Lương Tài – Bắc Ninh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2019_2020/Đề_giao_lưu_HSG_Toán_11_cấp_tỉnh_năm_2019_–_2020_cụm_Gia_Bình_–_Lương_Tài_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu III: (4,0 điểm) 
+ 1) Cho hàm số 
+ 
+22 , khi 11
+3, khi 1
+x ax b xfx x
+bx x
+   
+   . Biết rằng hàm số 
+ fx  liên tục tại 
+0 1x  , tính 
+giá trị của biểu thức 
+22S a b .   
+ 2) Cho dãy số 
+ nu thỏa mãn: 
+*
+11 2; , 1. nn nuu u n nu   
+ . Tính 
+lim 3nnu</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_giao_lưu_HSG_Toán_11_cấp_tỉnh_năm_2019_–_2020_cụm_Gia_Bình_–_Lương_Tài_–_Bắc_Ninh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 23</span>
+                <span class="q-source">🏷️ Đề thi chọn học sinh giỏi Toán 11 năm 2019 – 2020 sở GD&ĐT Thái Nguyên (Năm học 2019 - 2020)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_học_sinh_giỏi_Toán_11_năm_2019_–_2020_sở_GD&ĐT_Thái_Nguyên_trang1.png', 'Đề thi chọn học sinh giỏi Toán 11 năm 2019 – 2020 sở GD&ĐT Thái Nguyên')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2019_2020/Đề_thi_chọn_học_sinh_giỏi_Toán_11_năm_2019_–_2020_sở_GD&ĐT_Thái_Nguyên.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Bài 2
+.
+ 
+(4 đi
+ể
+m)
+ 
+a. Tính
+:
+ 
+lim( sin 2020 ).
+n n
+
+ 
+b. Cho hàm s
+ố
+ 
+2020
+2
+2020 2019
+khi 1
+( ) .
+( 1)
+1 khi 1
+x x
+x
+f x
+x
+mx x
+
+ 
+
+
+
+
+
+
+ 
+
+ 
+Tìm 
+m
+ 
+đ
+ể
+ 
+hàm s
+ố
+ 
+liên t
+ụ
+c
+ 
+t
+ạ
+i đi
+ể
+m 
+1.
+x
+</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_học_sinh_giỏi_Toán_11_năm_2019_–_2020_sở_GD&ĐT_Thái_Nguyên_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 24</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi cấp tỉnh Toán 11 năm 2019 – 2020 sở GD&ĐT Bình Định (Năm học 2019 - 2020)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2019_–_2020_sở_GD&ĐT_Bình_Định_trang1.png', 'Đề thi học sinh giỏi cấp tỉnh Toán 11 năm 2019 – 2020 sở GD&ĐT Bình Định')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2019_2020/Đề_thi_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2019_–_2020_sở_GD&ĐT_Bình_Định.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Bài 3
+: 
+(3,0 đi
+ể
+m)
+ 
+Cho dãy s
+ố
+ 
+ 
+
+
+n
+u
+ 
+đư
+ợ
+c xác đ
+ị
+nh b
+ở
+i:
+ 
+
+
+1
+*
+1
+4
+.
+1
+4 4 1 2 ,
+9
+n n n
+u
+u u u n N
+
+
+
+
+
+     
+
+
+ 
+Tính
+ 
+lim
+.
+n
+u</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2019_–_2020_sở_GD&ĐT_Bình_Định_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 25</span>
+                <span class="q-source">🏷️ Đề thi Olympic Toán 11 năm học 2019 – 2020 cụm Sóc Sơn – Mê Linh – Hà Nội (Năm học 2019 - 2020)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_học_2019_–_2020_cụm_Sóc_Sơn_–_Mê_Linh_–_Hà_Nội_trang1.png', 'Đề thi Olympic Toán 11 năm học 2019 – 2020 cụm Sóc Sơn – Mê Linh – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2019_2020/Đề_thi_Olympic_Toán_11_năm_học_2019_–_2020_cụm_Sóc_Sơn_–_Mê_Linh_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4. (2,0 điểm)  Cho dãy số 
+ nu  thỏa mãn 
+1
+*
+1
+2021
+1 2020 ,2nn n
+u
+u u n u
+
+     
+ .  
+Chứng minh rằng dãy 
+ nu  có giới hạn hữu hạn khi 
+n  và tính giới hạn đó.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_học_2019_–_2020_cụm_Sóc_Sơn_–_Mê_Linh_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 26</span>
+                <span class="q-source">🏷️ Đề HSG cấp trường Toán 11 năm 2020 – 2021 trường Yên Phong 2 – Bắc Ninh (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_HSG_cấp_trường_Toán_11_năm_2020_–_2021_trường_Yên_Phong_2_–_Bắc_Ninh_trang1.png', 'Đề HSG cấp trường Toán 11 năm 2020 – 2021 trường Yên Phong 2 – Bắc Ninh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_HSG_cấp_trường_Toán_11_năm_2020_–_2021_trường_Yên_Phong_2_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3:  (4,0 điểm)  
+1)  Tìm gi ới h ạn  
+2 3
+x 0 
+(x 2021) 1 2x 2021 4x 1 lim x→ + − − + . 
+2)   Cho dãy s ố ( ) nu  th ỏa mãn  ( )
+1
+1
+16 
+15 . 1 14 , 1 1nn
+u
+n u u n n+
+= + + = ∀ ≥  +  . Tìm lim 2021 nnnu .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_HSG_cấp_trường_Toán_11_năm_2020_–_2021_trường_Yên_Phong_2_–_Bắc_Ninh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 27</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 năm 2020 – 2021 trường Phùng Khắc Khoan – Hà Nội (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_Phùng_Khắc_Khoan_–_Hà_Nội_trang1.png', 'Đề học sinh giỏi Toán 11 năm 2020 – 2021 trường Phùng Khắc Khoan – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_Phùng_Khắc_Khoan_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2. (4,5 điểm)   
+a. Giải hệ phương trình : 
+22
+2
+2 1 2 2
+xy x y x y
+x y y x x y
+ + + = − − − = −  
+b. Tính giới hạn   
+2
+1
+2020(2021 ) 2020lim 1x xI x→ −−= −</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_Phùng_Khắc_Khoan_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 28</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 năm 2020 – 2021 trường Phùng Khắc Khoan – Hà Nội (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_Phùng_Khắc_Khoan_–_Hà_Nội_trang1.png', 'Đề học sinh giỏi Toán 11 năm 2020 – 2021 trường Phùng Khắc Khoan – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_Phùng_Khắc_Khoan_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4. (3,0 điểm)  Cho dãy số 
+( )nu   xác định bởi: 
+( )
+1
+1
+7
+2
+74
+25
+n
+n
+n
+u
+nuu u
+
++
+ =  + = +
+        
+a. Gọi 
+( )nv  là dãy số  xác định bởi  
+2
+1
+n
+n
+n
+uv u −= + . Chứng minh rằng dãy số  
+( )nv  là một 
+cấp số nhân lùi vô hạn. 
+b. Tính  giới hạn của dãy số 
+( )nu</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_Phùng_Khắc_Khoan_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 29</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG Toán 11 vòng 1 năm học 2020 – 2021 sở GD&ĐT Bình Dương (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_vòng_1_năm_học_2020_–_2021_sở_GD&ĐT_Bình_Dương_trang1.png', 'Đề thi chọn HSG Toán 11 vòng 1 năm học 2020 – 2021 sở GD&ĐT Bình Dương')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_chọn_HSG_Toán_11_vòng_1_năm_học_2020_–_2021_sở_GD&ĐT_Bình_Dương.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3. (4 điểm) 
+Cho dãy số  na  xác định như sau: 
+12
+2
+11 1 1
+11, 2
+(1 ) (1 ) ,nn n n nn
+aa
+n n aa n a a n aa nN   
+ 
+    
+. 
+a) Tính nu  theo n. 
+b) Chứng minh rằng: 2 1 nn an  , nN  .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_vòng_1_năm_học_2020_–_2021_sở_GD&ĐT_Bình_Dương_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 30</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Quảng Bình (Vòng 1) (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Quảng_Bình_(Vòng_1)_trang1.png', 'Đề thi chọn HSG tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Quảng Bình (Vòng 1)')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_chọn_HSG_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Quảng_Bình_(Vòng_1).pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3. (2,0 điểm). 
+a. Tìm giới hạn  
+ 
+3 2021
+0
+2020 . 1 2021 2020
+lim
+x
+xx
+L x
+  
+  . 
+b. Cho dãy số 
+ nu xác định bởi: 
+12 2, 1uu 
+ và 
+ 
+2311 12n n nu n u u    với mọi 
+2n . 
+Tính 
+2021u .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Quảng_Bình_(Vòng_1)_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 31</span>
+                <span class="q-source">🏷️ Đề thi HSG Toán 11 cấp trường năm 2020 – 2021 trường Liễn Sơn – Vĩnh Phúc (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_HSG_Toán_11_cấp_trường_năm_2020_–_2021_trường_Liễn_Sơn_–_Vĩnh_Phúc_trang1.png', 'Đề thi HSG Toán 11 cấp trường năm 2020 – 2021 trường Liễn Sơn – Vĩnh Phúc')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_HSG_Toán_11_cấp_trường_năm_2020_–_2021_trường_Liễn_Sơn_–_Vĩnh_Phúc.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4 (2,0 điểm). Cho dãy số  nu  được xác định bởi: 
+  
+   
+*
+1 1 2 2
+1 2 11 1,  ;3 1 2 2n n n nnu u u n n n n            . Tính 2021lim 2020 nnu</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_HSG_Toán_11_cấp_trường_năm_2020_–_2021_trường_Liễn_Sơn_–_Vĩnh_Phúc_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 32</span>
+                <span class="q-source">🏷️ Đề thi HSG Toán 11 năm 2020 – 2021 trường THPT Lưu Hoàng – Hà Nội (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2020_–_2021_trường_THPT_Lưu_Hoàng_–_Hà_Nội_trang1.png', 'Đề thi HSG Toán 11 năm 2020 – 2021 trường THPT Lưu Hoàng – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_HSG_Toán_11_năm_2020_–_2021_trường_THPT_Lưu_Hoàng_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3 (5 điểm). 
+a) Cho dãy số (un) thỏa mãn: 
+
+
+
+
+
+ 221
+2
+5
+2
+1
+1
+nnn uuu
+u   
+*)( Nn . Tìm 
+nk ku1 1lim . 
+b) Một người tham gia chương trình bảo hiểm An sinh xã hội của công ty Bảo 
+Việt với thể lệ như sau: Cứ đến tháng 9 hàng năm người đó đóng vào công ty là 12 
+triệu đồng với lãi suất hàng năm không đổi là 
+6% / năm. Hỏi sau đúng 18 năm kể từ 
+ngày đóng, người đó thu về được tất cả bao nhiêu triệu đồng (kết quả làm tròn đến hai 
+chữ số phần thập phân).</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2020_–_2021_trường_THPT_Lưu_Hoàng_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 33</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi Toán 11 năm 2020 – 2021 trường THPT Đông Hà – Quảng Trị (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_THPT_Đông_Hà_–_Quảng_Trị_trang1.png', 'Đề thi học sinh giỏi Toán 11 năm 2020 – 2021 trường THPT Đông Hà – Quảng Trị')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_THPT_Đông_Hà_–_Quảng_Trị.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3. (5,0 điểm).  
+1. Cho ba số   0, 0, 0a b c    thỏa mãn 2 2 2 3a b c   . Chứng minh rằng  
+    
+3 3 3
+2 2 2
+3 .23 3 3a b cb c a       
+2. Chứng minh dãy số  nu  với  2 2 2
+1 1 1 ...
+1 2
+nu n     là một dãy số tăng và bị chặn.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_THPT_Đông_Hà_–_Quảng_Trị_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 34</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Bắc Ninh (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Bắc_Ninh_trang1.png', 'Đề thi học sinh giỏi tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Bắc Ninh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4. (4,5 điểm) 
+1. Cho hàm số 
+235 35 khi 1() ,1
+2 khi 1
+xx xy gx x
+mx x
+         với m  là tham số. Tìm m  
+để hàm số ()gx  liên tục trên .   
+2. Cho dãy số  nu  thoả mãn 
+1
+1
+1
+2 ,14nn n
+u
+uun u
+     . Tìm công thức số hạng tổng quát nu  của 
+dãy số đã cho. 
+3. Có bao nhiêu s ố tự nhiên có 8 chữ  số, trong đó có hai chữ  số lẻ khác nhau và ba ch ữ số chẵn 
+khác nhau, mà mỗi chữ số chẵn có mặt đúng hai lần.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Bắc_Ninh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 35</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Bắc Ninh (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Bắc_Ninh_trang1.png', 'Đề thi học sinh giỏi tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Bắc Ninh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 7. (2,0 điểm)   
+1. Tìm giá trị nhỏ nhất của 222 5P
+ab bc ca ab bc ac
+=+++
+−−− ++
+  
+Trong đó ,,abc  là các số thực thỏa mãn hai điều kiện 10,.a b c ab bc ca++= + + >   
+2.   Với mỗi số nguyên dương n  ta kí hiệu nb  là hệ số của 2x  trong khai triển 2 12
+n
+xx
+      thành 
+đa thức. Đặt *123 ... , .nnu bb b bn     Tìm số hạng tổng quát của dãy số  nu  và 
+tính giới hạn lim nu . 
+ 
+=====Hết===== 
+ 
+Họ và tên thí sinh:........................................................... Số báo danh ..............................</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Bắc_Ninh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 36</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Hà Tĩnh (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Hà_Tĩnh_trang1.png', 'Đề thi học sinh giỏi tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Hà Tĩnh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Hà_Tĩnh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2. (4,0 điểm) 
+a. Tìm tất cả các giá trị của m để phương trình    3 2 1 2 3 3 3 0x m x m x m        có ba nghiệm phân biệt 
+lập thành một cấp số cộng. 
+b. Cho đa thức  f x  thỏa mãn  
+2
+4lim 5 2x f xx   . Tìm     32 4lim 3 2 2 2 ( ) 1 3x f xx f x     .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Hà_Tĩnh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 37</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Hà Tĩnh (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Hà_Tĩnh_trang1.png', 'Đề thi học sinh giỏi tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Hà Tĩnh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Hà_Tĩnh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 5. (4,0 điểm) 
+a. Cho các số thực x, y, z không âm thỏa mãn 2 2 2 2 1x y z xyz    . Tìm giá trị lớn nhất của biểu thức 
+ 2P x x y z   . 
+b. Cho dãy số  nx  thỏa mãn 
+1 2
+2 2
+2 1
+*
+3, 7
+,n n n n
+x x
+x x x x n 
+ 
+       . Đặt 1
+1n
+n
+k k
+y x . Chứng minh dãy  ny  có giới 
+hạn và tìm giới hạn đó. 
+_______________ HẾT _______________ 
+https://toanmath.com/ 
+Thí sinh không được sử dụng tài liệu và máy tính cầm tay. Giám thị không giải thích gì thêm./. 
+Họ và tên thí sinh: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Số báo danh: . . . . . . . . . . . . . . .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Hà_Tĩnh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 38</span>
+                <span class="q-source">🏷️ Đề thi Olympic 243 Toán 11 năm 2021 sở GD&ĐT Quảng Nam (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_243_Toán_11_năm_2021_sở_GD&ĐT_Quảng_Nam_trang1.png', 'Đề thi Olympic 243 Toán 11 năm 2021 sở GD&ĐT Quảng Nam')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_Olympic_243_Toán_11_năm_2021_sở_GD&ĐT_Quảng_Nam.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2 (4,0 điểm).  
+         a) Cho dãy số gồm có ba số hạng 123,,uuu  theo thứ tự lập thành một cấp số nhân. Nếu ta 
+trừ số hạng thứ ba cho 4 thì dãy thu được là một cấp số cộng. Nếu trừ số hạng thứ hai và thứ ba 
+của cấp số cộng vừa thu được cho 1 thì dãy thu được là một cấp số nhân. Tìm dãy số 123,,uuu . 
+         b) Cho dãy số ( ),nu biết: 01 1, 1uu= = và 11( 1) ( 1) ( 2) , 1n nnnn u nn u n u n+−+ = − − − ∀≥ .  
+Chứng tỏ rằng 1( 1) . 0, 1nnnuu n ++ − = ∀≥  và tính tổng 0 20201
+1 2 2021
+...uu uS uu u= + ++ .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_243_Toán_11_năm_2021_sở_GD&ĐT_Quảng_Nam_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 39</span>
+                <span class="q-source">🏷️ Đề thi Olympic 243 Toán 11 năm 2021 sở GD&ĐT Quảng Nam (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_243_Toán_11_năm_2021_sở_GD&ĐT_Quảng_Nam_trang1.png', 'Đề thi Olympic 243 Toán 11 năm 2021 sở GD&ĐT Quảng Nam')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_Olympic_243_Toán_11_năm_2021_sở_GD&ĐT_Quảng_Nam.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2 (4,0 điểm) 
+ 
+a 
+ 
+ Cho dãy số gồm có ba số hạng 12 3,,uu u  theo thứ tự lập thành một cấp số nhân. Nếu 
+ta trừ số hạng thứ ba cho 4 thì dãy thu được là một cấp số cộng. Nếu trừ số hạng thứ 
+hai và thứ ba của cấp số cộng vừa thu được cho 1 thì dãy thu được lại là một cấp số 
+nhân. Tìm dãy số 12 3,,uu u . 
+ 
+2,0 
+ 
+  12 3,,uu u  theo thứ tự lập thành một cấp số nhân 22 13 . (1)u uu⇔=   0.25 
+ 12 3,, 4uu u −  theo thứ tự lập thành một cấp số cộng 2 132 4 (2)u uu⇔ =+−  0.25 
+12 3, 1, 5uu u −−  theo thứ tự lập thành một cấp số nhân 22 13( 1) .( 5) (3)u uu⇔−= −  
+ 0.25</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_243_Toán_11_năm_2021_sở_GD&ĐT_Quảng_Nam_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 40</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG Toán 11 năm 2021 – 2022 sở GD&ĐT Quảng Bình (Năm học 2021 - 2022)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2021_–_2022_sở_GD&ĐT_Quảng_Bình_trang1.png', 'Đề thi chọn HSG Toán 11 năm 2021 – 2022 sở GD&ĐT Quảng Bình')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2021_2022/Đề_thi_chọn_HSG_Toán_11_năm_2021_–_2022_sở_GD&ĐT_Quảng_Bình.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2 (2,0 điểm). 
+a. Cho 
+n  là số nguyên dương thỏa mãn 
+121. 2. ... . 16 nn n nC C n C n    . Tìm hệ số của số 
+hạng chứa 
+7x  trong khai triển của nhị thức 
+21
+2 2
+n
+x x
+
+  , 
+0x . 
+b. Cho cấp số cộng 
+ nu  có các số hạng đều là  số nguyên và  công sai 
+d  là một số   
+dương. Biết rằng 
+20 0um  và 
+17mu  . Tính 
+2022u .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2021_–_2022_sở_GD&ĐT_Quảng_Bình_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 41</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG Toán 11 năm 2021 – 2022 sở GD&ĐT Quảng Bình (Năm học 2021 - 2022)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2021_–_2022_sở_GD&ĐT_Quảng_Bình_trang1.png', 'Đề thi chọn HSG Toán 11 năm 2021 – 2022 sở GD&ĐT Quảng Bình')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2021_2022/Đề_thi_chọn_HSG_Toán_11_năm_2021_–_2022_sở_GD&ĐT_Quảng_Bình.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3 (2,0 điểm). 
+    a. Tính giới hạn 
+3
+20
+1 2 1 3lim .
+x
+xx
+x
+    
+    b. Cho dãy số 
+ nu  xác định bởi: 
+1 9u   và 
+   13 5 22nnn u n u      với mọi 
+1n . 
+Tính giới hạn 
+2
+2021 lim .25 4 2022 nunn</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2021_–_2022_sở_GD&ĐT_Quảng_Bình_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 42</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi Toán 11 năm 2021 – 2022 cụm trường THPT – Hà Nội (Năm học 2021 - 2022)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2021_–_2022_cụm_trường_THPT_–_Hà_Nội_trang1.png', 'Đề thi học sinh giỏi Toán 11 năm 2021 – 2022 cụm trường THPT – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2021_2022/Đề_thi_học_sinh_giỏi_Toán_11_năm_2021_–_2022_cụm_trường_THPT_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Bài III (4,0 điểm) Cho dãy số 
+ nu  thoả mãn 
+    11 1 , 3 2 , 1nnu u u n . 
+ 1) Chứng minh dãy số 
+  1nu  là một cấp số nhân, tính 
+50.u  
+ 2) Chứng minh 
+     1 2 100
+1 1 1 3 ...1 1 1 4u u u .  
+3) Tìm công thức tổng quát của dãy số 
+    11 1 ; , 1 23
+n
+n
+n
+v
+v v n v .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2021_–_2022_cụm_trường_THPT_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 43</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi Toán 11 năm 2021 – 2022 cụm trường THPT – Hà Nội (Năm học 2021 - 2022)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2021_–_2022_cụm_trường_THPT_–_Hà_Nội_trang1.png', 'Đề thi học sinh giỏi Toán 11 năm 2021 – 2022 cụm trường THPT – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2021_2022/Đề_thi_học_sinh_giỏi_Toán_11_năm_2021_–_2022_cụm_trường_THPT_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Bài IV (2,0 điểm) Tính giới hạn 
+ 
+
+  
+
+3
+1
+2 1 3 2
+lim . 1x
+xx
+x</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2021_–_2022_cụm_trường_THPT_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 44</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 chuyên năm 2022 – 2023 sở GD&ĐT Vĩnh Phúc (Năm học 2022 - 2023)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_chuyên_năm_2022_–_2023_sở_GD&ĐT_Vĩnh_Phúc_trang1.png', 'Đề học sinh giỏi Toán 11 chuyên năm 2022 – 2023 sở GD&ĐT Vĩnh Phúc')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_học_sinh_giỏi_Toán_11_chuyên_năm_2022_–_2023_sở_GD&ĐT_Vĩnh_Phúc.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Bài 1 (4,0 điểm). Cho dãy ( )nx  xác định bởi 1 33x =  và 
+2
+1 2,   1.nnxx n+ = − ∀≥   
+Đặt 1
+12
+..nn nu xxx x += …  
+a. Chứng minh rằng: dãy ( )nx  là dãy tăng, dãy ( )nu  là dãy giảm. 
+b. Tìm lim .nu</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_chuyên_năm_2022_–_2023_sở_GD&ĐT_Vĩnh_Phúc_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 45</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 năm 2022 – 2023 trường THPT Phùng Khắc Khoan – Hà Nội (Năm học 2022 - 2023)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2022_–_2023_trường_THPT_Phùng_Khắc_Khoan_–_Hà_Nội_trang1.png', 'Đề học sinh giỏi Toán 11 năm 2022 – 2023 trường THPT Phùng Khắc Khoan – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_học_sinh_giỏi_Toán_11_năm_2022_–_2023_trường_THPT_Phùng_Khắc_Khoan_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4 (3,0 điểm):   
+          a. Tính giới hạn   
+2 3
+0
+( 2023) 1 5 2023lim
+x
+xxI x→ + − −=  
+          b. Cho dãy số 
+( )nu   xác định bởi: 
+( )
+12
+1
+1
+2022; 2023
+2,2
+3
+nn
+n
+uu
+nnuuu −+
+== + =
+        
+              Tính  giới hạn của dãy số 
+( )nu</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2022_–_2023_trường_THPT_Phùng_Khắc_Khoan_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 46</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi tỉnh Toán 11 chuyên đợt 2 năm 2022 – 2023 sở GD&ĐT Quảng Nam (Năm học 2022 - 2023)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_tỉnh_Toán_11_chuyên_đợt_2_năm_2022_–_2023_sở_GD&ĐT_Quảng_Nam_trang1.png', 'Đề học sinh giỏi tỉnh Toán 11 chuyên đợt 2 năm 2022 – 2023 sở GD&ĐT Quảng Nam')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_học_sinh_giỏi_tỉnh_Toán_11_chuyên_đợt_2_năm_2022_–_2023_sở_GD&ĐT_Quảng_Nam.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2. (3,0 điểm)  
+Cho dãy số ( )nu  thỏa mãn: 
+1
+*
+1
+13
+2( 1)4,
+2 n
+n
+n u
+u
+uun+
+≤≤ + = − ∀∈  .  
+Chứng minh *1 3, nun≤ ≤ ∀∈   và tìm giới hạn (nếu có) của dãy số ( )nu .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_tỉnh_Toán_11_chuyên_đợt_2_năm_2022_–_2023_sở_GD&ĐT_Quảng_Nam_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 47</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG Toán 11 năm 2022 – 2023 sở GD&ĐT Quảng Bình (Năm học 2022 - 2023)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2022_–_2023_sở_GD&ĐT_Quảng_Bình_trang1.png', 'Đề thi chọn HSG Toán 11 năm 2022 – 2023 sở GD&ĐT Quảng Bình')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_thi_chọn_HSG_Toán_11_năm_2022_–_2023_sở_GD&ĐT_Quảng_Bình.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2 (2,5 điểm): 
+a. Tính giới hạn: 
+3
+20
+4 4 8 12 1 coslim
+3 4 2x
+x x x
+x
+    
+ 
+. 
+b. Chứng minh rằng với mọi tham số thực m , phương trình  6 365 . 2 1 1x m x m x       
+luôn có nghiệm.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2022_–_2023_sở_GD&ĐT_Quảng_Bình_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 48</span>
+                <span class="q-source">🏷️ Đề thi HSG Toán 11 năm 2022 – 2023 trường THPT Thuận Thành 1 – Bắc Ninh (Năm học 2022 - 2023)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2022_–_2023_trường_THPT_Thuận_Thành_1_–_Bắc_Ninh_trang1.png', 'Đề thi HSG Toán 11 năm 2022 – 2023 trường THPT Thuận Thành 1 – Bắc Ninh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_thi_HSG_Toán_11_năm_2022_–_2023_trường_THPT_Thuận_Thành_1_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4. (2 điểm)  
+1)  Tìm a  để hàm số  
+3
+kh1 3 .  5 3 i1
+()
+(2 hi
+4
+)
+4
+1
+k1
+xx
+x x
+xf
+a
+x
+x
++ +− >= + ≤−  liên tục tại điểm 1x= .  
+2)  Cho dãy số ( )nu  xác định bởi 112 1 22019; 2020; , 2,3nnn uuu u u nn −+ += = = ≥∈  . Tính lim nu .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2022_–_2023_trường_THPT_Thuận_Thành_1_–_Bắc_Ninh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 49</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi tỉnh Toán 11 năm 2022 – 2023 sở GD&ĐT Hà Tĩnh (Năm học 2022 - 2023)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2022_–_2023_sở_GD&ĐT_Hà_Tĩnh_trang1.png', 'Đề thi học sinh giỏi tỉnh Toán 11 năm 2022 – 2023 sở GD&ĐT Hà Tĩnh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2022_–_2023_sở_GD&ĐT_Hà_Tĩnh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4. (2,0 điểm) Cho các số thực ,,abc  dương thỏa mãn ab bc ca abc++= . Tìm giá trị nhỏ nhất 
+của biểu thức P3 a bca bc b ca c ab= ++ + ++  . 
+  Câu 5. (2,0 điểm) Cho dãy số ( )na  xác định bởi ( )
+12
+2
+1 12 1 12 1
+1, 2
+1 ,2n nn
+aa
+a aa a aa a n+ −−
+= = =+ + ∀≥    
+  Tìm 
+12
+11 1lim
+naa a
+ +++
+
+ .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2022_–_2023_sở_GD&ĐT_Hà_Tĩnh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 50</span>
+                <span class="q-source">🏷️ Đề HSG Toán 11 năm 2023 – 2024 cụm trường THPT Gia Lâm & Long Biên – Hà Nội (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_HSG_Toán_11_năm_2023_–_2024_cụm_trường_THPT_Gia_Lâm_&_Long_Biên_–_Hà_Nội_trang1.png', 'Đề HSG Toán 11 năm 2023 – 2024 cụm trường THPT Gia Lâm & Long Biên – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_HSG_Toán_11_năm_2023_–_2024_cụm_trường_THPT_Gia_Lâm_&_Long_Biên_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Bài II (4,0 điểm) 
+1) Tính các giới hạn sau:  
+a) 2
+1 1 1lim 1 ... .3 3 3 nn        
+b) 
+3
+21
+7 3 1 .lim 1x x x x     
+2) Cho hàm số  
+2 2 khi 11
+4 khi 1
+ax bx xf x x
+x
+    
+ 
+.  
+ Tìm tất cả các cặp số  ,a b  để hàm số  f x  liên tục tại 1.x</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_HSG_Toán_11_năm_2023_–_2024_cụm_trường_THPT_Gia_Lâm_&_Long_Biên_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 51</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 cấp tỉnh năm 2023 – 2024 sở GD&ĐT Hà Nam (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2023_–_2024_sở_GD&ĐT_Hà_Nam_trang1.png', 'Đề học sinh giỏi Toán 11 cấp tỉnh năm 2023 – 2024 sở GD&ĐT Hà Nam')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2023_–_2024_sở_GD&ĐT_Hà_Nam.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu II. (4,0 điểm) 
+1. Cho hình vuông 1C  có cạnh bằng .a  Người ta chia mỗi cạnh của hình vuông thành sáu 
+phần bằng nhau và nối các điểm chia một cách thích hợp để có hình vuông 2.C  Từ hình 
+vuông 2C  lại làm như trên được hình vuông 3C ; cứ tiếp tục như vậy ta nhận được dãy các 
+hình vuông 1C , 2C , 3C ,..., nC ... (tham khảo hình vẽ). 
+ 
+Gọi iS  là diện tích của hình vuông { }( )1,2,3,.....iCi ∈ . Đặt 123 ... ... nTSS S S=+ +++ + . 
+Biết 2885T = , tính a ? 
+ 2. Cho dãy số ( )nu  xác định như sau: 
+1
+1
+1
+2
+9 24
+5 13
+n
+n
+n
+u
+uu u −−
+=
+ −− = +   ( , 2)nn∈≥ . 
+ Tìm công thức số hạng tổng quát của dãy số ( )nu  và tính lim nu .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2023_–_2024_sở_GD&ĐT_Hà_Nam_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 52</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 lần 1 năm 2023 – 2024 trường THPT Vĩnh Lộc – Thanh Hóa (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_lần_1_năm_2023_–_2024_trường_THPT_Vĩnh_Lộc_–_Thanh_Hóa_trang1.png', 'Đề học sinh giỏi Toán 11 lần 1 năm 2023 – 2024 trường THPT Vĩnh Lộc – Thanh Hóa')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_lần_1_năm_2023_–_2024_trường_THPT_Vĩnh_Lộc_–_Thanh_Hóa.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 6. Cho dãy số  vớ i . Công thức số hạng tổng quát của dãy số này là: 
+A. . B. . C. . D. .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_lần_1_năm_2023_–_2024_trường_THPT_Vĩnh_Lộc_–_Thanh_Hóa_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 53</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 lần 1 năm 2023 – 2024 trường THPT Vĩnh Lộc – Thanh Hóa (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_lần_1_năm_2023_–_2024_trường_THPT_Vĩnh_Lộc_–_Thanh_Hóa_trang1.png', 'Đề học sinh giỏi Toán 11 lần 1 năm 2023 – 2024 trường THPT Vĩnh Lộc – Thanh Hóa')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_lần_1_năm_2023_–_2024_trường_THPT_Vĩnh_Lộc_–_Thanh_Hóa.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 14. Nếu 
+2
+2
+.lim 32x x ax bx→ ++ =−  thì S ab= +  bằng 
+A. 4− . B.8 . C. 3− . D. 6− .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_lần_1_năm_2023_–_2024_trường_THPT_Vĩnh_Lộc_–_Thanh_Hóa_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 54</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Anh Sơn 3 – Nghệ An (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Anh_Sơn_3_–_Nghệ_An_trang1.png', 'Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Anh Sơn 3 – Nghệ An')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Anh_Sơn_3_–_Nghệ_An.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2. Cho cấp số nhân 
+nu  có 
+1 3u
+  và 
+2 .3q
+  Mệnh đề nào sau đây đúng? 
+A. 
+5
+27 .16u
+                        B. 
+5
+16 .27u
+                           C. 
+5
+16 .27u
+      D. 
+5
+27 .16u</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Anh_Sơn_3_–_Nghệ_An_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 55</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Anh Sơn 3 – Nghệ An (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Anh_Sơn_3_–_Nghệ_An_trang1.png', 'Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Anh Sơn 3 – Nghệ An')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Anh_Sơn_3_–_Nghệ_An.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 6. Giá trị của giới hạn 
+2
+2
+4lim 2x xx
+  là: 
+ A. 
+0.  B. 
+.
+  C. 
+4  D. 2</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Anh_Sơn_3_–_Nghệ_An_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 56</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Anh Sơn 3 – Nghệ An (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Anh_Sơn_3_–_Nghệ_An_trang1.png', 'Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Anh Sơn 3 – Nghệ An')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Anh_Sơn_3_–_Nghệ_An.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 7. Giá trị của giới hạn 
+3
+3lim 3x xx
+  là: 
+ A. 
+1  B. 
+  C. 
+  D. 
+0</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Anh_Sơn_3_–_Nghệ_An_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 57</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Anh Sơn 3 – Nghệ An (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Anh_Sơn_3_–_Nghệ_An_trang1.png', 'Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Anh Sơn 3 – Nghệ An')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Anh_Sơn_3_–_Nghệ_An.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 1. Các s ố 
+3 ,  3 2 ,  4 3x y x y x y
+  theo th ứ tự đó l ập thành m ột c ấp s ố cộng; đ ồng th ời các s ố 
+1, 2, 2  x y x y
+ theo thứ tự đó lập thành một cấp số nhân. Tính 
+22 .xy</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Anh_Sơn_3_–_Nghệ_An_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 58</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Bình Chiểu – TP HCM (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Bình_Chiểu_–_TP_HCM_trang1.png', 'Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Bình Chiểu – TP HCM')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Bình_Chiểu_–_TP_HCM.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4 (5 điểm) Có 1kg chất phóng xạ độc hại. Biết rằng, cứ sau một khoảng thời gian  
+T = 24000 năm thì một nửa số chất phóng xạ này sẽ bị phân rã thành chất khác không độc hại đối với 
+sức khỏe của con người (T được gọi là chu kì bán rã) 
+(Nguồn: Đại số và giải tích 11, NXB GD Việt Nam, 2021) 
+Gọi 
+nu  là khối lượng chất phóng xạ còn lại sau chu kì thứ n.  
+a. Tìm số hạng tổng quát 
+nu  của dãy số 
+( )nu  
+b. Chứng minh rằng 
+( )nu  có giới hạn bằng 0. 
+c. Từ kết quả câu b, chứng tỏ rằng sau một số năm nào đó khối lượng phóng xạ đã cho ban đầu 
+không còn độc hại đối với con người, biết rằng chất phóng xạ này sẽ không độc hại nữa nếu 
+khối lượng chất phóng xạ còn lại bé hơn 
+610− g .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Bình_Chiểu_–_TP_HCM_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 59</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Bình Chiểu – TP HCM (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Bình_Chiểu_–_TP_HCM_trang1.png', 'Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Bình Chiểu – TP HCM')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Bình_Chiểu_–_TP_HCM.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 5 (2 điểm) Cho hai số tự nhiên 
+;nk thỏa mãn: 
+3+kn  
+Chứng minh tồn tại không quá hai giá trị của k sao cho 
+12;; ++k k kn n nC C C  là ba số hạng liên tiếp của một 
+cấp số cộng.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Bình_Chiểu_–_TP_HCM_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 60</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Yên Phong 2 – Bắc Ninh (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Yên_Phong_2_–_Bắc_Ninh_trang1.png', 'Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Yên Phong 2 – Bắc Ninh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Yên_Phong_2_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 1 (4,0 điểm). Cho dãy số(un) có số hạng tổng quátun = −3n + 1, ∀n ∈ N∗.
+a) Chứng minh rằng(un) là một cấp số cộng.
+b) Với mỗi số nguyên dươngn ta đặt vn = 2024 un. Chứng minh rằng dãy số(vn) là
+một cấp số nhân lùi vô hạn và tính tổng của cấp số nhân lùi vô hạn đó.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Yên_Phong_2_–_Bắc_Ninh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 61</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Yên Phong 2 – Bắc Ninh (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Yên_Phong_2_–_Bắc_Ninh_trang1.png', 'Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Yên Phong 2 – Bắc Ninh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Yên_Phong_2_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3 (4,0 điểm).
+a) Tìm m để hàm số sau đây liên tục tại điểmx = 1
+f (x) =
+
+
+
+1
+x − 1 − 3x3 − 1 khi x >1,
+x2 + m khi x ≤ 1.
+b) Tính giới hạnlim
+x→0
+√1 + 16x. 3√1 − 27x − 1
+x .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Yên_Phong_2_–_Bắc_Ninh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 62</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi tỉnh Toán 11 chuyên đợt 2 năm 2023 – 2024 sở GD&ĐT Quảng Nam (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_tỉnh_Toán_11_chuyên_đợt_2_năm_2023_–_2024_sở_GD&ĐT_Quảng_Nam_trang1.png', 'Đề học sinh giỏi tỉnh Toán 11 chuyên đợt 2 năm 2023 – 2024 sở GD&ĐT Quảng Nam')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_tỉnh_Toán_11_chuyên_đợt_2_năm_2023_–_2024_sở_GD&ĐT_Quảng_Nam.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 1. (3,0 điểm) Cho dãy số thực ( )nu  xác định bởi 11 3
+31; 3 23 nn nuuu u+= = +  với mọi 
+*n∈  . Chứng minh dãy ( )nu  có giới hạn hữu hạn và tính giới hạn đó.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_tỉnh_Toán_11_chuyên_đợt_2_năm_2023_–_2024_sở_GD&ĐT_Quảng_Nam_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 63</span>
+                <span class="q-source">🏷️ Đề Olimpic Toán 11 năm 2023 – 2024 cụm Thạch Thất & Quốc Oai – Hà Nội (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_Olimpic_Toán_11_năm_2023_–_2024_cụm_Thạch_Thất_&_Quốc_Oai_–_Hà_Nội_trang1.png', 'Đề Olimpic Toán 11 năm 2023 – 2024 cụm Thạch Thất & Quốc Oai – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_Olimpic_Toán_11_năm_2023_–_2024_cụm_Thạch_Thất_&_Quốc_Oai_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3 (4 điểm) 
+a) Tìm tất c ả các giá tr ị của 
+m  để phương trình 
+2
+22log (2 ) log 1 0x x m    có đúng 
+2  
+nghiệm phân biệt thuộc khoảng 
+ 0;1 . 
+b) Cho dãy số 
+() nu được xác định bởi 
+1
+2
+1
+2
+2024 *,2025nnn
+u
+uuu n N
+    
+Đặt 
+12
+2 3 1
+*... ,1 1 1 nn nuuuS n Nu u u        . Chứng minh rằng 
+*2025,   nS n N   .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_Olimpic_Toán_11_năm_2023_–_2024_cụm_Thạch_Thất_&_Quốc_Oai_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 64</span>
+                <span class="q-source">🏷️ Đề thi chọn học sinh giỏi Toán 11 Trại hè Hùng Vương lần thứ 18 năm 2024 (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_học_sinh_giỏi_Toán_11_Trại_hè_Hùng_Vương_lần_thứ_18_năm_2024_trang1.png', 'Đề thi chọn học sinh giỏi Toán 11 Trại hè Hùng Vương lần thứ 18 năm 2024')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_thi_chọn_học_sinh_giỏi_Toán_11_Trại_hè_Hùng_Vương_lần_thứ_18_năm_2024.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Bài 1 (4,0 điểm). Cho a  là số thực, xét dãy số ()nu  xác định bởi: 201 , ,.n nnu au u u n      
+Đặt 
+12
+11 1 , 1.11 1n nSn uu u       Tìm tất cả các giá trị của a  để dãy ( )nS  có giới 
+hạn hữu hạn và tính giới hạn đó theo .a</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_học_sinh_giỏi_Toán_11_Trại_hè_Hùng_Vương_lần_thứ_18_năm_2024_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 65</span>
+                <span class="q-source">🏷️ Đề thi Olympic 3004 Toán 11 lần 28 năm 2024 trường chuyên Lê Quý Đôn – BR VT (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_3004_Toán_11_lần_28_năm_2024_trường_chuyên_Lê_Quý_Đôn_–_BR_VT_trang1.png', 'Đề thi Olympic 3004 Toán 11 lần 28 năm 2024 trường chuyên Lê Quý Đôn – BR VT')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_thi_Olympic_3004_Toán_11_lần_28_năm_2024_trường_chuyên_Lê_Quý_Đôn_–_BR_VT.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2 (3,0 điểm). Cho dãy số ( )nx  xác định bởi 
+2
+11 2
+111;
+11
+nn
+n
+nn
+xxxx
+xx
++
+++−= =
++++
+ với mọi n  nguyên dương. Chứng 
+minh dãy số ( )nx  có giới hạn hữu hạn và tính giới hạn đó.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_3004_Toán_11_lần_28_năm_2024_trường_chuyên_Lê_Quý_Đôn_–_BR_VT_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 66</span>
+                <span class="q-source">🏷️ Đề thi Olympic Toán 11 năm 2023 – 2024 cụm Hoàn Kiếm & Hai Bà Trưng – Hà Nội (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_cụm_Hoàn_Kiếm_&_Hai_Bà_Trưng_–_Hà_Nội_trang1.png', 'Đề thi Olympic Toán 11 năm 2023 – 2024 cụm Hoàn Kiếm & Hai Bà Trưng – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_cụm_Hoàn_Kiếm_&_Hai_Bà_Trưng_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Bài II (2,0 điểm) Tính các giới hạn sau: 
+1)  2 2lim 1 4 2 1 3 .n n n n n n        
+2) 
+3
+0
+1 1 2 1 .lim
+x
+x x
+x
+  </div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_cụm_Hoàn_Kiếm_&_Hai_Bà_Trưng_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 67</span>
+                <span class="q-source">🏷️ Đề thi Olympic Toán 11 năm 2023 – 2024 cụm Hoàn Kiếm & Hai Bà Trưng – Hà Nội (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_cụm_Hoàn_Kiếm_&_Hai_Bà_Trưng_–_Hà_Nội_trang1.png', 'Đề thi Olympic Toán 11 năm 2023 – 2024 cụm Hoàn Kiếm & Hai Bà Trưng – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_cụm_Hoàn_Kiếm_&_Hai_Bà_Trưng_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Bài VI (4,0 điểm)  
+1) Cho cấp số cộng  nu  thỏa mãn 1 1u   và công sai 0.d   Chứng minh  
+1 2 2 3 2023 2024
+1 1 1 1 ....u u u u u u d     
+2) Cho dãy số  nu  được xác định như sau 
+1
+1
+3
+2 1, 1, 2,3,...n n
+u
+u u n n
+
+       
+Tìm công thức số hạng tổng quát của dãy số  .nu  Tính .lim 3nnn u</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_cụm_Hoàn_Kiếm_&_Hai_Bà_Trưng_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 68</span>
+                <span class="q-source">🏷️ Đề thi Olympic Toán 11 năm 2023 – 2024 cụm Hà Đông & Hoài Đức – Hà Nội (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_cụm_Hà_Đông_&_Hoài_Đức_–_Hà_Nội_trang1.png', 'Đề thi Olympic Toán 11 năm 2023 – 2024 cụm Hà Đông & Hoài Đức – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_cụm_Hà_Đông_&_Hoài_Đức_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu III. (4 điểm) 
+1) Tìm các giới hạn sau  
+ a) 
+3
+21
+2 1 1 .lim
+1 2x
+xA
+x
+ 
+ 
+   b)      
+0
+1 1 2 1 3 ... 1 10 1 .lim
+x
+x xB x x x       
+2) Cho dãy số  nu  là một cấp số nhân có số hạng đầu 1 1u  , công bội 2.q  Chứng minh  
+3 1 4 2 5 3 2024 2022
+1 1 1 1 2 .... 3u u u u u u u u       </div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_cụm_Hà_Đông_&_Hoài_Đức_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 69</span>
+                <span class="q-source">🏷️ Đề thi Olympic Toán 11 năm 2023 – 2024 liên cụm trường THPT – Hà Nội (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_liên_cụm_trường_THPT_–_Hà_Nội_trang1.png', 'Đề thi Olympic Toán 11 năm 2023 – 2024 liên cụm trường THPT – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_liên_cụm_trường_THPT_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu II ( 4 điểm) Cho hàm số 
+ 
+2
+khi 144 .
+13 khi 11
+ax b xxfx
+xx xx
+          
+a) Tính 
+ 
+1
+lim .
+x
+fx
+  
+b) Biết 
+  31, 4f   tìm tất cả các cặp số thực 
+,ab  để hàm số 
+ fx  liên tục tại 
+1.x</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_liên_cụm_trường_THPT_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 70</span>
+                <span class="q-source">🏷️ Đề thi Olympic Toán 11 năm 2023 – 2024 liên cụm trường THPT – Hà Nội (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_liên_cụm_trường_THPT_–_Hà_Nội_trang1.png', 'Đề thi Olympic Toán 11 năm 2023 – 2024 liên cụm trường THPT – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_liên_cụm_trường_THPT_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu V ( 3 điểm) Cho dãy số 
+ nu  được xác định bởi 
+1
+2
+1
+3 .
+3 4, 1 ,2,3,...n n n
+u
+u u u n
+
+       
+a) Chứng minh 
+2, 1 ,2,3,...nun     
+b) Chứng minh 
+ nu  là dãy số tăng. 
+c) Chứng minh 
+1 2 2024
+1 1 1 ... 1.1 1 1u u u     </div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_liên_cụm_trường_THPT_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 71</span>
+                <span class="q-source">🏷️ Đề thi thử HSG tỉnh Toán 11 năm 2023 – 2024 trường THPT Trần Văn Lan – Nam Định (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_thử_HSG_tỉnh_Toán_11_năm_2023_–_2024_trường_THPT_Trần_Văn_Lan_–_Nam_Định_trang1.png', 'Đề thi thử HSG tỉnh Toán 11 năm 2023 – 2024 trường THPT Trần Văn Lan – Nam Định')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_thi_thử_HSG_tỉnh_Toán_11_năm_2023_–_2024_trường_THPT_Trần_Văn_Lan_–_Nam_Định.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4. (2,0 điểm) Cho dãy số ( )nu  xác định bởi 1 4u = ; 1 23nnuu+ = +  với *nN∈  
+a) Xác định số hạng tổng quát nu . 
+b) Tính giới hạn 
+1
+2
+21lim
+33 2
+n
+n
+n
+L
+u
++
++
+−=
++
+. 
+ 
+ 
+ĐỀ CHÍNH THỨC 
+ 
+2</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_thử_HSG_tỉnh_Toán_11_năm_2023_–_2024_trường_THPT_Trần_Văn_Lan_–_Nam_Định_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 72</span>
+                <span class="q-source">🏷️ Đề chọn HSG Toán 11 năm 2024 – 2025 trường THPT Phùng Khắc Khoan – Hà Nội (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Phùng_Khắc_Khoan_–_Hà_Nội_trang1.png', 'Đề chọn HSG Toán 11 năm 2024 – 2025 trường THPT Phùng Khắc Khoan – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_chọn_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Phùng_Khắc_Khoan_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3. (4,0 điểm). 
+a. Tìm số hạng thứ 10 và xét tính tăng, giảm của dãy số 2
+1
+nu n n  . 
+b. Một quả bóng cao su được thả từ độ cao 81 mét. Mỗi lần chạm đất quả bóng lại nảy lên hai 
+phần ba độ cao của lần rơi trước. Tính tổng các khoảng cách rơi và nảy của quả bóng từ lúc 
+thả bóng cho đến lúc bóng không nảy nữa.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Phùng_Khắc_Khoan_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 73</span>
+                <span class="q-source">🏷️ Đề chọn HSG Toán 11 năm 2024 – 2025 trường THPT Phùng Khắc Khoan – Hà Nội (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Phùng_Khắc_Khoan_–_Hà_Nội_trang1.png', 'Đề chọn HSG Toán 11 năm 2024 – 2025 trường THPT Phùng Khắc Khoan – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_chọn_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Phùng_Khắc_Khoan_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 5. (4,0 điểm). 
+a. Tính lim nu  với   1 1 1 11.3 3.5 5.7 2 1 2 1nu n n      . 
+b. Tìm m  đề hàm số  
+3
+3
+1 1 0 
+3 1 h
+k
+2
+h
+k i 
+i 
+0
+f
+x x xx
+x x
+x
+x
+m x
+           liên tục tại điểm 0 0x  .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Phùng_Khắc_Khoan_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 74</span>
+                <span class="q-source">🏷️ Đề chọn HSG Toán 11 năm 2024 – 2025 trường THPT Đức Hợp – Hưng Yên (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Đức_Hợp_–_Hưng_Yên_trang1.png', 'Đề chọn HSG Toán 11 năm 2024 – 2025 trường THPT Đức Hợp – Hưng Yên')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_chọn_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Đức_Hợp_–_Hưng_Yên.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 5 (1,0 điểm): 
+Cho các số thực x, y thỏa mãn các điều kiện 5𝑥𝑥 − 𝑦𝑦 , 2𝑥𝑥 − 3𝑦𝑦 , 𝑥𝑥 + 2𝑦𝑦 theo thứ tự lập thành cấp số 
+cộng, và các số (𝑦𝑦 + 1)2 , 𝑥𝑥𝑦𝑦 + 1 , (𝑥𝑥 − 1)2 theo thứ tự lập thành cấp số nhân. Tìm 𝑥𝑥, 𝑦𝑦 .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Đức_Hợp_–_Hưng_Yên_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 75</span>
+                <span class="q-source">🏷️ Đề chọn học sinh giỏi Toán 11 năm 2024 – 2025 sở GD&ĐT Quảng Bình (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Quảng_Bình_trang1.png', 'Đề chọn học sinh giỏi Toán 11 năm 2024 – 2025 sở GD&ĐT Quảng Bình')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Quảng_Bình.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2 (2,0 điểm): Cho dãy số 
+ nu  xác định bởi 
+1
+2025 2024 *
+1
+5
+.
+3,n n n n
+u
+u u u u n
+     
+  
+a) Chứng minh 
+lim . nn u   
+b) Với mỗi số nguyên dương 
+,n  đặt 
+    
+2024 2024 2024
+12
+1 .
+1 1 ... 1
+n
+n
+v
+u u u
+
+    Tính 
+lim . nn v</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Quảng_Bình_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 76</span>
+                <span class="q-source">🏷️ Đề chọn học sinh giỏi tỉnh Toán 11 năm 2024 – 2025 sở GD&ĐT Hà Nam (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_học_sinh_giỏi_tỉnh_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Hà_Nam_trang1.png', 'Đề chọn học sinh giỏi tỉnh Toán 11 năm 2024 – 2025 sở GD&ĐT Hà Nam')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_chọn_học_sinh_giỏi_tỉnh_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Hà_Nam.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu II. (4,0 điểm) 
+1. Một quả bóng cao su được thả từ độ cao22,5 mét. Giả sử sau mỗi lần chạm đất quả  
+bóng cao su lại nảy lên độ cao bằng 80%  độ cao của lần rơi trước. Tính chiều dài 
+quãng đường quả bóng cao su di chuyển từ khi được thả đến khi không nảy nữa.  
+2. Cho dãy số  nu  xác định bởi    
+1
+*
+1
+2025
+2 3,nn n
+u
+nu u u n
+      . 
+Tìm số hạng tổng quát của dãy số ( )nu  và tính 2lim nun  .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_học_sinh_giỏi_tỉnh_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Hà_Nam_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 77</span>
+                <span class="q-source">🏷️ Đề chọn học sinh giỏi tỉnh Toán 11 năm 2024 – 2025 sở GD&ĐT Hà Tĩnh (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_học_sinh_giỏi_tỉnh_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Hà_Tĩnh_trang1.png', 'Đề chọn học sinh giỏi tỉnh Toán 11 năm 2024 – 2025 sở GD&ĐT Hà Tĩnh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_chọn_học_sinh_giỏi_tỉnh_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Hà_Tĩnh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4. (4,0 điểm)  
+a) Tìm tất cả các số thực ,ab  để tồn tại giới hạn 
+2
+20
+61lim
+x
+x ax b x x
+x→
++ +− ++  và giới 
+hạn này là hữu hạn. 
+b) Xét một tam giác đ ều ABC  có cạnh bằng 1. Ta xây dựng quá trình t ạo hình có d ạng 
+bông tuyết như sau: 
+ Đầu tiên, chia mỗi cạnh của tam giác ABC  thành ba đoạn thẳng bằng nhau. Trên mỗi 
+đoạn thẳng ở giữa, dựng một tam giác đều nằm ngoài tam giác ABC  rồi xóa đáy của nó, 
+ta được hình ( )1H . 
+ Sau đó, chia mỗi cạnh của ( )1H  thành ba đoạn thẳng bằng nhau. Trên mỗi đoạn thẳng 
+ở giữa, dựng một tam giác đều nằm ngoài ( )1H  rồi xóa đáy của nó, ta được hình ( )2H .  
+ Cứ tiếp tục quá trình như trên  ta được dãy các hình ( ) ( ) ( ) ( )123, , , ..., ,... nHH H H . 
+(tham khảo hình vẽ dưới đây). 
+    
+Tính chu vi và diện tích của hình ( )4H .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_học_sinh_giỏi_tỉnh_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Hà_Tĩnh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 78</span>
+                <span class="q-source">🏷️ Đề chọn học sinh giỏi tỉnh Toán 11 năm 2024 – 2025 sở GD&ĐT Hà Tĩnh (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_học_sinh_giỏi_tỉnh_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Hà_Tĩnh_trang1.png', 'Đề chọn học sinh giỏi tỉnh Toán 11 năm 2024 – 2025 sở GD&ĐT Hà Tĩnh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_chọn_học_sinh_giỏi_tỉnh_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Hà_Tĩnh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 5. (2,0 điểm)   
+Cho dãy số ( )nu  xác định bởi 
+12
+2
+*1
+2
+1, 2
+3 ,.nn
+n
+uu
+uun u++
+= =
+ + = ∀∈    
+Tính 
+12 23 1
+11 1lim ...
+n nnuu uu uu→+∞ +
+ + ++
+
+.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_học_sinh_giỏi_tỉnh_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Hà_Tĩnh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 79</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG Toán 11 năm 2024 – 2025 cụm Lục Ngạn – Bắc Giang (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2024_–_2025_cụm_Lục_Ngạn_–_Bắc_Giang_trang1.png', 'Đề thi chọn HSG Toán 11 năm 2024 – 2025 cụm Lục Ngạn – Bắc Giang')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_thi_chọn_HSG_Toán_11_năm_2024_–_2025_cụm_Lục_Ngạn_–_Bắc_Giang.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 1. Trong các dãy số ( )nu  sau, dãy số nào bị chặn? 
+ A. 
+1 *
+1
+1 ,3nnu nuu+= ∈ = +  . B. 5 cos sin .u nnn = −  
+ C. 21nun= −+ . D. 2nnu = .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2024_–_2025_cụm_Lục_Ngạn_–_Bắc_Giang_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 80</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG Toán 11 năm 2024 – 2025 cụm Lục Ngạn – Bắc Giang (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2024_–_2025_cụm_Lục_Ngạn_–_Bắc_Giang_trang1.png', 'Đề thi chọn HSG Toán 11 năm 2024 – 2025 cụm Lục Ngạn – Bắc Giang')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_thi_chọn_HSG_Toán_11_năm_2024_–_2025_cụm_Lục_Ngạn_–_Bắc_Giang.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 8. Cho dãy số ( )nu xác định bởi 11 2; 3nnu uu −= −= + với mọi 2n≥ . Số hạng tổng quát của dãy số là 
+ A. 31nun= −+ . B. 31nun= − . C. 35nun= − . D. 35nun= −+ .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2024_–_2025_cụm_Lục_Ngạn_–_Bắc_Giang_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 81</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG Toán 11 năm 2024 – 2025 cụm Lục Ngạn – Bắc Giang (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2024_–_2025_cụm_Lục_Ngạn_–_Bắc_Giang_trang1.png', 'Đề thi chọn HSG Toán 11 năm 2024 – 2025 cụm Lục Ngạn – Bắc Giang')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_thi_chọn_HSG_Toán_11_năm_2024_–_2025_cụm_Lục_Ngạn_–_Bắc_Giang.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 12. Cấp số nhân ( )nu  có công bội âm, biết 3 12u = , 7 192u = . Tìm 12u . 
+ A. 12 1536u =− . B. 12 3072u = . C. 12 3072u =− . D. 12 6144u =− .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2024_–_2025_cụm_Lục_Ngạn_–_Bắc_Giang_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 82</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG Toán 11 năm 2024 – 2025 cụm Lục Ngạn – Bắc Giang (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2024_–_2025_cụm_Lục_Ngạn_–_Bắc_Giang_trang1.png', 'Đề thi chọn HSG Toán 11 năm 2024 – 2025 cụm Lục Ngạn – Bắc Giang')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_thi_chọn_HSG_Toán_11_năm_2024_–_2025_cụm_Lục_Ngạn_–_Bắc_Giang.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 13. Cho dãy số ( )nu  với 
+2 37
+1
+n
+nnu n++= + . Hỏi dãy số trên có bao nhiêu số hạng nhận giá trị nguyên? 
+ A. 2 . B. 3 . C. 1. D. 4 .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2024_–_2025_cụm_Lục_Ngạn_–_Bắc_Giang_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 83</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG Toán 11 năm 2024 – 2025 cụm Lục Ngạn – Bắc Giang (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2024_–_2025_cụm_Lục_Ngạn_–_Bắc_Giang_trang1.png', 'Đề thi chọn HSG Toán 11 năm 2024 – 2025 cụm Lục Ngạn – Bắc Giang')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_thi_chọn_HSG_Toán_11_năm_2024_–_2025_cụm_Lục_Ngạn_–_Bắc_Giang.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 14. Cho cấp số cộng ( )nu  có 1 1,u =  công sai 5.d =  Hỏi 10121 là số hạng thứ mấy của ( )nu ? 
+ A. Số hạng thứ 2025. B. Số hạng thứ 2022. C. Số hạng thứ 2024. D. Số hạng thứ 
+2023.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2024_–_2025_cụm_Lục_Ngạn_–_Bắc_Giang_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 84</span>
+                <span class="q-source">🏷️ Đề thi HSG Toán 11 năm 2024 – 2025 trường THPT Anh Sơn 3 – Nghệ An (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Anh_Sơn_3_–_Nghệ_An_trang1.png', 'Đề thi HSG Toán 11 năm 2024 – 2025 trường THPT Anh Sơn 3 – Nghệ An')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_thi_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Anh_Sơn_3_–_Nghệ_An.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2.  Cho cấp số nhân 
+() nu có  
+3 12u = ,
+5 48u = , có công bội âm .Tổng
+7  số hạng đầu của cấp số 
+nhân đã cho  là 
+A. 
+129.  B. 
+129.−  C. 
+128.−  D. 
+128.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Anh_Sơn_3_–_Nghệ_An_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 85</span>
+                <span class="q-source">🏷️ Đề thi HSG Toán 11 năm 2024 – 2025 trường THPT Anh Sơn 3 – Nghệ An (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Anh_Sơn_3_–_Nghệ_An_trang1.png', 'Đề thi HSG Toán 11 năm 2024 – 2025 trường THPT Anh Sơn 3 – Nghệ An')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_thi_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Anh_Sơn_3_–_Nghệ_An.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3. Cho cấp số nhân 
+( )nu  có 
+1 2u =  và 
+2.q=  Số hạng 
+5u  của cấp số nhân đã cho bằng 
+A. 
+32.  B. 
+64.  C. 
+16.  D. 
+20.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Anh_Sơn_3_–_Nghệ_An_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 86</span>
+                <span class="q-source">🏷️ Đề thi HSG Toán 11 năm 2024 – 2025 trường THPT Anh Sơn 3 – Nghệ An (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Anh_Sơn_3_–_Nghệ_An_trang1.png', 'Đề thi HSG Toán 11 năm 2024 – 2025 trường THPT Anh Sơn 3 – Nghệ An')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_thi_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Anh_Sơn_3_–_Nghệ_An.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4. Số hạng thứ 
+20  của cấp số cộng 
+( )nu  bằng 
+135  và số hạng thứ 
+35  bằng 
+240 . Tìm số hạng 
+thứ 
+90  của cấp số cộng đó. 
+A. 
+90 185u = . B. 
+90 632u = . C. 
+90 625u = . D. 
+90 652u = .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Anh_Sơn_3_–_Nghệ_An_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 87</span>
+                <span class="q-source">🏷️ Đề thi HSG Toán 11 năm 2024 – 2025 trường THPT Anh Sơn 3 – Nghệ An (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Anh_Sơn_3_–_Nghệ_An_trang1.png', 'Đề thi HSG Toán 11 năm 2024 – 2025 trường THPT Anh Sơn 3 – Nghệ An')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_thi_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Anh_Sơn_3_–_Nghệ_An.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2.   Cho các hàm số 
+( )
+2
+23f x x x= − −  và 
+( )
+2
+g x x m=− . 
+ a) Ta có 
+( ) ( )3 3 9fg += . 
+ b)  Cả hai hàm số 
+( )fx  và 
+( )gx  đã cho đều là các hàm số liên tục trên khoảng 
+( )0;+ . 
+ c)  Giới  hạn 
+( )lim 1
+x
+f x x
+→+
+− =− . 
+ d) Với 
+1m= , giới hạn 
+( )
+( )
+2
+1
+lim 2
+x
+fx
+gx→−
+= . 
+.S ABCD
+ABCD
+.O
+,SA SC
+.SB SD
+.AB SAC
+.CD AC
+.SO ABCD
+.CD SBD</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Anh_Sơn_3_–_Nghệ_An_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 88</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi Toán 11 năm 2024 – 2025 trường THPT Thị xã Quảng Trị (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2024_–_2025_trường_THPT_Thị_xã_Quảng_Trị_trang1.png', 'Đề thi học sinh giỏi Toán 11 năm 2024 – 2025 trường THPT Thị xã Quảng Trị')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_thi_học_sinh_giỏi_Toán_11_năm_2024_–_2025_trường_THPT_Thị_xã_Quảng_Trị.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 5. (3 điểm) Cho dãy số 
+ nu  là một cấp số nhân có số hạng đầu 
+1 1u  , công bội 
+3.q  
+Chứng minh rằng  
+3 1 4 2 5 3 2026 2024
+1 1 1 1 2 .... 3u u u u u u u u       </div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2024_–_2025_trường_THPT_Thị_xã_Quảng_Trị_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 89</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi Toán 11 năm 2024 – 2025 trường THPT Thị xã Quảng Trị (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2024_–_2025_trường_THPT_Thị_xã_Quảng_Trị_trang1.png', 'Đề thi học sinh giỏi Toán 11 năm 2024 – 2025 trường THPT Thị xã Quảng Trị')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_thi_học_sinh_giỏi_Toán_11_năm_2024_–_2025_trường_THPT_Thị_xã_Quảng_Trị.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 6. (2 điểm) Cho dãy số 
+ nu  thoả mãn 
+ 
+1
+2
+1 2
+2025
+3 ,  131nnn n
+u
+uuun u
+
+      . Chứng minh rằng dãy 
+số 
+ nu  có giới hạn hữu hạn và tìm giới hạn đó.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2024_–_2025_trường_THPT_Thị_xã_Quảng_Trị_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 90</span>
+                <span class="q-source">🏷️ Đề thi Olympic Toán 11 năm 2024 – 2025 liên cụm trường THPT – Hà Nội (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2024_–_2025_liên_cụm_trường_THPT_–_Hà_Nội_trang1.png', 'Đề thi Olympic Toán 11 năm 2024 – 2025 liên cụm trường THPT – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_thi_Olympic_Toán_11_năm_2024_–_2025_liên_cụm_trường_THPT_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4 (1,0 điểm) Một cấp số cộng có chẵn số hạng. Tổng các số hạng thứ lẻ là 
+24,  tổng các 
+số hạng thứ chẵn là 
+30.   Biết rằng số hạng cuối lớn hơn số hạng đầu là 
+21,2  cấp số cộng đó có 
+bao nhiêu số hạng?</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2024_–_2025_liên_cụm_trường_THPT_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 91</span>
+                <span class="q-source">🏷️ Đề thi Olympic Toán 11 năm 2024 – 2025 liên cụm trường THPT – Hà Nội (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2024_–_2025_liên_cụm_trường_THPT_–_Hà_Nội_trang1.png', 'Đề thi Olympic Toán 11 năm 2024 – 2025 liên cụm trường THPT – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_thi_Olympic_Toán_11_năm_2024_–_2025_liên_cụm_trường_THPT_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 7 (1,0 điểm) Cho cấp số nhân 
+ nu  có mọi số hạng đều dương và  công bội 
+1q . Biết 
+1 2 3 4
+45
+4u u u u   
+ và 
+1 2 3 4
+1 1 1 1 5 ,2u u u u     giá trị của 
+1 2 3 4. . .u u u u  bằng bao nhiêu?</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2024_–_2025_liên_cụm_trường_THPT_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 92</span>
+                <span class="q-source">🏷️ Đề chọn học sinh giỏi cấp tỉnh Toán 11 năm 2025 – 2026 sở GD&ĐT Thái Nguyên (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2025_–_2026_sở_GD&ĐT_Thái_Nguyên_trang1.png', 'Đề chọn học sinh giỏi cấp tỉnh Toán 11 năm 2025 – 2026 sở GD&ĐT Thái Nguyên')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_chọn_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2025_–_2026_sở_GD&ĐT_Thái_Nguyên.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Bài 6.(2,0 điểm)
+a) Cho dãy số(un)xác định bởiu 1 = 3vàu n+1 = 3un −2,∀n≥1. Tìm công thức tổng quát
+của dãy số đã cho.
+b) Cho dãy số nguyên dương(xn)là một dãy tăng thỏa mãn đồng thời hai điều kiện sau:
+i. Số hạng đầu tiênx1 không chia hết cho 5.
+ii. Hiệux 3n+1 −x 3n luôn chia hết cho5n với mọin≥1.
+Chứng minh rằngx3n+1 −x 3n >125 n,∀n≥1.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2025_–_2026_sở_GD&ĐT_Thái_Nguyên_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 93</span>
+                <span class="q-source">🏷️ Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Phú Xuyên B – Hà Nội (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Phú_Xuyên_B_–_Hà_Nội_trang1.png', 'Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Phú Xuyên B – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Phú_Xuyên_B_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu III: (5,0 điểm). 
+         1. Tính giới hạn. lim
+𝑥→+∞
+(𝑥 + 1 − √𝑥3 − 𝑥3 ) 
+         2. Tìm m để hàm số 
+
+
+
+
+
+−− = −
+−
+21 khi 12() 1
+25 khi 1
+xx xfx x
+x mx x   liên tục trên 
+  
+3. Cho tam giác đều A1B1C1 có cạnh a. Người ta dựng tam giác đều A2B2C2 có cạnh bằng 
+đường cao của tam giác A1B1C1, dựng tam giác đều A3B3C3 có cạnh bằng đường cao của tam 
+giác A2B2C2 và cứ tiếp tục như vậy sẽ nhận được một dãy các tam giác. Tính tổng diện tích 
+S  
+của tất cả các tam giác đều A1B1C1, A2B2C2, A3B3C3   …</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Phú_Xuyên_B_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 94</span>
+                <span class="q-source">🏷️ Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Đồng Quan – Hà Nội (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội_trang1.png', 'Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Đồng Quan – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4.Ba sốa, b, ctheo thứ tự lập thành một cấp số nhân với công bộiqkhác 1. Biết cũng
+theo thứ tự đó chúng lần lượt là số thứ nhất, thứ tư và thứ tám của một cấp số cộng có công
+said. Tìm giá trị của a+b+cd .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 95</span>
+                <span class="q-source">🏷️ Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Đồng Quan – Hà Nội (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội_trang1.png', 'Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Đồng Quan – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 5.Xét hàm sốy=
+√
+4x2 −x+ 1 +mx+ 3(mlà tham số). Biết hàm số này có giới hạn
+hữu hạn tại−∞(tức làx→ −∞). Giá trị của giới hạn này bằng?</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 96</span>
+                <span class="q-source">🏷️ Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Đồng Quan – Hà Nội (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội_trang1.png', 'Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Đồng Quan – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 7.Cho tam giácABCkhông vuông, thỏa mãn điều kiện:tanA,tanB,tanCtheo thứ tự
+đó lập thành một cấp số cộng. Hãy tìm giá trị nhỏ nhất của gócB.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 97</span>
+                <span class="q-source">🏷️ Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Đồng Quan – Hà Nội (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội_trang1.png', 'Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Đồng Quan – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 8.Cho dãy số(u n)xác định bởi
+(
+u1 = 1
+un+1 =
+p
+3u2n + 2 (∀n∈N ∗) . Tính tổngS=
+u21 +u 22 +u 23 +· · ·+u22025.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 98</span>
+                <span class="q-source">🏷️ Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Đồng Quan – Hà Nội (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội_trang1.png', 'Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Đồng Quan – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 12 (1,5 điểm).Cho dãy số(un)xác định bởi
+(
+u1 = 6
+un+1 =u n + 1 +√4un + 1,∀n∈N ∗ .
+Tìmu 2026.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 99</span>
+                <span class="q-source">🏷️ Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Đồng Quan – Hà Nội (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội_trang1.png', 'Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Đồng Quan – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 13 (2,5 điểm).Cho dãy số(un)xác định bởi
+
+
+
+u1 = 5
+un+1 = 5un + 4un + 2,∀n∈N ∗
+a) Chứng minh dãy số(un)là dãy giảm và bị chặn dưới.
+b) Với mỗin∈N ∗, ta kí hiệuvn = 1u1 −4 + 1u2 −4 +· · ·+ 1un −4 . Tìmlim vn + n5 .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 100</span>
+                <span class="q-source">🏷️ Đề chọn đội tuyển Olympic Toán 11 năm 2025 – 2026 trường THPT Yên Hòa – Hà Nội (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_đội_tuyển_Olympic_Toán_11_năm_2025_–_2026_trường_THPT_Yên_Hòa_–_Hà_Nội_trang1.png', 'Đề chọn đội tuyển Olympic Toán 11 năm 2025 – 2026 trường THPT Yên Hòa – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_chọn_đội_tuyển_Olympic_Toán_11_năm_2025_–_2026_trường_THPT_Yên_Hòa_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 1: Cho cấp số nhân  nu  có công bội âm, biết 3 12u  , 7 192u  . Giá trị 12u  bằng bao nhiêu?</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_đội_tuyển_Olympic_Toán_11_năm_2025_–_2026_trường_THPT_Yên_Hòa_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 101</span>
+                <span class="q-source">🏷️ Đề chọn đội tuyển Olympic Toán 11 năm 2025 – 2026 trường THPT Yên Hòa – Hà Nội (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_đội_tuyển_Olympic_Toán_11_năm_2025_–_2026_trường_THPT_Yên_Hòa_–_Hà_Nội_trang1.png', 'Đề chọn đội tuyển Olympic Toán 11 năm 2025 – 2026 trường THPT Yên Hòa – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_chọn_đội_tuyển_Olympic_Toán_11_năm_2025_–_2026_trường_THPT_Yên_Hòa_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2: Cho dãy số  nu  với 
+2 3 7
+1
+n
+n nu n   . Dãy số đó có tất cả bao nhiêu số hạng nhận giá trị nguyên?</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_đội_tuyển_Olympic_Toán_11_năm_2025_–_2026_trường_THPT_Yên_Hòa_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 102</span>
+                <span class="q-source">🏷️ Đề chọn đội tuyển Olympic Toán 11 năm 2025 – 2026 trường THPT Yên Hòa – Hà Nội (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_đội_tuyển_Olympic_Toán_11_năm_2025_–_2026_trường_THPT_Yên_Hòa_–_Hà_Nội_trang1.png', 'Đề chọn đội tuyển Olympic Toán 11 năm 2025 – 2026 trường THPT Yên Hòa – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_chọn_đội_tuyển_Olympic_Toán_11_năm_2025_–_2026_trường_THPT_Yên_Hòa_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 10: Cho dãy số  ( )nu  thỏa mãn: 
+1
+1
+1
+2
+1
+n
+n
+n
+u
+uu u
+ 
+  
+. Đặt 321 ... .2 3 nn u uuS u n      Giá trị nhỏ nhất của n  để 
+2022
+2023
+nS   là bao nhiêu? 
+PHẦN II: (15 điểm) Học sinh trình bày lời giải chi tiết</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_đội_tuyển_Olympic_Toán_11_năm_2025_–_2026_trường_THPT_Yên_Hòa_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 103</span>
+                <span class="q-source">🏷️ Đề chọn đội tuyển Olympic Toán 11 năm 2025 – 2026 trường THPT Yên Hòa – Hà Nội (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_đội_tuyển_Olympic_Toán_11_năm_2025_–_2026_trường_THPT_Yên_Hòa_–_Hà_Nội_trang1.png', 'Đề chọn đội tuyển Olympic Toán 11 năm 2025 – 2026 trường THPT Yên Hòa – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_chọn_đội_tuyển_Olympic_Toán_11_năm_2025_–_2026_trường_THPT_Yên_Hòa_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 19: (2.0 điểm) 
+1. Cho dãy số  nu  là một cấp số nhân có số hạng đầu 1 1u  , công bội 2.q   
+Chứng minh rằng: 
+3 1 4 2 5 3 2025 2023
+1 1 1 1 2 .... 3u u u u u u u u         
+2. Cho dãy số  nu xác định bởi: 
+1
+*
+1
+1 .
+4 3. 6 4 ,nn n
+u
+u u n N
+
+     Tìm số hạng tổng quát nu .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_đội_tuyển_Olympic_Toán_11_năm_2025_–_2026_trường_THPT_Yên_Hòa_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 104</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Quảng Trị – Quảng Trị (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Quảng_Trị_–_Quảng_Trị_trang1.png', 'Đề thi học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Quảng Trị – Quảng Trị')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Quảng_Trị_–_Quảng_Trị.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2 (4,0 điểm):  
+a)  Tìm tất cả các giá trị nguyên không vượt quá 10 của tham số 
+m để phương trình  
+ 
+2
+3 9 3log 27 6log log 3 23 081xx m x m
+
+   có hai nghiệm phân biệt 
+12,xx thỏa mãn  
+12. 81.xx
+ 
+ 
+b) Cho điểm 
+M  thay đổi trên parabol 
+2yx
+ , 
+H  là hình chiếu của 
+M  trên trục hoành. Gọi 
+x
+là hoành độ của 
+H . Tính 
+ lim .
+x
+OM MH
+
+</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Quảng_Trị_–_Quảng_Trị_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 105</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Quảng Trị – Quảng Trị (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Quảng_Trị_–_Quảng_Trị_trang1.png', 'Đề thi học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Quảng Trị – Quảng Trị')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Quảng_Trị_–_Quảng_Trị.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4 (4,0 điểm):  
+a) Nhân dịp tết Trung thu, xí nghiệp sản xuất bánh muốn sản xuất hai loại bánh: bánh nướng 
+và bánh dẻo. Để sản xuất hai loại bánh này, xí nghiệp cần: đường, bột mì, trứng, mứt bí, lạp 
+xưởng. Xí nghiệp đã nhập về 
+600 kg  bột mì và 
+240 kg  đường, các nguyên liệu khác luôn đáp 
+ứng được số lượng mà xí nghiệp cần. Mỗi chiếc bánh nướng cần 
+120 g  bột mì, 
+60 g  đường. 
+Mỗi chiếc bánh dẻo cần 
+160 g  bột mì và 
+40 g  đường. Theo khảo sát thị trường, lượng bánh 
+dẻo tiêu thụ không vượt quá ba lần lượng bánh nướng và sản phẩm của xí nghiệp sản xuất 
+luôn được tiêu thụ hết. Mỗi chiếc bánh nướng lãi 8000 đồng, mỗi chiếc bánh dẻo lãi 6000 
+đồng. Để đáp ứng nhu cầu thị trường; đảm bảo lượng bột mì, đường không vượt quá số lượng 
+mà xí nghiệp đã chuẩn bị và vẫn thu được lợi nhuận cao nhất thì xí nghiệp phải sản xuất bao 
+nhiêu chiếc bánh nướng và bao nhiêu chiếc bánh dẻo.  
+b) Cho dãy số 
+ nu  xác định bởi
+ 
+12 *
+1
+1; 2
+, 2,12n n n
+uu
+n n Nu u u
+
+
+ 
+
+
+ 
+
+
+ 
+
+ .  
+ Đặt 
+     
+2 2 2 2 *
+1 2 3 1 1 1 ... 1 1, .nnS u u u u n N
+   Chứng minh với mọi 
+* , nn N S
+  là số 
+chính phương.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Quảng_Trị_–_Quảng_Trị_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 106</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Quảng Trị – Quảng Trị (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Quảng_Trị_–_Quảng_Trị_trang1.png', 'Đề thi học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Quảng Trị – Quảng Trị')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Quảng_Trị_–_Quảng_Trị.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 5 (4,0 điểm):  
+a)  Tìm hai số thực 
+, ab  sao cho hàm số   
+ 
+2
+2
+1
+1x ax b
+x
+
+
+  có giới hạn hữu hạn khi 
+1.x
+   
+2 
+ 
+b)  Cho hình chóp 
+.S ABCD  có đáy là hình bình hành, điểm 
+’C  di động trên cạnh 
+SC . Mặt phẳng 
+ P
+chứa 
+’AC  và song song với đường thẳng 
+ , BD P cắt các cạnh 
+SB  và 
+SD  lần lượt tạ 
+’, ’BD . 
+Xác định vị trí của điểm 
+’C  trên cạnh SC sao cho 
+2 3 10 ' 8.'' '' SBB SD CSB DD CC
+  
+............................HẾT........................... 
+ 
+  - Học sinh không được sử dụng tài liệu; 
+  - Cán bộ coi thi không giải thích gì thêm</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Quảng_Trị_–_Quảng_Trị_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 107</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Thạch Thất – Hà Nội (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Thạch_Thất_–_Hà_Nội_trang1.png', 'Đề thi học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Thạch Thất – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Thạch_Thất_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2: (6 điểm) 
+a) Cho cấp số cộng  nu  với 1 1u  , công sai 1 .2025d   Tính giá trị của biểu thức
+1 2 2 1 2 3 3 2 2025 2026 2026 2025
+11 1 ...S
+uu uu uu uu u u u u
+  
+ 
+ 
+ 
+b)  Tính giới hạn sau: 22
+6 3 20 15lim 44x x xxxx   </div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Thạch_Thất_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 108</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Thạch Thất – Hà Nội (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Thạch_Thất_–_Hà_Nội_trang1.png', 'Đề thi học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Thạch Thất – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Thạch_Thất_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3: (4 điểm) 
+Cho dãy số ( )nu  xác định bởi  ( )
+1
+1
+2025
+. 1, 1,nnn
+u
+nu u u n n N+
+= −=+≥∈  
+a) Tìm số hạng tổng quát nu  của dãy số ( )nu  . 
+b) Tính lim 2025nu n .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Thạch_Thất_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 109</span>
+                <span class="q-source">🏷️ Đề thi Olympic 30 tháng 04 năm 2026 Toán 11 trường chuyên Lê Hồng Phong – TP HCM (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_30_tháng_04_năm_2026_Toán_11_trường_chuyên_Lê_Hồng_Phong_–_TP_HCM_trang1.png', 'Đề thi Olympic 30 tháng 04 năm 2026 Toán 11 trường chuyên Lê Hồng Phong – TP HCM')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_Olympic_30_tháng_04_năm_2026_Toán_11_trường_chuyên_Lê_Hồng_Phong_–_TP_HCM.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 1. (4 điểm)  
+Cho dãy số 
+() nx  xác định như sau: 
+0 34x =  và 
+3
+11
+2
+11
+26 16
+34
+nn
+n
+nn
+xxx xx−−−−++= −+  với mọi 
+1n .  
+Với mỗi 
+0n , đặt 
+2 2 2
+01
+1 1 1
+30 30 30
+n
+n
+y x x x= + + ++ + +
+ . Chứng minh rằng dãy số 
+() ny  có giới 
+hạn hữu hạn và tìm giới hạn đó.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_30_tháng_04_năm_2026_Toán_11_trường_chuyên_Lê_Hồng_Phong_–_TP_HCM_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 110</span>
+                <span class="q-source">🏷️ Đề thi Olympic Toán 11 năm 2025 – 2026 cụm trường THPT số 14 – Hà Nội (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2025_–_2026_cụm_trường_THPT_số_14_–_Hà_Nội_trang1.png', 'Đề thi Olympic Toán 11 năm 2025 – 2026 cụm trường THPT số 14 – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_Olympic_Toán_11_năm_2025_–_2026_cụm_trường_THPT_số_14_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 11. ( 2 điểm) Cho dãy số 
+ nu  xác định bởi: 
+1
+2
+*
+1
+1
+.
+,    2026nnn
+u
+uu u n+
+= = + 
+   
+Tính: 
+12
+2 3 1
+lim  n
+n n
+uuu
+u u u→+ +
+ + ++
+ .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2025_–_2026_cụm_trường_THPT_số_14_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 111</span>
+                <span class="q-source">🏷️ Đề thi Olympic Toán 11 năm 2025 – 2026 cụm trường THPT số 14 – Hà Nội (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2025_–_2026_cụm_trường_THPT_số_14_–_Hà_Nội_trang1.png', 'Đề thi Olympic Toán 11 năm 2025 – 2026 cụm trường THPT số 14 – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_Olympic_Toán_11_năm_2025_–_2026_cụm_trường_THPT_số_14_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 12. (2điểm). Cho 3 số dương có tổng là 65 l ập thành một cấp số nhân tăng, nếu bớt một đơn vị ở số 
+hạng thứ nhất và 19 đơn vị ở số hạng thứ ba ta được một cấp số cộng. Tìm 3 số đó.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2025_–_2026_cụm_trường_THPT_số_14_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 112</span>
+                <span class="q-source">🏷️ Đề thi Olympic Toán THPT năm 2025 – 2026 trường THCS&THPT Bình Chánh – An Giang (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_Toán_THPT_năm_2025_–_2026_trường_THCS&THPT_Bình_Chánh_–_An_Giang_trang1.png', 'Đề thi Olympic Toán THPT năm 2025 – 2026 trường THCS&THPT Bình Chánh – An Giang')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_Olympic_Toán_THPT_năm_2025_–_2026_trường_THCS&THPT_Bình_Chánh_–_An_Giang.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2. (1,0 điểm) Cho công thức truy hồi của dãy số cấp số cộng (un): {u11 + u12 = 23u27 − u23 = 4   
+ 
+Tìm số hạng đầu tiên và số hạng tổng quát của dãy số.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_Toán_THPT_năm_2025_–_2026_trường_THCS&THPT_Bình_Chánh_–_An_Giang_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 113</span>
+                <span class="q-source">🏷️ Đề thi Olympic Toán THPT năm 2025 – 2026 trường THCS&THPT Bình Chánh – An Giang (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_Toán_THPT_năm_2025_–_2026_trường_THCS&THPT_Bình_Chánh_–_An_Giang_trang1.png', 'Đề thi Olympic Toán THPT năm 2025 – 2026 trường THCS&THPT Bình Chánh – An Giang')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_Olympic_Toán_THPT_năm_2025_–_2026_trường_THCS&THPT_Bình_Chánh_–_An_Giang.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3. (2,0 điểm) Cho dãy số (un) thoả mãn u1 = 
+1
+2 và un+1 = un2 + un    ,      ∀n ∈ ℕ* 
+ 
+Đặt Sn = 
+1
+u1 + 1 +   
+1
+u2 + 1 + 
+1
+u3 + 1 + … + 
+1
+un + 1  . Tính giới hạn limn→+∞ Sn</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_Toán_THPT_năm_2025_–_2026_trường_THCS&THPT_Bình_Chánh_–_An_Giang_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 114</span>
+                <span class="q-source">🏷️ Đề thi Olympic Toán THPT năm 2025 – 2026 trường THCS&THPT Bình Chánh – An Giang (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_Toán_THPT_năm_2025_–_2026_trường_THCS&THPT_Bình_Chánh_–_An_Giang_trang1.png', 'Đề thi Olympic Toán THPT năm 2025 – 2026 trường THCS&THPT Bình Chánh – An Giang')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_Olympic_Toán_THPT_năm_2025_–_2026_trường_THCS&THPT_Bình_Chánh_–_An_Giang.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 5. (1,0 điểm) Ta có ba số a, b, c lần lượt lập thành một cấp số cộng lần lượt là số hạng thứ 
+nhất, thứ ba và thứ năm. Mặt khác, ba số đó cũng lập thành một cấp số nhân với a là số hạng thứ 
+nhất, b là số hạng thứ năm và c là số hạng thứ bảy. Tính giá trị của biểu thức T = 2a + b + c</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_Toán_THPT_năm_2025_–_2026_trường_THCS&THPT_Bình_Chánh_–_An_Giang_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 115</span>
+                <span class="q-source">🏷️ Đề thi Olympic Toán THPT năm 2025 – 2026 trường THCS&THPT Bình Chánh – An Giang (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_Toán_THPT_năm_2025_–_2026_trường_THCS&THPT_Bình_Chánh_–_An_Giang_trang1.png', 'Đề thi Olympic Toán THPT năm 2025 – 2026 trường THCS&THPT Bình Chánh – An Giang')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_Olympic_Toán_THPT_năm_2025_–_2026_trường_THCS&THPT_Bình_Chánh_–_An_Giang.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4. (1,0 điểm) Ta có dãy số (xn) thoả mãn  xn+1 = 
+xn2 + 4
+5  . Chứng minh rằng dãy số có giới 
+hạn và tìm giới hạn đó.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_Toán_THPT_năm_2025_–_2026_trường_THCS&THPT_Bình_Chánh_–_An_Giang_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            </div>
+            
+
+
+<div id="examModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <h3 id="modalTitle" style="margin-top:0; color:#1a365d;">Trang Đề Thi Gốc</h3>
+    <img id="modalImg" src="" alt="Đề thi gốc sắc nét">
+  </div>
+</div>
+
+
+<script>
+function openModal(imgSrc, title) {
+  document.getElementById('modalImg').src = imgSrc;
+  document.getElementById('modalTitle').innerText = title;
+  document.getElementById('examModal').style.display = 'block';
+}
+function closeModal() {
+  document.getElementById('examModal').style.display = 'none';
+}
+window.onclick = function(event) {
+  var modal = document.getElementById('examModal');
+  if (event.target == modal) { modal.style.display = 'none'; }
+}
+function copyText(elemId, btn) {
+  var text = document.getElementById(elemId).innerText;
+  navigator.clipboard.writeText(text).then(function() {
+    var oldText = btn.innerHTML;
+    btn.innerHTML = '✅ Đã chép!';
+    setTimeout(function() { btn.innerHTML = oldText; }, 2000);
+  });
+}
+function switchTab(tabId) {
+  document.getElementById('tab-curated').style.display = tabId === 'curated' ? 'block' : 'none';
+  document.getElementById('tab-all').style.display = tabId === 'all' ? 'block' : 'none';
+  document.getElementById('btn-curated').classList.toggle('active', tabId === 'curated');
+  document.getElementById('btn-all').classList.toggle('active', tabId === 'all');
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Temporary scratch & preview folders
+Cong_Cu_Va_Scripts/scratch/
+Cong_Cu_Va_Scripts/de_thi_previews/
+Cong_Cu_Va_Scripts/trash_archive/
+
+# OS generated files
+.DS_Store
+Thumbs.db

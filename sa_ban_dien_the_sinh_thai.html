@@ -1,0 +1,2368 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sa Bàn Ảo Diễn Thế Sinh Thái - EcoLab 3D/2D</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Three.js CDN, OrbitControls & TWEEN for 3D Ecosystem Simulation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
+  <!-- Phosphor Icons CDN for clean lab icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+    
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    /* Custom slider styling */
+    input[type=range] {
+      accent-color: #0d9488;
+    }
+    
+    /* Tide water wave animation */
+    @keyframes waveFlow {
+      0% { transform: translateX(0) translateY(0); }
+      50% { transform: translateX(-15px) translateY(3px); }
+      100% { transform: translateX(0) translateY(0); }
+    }
+    .wave-anim {
+      animation: waveFlow 4s ease-in-out infinite;
+    }
+
+    /* Print styles for A4 Report */
+    @media print {
+      body {
+        background: white !important;
+        color: black !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-only {
+        display: block !important;
+      }
+      .report-card {
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+      }
+    }
+    .print-only {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
+
+  <!-- TOP NAVIGATION / HEADER -->
+  <header class="no-print bg-slate-900/90 border-b border-slate-800 px-6 py-3 flex items-center justify-between sticky top-0 z-50 backdrop-blur">
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white shadow-lg shadow-teal-500/20">
+        <i class="ph-bold ph-plant text-2xl"></i>
+      </div>
+      <div>
+        <div class="flex items-center space-x-2">
+          <h1 class="font-bold text-lg text-white tracking-tight">EcoLab: Sa Bàn Diễn Thế Sinh Thái</h1>
+          <span class="px-2 py-0.5 text-xs font-semibold rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/30">Sinh Học 12 - GDPT 2018</span>
+        </div>
+        <p class="text-xs text-slate-400">Mô phỏng diễn thế nguyên sinh tại bãi bồi ngập mặn ven biển</p>
+      </div>
+    </div>
+
+    <!-- Mode & Export Actions -->
+    <div class="flex items-center space-x-3">
+      <div class="hidden md:flex items-center bg-slate-800 rounded-lg p-1 border border-slate-700 text-xs">
+        <button id="btnRoleStudent" onclick="switchRole('student')" class="px-3 py-1.5 rounded-md font-medium transition bg-teal-600 text-white shadow">
+          <i class="ph ph-student mr-1"></i> Học sinh
+        </button>
+        <button id="btnRoleTeacher" onclick="switchRole('teacher')" class="px-3 py-1.5 rounded-md font-medium text-slate-400 hover:text-white transition">
+          <i class="ph ph-chalkboard-teacher mr-1"></i> Giáo viên (Kịch bản)
+        </button>
+      </div>
+
+      <button onclick="takeSnapshotAndAddToCER()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold rounded-lg flex items-center space-x-1.5 transition">
+        <i class="ph-bold ph-camera text-teal-400 text-sm"></i>
+        <span>Chụp Bằng Chứng</span>
+      </button>
+
+      <button onclick="window.print()" class="px-3.5 py-2 bg-teal-600 hover:bg-teal-500 text-white text-xs font-semibold rounded-lg shadow-lg shadow-teal-600/25 flex items-center space-x-1.5 transition">
+        <i class="ph-bold ph-file-pdf text-sm"></i>
+        <span>In Báo Cáo CER (A4)</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- TEACHER BANNER (CONDITIONAL) -->
+  <div id="teacherBanner" class="no-print hidden bg-amber-500/10 border-b border-amber-500/30 px-6 py-2 text-xs text-amber-300 flex items-center justify-between">
+    <div class="flex items-center space-x-2">
+      <i class="ph-fill ph-gear text-amber-400 text-base"></i>
+      <span><strong>Chế độ Giáo Viên (Teacher Cockpit):</strong> Bạn có thể kích hoạt các sự cố môi trường bất ngờ (Bão biển, Xâm nhập mặn, Đắp đê nhân tạo) để kiểm tra phản ứng của học sinh.</span>
+    </div>
+    <div class="flex space-x-2">
+      <button onclick="triggerEvent('typhoon')" class="px-2.5 py-1 bg-amber-600/30 hover:bg-amber-600/50 border border-amber-500/40 rounded text-amber-200 text-xs transition">
+        ⚡ Kích hoạt: Bão biển cấp 10
+      </button>
+      <button onclick="triggerEvent('mangrove_cutting')" class="px-2.5 py-1 bg-red-600/30 hover:bg-red-600/50 border border-red-500/40 rounded text-red-200 text-xs transition">
+        🪓 Kích hoạt: Phá rừng nuôi tôm
+      </button>
+    </div>
+  </div>
+
+  <!-- MAIN INTERFACE BODY -->
+  <div class="flex-1 max-w-[1680px] w-full mx-auto p-4 lg:p-6 grid grid-cols-1 xl:grid-cols-12 gap-5">
+
+    <!-- LEFT COLUMN: MULTI-LAYER CANVAS & TIMELINE (COL-SPAN 8) -->
+    <div class="xl:col-span-8 flex flex-col space-y-4">
+
+      <!-- MULTI-LAYER INTERACTIVE CANVAS -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl flex flex-col">
+        <!-- Canvas Top Bar with Layer Controls -->
+        <div class="px-5 py-3 border-b border-slate-800 bg-slate-900/80 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="font-bold text-sm text-slate-200">Không Gian Sinh Thái Bãi Bồi & Rừng Ngập Mặn</span>
+            <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400 mono" id="badgeSuccessionStage">Giai đoạn: Bãi bồi bùn lỏng (Năm 0)</span>
+          </div>
+
+          <!-- View Mode Toggle: 3D vs 2D -->
+          <div class="flex items-center space-x-3">
+            <div class="flex items-center bg-slate-950 p-1 rounded-xl border border-slate-700/80 text-xs shadow-inner">
+              <button id="btnView3D" onclick="setViewMode('3d')" class="px-3 py-1 rounded-lg font-bold bg-teal-600 text-white shadow flex items-center space-x-1.5 transition">
+                <i class="ph-bold ph-cube text-sm"></i>
+                <span>Sa Bàn 3D</span>
+              </button>
+              <button id="btnView2D" onclick="setViewMode('2d')" class="px-3 py-1 rounded-lg font-medium text-slate-400 hover:text-white flex items-center space-x-1.5 transition">
+                <i class="ph-bold ph-layout text-sm"></i>
+                <span>Lát Cắt 2D</span>
+              </button>
+            </div>
+
+            <!-- Layer Toggles -->
+            <div class="hidden sm:flex items-center space-x-1.5 text-xs">
+              <button onclick="toggleLayer('plants')" id="btnLayerPlants" class="px-2 py-1 rounded bg-teal-500/20 text-teal-300 border border-teal-500/40 transition">
+                🌱 Cây
+              </button>
+              <button onclick="toggleLayer('animals')" id="btnLayerAnimals" class="px-2 py-1 rounded bg-teal-500/20 text-teal-300 border border-teal-500/40 transition">
+                🦀 Đáy
+              </button>
+              <button onclick="toggleLayer('soil')" id="btnLayerSoil" class="px-2 py-1 rounded bg-teal-500/20 text-teal-300 border border-teal-500/40 transition">
+                🟤 Bùn
+              </button>
+              <button onclick="toggleLayer('tide')" id="btnLayerTide" class="px-2 py-1 rounded bg-teal-500/20 text-teal-300 border border-teal-500/40 transition">
+                🌊 Triều
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3D INTERACTIVE VIEWPORT (THREE.JS 360° ORBIT & INSPECTION) -->
+        <div id="viewport3D" class="relative w-full h-[420px] bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 overflow-hidden select-none">
+          <!-- WebGL Canvas Mount Container -->
+          <div id="threeContainer" class="w-full h-full cursor-grab active:cursor-grabbing"></div>
+
+          <!-- Floating 3D Camera Focus Controls ("Xem từng cái một") -->
+          <div class="absolute top-3 left-3 z-30 flex flex-wrap items-center gap-1.5 bg-slate-900/90 border border-slate-700/80 rounded-xl p-1.5 shadow-2xl backdrop-blur text-xs">
+            <span class="text-slate-400 font-semibold px-1.5 text-[11px] hidden sm:inline"><i class="ph ph-video-camera"></i> Góc soi:</span>
+            <button onclick="fly3DCameraTo('overview')" id="btnCam_overview" class="px-2.5 py-1 rounded-lg bg-teal-600 text-white font-medium transition shadow">
+              🌐 Toàn cảnh 3D
+            </button>
+            <button onclick="fly3DCameraTo('mam')" id="btnCam_mam" class="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition">
+              🌿 Cây Mắm & Rễ thở
+            </button>
+            <button onclick="fly3DCameraTo('duoc')" id="btnCam_duoc" class="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition">
+              🌳 Cây Đước & Chân nơm
+            </button>
+            <button onclick="fly3DCameraTo('animals')" id="btnCam_animals" class="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition">
+              🦀 Cua bùn & Đáy
+            </button>
+            <button onclick="fly3DCameraTo('crossSection')" id="btnCam_crossSection" class="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition">
+              🟤 Lát cắt trầm tích
+            </button>
+          </div>
+
+          <!-- Top-right 3D Actions & Fullscreen -->
+          <div class="absolute top-3 right-3 z-30 flex items-center space-x-1.5 bg-slate-900/90 border border-slate-700/80 rounded-xl p-1 shadow-2xl backdrop-blur text-xs">
+            <button onclick="reset3DCamera()" class="px-2.5 h-8 rounded-lg hover:bg-slate-800 text-slate-300 flex items-center space-x-1 transition" title="Đặt lại góc quay mặc định">
+              <i class="ph-bold ph-arrows-counter-clockwise"></i>
+              <span class="hidden sm:inline">Góc chuẩn</span>
+            </button>
+            <button onclick="openDeepZoomModal('mam_root')" class="px-2.5 h-8 rounded-lg bg-teal-500/20 hover:bg-teal-500/30 text-teal-300 font-medium flex items-center space-x-1.5 transition" title="Kính lúp thích nghi">
+              <i class="ph-bold ph-magnifying-glass-plus text-sm"></i>
+              <span class="hidden sm:inline">Kính lúp</span>
+            </button>
+            <button onclick="toggle3DFullscreen()" class="w-8 h-8 rounded-lg hover:bg-slate-800 text-slate-200 flex items-center justify-center transition" title="Toàn màn hình">
+              <i id="btn3DFullscreenIcon" class="ph-bold ph-corners-out text-sm"></i>
+            </button>
+          </div>
+
+          <!-- Bottom-left 3D Interaction Guide -->
+          <div class="absolute bottom-3 left-3 z-20 hidden md:flex items-center space-x-2 bg-slate-950/85 border border-slate-800/90 px-3 py-1.5 rounded-xl text-[11px] text-slate-400 pointer-events-none backdrop-blur">
+            <i class="ph-bold ph-arrows-clockwise text-teal-400 text-sm"></i>
+            <span><strong>Chuột trái:</strong> Xoay 360° • <strong>Chuột phải:</strong> Lia khung hình • <strong>Cuộn chuột:</strong> Zoom • <strong>Nhấp vật thể:</strong> Soi cận cảnh</span>
+          </div>
+
+          <!-- 3D Click Inspection Tooltip / Card -->
+          <div id="card3DInspect" class="absolute bottom-3 right-3 z-20 hidden max-w-xs bg-slate-900/95 border border-teal-500/50 rounded-xl p-3 shadow-2xl backdrop-blur text-xs space-y-1.5 transition-all">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-1.5">
+                <span id="card3DIcon" class="text-base">🌿</span>
+                <strong id="card3DTitle" class="text-teal-300 font-bold">Cây Mắm Trắng</strong>
+              </div>
+              <button onclick="close3DInspectCard()" class="text-slate-400 hover:text-white"><i class="ph ph-x"></i></button>
+            </div>
+            <p id="card3DDesc" class="text-slate-300 text-[11px] leading-relaxed">
+              Loài tiên phong với hàng chục rễ thở nhô lên từ bùn lỏng.
+            </p>
+            <button onclick="openDeepZoomFrom3D()" class="w-full mt-1 py-1 rounded bg-teal-600/30 hover:bg-teal-600/50 text-teal-300 border border-teal-500/40 text-[10px] font-semibold flex items-center justify-center space-x-1 transition">
+              <i class="ph-bold ph-magnifying-glass-plus"></i>
+              <span>Soi Kính Lúp Thích Nghi</span>
+            </button>
+          </div>
+
+          <!-- Notification Toast on 3D Screen -->
+          <div id="canvasToast3D" class="absolute bottom-3 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-4 md:bottom-12 md:max-w-md bg-slate-900/90 border border-teal-500/40 text-xs px-4 py-2.5 rounded-xl shadow-2xl backdrop-blur flex items-center space-x-3 transition-opacity duration-300 opacity-100 z-20">
+            <span class="text-xl">💡</span>
+            <div id="toastMessage3D" class="text-slate-300">
+              <strong class="text-teal-400">Năm 0 (Khởi đầu):</strong> Bãi bồi bùn lỏng ngập mặn thường xuyên. Nồng độ muối cao, chưa có thực vật bậc cao sinh sống.
+            </div>
+          </div>
+        </div>
+
+        <!-- The Visual Scene (SVG Cross-Section 2D - Alternate Mode) -->
+        <div class="relative w-full h-[380px] bg-gradient-to-b from-sky-900/40 via-cyan-950/30 to-slate-900 overflow-hidden select-none cursor-grab active:cursor-grabbing hidden" id="viewportLandscape">
+          
+          <!-- Floating Interactive Zoom & Pan Controls -->
+          <div class="absolute top-3 right-3 z-30 flex items-center bg-slate-900/90 border border-slate-700/80 rounded-xl p-1 shadow-2xl backdrop-blur text-xs">
+            <button onclick="zoomCanvas(1.25)" class="w-8 h-8 rounded-lg hover:bg-slate-800 text-slate-200 flex items-center justify-center transition" title="Phóng to (+)">
+              <i class="ph-bold ph-plus text-sm"></i>
+            </button>
+            <button onclick="zoomCanvas(0.8)" class="w-8 h-8 rounded-lg hover:bg-slate-800 text-slate-200 flex items-center justify-center transition" title="Thu nhỏ (-)">
+              <i class="ph-bold ph-minus text-sm"></i>
+            </button>
+            <button onclick="resetZoom()" class="px-2.5 h-8 rounded-lg hover:bg-slate-800 text-teal-400 mono font-bold flex items-center justify-center transition" title="Khôi phục 100%">
+              <span id="lblZoomLevel">100%</span>
+            </button>
+            <div class="h-4 w-px bg-slate-700 mx-1"></div>
+            <button onclick="openDeepZoomModal('mam_root')" class="px-2.5 h-8 rounded-lg bg-teal-500/20 hover:bg-teal-500/30 text-teal-300 font-medium flex items-center space-x-1.5 transition" title="Soi kính lúp cấu trúc thích nghi">
+              <i class="ph-bold ph-magnifying-glass-plus text-sm"></i>
+              <span class="hidden sm:inline">Kính lúp thích nghi</span>
+            </button>
+            <button onclick="toggleFullscreen()" class="w-8 h-8 rounded-lg hover:bg-slate-800 text-slate-200 flex items-center justify-center transition ml-1" title="Toàn màn hình">
+              <i id="btnFullscreenIcon" class="ph-bold ph-corners-out text-sm"></i>
+            </button>
+          </div>
+
+          <!-- Pan & Zoom Navigation Hint -->
+          <div class="absolute top-3 left-3 z-20 hidden md:flex items-center space-x-2 bg-slate-950/80 border border-slate-800/90 px-3 py-1.5 rounded-xl text-[11px] text-slate-400 pointer-events-none backdrop-blur">
+            <i class="ph-bold ph-hand-grabbing text-teal-400 text-sm"></i>
+            <span><strong>Cuộn chuột</strong> để zoom • <strong>Kéo giữ chuột</strong> để lia toàn cảnh</span>
+          </div>
+
+          <!-- Sky & Atmosphere Elements -->
+          <div class="absolute inset-0 pointer-events-none">
+            <div id="sunMoon" class="absolute top-4 right-10 w-12 h-12 rounded-full bg-amber-300 shadow-[0_0_40px_rgba(251,191,36,0.6)] transition-all duration-700"></div>
+            <!-- Birds flying in late stages -->
+            <div id="birdsContainer" class="absolute top-10 left-1/4 transition-opacity duration-700 opacity-0 flex space-x-6 text-slate-300 text-lg">
+              <span class="animate-bounce" style="animation-duration: 2.5s;">🕊️</span>
+              <span class="animate-bounce" style="animation-duration: 3.2s;">🕊️</span>
+              <span class="animate-bounce" style="animation-duration: 2.8s;">🦅</span>
+            </div>
+          </div>
+
+          <!-- Dynamic SVG Cross-Section View -->
+          <svg id="svgEcosystem" viewBox="0 0 1000 360" class="w-full h-full preserve-3d" preserveAspectRatio="none">
+            <defs>
+              <!-- Soil Gradients -->
+              <linearGradient id="mudGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#4a3728" />
+                <stop offset="50%" stop-color="#2d1f15" />
+                <stop offset="100%" stop-color="#19110b" />
+              </linearGradient>
+              <linearGradient id="waterGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="rgba(14, 165, 233, 0.55)" />
+                <stop offset="100%" stop-color="rgba(3, 105, 161, 0.85)" />
+              </linearGradient>
+              <linearGradient id="deepSediment" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#1a120b" />
+                <stop offset="100%" stop-color="#3b2b1d" />
+              </linearGradient>
+            </defs>
+
+            <!-- TRANSFORMABLE SCENE ROOT GROUP (FOR PAN & ZOOM) -->
+            <g id="sceneRoot" transform="translate(0, 0) scale(1)">
+              <!-- 1. Deep Substrate Base (Bedrock/cát ngầm) -->
+              <path d="M 0 360 L 0 300 Q 300 290 600 270 T 1000 240 L 1000 360 Z" fill="#140d07" />
+
+              <!-- 2. Dynamic Sediment Mud Layer (Dâng cao dần theo năm và lượng phù sa bồi lắng) -->
+              <g id="layerSoil">
+                <path id="pathMudSediment" d="M 0 360 L 0 290 Q 300 280 650 250 T 1000 220 L 1000 360 Z" fill="url(#mudGradient)" opacity="0.95" class="transition-all duration-500" />
+                <!-- Soil depth tick marks / measurements -->
+                <text x="30" y="340" fill="#a8a29e" font-size="11" class="mono">Độ dày tầng phù sa: <tspan id="lblSedimentDepth">0.3 m</tspan></text>
+                <text x="30" y="320" fill="#a8a29e" font-size="11" class="mono">Độ mặn đất bùn: <tspan id="lblSoilSalinity">32 ‰</tspan></text>
+              </g>
+
+              <!-- 3. Tidal Water Layer (Thủy triều & Sóng biển) -->
+              <g id="layerTide">
+                <path id="pathWater" d="M 0 360 L 0 230 Q 250 225 500 235 T 1000 230 L 1000 360 Z" fill="url(#waterGradient)" class="wave-anim transition-all duration-700" opacity="0.8" />
+                <line x1="0" y1="230" x2="1000" y2="230" stroke="#38bdf8" stroke-width="2" stroke-dasharray="6,4" opacity="0.7" />
+                <text x="820" y="222" fill="#7dd3fc" font-size="11" font-weight="bold">Mực nước triều cao</text>
+              </g>
+
+              <!-- 4. Plant Organisms Layer (Thảm thực vật biến đổi theo diễn thế) -->
+              <g id="layerPlants">
+                <!-- Dynamically populated in JavaScript: Cỏ biển -> Cây Mắm -> Cây Đước -->
+                <g id="plantsPioneer"></g> <!-- Mắm trắng -->
+                <g id="plantsClimax"></g>  <!-- Đước đôi -->
+                <g id="plantsAlgae"></g>   <!-- Tảo & Cỏ xoan -->
+              </g>
+
+              <!-- 5. Benthic & Marine Animals Layer (Động vật đáy) -->
+              <g id="layerAnimals">
+                <g id="animalsMud"></g> <!-- Cua bùn, cá thòi lòi, ốc len -->
+              </g>
+
+              <!-- Grid scale reference lines -->
+              <line x1="150" y1="180" x2="150" y2="350" stroke="#475569" stroke-width="1" stroke-dasharray="3,3" opacity="0.4" />
+              <text x="120" y="170" fill="#94a3b8" font-size="10">Vùng Triều Thấp (Biển)</text>
+
+              <line x1="500" y1="150" x2="500" y2="350" stroke="#475569" stroke-width="1" stroke-dasharray="3,3" opacity="0.4" />
+              <text x="450" y="140" fill="#94a3b8" font-size="10">Bãi Bồi Giữa Triều (Tiên Phong)</text>
+
+              <line x1="820" y1="120" x2="820" y2="350" stroke="#475569" stroke-width="1" stroke-dasharray="3,3" opacity="0.4" />
+              <text x="800" y="110" fill="#94a3b8" font-size="10">Vùng Triều Cao (Đất Cứng)</text>
+            </g>
+          </svg>
+
+          <!-- Notification Toast on Screen (e.g., event triggered) -->
+          <div id="canvasToast" class="absolute bottom-4 left-4 right-4 md:right-auto md:max-w-md bg-slate-900/90 border border-teal-500/40 text-xs px-4 py-2.5 rounded-xl shadow-2xl backdrop-blur flex items-center space-x-3 transition-opacity duration-300 opacity-100 z-20">
+            <span class="text-xl">💡</span>
+            <div id="toastMessage" class="text-slate-300">
+              <strong class="text-teal-400">Năm 0 (Khởi đầu):</strong> Bãi bồi bùn lỏng ngập mặn thường xuyên. Nồng độ muối cao, chưa có thực vật bậc cao sinh sống.
+            </div>
+          </div>
+        </div>
+
+        <!-- TIMELINE SCRUBBER & PLAYBACK CONTROLS -->
+        <div class="p-5 bg-slate-900 border-t border-slate-800 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <button id="btnPlayPause" onclick="togglePlay()" class="w-10 h-10 rounded-xl bg-teal-600 hover:bg-teal-500 text-white flex items-center justify-center shadow-lg shadow-teal-600/30 transition">
+                <i id="playIcon" class="ph-fill ph-play text-lg"></i>
+              </button>
+              <button onclick="resetTimeline()" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 flex items-center justify-center transition" title="Đặt lại về Năm 0">
+                <i class="ph-bold ph-arrow-counter-clockwise text-base"></i>
+              </button>
+              <div>
+                <div class="flex items-center space-x-2">
+                  <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Trục thời gian diễn thế:</span>
+                  <span class="text-lg font-extrabold text-teal-400 mono" id="displayYear">Năm 0</span>
+                </div>
+                <div class="text-xs text-slate-500" id="displayStageShort">Khởi đầu: Bãi bồi trần, ngập triều</div>
+              </div>
+            </div>
+
+            <!-- Milestone Shortcuts -->
+            <div class="hidden sm:flex items-center space-x-1.5 text-xs">
+              <button onclick="setYear(0)" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 transition">0 năm</button>
+              <button onclick="setYear(5)" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 transition">5 năm</button>
+              <button onclick="setYear(20)" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 transition">20 năm</button>
+              <button onclick="setYear(50)" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 transition">50 năm</button>
+              <button onclick="setYear(100)" class="px-2.5 py-1 rounded bg-teal-600/30 text-teal-300 border border-teal-500/40 hover:bg-teal-600/50 transition">100 năm (Đỉnh cực)</button>
+            </div>
+          </div>
+
+          <!-- Slider Bar -->
+          <div class="relative pt-1">
+            <input type="range" id="timelineSlider" min="0" max="100" value="0" step="1" oninput="onTimelineChange(this.value)" class="w-full h-2.5 bg-slate-800 rounded-lg appearance-none cursor-pointer">
+            <div class="flex justify-between text-[11px] text-slate-500 mt-2 px-1 mono">
+              <span>0 (Khởi nguyên)</span>
+              <span>15 (Tiên phong)</span>
+              <span>40 (Chuyển tiếp)</span>
+              <span>70 (Rừng Đước)</span>
+              <span>100 (Quần xã ổn định)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ENVIRONMENTAL SLIDERS CONTROLS (BỘ BIẾN SỐ MÔI TRƯỜNG) -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div class="flex items-center space-x-2">
+            <i class="ph-bold ph-sliders-horizontal text-teal-400 text-lg"></i>
+            <h3 class="font-bold text-sm text-slate-200">Bộ Biến Số Môi Trường Tác Động (Environmental Controls)</h3>
+          </div>
+          <span class="text-xs text-slate-400">Kéo thanh trượt để thử thách tính thích nghi của loài</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- Slider 1: Độ mặn -->
+          <div class="bg-slate-950/60 p-3.5 rounded-xl border border-slate-800/80 space-y-2">
+            <div class="flex justify-between items-center text-xs">
+              <span class="text-slate-300 font-medium flex items-center gap-1.5">
+                <i class="ph-fill ph-drop text-cyan-400"></i> Độ mặn nước biển:
+              </span>
+              <span class="font-bold text-cyan-400 mono" id="valSalinity">28 ‰</span>
+            </div>
+            <input type="range" id="sliderSalinity" min="5" max="35" value="28" oninput="updateEnvSliders()" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer">
+            <div class="flex justify-between text-[10px] text-slate-500">
+              <span>5‰ (Lợ nhạt)</span>
+              <span>28‰ (Bình thường)</span>
+              <span>35‰ (Mặn chát)</span>
+            </div>
+          </div>
+
+          <!-- Slider 2: Mức độ bồi tụ phù sa -->
+          <div class="bg-slate-950/60 p-3.5 rounded-xl border border-slate-800/80 space-y-2">
+            <div class="flex justify-between items-center text-xs">
+              <span class="text-slate-300 font-medium flex items-center gap-1.5">
+                <i class="ph-fill ph-mountains text-amber-500"></i> Tốc độ bồi tụ phù sa:
+              </span>
+              <span class="font-bold text-amber-400 mono" id="valSedimentation">Trung bình</span>
+            </div>
+            <input type="range" id="sliderSedimentation" min="1" max="3" value="2" oninput="updateEnvSliders()" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer">
+            <div class="flex justify-between text-[10px] text-slate-500">
+              <span>Chậm (0.5cm/năm)</span>
+              <span>TB (2cm/năm)</span>
+              <span>Nhanh (5cm/năm)</span>
+            </div>
+          </div>
+
+          <!-- Slider 3: Mức độ can thiệp của con người -->
+          <div class="bg-slate-950/60 p-3.5 rounded-xl border border-slate-800/80 space-y-2">
+            <div class="flex justify-between items-center text-xs">
+              <span class="text-slate-300 font-medium flex items-center gap-1.5">
+                <i class="ph-fill ph-shield-check text-emerald-400"></i> Tác động con người:
+              </span>
+              <span class="font-bold text-emerald-400 mono" id="valHumanImpact">Bảo tồn tự nhiên</span>
+            </div>
+            <input type="range" id="sliderHumanImpact" min="0" max="2" value="0" oninput="updateEnvSliders()" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer">
+            <div class="flex justify-between text-[10px] text-slate-500">
+              <span>Bảo tồn</span>
+              <span>Khai thác vừa</span>
+              <span>Xâm lấn nặng</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KHO ĐỐI TƯỢNG SINH HỌC (DRAG-AND-DROP / CLICK BIO-ASSETS) -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div class="flex items-center space-x-2">
+            <i class="ph-bold ph-dna text-teal-400 text-lg"></i>
+            <h3 class="font-bold text-sm text-slate-200">Kho Đối Tượng Sinh Học (Nhấp vào loài để khảo sát ổ sinh thái)</h3>
+          </div>
+          <span class="text-xs text-slate-400">Chọn loài để kiểm tra khả năng định cư tại mốc năm hiện tại</span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+          <!-- Bio Card 1: Mắm trắng -->
+          <button onclick="inspectSpecies('mam')" class="group p-3 rounded-xl bg-slate-950 hover:bg-slate-800 border border-slate-800 hover:border-teal-500/50 text-left transition relative">
+            <div class="text-2xl mb-1">🌿</div>
+            <div class="font-bold text-xs text-slate-200 group-hover:text-teal-400 transition">Cây Mắm Trắng</div>
+            <div class="text-[10px] text-slate-400">Loài tiên phong</div>
+            <span class="inline-block mt-2 px-1.5 py-0.5 rounded bg-teal-500/10 text-teal-400 text-[9px] border border-teal-500/20">Rễ thở chịu mặn</span>
+          </button>
+
+          <!-- Bio Card 2: Đước đôi -->
+          <button onclick="inspectSpecies('duoc')" class="group p-3 rounded-xl bg-slate-950 hover:bg-slate-800 border border-slate-800 hover:border-teal-500/50 text-left transition relative">
+            <div class="text-2xl mb-1">🌳</div>
+            <div class="font-bold text-xs text-slate-200 group-hover:text-teal-400 transition">Cây Đước Đôi</div>
+            <div class="text-[10px] text-slate-400">Loài ưu thế đỉnh cực</div>
+            <span class="inline-block mt-2 px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-[9px] border border-emerald-500/20">Rễ cọc chống sóng</span>
+          </button>
+
+          <!-- Bio Card 3: Cua bùn / Cáy -->
+          <button onclick="inspectSpecies('cua')" class="group p-3 rounded-xl bg-slate-950 hover:bg-slate-800 border border-slate-800 hover:border-teal-500/50 text-left transition relative">
+            <div class="text-2xl mb-1">🦀</div>
+            <div class="font-bold text-xs text-slate-200 group-hover:text-teal-400 transition">Cua Bùn / Cáy</div>
+            <div class="text-[10px] text-slate-400">Động vật ăn mùn</div>
+            <span class="inline-block mt-2 px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-400 text-[9px] border border-amber-500/20">Đào hang thông khí</span>
+          </button>
+
+          <!-- Bio Card 4: Cá thòi lòi -->
+          <button onclick="inspectSpecies('ca')" class="group p-3 rounded-xl bg-slate-950 hover:bg-slate-800 border border-slate-800 hover:border-teal-500/50 text-left transition relative">
+            <div class="text-2xl mb-1">🐟</div>
+            <div class="font-bold text-xs text-slate-200 group-hover:text-teal-400 transition">Cá Thòi Lòi</div>
+            <div class="text-[10px] text-slate-400">Cá lưỡng cư bãi bùn</div>
+            <span class="inline-block mt-2 px-1.5 py-0.5 rounded bg-sky-500/10 text-sky-400 text-[9px] border border-sky-500/20">Hô hấp qua da & mang</span>
+          </button>
+
+          <!-- Bio Card 5: Cò chim biển -->
+          <button onclick="inspectSpecies('chim')" class="group p-3 rounded-xl bg-slate-950 hover:bg-slate-800 border border-slate-800 hover:border-teal-500/50 text-left transition relative">
+            <div class="text-2xl mb-1">🦅</div>
+            <div class="font-bold text-xs text-slate-200 group-hover:text-teal-400 transition">Chim & Cò Nước</div>
+            <div class="text-[10px] text-slate-400">Sinh vật tiêu thụ đỉnh</div>
+            <span class="inline-block mt-2 px-1.5 py-0.5 rounded bg-purple-500/10 text-purple-400 text-[9px] border border-purple-500/20">Làm tổ tán rừng rậm</span>
+          </button>
+        </div>
+
+        <!-- Species Modal Info Box -->
+        <div id="boxSpeciesInfo" class="hidden bg-slate-950 border border-teal-500/30 rounded-xl p-4 text-xs space-y-2">
+          <div class="flex justify-between items-start">
+            <div class="flex items-center space-x-2">
+              <span id="specIcon" class="text-2xl">🌿</span>
+              <div>
+                <h4 id="specName" class="font-bold text-slate-200 text-sm">Cây Mắm Trắng (Avicennia alba)</h4>
+                <p id="specRole" class="text-teal-400">Loài tiên phong mở cõi tại vùng bãi bồi ven biển</p>
+              </div>
+            </div>
+            <button onclick="closeSpeciesInfo()" class="text-slate-400 hover:text-white"><i class="ph ph-x text-base"></i></button>
+          </div>
+          <p id="specDesc" class="text-slate-300 leading-relaxed">
+            Hệ rễ thở mọc ngược lên khỏi mặt bùn lỏng giúp hấp thu oxy trong môi trường bùn yếm khí. Tiết muối thừa qua các tuyến trên lá. Khả năng chịu ngập mặn cực tốt, là mắt xích đầu tiên giữ bùn phù sa.
+          </p>
+          <div class="pt-2 flex flex-wrap items-center justify-between gap-2 border-t border-slate-800/80 text-[11px]">
+            <div>
+              <span class="text-slate-400">Đánh giá sinh tồn tại <strong id="specCurrentYear" class="text-teal-400">Năm 0</strong>:</span>
+              <span id="specViability" class="ml-1.5 px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-semibold">Thích nghi tốt (100%)</span>
+            </div>
+            <button id="btnSpecDeepZoom" onclick="openDeepZoomFromCurrentSpec()" class="px-2.5 py-1 rounded-lg bg-teal-600/30 hover:bg-teal-600/50 text-teal-300 border border-teal-500/40 flex items-center space-x-1.5 transition">
+              <i class="ph-bold ph-magnifying-glass-plus text-xs"></i>
+              <span>Soi Kính Lúp Thích Nghi (Zoom)</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: SCIENTIFIC WORKFLOW, CER NOTEBOOK & CHARTS (COL-SPAN 4) -->
+    <div class="xl:col-span-4 flex flex-col space-y-4">
+
+      <!-- DYNAMIC BIODIVERSITY CHART -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl space-y-3">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+          <div class="flex items-center space-x-2">
+            <i class="ph-bold ph-chart-line-up text-teal-400 text-lg"></i>
+            <h3 class="font-bold text-sm text-slate-200">Biến Động Quần Thể Theo Diễn Thế</h3>
+          </div>
+          <span class="text-[11px] text-teal-400 mono" id="chartYearIndicator">Năm 0</span>
+        </div>
+        <div class="h-44 w-full">
+          <canvas id="chartSuccession"></canvas>
+        </div>
+        <!-- Realtime Biodiversity Matrix -->
+        <div class="grid grid-cols-3 gap-2 pt-2 border-t border-slate-800/80 text-center">
+          <div class="bg-slate-950 p-2 rounded-lg">
+            <div class="text-[10px] text-slate-400">Chỉ số Đa dạng (H')</div>
+            <div class="text-sm font-bold text-teal-400 mono mt-0.5" id="metricShannon">0.12</div>
+          </div>
+          <div class="bg-slate-950 p-2 rounded-lg">
+            <div class="text-[10px] text-slate-400">Độ che phủ (%)</div>
+            <div class="text-sm font-bold text-emerald-400 mono mt-0.5" id="metricCoverage">5%</div>
+          </div>
+          <div class="bg-slate-950 p-2 rounded-lg">
+            <div class="text-[10px] text-slate-400">Sinh khối (Tấn/ha)</div>
+            <div class="text-sm font-bold text-amber-400 mono mt-0.5" id="metricBiomass">1.2</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HYPOTHESIS BUILDER (KHUNG XÂY DỰNG GIẢ THUYẾT DẠNG KHỐI) -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl space-y-3">
+        <div class="flex items-center space-x-2 border-b border-slate-800 pb-2">
+          <i class="ph-bold ph-lightbulb-filament text-amber-400 text-lg"></i>
+          <h3 class="font-bold text-sm text-slate-200">1. Khung Xây Dựng Giả Thuyết</h3>
+        </div>
+        <p class="text-xs text-slate-400">Học sinh hoàn thiện câu logic trước khi phân tích chuyên sâu:</p>
+
+        <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-2.5 text-xs">
+          <div class="flex flex-wrap items-center gap-1.5 leading-loose">
+            <span class="font-semibold text-slate-300">Nếu</span>
+            <select id="hypoIf" class="bg-slate-800 border border-slate-700 text-teal-300 rounded px-2 py-1 text-xs focus:ring-1 focus:ring-teal-500">
+              <option value="sediment">lượng phù sa bồi lắng liên tục qua thời gian</option>
+              <option value="salinity">độ mặn nước biển tăng quá 35‰</option>
+              <option value="human">con người chặt phá rừng để làm đầm tôm</option>
+            </select>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-1.5 leading-loose">
+            <span class="font-semibold text-slate-300">Thì</span>
+            <select id="hypoThen" class="bg-slate-800 border border-slate-700 text-emerald-300 rounded px-2 py-1 text-xs focus:ring-1 focus:ring-teal-500">
+              <option value="duoc_replace">Cây Đước sẽ dần thay thế Cây Mắm làm loài ưu thế</option>
+              <option value="biodiversity_drop">Đa dạng sinh học và thảm thực vật sẽ suy thoái nhanh</option>
+              <option value="mud_erosion">Bãi bồi sẽ bị sạt lở mạnh do mất lớp rễ giữ đất</option>
+            </select>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-1.5 leading-loose">
+            <span class="font-semibold text-slate-300">Vì</span>
+            <select id="hypoBecause" class="bg-slate-800 border border-slate-700 text-amber-300 rounded px-2 py-1 text-xs focus:ring-1 focus:ring-teal-500">
+              <option value="soil_harder">Rễ mắm giữ đất làm nền bùn cao và chắc hơn, tạo ổ sinh thái mới cho Đước</option>
+              <option value="salt_stress">Nồng độ muối vượt ngưỡng chịu đựng sinh thái của các loài thực vật ngập mặn</option>
+              <option value="chain_broken">Mắt xích giữ nền đất và chuỗi thức ăn đáy bị phá hủy hoàn toàn</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- CER NOTEBOOK (SỔ TAY KHOA HỌC: CLAIM - EVIDENCE - REASONING) -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl space-y-4 flex-1 flex flex-col">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+          <div class="flex items-center space-x-2">
+            <i class="ph-bold ph-notebook text-teal-400 text-lg"></i>
+            <h3 class="font-bold text-sm text-slate-200">2. Sổ Tay Khoa Học (Mô hình CER)</h3>
+          </div>
+          <span class="text-[10px] px-2 py-0.5 rounded bg-teal-500/10 text-teal-400 border border-teal-500/20">Chuẩn sư phạm STEM</span>
+        </div>
+
+        <!-- C: Claim -->
+        <div class="space-y-1">
+          <label class="text-xs font-bold text-teal-300 flex items-center justify-between">
+            <span>[C] Claim - Luận điểm kết luận:</span>
+            <span class="text-[10px] text-slate-500 font-normal">Trả lời câu hỏi nghiên cứu</span>
+          </label>
+          <textarea id="cerClaim" rows="2" class="w-full bg-slate-950 border border-slate-800 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 rounded-xl p-2.5 text-xs text-slate-200 placeholder-slate-600 outline-none" placeholder="Ví dụ: Diễn thế sinh thái bãi bồi là diễn thế nguyên sinh, cây mắm đóng vai trò mở đường biến đổi môi trường..."></textarea>
+        </div>
+
+        <!-- E: Evidence -->
+        <div class="space-y-1">
+          <div class="flex justify-between items-center">
+            <label class="text-xs font-bold text-amber-300 flex items-center space-x-1">
+              <span>[E] Evidence - Bằng chứng số liệu:</span>
+            </label>
+            <button onclick="takeSnapshotAndAddToCER()" class="text-[10px] text-teal-400 hover:underline flex items-center space-x-1">
+              <i class="ph-bold ph-plus-circle"></i>
+              <span>Gắn dữ liệu hiện tại</span>
+            </button>
+          </div>
+          <div id="evidenceList" class="bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-[11px] text-slate-400 min-h-[50px] space-y-1">
+            <div class="italic text-slate-600">Bấm "Chụp Bằng Chứng" ở góc trên hoặc nút bên phải để gắn số liệu mốc năm vào đây...</div>
+          </div>
+        </div>
+
+        <!-- R: Reasoning -->
+        <div class="space-y-1 flex-1 flex flex-col">
+          <label class="text-xs font-bold text-emerald-300 flex items-center justify-between">
+            <span>[R] Reasoning - Lập luận sinh học:</span>
+            <span class="text-[10px] text-slate-500 font-normal">Dùng quy luật sinh thái để giải thích</span>
+          </label>
+          <textarea id="cerReasoning" rows="3" class="w-full flex-1 bg-slate-950 border border-slate-800 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 rounded-xl p-2.5 text-xs text-slate-200 placeholder-slate-600 outline-none" placeholder="Giải thích vì sao quần xã lại thay đổi: cơ chế cạnh tranh ánh sáng, sự thích nghi của rễ cọc so với rễ thở, biến đổi độ cao đất bùn..."></textarea>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PRINT-ONLY REPORT TEMPLATE (HIỆN RA KHI BẤM IN HOẶC XUẤT PDF) -->
+  <div class="print-only p-8 text-black bg-white max-w-4xl mx-auto">
+    <div class="border-b-2 border-teal-700 pb-4 mb-6 flex justify-between items-start">
+      <div>
+        <h1 class="text-2xl font-black text-teal-800 uppercase tracking-tight">Báo Cáo Nghiên Cứu Diễn Thế Sinh Thái</h1>
+        <p class="text-sm text-gray-600 mt-1">Bài thực hành mô phỏng: Hệ sinh thái bãi bồi ngập mặn ven biển</p>
+      </div>
+      <div class="text-right text-xs text-gray-500">
+        <p>Họ và tên học sinh: ...................................................</p>
+        <p>Lớp: ......................... Ngày thực hành: <span id="printDate"></span></p>
+      </div>
+    </div>
+
+    <!-- Hypothesis section in report -->
+    <div class="mb-5 p-4 bg-gray-50 rounded-lg border border-gray-200">
+      <h3 class="font-bold text-gray-800 text-sm uppercase mb-2">1. Giả thuyết nghiên cứu (Hypothesis)</h3>
+      <p id="printHypothesis" class="text-sm text-gray-700 italic">"Nếu lượng phù sa bồi lắng liên tục qua thời gian thì Cây Đước sẽ dần thay thế Cây Mắm làm loài ưu thế vì rễ mắm giữ đất làm nền bùn cao và chắc hơn."</p>
+    </div>
+
+    <!-- CER section in report -->
+    <div class="space-y-4 mb-6">
+      <h3 class="font-bold text-gray-800 text-sm uppercase">2. Báo cáo lập luận khoa học (Mô hình CER)</h3>
+      
+      <div class="p-3 border border-gray-200 rounded">
+        <div class="font-bold text-xs text-teal-800 uppercase">[C] Luận điểm kết luận (Claim):</div>
+        <p id="printClaim" class="text-sm text-gray-800 mt-1">Chưa có nội dung kết luận.</p>
+      </div>
+
+      <div class="p-3 border border-gray-200 rounded">
+        <div class="font-bold text-xs text-amber-800 uppercase">[E] Bằng chứng số liệu & Hiện trường ảo (Evidence):</div>
+        <div id="printEvidence" class="text-xs text-gray-700 mt-1 space-y-1">Chưa có bằng chứng chụp từ sa bàn.</div>
+      </div>
+
+      <div class="p-3 border border-gray-200 rounded">
+        <div class="font-bold text-xs text-emerald-800 uppercase">[R] Giải thích & Cơ chế sinh học (Reasoning):</div>
+        <p id="printReasoning" class="text-sm text-gray-800 mt-1">Chưa có nội dung lập luận.</p>
+      </div>
+    </div>
+
+    <!-- Teacher grading rubric -->
+    <div class="border-t border-gray-300 pt-4">
+      <h4 class="font-bold text-xs uppercase text-gray-600 mb-2">Đánh giá của giáo viên (Rubric):</h4>
+      <div class="grid grid-cols-4 gap-2 text-center text-xs">
+        <div class="border p-2 rounded">
+          <div class="text-gray-500 text-[10px]">1. Đặt giả thuyết</div>
+          <div class="font-bold mt-1">..... / 2.5 đ</div>
+        </div>
+        <div class="border p-2 rounded">
+          <div class="text-gray-500 text-[10px]">2. Bằng chứng số liệu</div>
+          <div class="font-bold mt-1">..... / 2.5 đ</div>
+        </div>
+        <div class="border p-2 rounded">
+          <div class="text-gray-500 text-[10px]">3. Lập luận sinh học</div>
+          <div class="font-bold mt-1">..... / 3.0 đ</div>
+        </div>
+        <div class="border p-2 rounded">
+          <div class="text-gray-500 text-[10px]">4. Tính tự chủ</div>
+          <div class="font-bold mt-1">..... / 2.0 đ</div>
+        </div>
+      </div>
+      <div class="mt-4 text-right">
+        <span class="inline-block border-t border-gray-400 px-8 pt-1 text-xs text-gray-600">Chữ ký giáo viên</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: KÍNH LÚP SINH HỌC & SOi CẬN CẢNH MÔ HÌNH THÍCH NGHI (DEEP ZOOM INSPECTOR) -->
+  <div id="modalDeepZoom" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-6 no-print">
+    <div class="bg-slate-900 border border-slate-700/80 rounded-2xl w-full max-w-5xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden">
+      
+      <!-- Modal Header -->
+      <div class="px-6 py-4 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <div class="w-9 h-9 rounded-xl bg-teal-500/20 text-teal-400 flex items-center justify-center border border-teal-500/30">
+            <i class="ph-bold ph-magnifying-glass-plus text-xl"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-slate-100 text-base">Kính Lúp Sinh Học: Soi Cận Cảnh Cấu Trúc Thích Nghi</h3>
+            <p class="text-xs text-slate-400">Quan sát giải phẫu vi mô và cơ chế tiến hóa giúp sinh vật làm chủ bãi bồi</p>
+          </div>
+        </div>
+
+        <button onclick="closeDeepZoomModal()" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition">
+          <i class="ph-bold ph-x text-base"></i>
+        </button>
+      </div>
+
+      <!-- Navigation Tabs for Anatomical Models -->
+      <div class="px-6 py-2.5 bg-slate-950/60 border-b border-slate-800/80 flex flex-wrap items-center justify-between gap-3 text-xs">
+        <div class="flex items-center space-x-2">
+          <button onclick="switchDeepZoomTab('mam_root')" id="tabBtn_mam_root" class="px-3 py-1.5 rounded-lg bg-teal-600 text-white font-semibold transition">
+            🌿 Rễ thở Cây Mắm
+          </button>
+          <button onclick="switchDeepZoomTab('duoc_root')" id="tabBtn_duoc_root" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-slate-200 transition">
+            🌳 Rễ cọc chân nơm Đước
+          </button>
+          <button onclick="switchDeepZoomTab('mam_leaf')" id="tabBtn_mam_leaf" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-slate-200 transition">
+            🍃 Tuyến tiết muối lá Mắm
+          </button>
+          <button onclick="switchDeepZoomTab('ca_thoi_loi')" id="tabBtn_ca_thoi_loi" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-slate-200 transition">
+            🐟 Thích nghi Cá Thòi Lòi
+          </button>
+        </div>
+
+        <!-- In-Modal Zoom Slider (100% -> 350%) -->
+        <div class="flex items-center space-x-2 bg-slate-900 border border-slate-800 px-3 py-1 rounded-lg">
+          <span class="text-slate-400 text-[11px]"><i class="ph ph-magnifying-glass"></i> Độ phóng đại:</span>
+          <input type="range" id="deepZoomSlider" min="100" max="300" value="100" step="10" oninput="setDeepZoomScale(this.value)" class="w-24 h-1 bg-slate-800 rounded appearance-none cursor-pointer">
+          <span id="deepZoomLevelLabel" class="text-teal-400 font-bold mono text-[11px] w-10 text-right">100%</span>
+        </div>
+      </div>
+
+      <!-- Modal Body (Two-column layout: High-res interactive view + Explanation) -->
+      <div class="p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 flex-1 overflow-y-auto">
+        
+        <!-- Left: SVG Zoom Viewport (Col 7) -->
+        <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-2xl h-[380px] relative overflow-hidden flex items-center justify-center select-none" id="deepZoomViewport">
+          <div id="deepZoomGraphicContainer" class="w-full h-full flex items-center justify-center transition-transform duration-200 origin-center">
+            <!-- Dynamic Anatomical SVG inserted by JS -->
+          </div>
+
+          <div class="absolute bottom-3 left-3 bg-slate-900/90 border border-slate-800 px-2.5 py-1 rounded-md text-[10px] text-slate-400 backdrop-blur pointer-events-none">
+            💡 Nhấp vào các điểm số tròn để xem chú thích giải phẫu chi tiết
+          </div>
+        </div>
+
+        <!-- Right: Biological Description & Mechanics (Col 5) -->
+        <div class="lg:col-span-5 flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex items-center space-x-2">
+              <span id="deepZoomBadge" class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-400 border border-teal-500/20 text-xs font-semibold">Cấu trúc giải phẫu thích nghi</span>
+            </div>
+            <h4 id="deepZoomTitle" class="text-lg font-bold text-slate-100">Cắt Lớp Hệ Rễ Thở (Pneumatophores)</h4>
+            <p id="deepZoomDesc" class="text-xs text-slate-300 leading-relaxed">
+              Trong vùng đất bùn ngập mặn thường xuyên, đất bị yếm khí (thiếu $O_2$ trầm trọng). Rễ cây mắm mọc ngược lên trời (ngược hướng trọng lực âm) nhô khỏi mặt bùn $20-30\text{ cm}$ để trao đổi dưỡng khí trực tiếp với khí quyển.
+            </p>
+
+            <!-- Anatomical Hotspot Details -->
+            <div id="hotspotDetailsBox" class="bg-slate-950 p-4 rounded-xl border border-teal-500/30 space-y-1.5 text-xs">
+              <div class="flex items-center space-x-2 text-teal-400 font-bold">
+                <span class="w-5 h-5 rounded-full bg-teal-500/20 text-teal-300 flex items-center justify-center text-xs">1</span>
+                <span id="hotspotTitle">Lỗ Thở (Lenticels / Bì khổng)</span>
+              </div>
+              <p id="hotspotDesc" class="text-slate-300 text-[11px] leading-relaxed">
+                Nằm chi chít trên vỏ rễ nhô lên không trung. Có lớp sáp suberin kỵ nước ngăn nước biển tràn vào khi triều dâng cao, nhưng cho phép $O_2$ khuếch tán vào bên trong khi triều rút.
+              </p>
+            </div>
+          </div>
+
+          <!-- Ecological Significance Card -->
+          <div class="p-3.5 bg-slate-950/80 rounded-xl border border-slate-800/80 text-xs space-y-1">
+            <span class="text-slate-400 font-semibold block text-[11px] uppercase tracking-wider">Ý nghĩa đối với diễn thế sinh thái:</span>
+            <p id="deepZoomSuccessionRole" class="text-slate-300 text-[11px] leading-relaxed">
+              Hàng vạn rễ thở mọc chằng chịt hoạt động như một "chiếc cào khổng lồ", làm chậm dòng chảy của sóng và giữ lại các hạt phù sa lơ lửng, biến bãi bùn lỏng thành đất bồi cao ráo vững chắc.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-6 py-3 bg-slate-900 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+        <span>Tài liệu tham khảo: Sách Chuyên đề Sinh học 12 - Thích nghi sinh thái & Diễn thế</span>
+        <button onclick="closeDeepZoomModal()" class="px-4 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg transition font-medium">
+          Đóng
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // --- APP STATE ---
+    let currentYear = 0;
+    let isPlaying = false;
+    let playInterval = null;
+    let salinity = 28; // ‰
+    let sedimentationRate = 2; // 1: Chậm, 2: TB, 3: Nhanh
+    let humanImpact = 0; // 0: Bảo tồn, 1: Khai thác vừa, 2: Xâm lấn
+    let activeRole = 'student';
+    let currentInspectedSpec = 'mam';
+
+    // --- 3D THREE.JS ECOSYSTEM SIMULATION ENGINE ---
+    let currentViewMode = '3d';
+    let scene3D, camera3D, renderer3D, controls3D;
+    let groupTerrain, groupPlantsMam, groupPlantsDuoc, groupAnimals, groupBirds;
+    let mudMesh, bedrockMesh, waterMesh;
+    let raycaster3D, mouse3D;
+    let lastInspected3DType = 'mam';
+
+    function init3DScene() {
+      const container = document.getElementById('threeContainer');
+      if (!container) return;
+
+      const width = container.clientWidth || 800;
+      const height = container.clientHeight || 420;
+
+      // Scene
+      scene3D = new THREE.Scene();
+      scene3D.background = new THREE.Color(0x090d16);
+      scene3D.fog = new THREE.FogExp2(0x090d16, 0.012);
+
+      // Camera
+      camera3D = new THREE.PerspectiveCamera(45, width / height, 0.5, 1000);
+      camera3D.position.set(30, 22, 36);
+
+      // Renderer
+      renderer3D = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer3D.setSize(width, height);
+      renderer3D.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer3D.shadowMap.enabled = true;
+      renderer3D.shadowMap.type = THREE.PCFSoftShadowMap;
+      container.appendChild(renderer3D.domElement);
+
+      // OrbitControls
+      controls3D = new THREE.OrbitControls(camera3D, renderer3D.domElement);
+      controls3D.enableDamping = true;
+      controls3D.dampingFactor = 0.06;
+      controls3D.maxPolarAngle = Math.PI / 2 - 0.05;
+      controls3D.minDistance = 5;
+      controls3D.maxDistance = 90;
+      controls3D.target.set(0, 2.5, 0);
+
+      // Lights
+      const ambientLight = new THREE.AmbientLight(0xc2e2ff, 0.55);
+      scene3D.add(ambientLight);
+
+      const hemiLight = new THREE.HemisphereLight(0x7dd3fc, 0x3b2b1d, 0.45);
+      scene3D.add(hemiLight);
+
+      const sunLight = new THREE.DirectionalLight(0xfff7ed, 1.15);
+      sunLight.position.set(25, 40, 20);
+      sunLight.castShadow = true;
+      sunLight.shadow.mapSize.width = 1024;
+      sunLight.shadow.mapSize.height = 1024;
+      sunLight.shadow.camera.near = 10;
+      sunLight.shadow.camera.far = 120;
+      sunLight.shadow.camera.left = -25;
+      sunLight.shadow.camera.right = 25;
+      sunLight.shadow.camera.top = 25;
+      sunLight.shadow.camera.bottom = -25;
+      scene3D.add(sunLight);
+
+      const seaGlow = new THREE.DirectionalLight(0x0284c7, 0.4);
+      seaGlow.position.set(-25, 15, -20);
+      scene3D.add(seaGlow);
+
+      // Groups
+      groupTerrain = new THREE.Group();
+      groupPlantsMam = new THREE.Group();
+      groupPlantsDuoc = new THREE.Group();
+      groupAnimals = new THREE.Group();
+      groupBirds = new THREE.Group();
+
+      scene3D.add(groupTerrain);
+      scene3D.add(groupPlantsMam);
+      scene3D.add(groupPlantsDuoc);
+      scene3D.add(groupAnimals);
+      scene3D.add(groupBirds);
+
+      build3DTerrain();
+      build3DPlantsAndAnimals();
+
+      // Raycaster
+      raycaster3D = new THREE.Raycaster();
+      mouse3D = new THREE.Vector2();
+
+      renderer3D.domElement.addEventListener('click', on3DCanvasClick);
+      window.addEventListener('resize', on3DWindowResize);
+
+      animate3D();
+    }
+
+    function build3DTerrain() {
+      const bedrockGeo = new THREE.BoxGeometry(40, 4, 24);
+      const bedrockMat = new THREE.MeshStandardMaterial({
+        color: 0x140e0a,
+        roughness: 0.9,
+        metalness: 0.1
+      });
+      bedrockMesh = new THREE.Mesh(bedrockGeo, bedrockMat);
+      bedrockMesh.position.set(0, -2, 0);
+      bedrockMesh.receiveShadow = true;
+      bedrockMesh.userData = { type: 'bedrock', name: 'Tầng đá ngầm đáy' };
+      groupTerrain.add(bedrockMesh);
+
+      const mudGeo = new THREE.BoxGeometry(40, 3.2, 24, 16, 1, 8);
+      const pos = mudGeo.attributes.position;
+      for (let i = 0; i < pos.count; i++) {
+        const x = pos.getX(i);
+        const slope = (x / 20) * 1.6;
+        pos.setY(i, pos.getY(i) + slope);
+      }
+      mudGeo.computeVertexNormals();
+
+      const mudMat = new THREE.MeshStandardMaterial({
+        color: 0x3d2716,
+        roughness: 0.85,
+        metalness: 0.05,
+        flatShading: true
+      });
+      mudMesh = new THREE.Mesh(mudGeo, mudMat);
+      mudMesh.position.set(0, 1.6, 0);
+      mudMesh.receiveShadow = true;
+      mudMesh.userData = { type: 'mud', name: 'Tầng Trầm Tích Phù Sa Bãi Bồi' };
+      groupTerrain.add(mudMesh);
+
+      const waterGeo = new THREE.BoxGeometry(22, 2.5, 24.2);
+      const waterMat = new THREE.MeshPhysicalMaterial({
+        color: 0x0284c7,
+        transparent: true,
+        opacity: 0.72,
+        roughness: 0.1,
+        transmission: 0.5,
+        ior: 1.33
+      });
+      waterMesh = new THREE.Mesh(waterGeo, waterMat);
+      waterMesh.position.set(-9, 2.2, 0);
+      waterMesh.userData = { type: 'water', name: 'Vùng Nước Biển Triều' };
+      groupTerrain.add(waterMesh);
+    }
+
+    function build3DPlantsAndAnimals() {
+      const mamCoords = [
+        { x: -5, z: -3, s: 1.0 },
+        { x: -7, z: 4, s: 0.9 },
+        { x: -3, z: 2, s: 1.1 },
+        { x: -8, z: -5, s: 0.85 },
+        { x: -2, z: -4, s: 0.95 },
+        { x: -6, z: 0, s: 1.05 }
+      ];
+
+      mamCoords.forEach(c => {
+        const tree = create3DMamTree(c.s);
+        tree.position.set(c.x, 2.3, c.z);
+        groupPlantsMam.add(tree);
+      });
+
+      const duocCoords = [
+        { x: 5, z: -2, s: 1.0 },
+        { x: 9, z: 3, s: 1.25 },
+        { x: 13, z: -4, s: 1.3 },
+        { x: 7, z: 5, s: 1.1 },
+        { x: 12, z: 2, s: 1.35 },
+        { x: 14, z: 5, s: 1.2 }
+      ];
+
+      duocCoords.forEach(c => {
+        const tree = create3DDuocTree(c.s);
+        tree.position.set(c.x, 3.4, c.z);
+        groupPlantsDuoc.add(tree);
+      });
+
+      const crab1 = create3DCrab();
+      crab1.position.set(-5, 2.6, 3);
+      groupAnimals.add(crab1);
+
+      const crab2 = create3DCrab();
+      crab2.position.set(6, 4.0, -1);
+      groupAnimals.add(crab2);
+
+      const fish = create3DMudskipper();
+      fish.position.set(-7, 2.4, -1);
+      groupAnimals.add(fish);
+
+      for (let b = 0; b < 3; b++) {
+        const bird = create3DBird();
+        bird.userData = { angle: b * (Math.PI * 2 / 3), radius: 12 + b * 3, speed: 0.015 + b * 0.005 };
+        groupBirds.add(bird);
+      }
+    }
+
+    function create3DMamTree(scale = 1.0) {
+      const g = new THREE.Group();
+      g.userData = { type: 'mam', name: 'Cây Mắm Trắng (Avicennia alba)' };
+
+      const trunkGeo = new THREE.CylinderGeometry(0.25 * scale, 0.4 * scale, 3.2 * scale, 7);
+      const trunkMat = new THREE.MeshStandardMaterial({ color: 0x451a03, roughness: 0.9 });
+      const trunk = new THREE.Mesh(trunkGeo, trunkMat);
+      trunk.position.y = (3.2 * scale) / 2;
+      trunk.castShadow = true;
+      trunk.receiveShadow = true;
+      g.add(trunk);
+
+      const leavesMat = new THREE.MeshStandardMaterial({ color: 0x15803d, roughness: 0.6, flatShading: true });
+      const c1 = new THREE.Mesh(new THREE.SphereGeometry(1.2 * scale, 7, 7), leavesMat);
+      c1.position.set(0, 3.4 * scale, 0);
+      c1.castShadow = true;
+      g.add(c1);
+
+      const c2 = new THREE.Mesh(new THREE.SphereGeometry(0.9 * scale, 6, 6), leavesMat);
+      c2.position.set(-0.7 * scale, 3.0 * scale, 0.4 * scale);
+      c2.castShadow = true;
+      g.add(c2);
+
+      const c3 = new THREE.Mesh(new THREE.SphereGeometry(0.85 * scale, 6, 6), leavesMat);
+      c3.position.set(0.6 * scale, 3.1 * scale, -0.5 * scale);
+      c3.castShadow = true;
+      g.add(c3);
+
+      const pneuMat = new THREE.MeshStandardMaterial({ color: 0x84cc16, roughness: 0.8 });
+      const pneuGeo = new THREE.CylinderGeometry(0.04, 0.06, 0.7 * scale, 5);
+      for (let i = 0; i < 35; i++) {
+        const pneu = new THREE.Mesh(pneuGeo, pneuMat);
+        const radius = (0.6 + Math.random() * 2.2) * scale;
+        const theta = Math.random() * Math.PI * 2;
+        pneu.position.set(Math.cos(theta) * radius, (0.7 * scale) / 2, Math.sin(theta) * radius);
+        pneu.castShadow = true;
+        g.add(pneu);
+      }
+
+      g.scale.set(scale, scale, scale);
+      return g;
+    }
+
+    function create3DDuocTree(scale = 1.0) {
+      const g = new THREE.Group();
+      g.userData = { type: 'duoc', name: 'Cây Đước Đôi (Rhizophora apiculata)' };
+
+      const trunkGeo = new THREE.CylinderGeometry(0.35 * scale, 0.5 * scale, 5.5 * scale, 8);
+      const trunkMat = new THREE.MeshStandardMaterial({ color: 0x2e1405, roughness: 0.9 });
+      const trunk = new THREE.Mesh(trunkGeo, trunkMat);
+      trunk.position.y = 1.5 * scale + (5.5 * scale) / 2;
+      trunk.castShadow = true;
+      trunk.receiveShadow = true;
+      g.add(trunk);
+
+      const leavesMat = new THREE.MeshStandardMaterial({ color: 0x065f46, roughness: 0.5, flatShading: true });
+      const c1 = new THREE.Mesh(new THREE.SphereGeometry(1.8 * scale, 8, 8), leavesMat);
+      c1.position.set(0, 7.0 * scale, 0);
+      c1.castShadow = true;
+      g.add(c1);
+
+      const c2 = new THREE.Mesh(new THREE.SphereGeometry(1.3 * scale, 7, 7), leavesMat);
+      c2.position.set(-1.0 * scale, 6.2 * scale, 0.8 * scale);
+      c2.castShadow = true;
+      g.add(c2);
+
+      const c3 = new THREE.Mesh(new THREE.SphereGeometry(1.4 * scale, 7, 7), leavesMat);
+      c3.position.set(1.1 * scale, 6.4 * scale, -0.6 * scale);
+      c3.castShadow = true;
+      g.add(c3);
+
+      const rootMat = new THREE.MeshStandardMaterial({ color: 0x3d1b06, roughness: 0.85 });
+      const numRoots = 8;
+      for (let r = 0; r < numRoots; r++) {
+        const angle = (r / numRoots) * Math.PI * 2;
+        const dist = 1.6 * scale;
+        const seg1 = new THREE.Mesh(new THREE.CylinderGeometry(0.12 * scale, 0.16 * scale, 1.8 * scale, 6), rootMat);
+        seg1.position.set(Math.cos(angle) * (dist * 0.5), 1.6 * scale, Math.sin(angle) * (dist * 0.5));
+        seg1.rotation.z = Math.cos(angle) * 0.55;
+        seg1.rotation.x = Math.sin(angle) * 0.55;
+        seg1.castShadow = true;
+        g.add(seg1);
+
+        const seg2 = new THREE.Mesh(new THREE.CylinderGeometry(0.14 * scale, 0.18 * scale, 1.8 * scale, 6), rootMat);
+        seg2.position.set(Math.cos(angle) * (dist * 0.9), 0.6 * scale, Math.sin(angle) * (dist * 0.9));
+        seg2.rotation.z = Math.cos(angle) * 0.3;
+        seg2.rotation.x = Math.sin(angle) * 0.3;
+        seg2.castShadow = true;
+        g.add(seg2);
+      }
+
+      g.scale.set(scale, scale, scale);
+      return g;
+    }
+
+    function create3DCrab() {
+      const g = new THREE.Group();
+      g.userData = { type: 'crab', name: 'Cua Bùn / Cáy (Động vật đáy)' };
+
+      const shellGeo = new THREE.SphereGeometry(0.4, 6, 6);
+      shellGeo.scale(1.2, 0.5, 0.9);
+      const shellMat = new THREE.MeshStandardMaterial({ color: 0xd97706, roughness: 0.6 });
+      const shell = new THREE.Mesh(shellGeo, shellMat);
+      shell.position.y = 0.2;
+      shell.castShadow = true;
+      g.add(shell);
+
+      const clawMat = new THREE.MeshStandardMaterial({ color: 0xb45309 });
+      const clawL = new THREE.Mesh(new THREE.BoxGeometry(0.25, 0.15, 0.4), clawMat);
+      clawL.position.set(-0.45, 0.2, 0.35);
+      g.add(clawL);
+
+      const clawR = new THREE.Mesh(new THREE.BoxGeometry(0.25, 0.15, 0.4), clawMat);
+      clawR.position.set(0.45, 0.2, 0.35);
+      g.add(clawR);
+
+      return g;
+    }
+
+    function create3DMudskipper() {
+      const g = new THREE.Group();
+      g.userData = { type: 'fish', name: 'Cá Thòi Lòi (Lưỡng cư bãi bùn)' };
+
+      const bodyGeo = new THREE.CylinderGeometry(0.12, 0.22, 1.2, 6);
+      const bodyMat = new THREE.MeshStandardMaterial({ color: 0x475569, roughness: 0.7 });
+      const body = new THREE.Mesh(bodyGeo, bodyMat);
+      body.rotation.z = Math.PI / 2;
+      body.position.y = 0.2;
+      body.castShadow = true;
+      g.add(body);
+
+      const eyeMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+      const pupilMat = new THREE.MeshBasicMaterial({ color: 0x000000 });
+      
+      const eyeL = new THREE.Mesh(new THREE.SphereGeometry(0.09, 6, 6), eyeMat);
+      eyeL.position.set(-0.4, 0.35, 0.1);
+      const pupL = new THREE.Mesh(new THREE.SphereGeometry(0.04, 4, 4), pupilMat);
+      pupL.position.set(-0.45, 0.37, 0.12);
+      g.add(eyeL); g.add(pupL);
+
+      const eyeR = new THREE.Mesh(new THREE.SphereGeometry(0.09, 6, 6), eyeMat);
+      eyeR.position.set(-0.4, 0.35, -0.1);
+      const pupR = new THREE.Mesh(new THREE.SphereGeometry(0.04, 4, 4), pupilMat);
+      pupR.position.set(-0.45, 0.37, -0.12);
+      g.add(eyeR); g.add(pupR);
+
+      return g;
+    }
+
+    function create3DBird() {
+      const g = new THREE.Group();
+      const wingMat = new THREE.MeshBasicMaterial({ color: 0xf1f5f9, side: THREE.DoubleSide });
+      const wingL = new THREE.Mesh(new THREE.BufferGeometry(), wingMat);
+      const vertices = new Float32Array([
+        0, 0, 0,   -0.8, 0.2, -0.4,   -0.4, 0, 0,
+        0, 0, 0,    0.8, 0.2, -0.4,    0.4, 0, 0
+      ]);
+      wingL.geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+      g.add(wingL);
+      g.position.y = 14;
+      return g;
+    }
+
+    // --- 3D SCENE DYNAMIC UPDATE WITH TIMELINE ---
+    function update3DScene(yr, sal, sed, hum) {
+      if (!scene3D) return;
+
+      if (mudMesh) {
+        const mudFactor = 0.6 + (yr / 100) * 0.7 * (sed * 0.3 + 0.7);
+        mudMesh.scale.y = hum === 2 ? mudFactor * 0.7 : mudFactor;
+      }
+
+      if (groupPlantsMam) {
+        if (yr === 0) {
+          groupPlantsMam.visible = false;
+        } else if (yr <= 30) {
+          groupPlantsMam.visible = true;
+          const s = Math.min(1.0, 0.2 + (yr / 30) * 0.8);
+          groupPlantsMam.scale.set(s, s, s);
+        } else if (yr <= 70) {
+          groupPlantsMam.visible = true;
+          const s = Math.max(0.4, 1.0 - ((yr - 30) / 40) * 0.5);
+          groupPlantsMam.scale.set(s, s, s);
+        } else {
+          groupPlantsMam.visible = true;
+          groupPlantsMam.scale.set(0.35, 0.35, 0.35);
+        }
+
+        groupPlantsMam.traverse(child => {
+          if (child.isMesh && child.material && child.material.color) {
+            if (hum === 2 || sal > 33) child.material.color.setHex(0x854d0e);
+            else if (child.material.color.getHex() === 0x854d0e) child.material.color.setHex(0x15803d);
+          }
+        });
+      }
+
+      if (groupPlantsDuoc) {
+        if (yr < 20) {
+          groupPlantsDuoc.visible = false;
+        } else if (yr <= 60) {
+          groupPlantsDuoc.visible = true;
+          const s = Math.min(1.0, ((yr - 20) / 40) * 1.0);
+          groupPlantsDuoc.scale.set(s, s, s);
+        } else {
+          groupPlantsDuoc.visible = true;
+          const s = 1.0 + ((yr - 60) / 40) * 0.25;
+          groupPlantsDuoc.scale.set(s, s, s);
+        }
+      }
+
+      if (groupAnimals) {
+        groupAnimals.visible = layers.animals && (yr >= 5);
+      }
+      if (groupBirds) {
+        groupBirds.visible = layers.animals && (yr >= 45) && (hum !== 2);
+      }
+      if (waterMesh) {
+        waterMesh.visible = layers.tide;
+      }
+    }
+
+    // --- 3D CAMERA FLY-TO / OBJECT INSPECTION ---
+    function fly3DCameraTo(targetKey) {
+      if (!camera3D || !controls3D) return;
+
+      ['overview', 'mam', 'duoc', 'animals', 'crossSection'].forEach(k => {
+        const btn = document.getElementById(`btnCam_${k}`);
+        if (btn) {
+          if (k === targetKey) {
+            btn.className = 'px-2.5 py-1 rounded-lg bg-teal-600 text-white font-medium transition shadow';
+          } else {
+            btn.className = 'px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition';
+          }
+        }
+      });
+
+      const targets = {
+        overview: { pos: { x: 30, y: 22, z: 36 }, lookAt: { x: 0, y: 2.5, z: 0 } },
+        mam: { pos: { x: -5, y: 7, z: 12 }, lookAt: { x: -5, y: 3.5, z: 0 } },
+        duoc: { pos: { x: 12, y: 10, z: 15 }, lookAt: { x: 9, y: 5, z: 0 } },
+        animals: { pos: { x: -5, y: 4.8, z: 7 }, lookAt: { x: -6, y: 2.8, z: 2 } },
+        crossSection: { pos: { x: 0, y: -0.5, z: 32 }, lookAt: { x: 0, y: 0.5, z: 0 } }
+      };
+
+      const t = targets[targetKey] || targets.overview;
+
+      new TWEEN.Tween(camera3D.position)
+        .to(t.pos, 1100)
+        .easing(TWEEN.Easing.Cubic.Out)
+        .start();
+
+      new TWEEN.Tween(controls3D.target)
+        .to(t.lookAt, 1100)
+        .easing(TWEEN.Easing.Cubic.Out)
+        .start();
+
+      show3DInspectCard(targetKey);
+    }
+
+    function reset3DCamera() {
+      fly3DCameraTo('overview');
+    }
+
+    function toggle3DFullscreen() {
+      const elem = document.getElementById('viewport3D');
+      const icon = document.getElementById('btn3DFullscreenIcon');
+      if (!document.fullscreenElement) {
+        if (elem.requestFullscreen) elem.requestFullscreen();
+        if (icon) icon.className = 'ph-bold ph-corners-in text-sm';
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+        if (icon) icon.className = 'ph-bold ph-corners-out text-sm';
+      }
+    }
+
+    function show3DInspectCard(type) {
+      lastInspected3DType = type;
+      const card = document.getElementById('card3DInspect');
+      const icon = document.getElementById('card3DIcon');
+      const title = document.getElementById('card3DTitle');
+      const desc = document.getElementById('card3DDesc');
+      if (!card) return;
+
+      if (type === 'mam') {
+        icon.innerText = '🌿';
+        title.innerText = 'Cây Mắm Trắng & Rễ Thở';
+        desc.innerText = 'Loài tiên phong với hàng trăm cọc rễ thở nhô lên khỏi bùn yếm khí để lấy oxy và giữ trầm tích phù sa.';
+        card.classList.remove('hidden');
+      } else if (type === 'duoc') {
+        icon.innerText = '🌳';
+        title.innerText = 'Cây Đước Đôi & Rễ Chân Nơm';
+        desc.innerText = 'Loài ưu thế đỉnh cực với rễ chống chân nơm hình vòm vươn dài, chịu sóng biển dữ dội và tạo nơi ẩn nấp cho tôm cá.';
+        card.classList.remove('hidden');
+      } else if (type === 'animals' || type === 'crab' || type === 'fish') {
+        icon.innerText = '🦀';
+        title.innerText = 'Động Vật Đáy & Bãi Bùn';
+        desc.innerText = 'Cua bùn đào hang thông khí lòng đất, cá thòi lòi di chuyển bằng vây ngực và hô hấp qua da ẩm khi triều rút.';
+        card.classList.remove('hidden');
+      } else if (type === 'crossSection' || type === 'mud' || type === 'bedrock') {
+        icon.innerText = '🟤';
+        title.innerText = 'Lát Cắt Địa Tầng Phù Sa';
+        desc.innerText = 'Lớp trầm tích phù sa giàu dinh dưỡng dâng cao dần theo các mốc năm diễn thế, phủ lên trên tầng đá ngầm.';
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    }
+
+    function close3DInspectCard() {
+      const card = document.getElementById('card3DInspect');
+      if (card) card.classList.add('hidden');
+    }
+
+    function openDeepZoomFrom3D() {
+      if (lastInspected3DType === 'mam') openDeepZoomModal('mam_root');
+      else if (lastInspected3DType === 'duoc') openDeepZoomModal('duoc_root');
+      else if (lastInspected3DType === 'animals' || lastInspected3DType === 'fish') openDeepZoomModal('ca_thoi_loi');
+      else openDeepZoomModal('mam_root');
+    }
+
+    function on3DCanvasClick(event) {
+      if (!renderer3D || !camera3D) return;
+      const rect = renderer3D.domElement.getBoundingClientRect();
+      mouse3D.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+      mouse3D.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+      raycaster3D.setFromCamera(mouse3D, camera3D);
+      const intersects = raycaster3D.intersectObjects(scene3D.children, true);
+
+      if (intersects.length > 0) {
+        let obj = intersects[0].object;
+        while (obj && (!obj.userData || !obj.userData.type) && obj.parent) {
+          obj = obj.parent;
+        }
+        if (obj && obj.userData && obj.userData.type) {
+          const type = obj.userData.type;
+          show3DInspectCard(type);
+          if (type === 'mam') fly3DCameraTo('mam');
+          else if (type === 'duoc') fly3DCameraTo('duoc');
+          else if (type === 'crab' || type === 'fish') fly3DCameraTo('animals');
+          else if (type === 'mud' || type === 'bedrock') fly3DCameraTo('crossSection');
+        }
+      }
+    }
+
+    function setViewMode(mode) {
+      currentViewMode = mode;
+      const btn3D = document.getElementById('btnView3D');
+      const btn2D = document.getElementById('btnView2D');
+      const vp3D = document.getElementById('viewport3D');
+      const vp2D = document.getElementById('viewportLandscape');
+
+      if (mode === '3d') {
+        btn3D.className = 'px-3 py-1 rounded-lg font-bold bg-teal-600 text-white shadow flex items-center space-x-1.5 transition';
+        btn2D.className = 'px-3 py-1 rounded-lg font-medium text-slate-400 hover:text-white flex items-center space-x-1.5 transition';
+        vp3D.classList.remove('hidden');
+        vp2D.classList.add('hidden');
+        on3DWindowResize();
+      } else {
+        btn2D.className = 'px-3 py-1 rounded-lg font-bold bg-teal-600 text-white shadow flex items-center space-x-1.5 transition';
+        btn3D.className = 'px-3 py-1 rounded-lg font-medium text-slate-400 hover:text-white flex items-center space-x-1.5 transition';
+        vp2D.classList.remove('hidden');
+        vp3D.classList.add('hidden');
+      }
+    }
+
+    function on3DWindowResize() {
+      const container = document.getElementById('threeContainer');
+      if (!container || !renderer3D || !camera3D) return;
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      if (width === 0 || height === 0) return;
+      camera3D.aspect = width / height;
+      camera3D.updateProjectionMatrix();
+      renderer3D.setSize(width, height);
+    }
+
+    let clock3D = new THREE.Clock();
+    function animate3D() {
+      requestAnimationFrame(animate3D);
+      if (typeof TWEEN !== 'undefined') TWEEN.update();
+
+      const elapsed = clock3D.getElapsedTime();
+
+      if (waterMesh && waterMesh.visible) {
+        waterMesh.position.y = 2.2 + Math.sin(elapsed * 1.5) * 0.08;
+      }
+
+      if (groupBirds && groupBirds.visible) {
+        groupBirds.children.forEach(bird => {
+          if (bird.userData) {
+            bird.userData.angle += bird.userData.speed;
+            bird.position.x = Math.cos(bird.userData.angle) * bird.userData.radius;
+            bird.position.z = Math.sin(bird.userData.angle) * bird.userData.radius;
+            bird.rotation.y = -bird.userData.angle;
+          }
+        });
+      }
+
+      if (controls3D) controls3D.update();
+      if (renderer3D && scene3D && camera3D) {
+        renderer3D.render(scene3D, camera3D);
+      }
+    }
+
+    // --- MAIN CANVAS PAN & ZOOM STATE ---
+    let zoomScale = 1;
+    let panX = 0;
+    let panY = 0;
+    let isPanning = false;
+    let startX = 0;
+    let startY = 0;
+
+    function updateSceneTransform() {
+      const root = document.getElementById('sceneRoot');
+      if (root) {
+        root.setAttribute('transform', `translate(${panX}, ${panY}) scale(${zoomScale})`);
+      }
+      const lbl = document.getElementById('lblZoomLevel');
+      if (lbl) lbl.innerText = `${Math.round(zoomScale * 100)}%`;
+    }
+
+    function zoomCanvas(factor) {
+      const newScale = Math.min(3.0, Math.max(0.6, zoomScale * factor));
+      const cx = 500;
+      const cy = 180;
+      panX = cx - (cx - panX) * (newScale / zoomScale);
+      panY = cy - (cy - panY) * (newScale / zoomScale);
+      zoomScale = newScale;
+      updateSceneTransform();
+    }
+
+    function resetZoom() {
+      zoomScale = 1;
+      panX = 0;
+      panY = 0;
+      updateSceneTransform();
+    }
+
+    function toggleFullscreen() {
+      const elem = document.getElementById('viewportLandscape');
+      const icon = document.getElementById('btnFullscreenIcon');
+      if (!document.fullscreenElement) {
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) {
+          elem.webkitRequestFullscreen();
+        }
+        if (icon) icon.className = 'ph-bold ph-corners-in text-sm';
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+        if (icon) icon.className = 'ph-bold ph-corners-out text-sm';
+      }
+    }
+
+    // Layer visibility
+    const layers = {
+      plants: true,
+      animals: true,
+      soil: true,
+      tide: true
+    };
+
+    // Species Catalog Data
+    const speciesData = {
+      mam: {
+        name: "Cây Mắm Trắng (Avicennia alba)",
+        role: "Thực vật tiên phong giữ bùn ven biển",
+        icon: "🌿",
+        desc: "Sở hữu hệ rễ thở (pneumatophore) mọc ngược lên mặt bùn để lấy oxy. Chịu mặn cực cao (tiết muối thừa qua biểu bì lá). Khi rừng mắm phát triển, mạng lưới rễ giữ lại phù sa, làm cao mặt đất bãi bồi.",
+        calcViability: (yr, sal) => {
+          if (sal > 32) return "Kém phát triển (độ mặn quá cao)";
+          if (yr <= 30) return "Thích nghi hoàn hảo (100%) - Loài ưu thế";
+          if (yr > 60) return "Bị Đước cạnh tranh ánh sáng (giảm dần số lượng)";
+          return "Phát triển tốt";
+        }
+      },
+      duoc: {
+        name: "Cây Đước Đôi (Rhizophora apiculata)",
+        role: "Loài thực vật ưu thế giai đoạn đỉnh cực (Climax)",
+        icon: "🌳",
+        desc: "Hệ rễ chống (stilt roots) dạng chân nơm phân nhánh chằng chịt, cắm sâu vào nền bùn cứng để chịu lực sóng gió. Cần nền đất phù sa bồi đắp ổn định và nước triều lưu thông.",
+        calcViability: (yr, sal) => {
+          if (yr < 15) return "Không thể bám rễ (bùn lỏng và sóng đánh trôi)";
+          if (yr >= 40) return "Phát triển mạnh mẽ (100%) - Chiếm lĩnh toàn bộ tán rừng";
+          return "Bắt đầu bén rễ và cạnh tranh";
+        }
+      },
+      cua: {
+        name: "Cua Bùn & Cáy (Scylla paramamosain / Sesarma)",
+        role: "Động vật đáy ăn mùn bã và lá cây rơi rụng",
+        icon: "🦀",
+        desc: "Đào hang sâu dưới các gốc rễ cây ngập mặn. Hang cua giúp dẫn nước và không khí xuống sâu trong lòng đất bùn, làm tăng lượng oxy hòa tan cho vi sinh vật phân giải.",
+        calcViability: (yr) => yr >= 10 ? "Rất phong phú nhờ có mùn bã thực vật dồi dào" : "Số lượng ít (thiếu thức ăn và nơi ẩn nấp)"
+      },
+      ca: {
+        name: "Cá Thòi Lòi (Periophthalmodon schlosseri)",
+        role: "Cá lưỡng cư đặc hữu của bãi bồi",
+        icon: "🐟",
+        desc: "Có thể di chuyển trên bùn và trèo lên rễ cây mắm bằng vây ngực khỏe. Thở bằng mang và hô hấp qua da ẩm ướt khi ở trên cạn.",
+        calcViability: () => "Thích nghi tốt trên mọi giai đoạn bãi bùn lỏng"
+      },
+      chim: {
+        name: "Chim & Cò Nước (Egretta garzetta)",
+        role: "Sinh vật tiêu thụ bậc cao",
+        icon: "🦅",
+        desc: "Chỉ làm tổ và sinh sản khi rừng ngập mặn đã khép tán dày đặc, cung cấp nơi trú ẩn an toàn và nguồn tôm cá dồi dào.",
+        calcViability: (yr) => yr >= 50 ? "Tập trung đông đúc làm tổ" : "Chỉ bay ngang kiếm ăn tạm thời"
+      }
+    };
+
+    // --- CHART INITIALIZATION (Chart.js) ---
+    const ctx = document.getElementById('chartSuccession').getContext('2d');
+    
+    // Timeline steps for chart (0 to 100 with step 10)
+    const timelineLabels = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+    
+    // Theoretical biological curve models
+    const mamData = [5, 45, 90, 85, 60, 35, 20, 10, 5, 2, 0]; // Mắm mọc nhanh rồi giảm
+    const duocData = [0, 0, 5, 20, 50, 80, 95, 100, 100, 98, 95]; // Đước tăng áp đảo
+    const faunaData = [8, 15, 35, 50, 70, 85, 90, 95, 95, 98, 100]; // Động vật đa dạng dần
+
+    const chartSuccession = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: timelineLabels.map(l => l + ' năm'),
+        datasets: [
+          {
+            label: 'Cây Mắm trắng (Tiên phong)',
+            data: mamData,
+            borderColor: '#2dd4bf',
+            backgroundColor: 'rgba(45, 212, 191, 0.15)',
+            tension: 0.35,
+            fill: true,
+            pointRadius: 3
+          },
+          {
+            label: 'Cây Đước đôi (Đỉnh cực)',
+            data: duocData,
+            borderColor: '#10b981',
+            backgroundColor: 'rgba(16, 185, 129, 0.15)',
+            tension: 0.35,
+            fill: true,
+            pointRadius: 3
+          },
+          {
+            label: 'Đa dạng động vật',
+            data: faunaData,
+            borderColor: '#f59e0b',
+            borderDash: [4, 4],
+            tension: 0.35,
+            pointRadius: 2
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'top',
+            labels: {
+              boxWidth: 10,
+              font: { size: 10, family: 'Plus Jakarta Sans' },
+              color: '#94a3b8'
+            }
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false,
+            callbacks: {
+              label: function(context) {
+                return `${context.dataset.label}: ${context.parsed.y} cá thể/100m²`;
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { color: 'rgba(51, 65, 85, 0.4)' },
+            ticks: { color: '#64748b', font: { size: 9 } }
+          },
+          y: {
+            beginAtZero: true,
+            max: 110,
+            grid: { color: 'rgba(51, 65, 85, 0.4)' },
+            ticks: { color: '#64748b', font: { size: 9 } }
+          }
+        }
+      }
+    });
+
+    // --- TIMELINE & VISUAL UPDATE FUNCTIONS ---
+    function setYear(yr) {
+      currentYear = yr;
+      document.getElementById('timelineSlider').value = yr;
+      renderState();
+    }
+
+    function onTimelineChange(val) {
+      currentYear = parseInt(val);
+      renderState();
+    }
+
+    function togglePlay() {
+      isPlaying = !isPlaying;
+      const playIcon = document.getElementById('playIcon');
+      if (isPlaying) {
+        playIcon.className = 'ph-fill ph-pause text-lg';
+        playInterval = setInterval(() => {
+          if (currentYear >= 100) {
+            currentYear = 0;
+          } else {
+            currentYear += 1;
+          }
+          document.getElementById('timelineSlider').value = currentYear;
+          renderState();
+        }, 300); // 300ms per year
+      } else {
+        playIcon.className = 'ph-fill ph-play text-lg';
+        clearInterval(playInterval);
+      }
+    }
+
+    function resetTimeline() {
+      if (isPlaying) togglePlay();
+      setYear(0);
+    }
+
+    function updateEnvSliders() {
+      salinity = parseInt(document.getElementById('sliderSalinity').value);
+      document.getElementById('valSalinity').innerText = salinity + ' ‰';
+      document.getElementById('lblSoilSalinity').innerText = salinity + ' ‰';
+
+      const sed = parseInt(document.getElementById('sliderSedimentation').value);
+      sedimentationRate = sed;
+      document.getElementById('valSedimentation').innerText = sed === 1 ? 'Chậm' : sed === 2 ? 'Trung bình' : 'Nhanh';
+
+      humanImpact = parseInt(document.getElementById('sliderHumanImpact').value);
+      document.getElementById('valHumanImpact').innerText = humanImpact === 0 ? 'Bảo tồn tự nhiên' : humanImpact === 1 ? 'Khai thác vừa' : 'Xâm lấn nặng';
+
+      renderState();
+    }
+
+    // --- RENDER DYNAMIC ECOSYSTEM CANVAS ---
+    function renderState() {
+      // 1. Text displays
+      document.getElementById('displayYear').innerText = `Năm ${currentYear}`;
+      document.getElementById('chartYearIndicator').innerText = `Mốc: Năm ${currentYear}`;
+
+      // Calculate calculated metrics based on year & sliders
+      let mudHeightFactor = (currentYear / 100) * (sedimentationRate * 0.5 + 0.5);
+      if (humanImpact === 2) mudHeightFactor *= 0.6; // Xâm lấn làm giảm bồi tụ
+
+      let sedimentMeters = (0.2 + mudHeightFactor * 1.8).toFixed(1);
+      document.getElementById('lblSedimentDepth').innerText = `${sedimentMeters} m`;
+
+      // Biodiversity index calculations
+      let shannon = (0.1 + (currentYear / 100) * 2.8).toFixed(2);
+      let coverage = Math.min(95, Math.round((currentYear / 100) * 100 * (1 - humanImpact * 0.3)));
+      let biomass = (1.2 + (currentYear / 100) * 140 * (1 - humanImpact * 0.4)).toFixed(1);
+
+      if (salinity > 33) {
+        shannon = (shannon * 0.75).toFixed(2);
+        coverage = Math.round(coverage * 0.8);
+      }
+
+      document.getElementById('metricShannon').innerText = shannon;
+      document.getElementById('metricCoverage').innerText = `${coverage}%`;
+      document.getElementById('metricBiomass').innerText = biomass;
+
+      // Stage description & Toast
+      const stageBadge = document.getElementById('badgeSuccessionStage');
+      const stageShort = document.getElementById('displayStageShort');
+      const toastMsg = document.getElementById('toastMessage');
+
+      if (currentYear === 0) {
+        stageBadge.innerText = 'Giai đoạn 1: Bãi bồi trần (Năm 0)';
+        stageShort.innerText = 'Bùn lỏng ngập triều, sinh vật tiên phong chưa xuất hiện';
+        toastMsg.innerHTML = '<strong class="text-teal-400">Năm 0 (Khởi đầu):</strong> Bãi bồi bùn lỏng ngập mặn thường xuyên. Nồng độ muối cao, chưa có thực vật bậc cao.';
+      } else if (currentYear <= 25) {
+        stageBadge.innerText = `Giai đoạn 2: Quần xã tiên phong (Năm ${currentYear})`;
+        stageShort.innerText = 'Cây Mắm trắng phát triển rễ thở, bắt đầu giữ phù sa';
+        toastMsg.innerHTML = `<strong class="text-teal-400">Năm ${currentYear} (Tiên phong):</strong> Rừng Mắm bén rễ. Hệ thống rễ thở giữ lại phù sa, nâng cao bề mặt đất bùn từng năm.`;
+      } else if (currentYear <= 65) {
+        stageBadge.innerText = `Giai đoạn 3: Giai đoạn chuyển tiếp (Năm ${currentYear})`;
+        stageShort.innerText = 'Đước đôi xuất hiện với rễ cọc bám chắc, cạnh tranh dần';
+        toastMsg.innerHTML = `<strong class="text-teal-400">Năm ${currentYear} (Chuyển tiếp):</strong> Nền đất vững hơn. Cây Đước đôi cao lớn che bóng, dần chèn ép mắm trắng và tạo sinh cảnh cho chim cá.`;
+      } else {
+        stageBadge.innerText = `Giai đoạn 4: Quần xã đỉnh cực Climax (Năm ${currentYear})`;
+        stageShort.innerText = 'Rừng Đước rậm rạp, thảm thực vật đa tầng, hệ sinh thái ổn định';
+        toastMsg.innerHTML = `<strong class="text-teal-400">Năm ${currentYear} (Đỉnh cực Climax):</strong> Rừng Đước đôi chiếm ưu thế tuyệt đối. Nền đất đã cao hơn mực nước triều trung bình, đa dạng sinh học đạt đỉnh.`;
+      }
+
+      // 2. Adjust Mud Layer Curve (SVG Path morphing)
+      const mudYBase = 290 - mudHeightFactor * 60;
+      const mudYEnd = 220 - mudHeightFactor * 50;
+      const pathMud = document.getElementById('pathMudSediment');
+      pathMud.setAttribute('d', `M 0 360 L 0 ${mudYBase} Q 300 ${mudYBase - 15} 650 ${mudYEnd + 20} T 1000 ${mudYEnd} L 1000 360 Z`);
+
+      // 3. Render Plants (SVG Elements dynamically)
+      renderPlantsSVG(currentYear);
+
+      // 4. Render Animals & Birds
+      renderAnimalsSVG(currentYear);
+
+      // Birds visibility
+      const birds = document.getElementById('birdsContainer');
+      if (currentYear >= 45 && layers.animals) {
+        birds.style.opacity = '1';
+      } else {
+        birds.style.opacity = '0';
+      }
+
+      // Update current inspection viability if modal is open
+      if (!document.getElementById('boxSpeciesInfo').classList.contains('hidden')) {
+        document.getElementById('specCurrentYear').innerText = `Năm ${currentYear}`;
+      }
+
+      // Sync Toast Message on 3D View
+      const toastMsg3D = document.getElementById('toastMessage3D');
+      if (toastMsg3D && toastMsg) {
+        toastMsg3D.innerHTML = toastMsg.innerHTML;
+      }
+
+      // Update 3D Three.js Ecosystem
+      if (typeof update3DScene === 'function') {
+        update3DScene(currentYear, salinity, sedimentationRate, humanImpact);
+      }
+    }
+
+    // Helper: Draw tree and plant models in SVG
+    function renderPlantsSVG(yr) {
+      const gMam = document.getElementById('plantsPioneer');
+      const gDuoc = document.getElementById('plantsClimax');
+      gMam.innerHTML = '';
+      gDuoc.innerHTML = '';
+
+      if (!layers.plants) return;
+
+      // A. Mắm trắng (Pioneer): Mọc nhiều nhất từ năm 5 đến 40, sau đó lùi về phía mép ngoài
+      let mamCount = 0;
+      if (yr >= 3 && yr <= 30) mamCount = Math.floor((yr / 30) * 10);
+      else if (yr > 30 && yr <= 80) mamCount = Math.max(2, 10 - Math.floor(((yr - 30) / 50) * 8));
+      else if (yr > 80) mamCount = 2; // Vẫn còn sót lại vài cây ở mép nước
+
+      for (let i = 0; i < mamCount; i++) {
+        const x = 320 + i * 45 + (i % 2) * 15;
+        const y = 245 - (i * 3);
+        const scale = 0.5 + Math.min(0.5, yr / 40);
+        gMam.innerHTML += createMamTreeSVG(x, y, scale);
+      }
+
+      // B. Đước đôi (Climax): Bắt đầu xuất hiện từ năm 25, chiếm trọn vùng đất cao từ năm 50 - 100
+      let duocCount = 0;
+      if (yr >= 20) {
+        duocCount = Math.min(9, Math.floor(((yr - 20) / 80) * 9));
+      }
+
+      for (let j = 0; j < duocCount; j++) {
+        const x = 540 + j * 48;
+        const y = 220 - (j * 4);
+        const scale = 0.6 + Math.min(0.6, (yr - 20) / 60);
+        gDuoc.innerHTML += createDuocTreeSVG(x, y, scale);
+      }
+    }
+
+    function createMamTreeSVG(x, y, scale) {
+      return `
+        <g transform="translate(${x}, ${y}) scale(${scale})">
+          <!-- Pneumatophore breathing roots poking from mud -->
+          <line x1="-15" y1="20" x2="-15" y2="5" stroke="#a3e635" stroke-width="2" />
+          <line x1="-8" y1="20" x2="-8" y2="0" stroke="#a3e635" stroke-width="2.5" />
+          <line x1="8" y1="20" x2="8" y2="2" stroke="#a3e635" stroke-width="2" />
+          <line x1="16" y1="20" x2="16" y2="6" stroke="#a3e635" stroke-width="2" />
+          <!-- Trunk -->
+          <path d="M -4 20 L -3 0 L 0 -25 L 3 0 L 4 20 Z" fill="#78350f" />
+          <!-- Foliage -->
+          <circle cx="0" cy="-35" r="18" fill="#14532d" opacity="0.9" />
+          <circle cx="-10" cy="-30" r="14" fill="#15803d" opacity="0.9" />
+          <circle cx="10" cy="-30" r="14" fill="#22c55e" opacity="0.85" />
+        </g>
+      `;
+    }
+
+    function createDuocTreeSVG(x, y, scale) {
+      return `
+        <g transform="translate(${x}, ${y}) scale(${scale})">
+          <!-- Stilt prop roots (Rễ chống chân nơm đặc trưng của Đước) -->
+          <path d="M -15 25 Q -10 10 0 -10 Q 10 10 15 25" stroke="#451a03" stroke-width="3" fill="none" />
+          <path d="M -25 25 Q -15 15 -2 -5" stroke="#5c2605" stroke-width="2.5" fill="none" />
+          <path d="M 25 25 Q 15 15 2 -5" stroke="#5c2605" stroke-width="2.5" fill="none" />
+          <!-- Tall Trunk -->
+          <line x1="0" y1="-10" x2="0" y2="-65" stroke="#3c1e08" stroke-width="6" stroke-linecap="round" />
+          <!-- High canopy (Tán rậm rạp) -->
+          <ellipse cx="0" cy="-75" rx="30" ry="22" fill="#064e3b" />
+          <circle cx="-16" cy="-72" r="18" fill="#047857" opacity="0.95" />
+          <circle cx="16" cy="-72" r="18" fill="#10b981" opacity="0.9" />
+          <circle cx="0" cy="-85" r="16" fill="#34d399" opacity="0.85" />
+        </g>
+      `;
+    }
+
+    function renderAnimalsSVG(yr) {
+      const g = document.getElementById('animalsMud');
+      g.innerHTML = '';
+      if (!layers.animals) return;
+
+      // Fish Periophthalmodon (Cá thòi lòi trên bùn ven biển)
+      g.innerHTML += `
+        <g transform="translate(240, 260) scale(0.9)">
+          <text x="0" y="0" font-size="14">🐟</text>
+        </g>
+      `;
+
+      // Crabs in mud
+      if (yr >= 10) {
+        g.innerHTML += `
+          <g transform="translate(420, 265)">
+            <text x="0" y="0" font-size="13">🦀</text>
+          </g>
+          <g transform="translate(680, 235)">
+            <text x="0" y="0" font-size="12">🦀</text>
+          </g>
+        `;
+      }
+    }
+
+    // --- TOGGLE LAYERS ---
+    function toggleLayer(layerKey) {
+      layers[layerKey] = !layers[layerKey];
+      const btn = document.getElementById(`btnLayer${layerKey.charAt(0).toUpperCase() + layerKey.slice(1)}`);
+      
+      if (layers[layerKey]) {
+        btn.classList.add('bg-teal-500/20', 'text-teal-300', 'border-teal-500/40');
+        btn.classList.remove('bg-slate-800', 'text-slate-500', 'border-slate-700');
+        document.getElementById(`layer${layerKey.charAt(0).toUpperCase() + layerKey.slice(1)}`).style.display = 'inline';
+      } else {
+        btn.classList.remove('bg-teal-500/20', 'text-teal-300', 'border-teal-500/40');
+        btn.classList.add('bg-slate-800', 'text-slate-500', 'border-slate-700');
+        document.getElementById(`layer${layerKey.charAt(0).toUpperCase() + layerKey.slice(1)}`).style.display = 'none';
+      }
+    }
+
+    // --- BIO-ASSETS INSPECTION ---
+    function inspectSpecies(key) {
+      currentInspectedSpec = key;
+      const data = speciesData[key];
+      if (!data) return;
+
+      const modal = document.getElementById('boxSpeciesInfo');
+      modal.classList.remove('hidden');
+
+      document.getElementById('specIcon').innerText = data.icon;
+      document.getElementById('specName').innerText = data.name;
+      document.getElementById('specRole').innerText = data.role;
+      document.getElementById('specDesc').innerText = data.desc;
+      document.getElementById('specCurrentYear').innerText = `Năm ${currentYear}`;
+      document.getElementById('specViability').innerText = data.calcViability(currentYear, salinity);
+    }
+
+    function closeSpeciesInfo() {
+      document.getElementById('boxSpeciesInfo').classList.add('hidden');
+    }
+
+    // --- DEEP ZOOM & ANATOMICAL MODELS DATA ---
+    let currentDeepZoomTab = 'mam_root';
+    let deepZoomScale = 1;
+
+    const deepZoomData = {
+      mam_root: {
+        title: "Cắt Lớp Hệ Rễ Thở Cây Mắm (Pneumatophores)",
+        badge: "Thích nghi lấy oxy trong bùn yếm khí",
+        desc: "Trong bùn lỏng ngập mặn, vi khuẩn phân giải tiêu thụ hết dưỡng khí khiến đất hoàn toàn yếm khí. Rễ mắm phát triển hàng nghìn đầu rễ thở mọc ngược lên khỏi mặt nước 20-30 cm để lấy O₂ từ khí quyển.",
+        role: "Rễ thở đan dày đặc làm giảm 70% động năng sóng biển, giữ lại các hạt phù sa lơ lửng, tạo nền bãi bồi cao ráo vững chắc.",
+        hotspots: [
+          { id: 1, title: "Lỗ Thở (Lenticels / Bì khổng)", desc: "Các lỗ xốp nằm rải rác trên vỏ rễ nhô lên không trung. Có lớp sáp suberin kỵ nước ngăn nước mặn thâm nhập khi triều dâng, nhưng cho phép O₂ khuếch tán vào khi triều rút." },
+          { id: 2, title: "Mô Xốp Chứa Khí (Aerenchyma)", desc: "Mạng lưới các khoang rỗng liên bào bên trong rễ dẫn O₂ từ lỗ thở chạy dọc xuống các rễ ngập sâu trong bùn đen để nuôi dưỡng tế bào rễ." },
+          { id: 3, title: "Tầng Trầm Tích Yếm Khí", desc: "Tầng bùn đen phía dưới chứa nhiều H₂S và thiếu oxy. Nếu không có rễ thở cung cấp oxy, tế bào rễ cây bình thường sẽ chết vì ngạt." }
+        ],
+        renderSVG: () => `
+          <svg viewBox="0 0 500 340" class="w-full h-full">
+            <defs>
+              <linearGradient id="mudDeep" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#3b2b1d" />
+                <stop offset="100%" stop-color="#19110b" />
+              </linearGradient>
+            </defs>
+            <rect x="0" y="200" width="500" height="140" fill="url(#mudDeep)" />
+            <text x="20" y="230" fill="#a8a29e" font-size="11" class="mono">Tầng bùn yếm khí (Thiếu O₂)</text>
+            <text x="20" y="50" fill="#38bdf8" font-size="11" class="mono">Không khí (Chứa 21% O₂)</text>
+            <line x1="0" y1="200" x2="500" y2="200" stroke="#0ea5e9" stroke-width="1.5" stroke-dasharray="4,4" />
+            <text x="350" y="190" fill="#7dd3fc" font-size="10">Mặt nước triều rút</text>
+
+            <!-- Underground horizontal cable root -->
+            <path d="M 0 280 Q 250 270 500 280" stroke="#78350f" stroke-width="18" fill="none" />
+            
+            <!-- Upward vertical breathing roots -->
+            <path d="M 250 275 L 250 70 Q 250 60 240 60 Q 230 60 230 70 L 230 275" fill="#451a03" stroke="#84cc16" stroke-width="2" />
+            
+            <!-- Cross Section Cutout View -->
+            <rect x="233" y="90" width="14" height="130" fill="#fef08a" opacity="0.9" rx="3" />
+            <!-- Spongy Aerenchyma bubbles -->
+            <g fill="#ca8a04" opacity="0.6">
+              <circle cx="240" cy="110" r="3" />
+              <circle cx="237" cy="130" r="2.5" />
+              <circle cx="243" cy="150" r="3" />
+              <circle cx="238" cy="170" r="3.5" />
+              <circle cx="242" cy="190" r="3" />
+              <circle cx="239" cy="210" r="2.5" />
+            </g>
+
+            <!-- Lenticels (Pores on bark) -->
+            <ellipse cx="230" cy="85" rx="3" ry="1.5" fill="#ef4444" />
+            <ellipse cx="230" cy="115" rx="3" ry="1.5" fill="#ef4444" />
+            <ellipse cx="250" cy="100" rx="3" ry="1.5" fill="#ef4444" />
+            <ellipse cx="250" cy="140" rx="3" ry="1.5" fill="#ef4444" />
+
+            <!-- O2 Flow Arrows -->
+            <path d="M 180 95 L 222 98" stroke="#38bdf8" stroke-width="2" />
+            <polygon points="225,98 217,94 217,102" fill="#38bdf8" />
+            <text x="110" y="96" fill="#38bdf8" font-size="11" font-weight="bold">O₂ khuếch tán</text>
+
+            <!-- Interactive Hotspot Pins -->
+            <g onclick="selectHotspot(1)" class="cursor-pointer">
+              <circle cx="268" cy="100" r="12" fill="#0d9488" stroke="#ffffff" stroke-width="2" />
+              <text x="268" y="104" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">1</text>
+            </g>
+
+            <g onclick="selectHotspot(2)" class="cursor-pointer">
+              <circle cx="240" cy="160" r="12" fill="#0d9488" stroke="#ffffff" stroke-width="2" />
+              <text x="240" y="164" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">2</text>
+            </g>
+
+            <g onclick="selectHotspot(3)" class="cursor-pointer">
+              <circle cx="240" cy="305" r="12" fill="#0d9488" stroke="#ffffff" stroke-width="2" />
+              <text x="240" y="309" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">3</text>
+            </g>
+          </svg>
+        `
+      },
+      duoc_root: {
+        title: "Hệ Rễ Chống Chân Nơm Cây Đước (Stilt Roots)",
+        badge: "Thích nghi chịu lực sóng gió & bám bùn cứng",
+        desc: "Cây Đước đôi không dùng rễ thở thẳng đứng mà tỏa ra hàng chục rễ chống chân nơm cong vòm từ thân cành cắm sâu vào đất bùn, đóng vai trò như các cột trụ chịu lực chống lật đổ.",
+        role: "Rễ chống giữ vai trò chủ chốt trong quần xã đỉnh cực: làm dịu tác động của bão biển, bảo vệ dải bờ biển khỏi sạt lở xói mòn.",
+        hotspots: [
+          { id: 1, title: "Rễ Chân Nơm Vòm (Arching Stilt Root)", desc: "Hình vòm phân tán lực cơ học cực kỳ vững chắc trước sức đẩy của sóng triều và gió bão." },
+          { id: 2, title: "Lưới Bẫy Trầm Tích (Sediment Trap)", desc: "Mạng lưới rễ đan xen chằng chịt giữ lại mùn bã thực vật và phù sa, làm nền đất ngày càng cao ráo và màu mỡ." },
+          { id: 3, title: "Hang Động Cho Thủy Sinh", desc: "Không gian giữa các rễ chống là vườn ươm tự nhiên an toàn cho ấu trùng tôm, cua bùn và cá con lẩn trốn kẻ săn mồi." }
+        ],
+        renderSVG: () => `
+          <svg viewBox="0 0 500 340" class="w-full h-full">
+            <defs>
+              <linearGradient id="mudDeep2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#4a3728" />
+                <stop offset="100%" stop-color="#1c130c" />
+              </linearGradient>
+            </defs>
+            <rect x="0" y="210" width="500" height="130" fill="url(#mudDeep2)" />
+            <text x="20" y="235" fill="#a8a29e" font-size="11" class="mono">Tầng phù sa bồi tụ vững chắc</text>
+            
+            <!-- Main Trunk -->
+            <path d="M 235 0 L 265 0 L 260 110 L 240 110 Z" fill="#3c1e08" stroke="#78350f" stroke-width="2" />
+            
+            <!-- Arching Stilt Roots -->
+            <path d="M 240 110 Q 180 140 130 250" stroke="#5c2605" stroke-width="14" fill="none" stroke-linecap="round" />
+            <path d="M 260 110 Q 320 140 370 250" stroke="#5c2605" stroke-width="14" fill="none" stroke-linecap="round" />
+            
+            <path d="M 245 140 Q 210 180 180 260" stroke="#78350f" stroke-width="10" fill="none" stroke-linecap="round" />
+            <path d="M 255 140 Q 290 180 320 260" stroke="#78350f" stroke-width="10" fill="none" stroke-linecap="round" />
+            
+            <path d="M 250 160 Q 230 200 220 270" stroke="#9a3412" stroke-width="8" fill="none" stroke-linecap="round" />
+            <path d="M 250 160 Q 270 200 280 270" stroke="#9a3412" stroke-width="8" fill="none" stroke-linecap="round" />
+
+            <!-- Wave forces arrows -->
+            <path d="M 40 160 Q 70 150 100 160" stroke="#38bdf8" stroke-width="3" fill="none" />
+            <path d="M 40 180 Q 70 170 100 180" stroke="#38bdf8" stroke-width="3" fill="none" />
+            <text x="30" y="145" fill="#38bdf8" font-size="11" font-weight="bold">Sóng biển triều</text>
+
+            <!-- Trapped Mud Sediment between roots -->
+            <ellipse cx="250" cy="230" rx="60" ry="15" fill="#713f12" opacity="0.7" />
+
+            <!-- Interactive Hotspot Pins -->
+            <g onclick="selectHotspot(1)" class="cursor-pointer">
+              <circle cx="150" cy="180" r="12" fill="#10b981" stroke="#ffffff" stroke-width="2" />
+              <text x="150" y="184" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">1</text>
+            </g>
+
+            <g onclick="selectHotspot(2)" class="cursor-pointer">
+              <circle cx="250" cy="225" r="12" fill="#10b981" stroke="#ffffff" stroke-width="2" />
+              <text x="250" y="229" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">2</text>
+            </g>
+
+            <g onclick="selectHotspot(3)" class="cursor-pointer">
+              <circle cx="340" cy="210" r="12" fill="#10b981" stroke="#ffffff" stroke-width="2" />
+              <text x="340" y="214" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">3</text>
+            </g>
+          </svg>
+        `
+      },
+      mam_leaf: {
+        title: "Tuyến Tiết Muối Ở Lá Cây Mắm (Salt Glands)",
+        badge: "Thích nghi áp suất thẩm thấu cao",
+        desc: "Sống trong nước biển độ mặn tới 35‰, rễ mắm hút nước mặn vào cơ thể. Để tránh ngộ độc muối, các tuyến tiết đa bào chuyên hóa trên bề mặt lá chủ động bơm Na⁺ và Cl⁻ ra ngoài.",
+        role: "Giúp cây duy trì thế nước tế bào ổn định, là cơ chế then chốt giúp mắm trắng trở thành loài thực vật tiên phong dũng cảm nhất ở mép biển.",
+        hotspots: [
+          { id: 1, title: "Tuyến Tiết Muối (Multicellular Salt Gland)", desc: "Cấu tạo gồm các tế bào tiết chứa nhiều ti thể cung cấp ATP để vận chuyển chủ động các ion muối ngược chiều gradient nồng độ." },
+          { id: 2, title: "Tinh Thể Muối Đọng Trên Mặt Lá", desc: "Nước bay hơi để lại các hạt tinh thể muối trắng lấp lánh trên bề mặt lá; gió và mưa sẽ cuốn trôi lượng muối này về lại biển." },
+          { id: 3, title: "Lớp Cutin Dày Chống Mất Nước", desc: "Tầng cutin dày bóng loáng ngăn cản sự thoát hơi nước quá mức dưới ánh nắng gay gắt của vùng ven biển nhiệt đới." }
+        ],
+        renderSVG: () => `
+          <svg viewBox="0 0 500 340" class="w-full h-full">
+            <!-- Cuticle -->
+            <rect x="50" y="110" width="400" height="18" fill="#15803d" rx="4" />
+            <text x="60" y="100" fill="#86efac" font-size="11">Tầng Cutin bảo vệ mặt trên lá</text>
+
+            <!-- Mesophyll Cells -->
+            <rect x="50" y="130" width="400" height="90" fill="#166534" />
+            <g fill="#22c55e" opacity="0.6">
+              <rect x="70" y="135" width="16" height="40" rx="3" />
+              <rect x="95" y="135" width="16" height="40" rx="3" />
+              <rect x="120" y="135" width="16" height="40" rx="3" />
+              <rect x="290" y="135" width="16" height="40" rx="3" />
+              <rect x="315" y="135" width="16" height="40" rx="3" />
+            </g>
+
+            <!-- Salt Gland Chamber -->
+            <path d="M 180 110 L 260 110 L 250 180 L 190 180 Z" fill="#047857" stroke="#34d399" stroke-width="2" />
+            <circle cx="220" cy="140" r="18" fill="#065f46" stroke="#6ee7b7" stroke-width="1.5" />
+            <text x="208" y="144" fill="#ffffff" font-size="11" font-weight="bold">ATP</text>
+
+            <!-- Excreted Salt Crystals -->
+            <polygon points="210,85 215,75 225,80 220,90" fill="#ffffff" stroke="#93c5fd" stroke-width="1" />
+            <polygon points="230,80 238,70 245,78 238,88" fill="#ffffff" stroke="#93c5fd" stroke-width="1" />
+            <polygon points="200,92 205,82 212,87 207,97" fill="#ffffff" stroke="#93c5fd" stroke-width="1" />
+            <text x="255" y="80" fill="#f8fafc" font-size="12" font-weight="bold">Tinh thể muối (NaCl)</text>
+
+            <!-- Salt Ion Flow -->
+            <path d="M 220 180 L 220 100" stroke="#facc15" stroke-width="3" stroke-dasharray="3,3" />
+            <text x="140" y="165" fill="#facc15" font-size="10">Ion Na⁺ & Cl⁻ bài xuất</text>
+
+            <!-- Interactive Hotspot Pins -->
+            <g onclick="selectHotspot(1)" class="cursor-pointer">
+              <circle cx="220" cy="145" r="12" fill="#0d9488" stroke="#ffffff" stroke-width="2" />
+              <text x="220" y="149" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">1</text>
+            </g>
+
+            <g onclick="selectHotspot(2)" class="cursor-pointer">
+              <circle cx="230" cy="65" r="12" fill="#0d9488" stroke="#ffffff" stroke-width="2" />
+              <text x="230" y="69" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">2</text>
+            </g>
+
+            <g onclick="selectHotspot(3)" class="cursor-pointer">
+              <circle cx="370" cy="115" r="12" fill="#0d9488" stroke="#ffffff" stroke-width="2" />
+              <text x="370" y="119" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">3</text>
+            </g>
+          </svg>
+        `
+      },
+      ca_thoi_loi: {
+        title: "Cơ Quan Thích Nghi Cá Thòi Lòi (Periophthalmodon)",
+        badge: "Động vật lưỡng cư bãi bùn ven biển",
+        desc: "Cá thòi lòi có thể sống hàng giờ trên cạn, leo trèo lên rễ cây mắm và săn mồi khi nước triều rút nhờ hệ cơ quan thích nghi đặc biệt vừa thở bằng mang vừa hô hấp qua da.",
+        role: "Loài động vật tiêu thụ bậc 1-2 đặc trưng, luân chuyển năng lượng giữa sinh cảnh dưới nước và trên cạn trong hệ sinh thái ngập mặn.",
+        hotspots: [
+          { id: 1, title: "Túi Mang Giữ Nước (Opercular Cavity)", desc: "Xoang mang phồng to đóng kín như một bình dưỡng khí chứa đầy nước mặn, giúp các lá mang không bị khô dính khi lên cạn." },
+          { id: 2, title: "Hệ Mao Mạch Dưới Da & Niêm Mạc Miệng", desc: "Khi ở trên cạn, da và niêm mạc khoang miệng có nhiều mao mạch dày đặc, trực tiếp hấp thụ oxy trong không khí ẩm ướt." },
+          { id: 3, title: "Vây Ngực Khỏe Nhắn Dạng Chi", desc: "Khớp vây ngực có xương và cơ bắp linh hoạt, hoạt động như hai cánh tay chống đỡ cơ thể di chuyển nhanh thoăn thoắt trên bùn lỏng." }
+        ],
+        renderSVG: () => `
+          <svg viewBox="0 0 500 340" class="w-full h-full">
+            <path d="M 0 250 Q 250 240 500 250 L 500 340 L 0 340 Z" fill="#2d1f15" />
+            <text x="20" y="280" fill="#a8a29e" font-size="11">Bãi bùn ngập mặn</text>
+
+            <!-- Mudskipper Body -->
+            <path d="M 100 210 Q 180 180 320 185 Q 400 190 440 210 Q 400 245 320 240 Q 180 240 100 210 Z" fill="#475569" stroke="#334155" stroke-width="2" />
+            <polygon points="200,185 240,130 270,185" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5" />
+            <polygon points="280,185 310,140 330,185" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5" />
+
+            <!-- Protruding Eyes -->
+            <circle cx="410" cy="180" r="16" fill="#f8fafc" stroke="#0f172a" stroke-width="2" />
+            <circle cx="415" cy="180" r="7" fill="#0f172a" />
+            <circle cx="390" cy="182" r="14" fill="#f8fafc" stroke="#0f172a" stroke-width="2" />
+            <circle cx="395" cy="182" r="6" fill="#0f172a" />
+
+            <!-- Opercular Cavity -->
+            <ellipse cx="365" cy="215" rx="24" ry="18" fill="#0284c7" opacity="0.6" stroke="#38bdf8" stroke-width="1.5" />
+            <text x="350" y="219" fill="#ffffff" font-size="10" font-weight="bold">H₂O</text>
+
+            <!-- Pectoral Fin -->
+            <path d="M 345 225 Q 360 265 375 270 Q 355 270 340 240 Z" fill="#64748b" stroke="#0f172a" stroke-width="2" />
+
+            <!-- Dermal Respiration -->
+            <circle cx="280" cy="205" r="3" fill="#38bdf8" opacity="0.8" />
+            <circle cx="260" cy="215" r="4" fill="#38bdf8" opacity="0.8" />
+            <circle cx="240" cy="208" r="3.5" fill="#38bdf8" opacity="0.8" />
+
+            <!-- Interactive Hotspot Pins -->
+            <g onclick="selectHotspot(1)" class="cursor-pointer">
+              <circle cx="365" cy="205" r="12" fill="#0284c7" stroke="#ffffff" stroke-width="2" />
+              <text x="365" y="209" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">1</text>
+            </g>
+
+            <g onclick="selectHotspot(2)" class="cursor-pointer">
+              <circle cx="250" cy="210" r="12" fill="#0284c7" stroke="#ffffff" stroke-width="2" />
+              <text x="250" y="214" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">2</text>
+            </g>
+
+            <g onclick="selectHotspot(3)" class="cursor-pointer">
+              <circle cx="365" cy="265" r="12" fill="#0284c7" stroke="#ffffff" stroke-width="2" />
+              <text x="365" y="269" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">3</text>
+            </g>
+          </svg>
+        `
+      }
+    };
+
+    function openDeepZoomModal(tabKey = 'mam_root') {
+      const modal = document.getElementById('modalDeepZoom');
+      modal.classList.remove('hidden');
+      switchDeepZoomTab(tabKey);
+    }
+
+    function closeDeepZoomModal() {
+      const modal = document.getElementById('modalDeepZoom');
+      modal.classList.add('hidden');
+    }
+
+    function openDeepZoomFromCurrentSpec() {
+      if (currentInspectedSpec === 'mam') openDeepZoomModal('mam_root');
+      else if (currentInspectedSpec === 'duoc') openDeepZoomModal('duoc_root');
+      else if (currentInspectedSpec === 'ca') openDeepZoomModal('ca_thoi_loi');
+      else openDeepZoomModal('mam_root');
+    }
+
+    function switchDeepZoomTab(tabKey) {
+      currentDeepZoomTab = tabKey;
+      const data = deepZoomData[tabKey];
+      if (!data) return;
+
+      ['mam_root', 'duoc_root', 'mam_leaf', 'ca_thoi_loi'].forEach(key => {
+        const btn = document.getElementById(`tabBtn_${key}`);
+        if (btn) {
+          if (key === tabKey) {
+            btn.className = 'px-3 py-1.5 rounded-lg bg-teal-600 text-white font-semibold transition';
+          } else {
+            btn.className = 'px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-slate-200 transition';
+          }
+        }
+      });
+
+      document.getElementById('deepZoomTitle').innerText = data.title;
+      document.getElementById('deepZoomBadge').innerText = data.badge;
+      document.getElementById('deepZoomDesc').innerHTML = data.desc;
+      document.getElementById('deepZoomSuccessionRole').innerText = data.role;
+
+      const container = document.getElementById('deepZoomGraphicContainer');
+      container.innerHTML = data.renderSVG();
+
+      selectHotspot(1);
+
+      document.getElementById('deepZoomSlider').value = 100;
+      setDeepZoomScale(100);
+    }
+
+    function setDeepZoomScale(val) {
+      deepZoomScale = parseInt(val) / 100;
+      document.getElementById('deepZoomLevelLabel').innerText = `${val}%`;
+      const container = document.getElementById('deepZoomGraphicContainer');
+      if (container) {
+        container.style.transform = `scale(${deepZoomScale})`;
+      }
+    }
+
+    function selectHotspot(id) {
+      const data = deepZoomData[currentDeepZoomTab];
+      if (!data) return;
+      const hotspot = data.hotspots.find(h => h.id === id);
+      if (hotspot) {
+        document.getElementById('hotspotTitle').innerText = hotspot.title;
+        document.getElementById('hotspotDesc').innerText = hotspot.desc;
+      }
+    }
+
+    // Attach Canvas Pan & Zoom Mouse Event Listeners
+    const vpLandscape = document.getElementById('viewportLandscape');
+    if (vpLandscape) {
+      vpLandscape.addEventListener('mousedown', (e) => {
+        if (e.target.closest('button') || e.target.closest('#canvasToast')) return;
+        isPanning = true;
+        startX = e.clientX - panX;
+        startY = e.clientY - panY;
+        vpLandscape.classList.remove('cursor-grab');
+        vpLandscape.classList.add('cursor-grabbing');
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isPanning) return;
+        panX = e.clientX - startX;
+        panY = e.clientY - startY;
+        updateSceneTransform();
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (isPanning) {
+          isPanning = false;
+          vpLandscape.classList.remove('cursor-grabbing');
+          vpLandscape.classList.add('cursor-grab');
+        }
+      });
+
+      vpLandscape.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const rect = vpLandscape.getBoundingClientRect();
+        const mouseX = ((e.clientX - rect.left) / rect.width) * 1000;
+        const mouseY = ((e.clientY - rect.top) / rect.height) * 360;
+        
+        const factor = e.deltaY < 0 ? 1.15 : 0.85;
+        const newScale = Math.min(3.5, Math.max(0.6, zoomScale * factor));
+        
+        panX = mouseX - (mouseX - panX) * (newScale / zoomScale);
+        panY = mouseY - (mouseY - panY) * (newScale / zoomScale);
+        zoomScale = newScale;
+        updateSceneTransform();
+      }, { passive: false });
+    }
+
+    // --- CER SNAPSHOT FEATURE ---
+    let evidenceCount = 0;
+    function takeSnapshotAndAddToCER() {
+      evidenceCount++;
+      const list = document.getElementById('evidenceList');
+      if (evidenceCount === 1) list.innerHTML = ''; // Clear placeholder
+
+      const year = currentYear;
+      const shannon = document.getElementById('metricShannon').innerText;
+      const coverage = document.getElementById('metricCoverage').innerText;
+      const biomass = document.getElementById('metricBiomass').innerText;
+      const sedDepth = document.getElementById('lblSedimentDepth').innerText;
+
+      const item = document.createElement('div');
+      item.className = 'flex items-center justify-between bg-slate-900 border border-slate-800 px-2 py-1.5 rounded-lg text-[10px] text-slate-300';
+      item.innerHTML = `
+        <div>
+          <strong class="text-teal-400">#${evidenceCount} [Năm ${year}]:</strong> Độ che phủ ${coverage}, Đa dạng H'=${shannon}, Phù sa dày ${sedDepth}
+        </div>
+        <button onclick="this.parentElement.remove()" class="text-slate-500 hover:text-red-400"><i class="ph ph-trash"></i></button>
+      `;
+      list.appendChild(item);
+
+      // Visual feedback
+      const evt = (typeof event !== 'undefined') ? event : (window.event || null);
+      const btn = evt ? (evt.currentTarget || evt.target) : null;
+      if (btn) {
+        const originalText = btn.innerHTML;
+        btn.innerHTML = `<i class="ph-bold ph-check text-emerald-400"></i><span>Đã lưu!</span>`;
+        setTimeout(() => btn.innerHTML = originalText, 1500);
+      }
+    }
+
+    // --- PRINT / EXPORT REPORT PREPARATION ---
+    window.onbeforeprint = function() {
+      document.getElementById('printDate').innerText = new Date().toLocaleDateString('vi-VN');
+      
+      // Update Hypothesis text
+      const ifText = document.getElementById('hypoIf').selectedOptions[0].text;
+      const thenText = document.getElementById('hypoThen').selectedOptions[0].text;
+      const becauseText = document.getElementById('hypoBecause').selectedOptions[0].text;
+      document.getElementById('printHypothesis').innerText = `"Nếu ${ifText} thì ${thenText} vì ${becauseText}."`;
+
+      // Update CER text
+      const claim = document.getElementById('cerClaim').value.trim();
+      document.getElementById('printClaim').innerText = claim || "(Chưa có nội dung kết luận)";
+
+      const reasoning = document.getElementById('cerReasoning').value.trim();
+      document.getElementById('printReasoning').innerText = reasoning || "(Chưa có nội dung lập luận)";
+
+      // Evidence list to print
+      const evidenceDiv = document.getElementById('printEvidence');
+      const evidenceItems = document.getElementById('evidenceList').querySelectorAll('div strong');
+      if (evidenceItems.length > 0) {
+        evidenceDiv.innerHTML = '';
+        evidenceItems.forEach(strong => {
+          const parent = strong.parentElement;
+          const p = document.createElement('p');
+          p.innerText = "• " + parent.innerText;
+          evidenceDiv.appendChild(p);
+        });
+      } else {
+        evidenceDiv.innerText = `• Dữ liệu hiện trường mốc Năm ${currentYear}: Độ che phủ ${document.getElementById('metricCoverage').innerText}, Chỉ số Shannon ${document.getElementById('metricShannon').innerText}, Tầng trầm tích ${document.getElementById('lblSedimentDepth').innerText}`;
+      }
+    };
+
+    // --- ROLE SWITCHING & TEACHER EVENTS ---
+    function switchRole(role) {
+      activeRole = role;
+      const btnS = document.getElementById('btnRoleStudent');
+      const btnT = document.getElementById('btnRoleTeacher');
+      const banner = document.getElementById('teacherBanner');
+
+      if (role === 'teacher') {
+        btnT.classList.add('bg-amber-600', 'text-white', 'shadow');
+        btnT.classList.remove('text-slate-400');
+        btnS.classList.remove('bg-teal-600', 'text-white', 'shadow');
+        btnS.classList.add('text-slate-400');
+        banner.classList.remove('hidden');
+      } else {
+        btnS.classList.add('bg-teal-600', 'text-white', 'shadow');
+        btnS.classList.remove('text-slate-400');
+        btnT.classList.remove('bg-amber-600', 'text-white', 'shadow');
+        btnT.classList.add('text-slate-400');
+        banner.classList.add('hidden');
+      }
+    }
+
+    function triggerEvent(eventType) {
+      if (eventType === 'typhoon') {
+        alert("⚠️ [TÌNH HUỐNG GIÁO VIÊN ĐẶT RA]: Một cơn bão lớn cấp 10 đổ bộ vào bãi bồi! Sóng lớn cuốn trôi 40% thảm thực vật non. Hãy xem cách hệ thống phục hồi!");
+        // Simulate devastation
+        setYear(Math.max(5, currentYear - 15));
+      } else if (eventType === 'mangrove_cutting') {
+        alert("⚠️ [TÌNH HUỐNG GIÁO VIÊN ĐẶT RA]: Con người đào đê bao nuôi tôm, chặt bỏ rừng ngập mặn! Bãi bùn mất rễ giữ đất và bắt đầu sạt lở mạnh.");
+        document.getElementById('sliderHumanImpact').value = 2;
+        updateEnvSliders();
+      }
+    }
+
+    // Initialize 3D Scene and initial render
+    if (typeof init3DScene === 'function') {
+      init3DScene();
+    }
+    renderState();
+  </script>
+</body>
+</html>

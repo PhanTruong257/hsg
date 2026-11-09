@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Hệ Thống Phân Hóa Đề Thi HSG Toán 11 (2012 - 2026)</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    margin: 20px 40px;
+    background-color: #f8f9fa;
+    color: #333;
+  }
+  .header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 24px;
+  }
+  .header h1 { margin: 0 0 8px 0; font-size: 24px; }
+  .header p { margin: 0; opacity: 0.9; font-size: 14px; }
+  .stats-bar {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.15);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+  }
+  .filter-box {
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .filter-box input, .filter-box select {
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  .filter-box input { flex: 1; min-width: 250px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  th, td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 13.5px;
+  }
+  th {
+    background-color: #f1f3f5;
+    color: #495057;
+    font-weight: 600;
+  }
+  tr:hover { background-color: #f8f9fa; }
+  .badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .badge-olympic { background-color: #fff3bf; color: #d9480f; }
+  .badge-tinh { background-color: #d0ebff; color: #1864ab; }
+  .badge-truong { background-color: #e6fcf5; color: #0ca678; }
+  .badge-cum { background-color: #f3f0ff; color: #6741d9; }
+  .btn-open {
+    display: inline-block;
+    padding: 5px 12px;
+    background-color: #1971c2;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 12.5px;
+    font-weight: 500;
+  }
+  .btn-open:hover { background-color: #1864ab; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📚 HỆ THỐNG PHÂN HÓA ĐỀ THI HSG TOÁN 11 (TỰ LUẬN)</h1>
+  <p>Toàn bộ 130 đề thi Tự Luận chọn lọc từ năm 2012 đến năm 2026 trên TOANMATH</p>
+  <div class="stats-bar">
+    <div class="stat-card">Tổng số: <b>130 Đề thi</b></div>
+    <div class="stat-card">Dạng đề: <b>100% Tự luận</b></div>
+    <div class="stat-card">Thời gian: <b>2012 – 2026 (14 năm)</b></div>
+  </div>
+</div>
+
+<div class="filter-box">
+  <label><b>Bộ lọc:</b></label>
+  <input type="text" id="searchInput" placeholder="Tìm kiếm theo tên trường, tỉnh thành, kỳ thi..." onkeyup="filterTable()">
+  <select id="yearFilter" onchange="filterTable()">
+    <option value="">-- Tất cả năm học --</option>
+    <option value="2025 - 2026">Năm học 2025 - 2026 (17 đề)</option>
+    <option value="2024 - 2025">Năm học 2024 - 2025 (15 đề)</option>
+    <option value="2023 - 2024">Năm học 2023 - 2024 (19 đề)</option>
+    <option value="2022 - 2023">Năm học 2022 - 2023 (14 đề)</option>
+    <option value="2021 - 2022">Năm học 2021 - 2022 (5 đề)</option>
+    <option value="2020 - 2021">Năm học 2020 - 2021 (20 đề)</option>
+    <option value="2019 - 2020">Năm học 2019 - 2020 (12 đề)</option>
+    <option value="2018 - 2019">Năm học 2018 - 2019 (14 đề)</option>
+    <option value="2017 - 2018">Năm học 2017 - 2018 (8 đề)</option>
+    <option value="2016 - 2017">Năm học 2016 - 2017 (4 đề)</option>
+    <option value="2012 - 2013">Năm học 2012 - 2013 (1 đề)</option>
+    <option value="Tuyển tập">Tuyển tập nhiều năm (1 đề)</option>
+  </select>
+  <select id="levelFilter" onchange="filterTable()">
+    <option value="">-- Tất cả cấp độ --</option>
+    <option value="Olympic">Olympic / Chuyên đỉnh cao</option>
+    <option value="Tỉnh">Cấp Tỉnh / Sở GD&ĐT</option>
+    <option value="Cụm">Cụm trường</option>
+    <option value="Trường">Cấp Trường</option>
+  </select>
+  <span id="resultCount" style="margin-left: auto; font-size: 13px; color: #666;">Hiển thị: <b>130/130</b> đề</span>
+</div>
+
+<table id="examTable">
+  <thead>
+    <tr>
+      <th style="width: 4%;">STT</th>
+      <th style="width: 45%;">Tên Đề Thi</th>
+      <th style="width: 14%;">Năm Học</th>
+      <th style="width: 15%;">Cấp Độ</th>
+      <th style="width: 12%;">Tỉnh / Thành</th>
+      <th style="width: 10%;">Thao Tác</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center; color: #888;">1</td>
+      <td><b>Tuyển tập đề thi học sinh giỏi Toán 11 sở GD&ĐT Quảng Bình (2010 – 2023)</b></td>
+      <td>Tuyển tập nhiều năm</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Quảng Bình</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Tuyen_tap_tong_hop/Tuyển_tập_đề_thi_học_sinh_giỏi_Toán_11_sở_GD&ĐT_Quảng_Bình_(2010_–_2023).pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">2</td>
+      <td><b>Đề chọn HSG Toán 11 năm 2025 – 2026 trường chuyên Lê Quý Đôn – Đà Nẵng</b></td>
+      <td>Năm học 2025 - 2026</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Đà Nẵng</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_chọn_HSG_Toán_11_năm_2025_–_2026_trường_chuyên_Lê_Quý_Đôn_–_Đà_Nẵng.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">3</td>
+      <td><b>Đề chọn học sinh giỏi cấp tỉnh Toán 11 năm 2025 – 2026 sở GD&ĐT Thái Nguyên</b></td>
+      <td>Năm học 2025 - 2026</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Thái Nguyên</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_chọn_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2025_–_2026_sở_GD&ĐT_Thái_Nguyên.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">4</td>
+      <td><b>Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Phú Xuyên B – Hà Nội</b></td>
+      <td>Năm học 2025 - 2026</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Phú_Xuyên_B_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">5</td>
+      <td><b>Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Đồng Quan – Hà Nội</b></td>
+      <td>Năm học 2025 - 2026</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">6</td>
+      <td><b>Đề chọn đội tuyển Olympic Toán 11 năm 2025 – 2026 trường THPT Yên Hòa – Hà Nội</b></td>
+      <td>Năm học 2025 - 2026</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_chọn_đội_tuyển_Olympic_Toán_11_năm_2025_–_2026_trường_THPT_Yên_Hòa_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">7</td>
+      <td><b>Đề thi chọn HSG Toán 11 năm 2025 – 2026 trường THPT Hướng Hóa – Quảng Trị</b></td>
+      <td>Năm học 2025 - 2026</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Quảng Trị</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_chọn_HSG_Toán_11_năm_2025_–_2026_trường_THPT_Hướng_Hóa_–_Quảng_Trị.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">8</td>
+      <td><b>Đề thi HSG Toán 11 lần 17 năm 2026 hội các trường THPT chuyên DH&ĐB Bắc Bộ</b></td>
+      <td>Năm học 2025 - 2026</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Toàn quốc / Khác</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_HSG_Toán_11_lần_17_năm_2026_hội_các_trường_THPT_chuyên_DH&ĐB_Bắc_Bộ.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">9</td>
+      <td><b>Đề thi học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Quảng Trị – Quảng Trị</b></td>
+      <td>Năm học 2025 - 2026</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Quảng Trị</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Quảng_Trị_–_Quảng_Trị.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">10</td>
+      <td><b>Đề thi học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Thạch Thất – Hà Nội</b></td>
+      <td>Năm học 2025 - 2026</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Thạch_Thất_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">11</td>
+      <td><b>Đề thi Olympic 30 tháng 04 năm 2026 Toán 11 trường chuyên Lê Hồng Phong – TP HCM</b></td>
+      <td>Năm học 2025 - 2026</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>TP HCM</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_Olympic_30_tháng_04_năm_2026_Toán_11_trường_chuyên_Lê_Hồng_Phong_–_TP_HCM.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">12</td>
+      <td><b>Đề thi Olympic môn Toán 11 Trại hè Hùng Vương lần thứ 20 năm 2026</b></td>
+      <td>Năm học 2025 - 2026</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Toàn quốc / Khác</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_Olympic_môn_Toán_11_Trại_hè_Hùng_Vương_lần_thứ_20_năm_2026.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">13</td>
+      <td><b>Đề thi Olympic Toán 11 năm 2025 – 2026 cụm trường THPT số 01 – Hà Nội</b></td>
+      <td>Năm học 2025 - 2026</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_Olympic_Toán_11_năm_2025_–_2026_cụm_trường_THPT_số_01_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">14</td>
+      <td><b>Đề thi Olympic Toán 11 năm 2025 – 2026 cụm trường THPT số 14 – Hà Nội</b></td>
+      <td>Năm học 2025 - 2026</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_Olympic_Toán_11_năm_2025_–_2026_cụm_trường_THPT_số_14_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">15</td>
+      <td><b>Đề thi Olympic Toán 11 năm 2025 – 2026 liên cụm trường THPT – Hà Nội</b></td>
+      <td>Năm học 2025 - 2026</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_Olympic_Toán_11_năm_2025_–_2026_liên_cụm_trường_THPT_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">16</td>
+      <td><b>Đề thi Olympic Toán 11 năm 2025 – 2026 sở GD&ĐT TP Hồ Chí Minh</b></td>
+      <td>Năm học 2025 - 2026</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Toàn quốc / Khác</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_Olympic_Toán_11_năm_2025_–_2026_sở_GD&ĐT_TP_Hồ_Chí_Minh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">17</td>
+      <td><b>Đề thi Olympic Toán 11 năm 2025 – 2026 trường THPT Đống Đa – Hà Nội</b></td>
+      <td>Năm học 2025 - 2026</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_Olympic_Toán_11_năm_2025_–_2026_trường_THPT_Đống_Đa_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">18</td>
+      <td><b>Đề thi Olympic Toán THPT năm 2025 – 2026 trường THCS&THPT Bình Chánh – An Giang</b></td>
+      <td>Năm học 2025 - 2026</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>An Giang</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_Olympic_Toán_THPT_năm_2025_–_2026_trường_THCS&THPT_Bình_Chánh_–_An_Giang.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">19</td>
+      <td><b>Đề chọn HSG Toán 11 năm 2024 – 2025 trường THPT Phùng Khắc Khoan – Hà Nội</b></td>
+      <td>Năm học 2024 - 2025</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_chọn_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Phùng_Khắc_Khoan_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">20</td>
+      <td><b>Đề chọn HSG Toán 11 năm 2024 – 2025 trường THPT Đức Hợp – Hưng Yên</b></td>
+      <td>Năm học 2024 - 2025</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Hưng Yên</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_chọn_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Đức_Hợp_–_Hưng_Yên.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">21</td>
+      <td><b>Đề chọn học sinh giỏi Toán 11 năm 2024 – 2025 sở GD&ĐT Quảng Bình</b></td>
+      <td>Năm học 2024 - 2025</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Quảng Bình</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Quảng_Bình.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">22</td>
+      <td><b>Đề chọn học sinh giỏi tỉnh Toán 11 năm 2024 – 2025 sở GD&ĐT Bình Định</b></td>
+      <td>Năm học 2024 - 2025</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Bình Định</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_chọn_học_sinh_giỏi_tỉnh_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Bình_Định.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">23</td>
+      <td><b>Đề chọn học sinh giỏi tỉnh Toán 11 năm 2024 – 2025 sở GD&ĐT Hà Nam</b></td>
+      <td>Năm học 2024 - 2025</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Hà Nam</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_chọn_học_sinh_giỏi_tỉnh_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Hà_Nam.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">24</td>
+      <td><b>Đề chọn học sinh giỏi tỉnh Toán 11 năm 2024 – 2025 sở GD&ĐT Hà Tĩnh</b></td>
+      <td>Năm học 2024 - 2025</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Hà Tĩnh</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_chọn_học_sinh_giỏi_tỉnh_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Hà_Tĩnh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">25</td>
+      <td><b>Đề chọn học sinh giỏi tỉnh Toán 11 năm 2024 – 2025 sở GD&ĐT Tuyên Quang</b></td>
+      <td>Năm học 2024 - 2025</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Tuyên Quang</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_chọn_học_sinh_giỏi_tỉnh_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Tuyên_Quang.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">26</td>
+      <td><b>Đề HSG tỉnh Toán 11 (chuyên) năm 2024 – 2025 đợt 2 sở GD&ĐT Quảng Nam</b></td>
+      <td>Năm học 2024 - 2025</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Quảng Nam</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_HSG_tỉnh_Toán_11_(chuyên)_năm_2024_–_2025_đợt_2_sở_GD&ĐT_Quảng_Nam.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">27</td>
+      <td><b>Đề thi chọn HSG Toán 11 năm 2024 – 2025 cụm Lục Ngạn – Bắc Giang</b></td>
+      <td>Năm học 2024 - 2025</td>
+      <td><span class="badge badge-cum">Cụm trường</span></td>
+      <td>Bắc Giang</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_thi_chọn_HSG_Toán_11_năm_2024_–_2025_cụm_Lục_Ngạn_–_Bắc_Giang.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">28</td>
+      <td><b>Đề thi HSG Toán 11 năm 2024 – 2025 trường THPT Anh Sơn 3 – Nghệ An</b></td>
+      <td>Năm học 2024 - 2025</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Nghệ An</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_thi_HSG_Toán_11_năm_2024_–_2025_trường_THPT_Anh_Sơn_3_–_Nghệ_An.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">29</td>
+      <td><b>Đề thi học sinh giỏi Toán 11 năm 2024 – 2025 trường THPT Bình Chiểu – TP HCM</b></td>
+      <td>Năm học 2024 - 2025</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>TP HCM</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_thi_học_sinh_giỏi_Toán_11_năm_2024_–_2025_trường_THPT_Bình_Chiểu_–_TP_HCM.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">30</td>
+      <td><b>Đề thi học sinh giỏi Toán 11 năm 2024 – 2025 trường THPT Thị xã Quảng Trị</b></td>
+      <td>Năm học 2024 - 2025</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Quảng Trị</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_thi_học_sinh_giỏi_Toán_11_năm_2024_–_2025_trường_THPT_Thị_xã_Quảng_Trị.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">31</td>
+      <td><b>Đề thi Olympic 30 tháng 04 năm 2025 Toán 11 trường chuyên Lê Hồng Phong – TP HCM</b></td>
+      <td>Năm học 2024 - 2025</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>TP HCM</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_thi_Olympic_30_tháng_04_năm_2025_Toán_11_trường_chuyên_Lê_Hồng_Phong_–_TP_HCM.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">32</td>
+      <td><b>Đề thi Olympic Toán 11 năm 2024 – 2025 liên cụm trường THPT – Hà Nội</b></td>
+      <td>Năm học 2024 - 2025</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_thi_Olympic_Toán_11_năm_2024_–_2025_liên_cụm_trường_THPT_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">33</td>
+      <td><b>Đề thi Olympic Toán 11 năm 2024 – 2025 sở GD&ĐT TP Hồ Chí Minh</b></td>
+      <td>Năm học 2024 - 2025</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Toàn quốc / Khác</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_thi_Olympic_Toán_11_năm_2024_–_2025_sở_GD&ĐT_TP_Hồ_Chí_Minh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">34</td>
+      <td><b>Đề HSG Toán 11 năm 2023 – 2024 cụm trường THPT Gia Lâm & Long Biên – Hà Nội</b></td>
+      <td>Năm học 2023 - 2024</td>
+      <td><span class="badge badge-cum">Cụm trường</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_HSG_Toán_11_năm_2023_–_2024_cụm_trường_THPT_Gia_Lâm_&_Long_Biên_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">35</td>
+      <td><b>Đề học sinh giỏi cấp tỉnh Toán 11 năm 2023 – 2024 sở GD&ĐT Quảng Ngãi</b></td>
+      <td>Năm học 2023 - 2024</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Quảng Ngãi</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2023_–_2024_sở_GD&ĐT_Quảng_Ngãi.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">36</td>
+      <td><b>Đề học sinh giỏi Toán 11 cấp tỉnh năm 2023 – 2024 sở GD&ĐT Bạc Liêu</b></td>
+      <td>Năm học 2023 - 2024</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Bạc Liêu</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2023_–_2024_sở_GD&ĐT_Bạc_Liêu.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">37</td>
+      <td><b>Đề học sinh giỏi Toán 11 cấp tỉnh năm 2023 – 2024 sở GD&ĐT Hà Nam</b></td>
+      <td>Năm học 2023 - 2024</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Hà Nam</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2023_–_2024_sở_GD&ĐT_Hà_Nam.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">38</td>
+      <td><b>Đề học sinh giỏi Toán 11 lần 1 năm 2023 – 2024 trường THPT Vĩnh Lộc – Thanh Hóa</b></td>
+      <td>Năm học 2023 - 2024</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Thanh Hóa</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_lần_1_năm_2023_–_2024_trường_THPT_Vĩnh_Lộc_–_Thanh_Hóa.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">39</td>
+      <td><b>Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Anh Sơn 3 – Nghệ An</b></td>
+      <td>Năm học 2023 - 2024</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Nghệ An</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Anh_Sơn_3_–_Nghệ_An.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">40</td>
+      <td><b>Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Bình Chiểu – TP HCM</b></td>
+      <td>Năm học 2023 - 2024</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>TP HCM</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Bình_Chiểu_–_TP_HCM.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">41</td>
+      <td><b>Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Nguyễn Huệ – Phú Yên</b></td>
+      <td>Năm học 2023 - 2024</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Phú Yên</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Nguyễn_Huệ_–_Phú_Yên.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">42</td>
+      <td><b>Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Nguyễn Đăng Đạo – Bắc Ninh</b></td>
+      <td>Năm học 2023 - 2024</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Bắc Ninh</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Nguyễn_Đăng_Đạo_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">43</td>
+      <td><b>Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Yên Phong 2 – Bắc Ninh</b></td>
+      <td>Năm học 2023 - 2024</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Bắc Ninh</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Yên_Phong_2_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">44</td>
+      <td><b>Đề học sinh giỏi tỉnh Toán 11 chuyên đợt 2 năm 2023 – 2024 sở GD&ĐT Quảng Nam</b></td>
+      <td>Năm học 2023 - 2024</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Quảng Nam</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_tỉnh_Toán_11_chuyên_đợt_2_năm_2023_–_2024_sở_GD&ĐT_Quảng_Nam.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">45</td>
+      <td><b>Đề kiểm tra HSG Toán 11 năm 2023 – 2024 trường THPT Nghèn – Hà Tĩnh</b></td>
+      <td>Năm học 2023 - 2024</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Hà Tĩnh</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_kiểm_tra_HSG_Toán_11_năm_2023_–_2024_trường_THPT_Nghèn_–_Hà_Tĩnh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">46</td>
+      <td><b>Đề Olimpic Toán 11 năm 2023 – 2024 cụm Thạch Thất & Quốc Oai – Hà Nội</b></td>
+      <td>Năm học 2023 - 2024</td>
+      <td><span class="badge badge-cum">Cụm trường</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_Olimpic_Toán_11_năm_2023_–_2024_cụm_Thạch_Thất_&_Quốc_Oai_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">47</td>
+      <td><b>Đề thi chọn học sinh giỏi Toán 11 Trại hè Hùng Vương lần thứ 18 năm 2024</b></td>
+      <td>Năm học 2023 - 2024</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Toàn quốc / Khác</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_thi_chọn_học_sinh_giỏi_Toán_11_Trại_hè_Hùng_Vương_lần_thứ_18_năm_2024.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">48</td>
+      <td><b>Đề thi Olympic 3004 Toán 11 lần 28 năm 2024 trường chuyên Lê Quý Đôn – BR VT</b></td>
+      <td>Năm học 2023 - 2024</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>BR VT</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_thi_Olympic_3004_Toán_11_lần_28_năm_2024_trường_chuyên_Lê_Quý_Đôn_–_BR_VT.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">49</td>
+      <td><b>Đề thi Olympic Toán 11 năm 2023 – 2024 cụm Hoàn Kiếm & Hai Bà Trưng – Hà Nội</b></td>
+      <td>Năm học 2023 - 2024</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_cụm_Hoàn_Kiếm_&_Hai_Bà_Trưng_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">50</td>
+      <td><b>Đề thi Olympic Toán 11 năm 2023 – 2024 cụm Hà Đông & Hoài Đức – Hà Nội</b></td>
+      <td>Năm học 2023 - 2024</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_cụm_Hà_Đông_&_Hoài_Đức_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">51</td>
+      <td><b>Đề thi Olympic Toán 11 năm 2023 – 2024 liên cụm trường THPT – Hà Nội</b></td>
+      <td>Năm học 2023 - 2024</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_liên_cụm_trường_THPT_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">52</td>
+      <td><b>Đề thi thử HSG tỉnh Toán 11 năm 2023 – 2024 trường THPT Trần Văn Lan – Nam Định</b></td>
+      <td>Năm học 2023 - 2024</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Nam Định</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_thi_thử_HSG_tỉnh_Toán_11_năm_2023_–_2024_trường_THPT_Trần_Văn_Lan_–_Nam_Định.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">53</td>
+      <td><b>Đề chọn đội tuyển Toán 11 năm 2022 – 2023 trường THPT Chu Văn An – Hà Nội</b></td>
+      <td>Năm học 2022 - 2023</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_chọn_đội_tuyển_Toán_11_năm_2022_–_2023_trường_THPT_Chu_Văn_An_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">54</td>
+      <td><b>Đề học sinh giỏi Toán 11 chuyên năm 2022 – 2023 sở GD&ĐT Vĩnh Phúc</b></td>
+      <td>Năm học 2022 - 2023</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Vĩnh Phúc</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_học_sinh_giỏi_Toán_11_chuyên_năm_2022_–_2023_sở_GD&ĐT_Vĩnh_Phúc.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">55</td>
+      <td><b>Đề học sinh giỏi Toán 11 cấp tỉnh năm 2022 – 2023 sở GD&ĐT Bình Định</b></td>
+      <td>Năm học 2022 - 2023</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Bình Định</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2022_–_2023_sở_GD&ĐT_Bình_Định.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">56</td>
+      <td><b>Đề học sinh giỏi Toán 11 cấp tỉnh năm 2022 – 2023 sở GD&ĐT Hà Nam</b></td>
+      <td>Năm học 2022 - 2023</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Hà Nam</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2022_–_2023_sở_GD&ĐT_Hà_Nam.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">57</td>
+      <td><b>Đề học sinh giỏi Toán 11 năm 2022 – 2023 trường THPT Bình Chiểu – TP HCM</b></td>
+      <td>Năm học 2022 - 2023</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>TP HCM</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_học_sinh_giỏi_Toán_11_năm_2022_–_2023_trường_THPT_Bình_Chiểu_–_TP_HCM.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">58</td>
+      <td><b>Đề học sinh giỏi Toán 11 năm 2022 – 2023 trường THPT Phùng Khắc Khoan – Hà Nội</b></td>
+      <td>Năm học 2022 - 2023</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_học_sinh_giỏi_Toán_11_năm_2022_–_2023_trường_THPT_Phùng_Khắc_Khoan_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">59</td>
+      <td><b>Đề học sinh giỏi Toán 11 năm 2022 – 2023 trường THPT Thị xã Quảng Trị</b></td>
+      <td>Năm học 2022 - 2023</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Quảng Trị</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_học_sinh_giỏi_Toán_11_năm_2022_–_2023_trường_THPT_Thị_xã_Quảng_Trị.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">60</td>
+      <td><b>Đề học sinh giỏi tỉnh Toán 11 chuyên đợt 2 năm 2022 – 2023 sở GD&ĐT Quảng Nam</b></td>
+      <td>Năm học 2022 - 2023</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Quảng Nam</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_học_sinh_giỏi_tỉnh_Toán_11_chuyên_đợt_2_năm_2022_–_2023_sở_GD&ĐT_Quảng_Nam.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">61</td>
+      <td><b>Đề KSCL học sinh giỏi Toán 11 lần 1 năm 2022 – 2023 trường THPT Quế Võ 1 – Bắc Ninh</b></td>
+      <td>Năm học 2022 - 2023</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Bắc Ninh</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_KSCL_học_sinh_giỏi_Toán_11_lần_1_năm_2022_–_2023_trường_THPT_Quế_Võ_1_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">62</td>
+      <td><b>Đề Olympic 30 tháng 4 Toán 11 năm 2023 trường chuyên Lê Hồng Phong – TP HCM</b></td>
+      <td>Năm học 2022 - 2023</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>TP HCM</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_Olympic_30_tháng_4_Toán_11_năm_2023_trường_chuyên_Lê_Hồng_Phong_–_TP_HCM.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">63</td>
+      <td><b>Đề thi chọn HSG Toán 11 năm 2022 – 2023 sở GD&ĐT Quảng Bình</b></td>
+      <td>Năm học 2022 - 2023</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Quảng Bình</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_thi_chọn_HSG_Toán_11_năm_2022_–_2023_sở_GD&ĐT_Quảng_Bình.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">64</td>
+      <td><b>Đề thi HSG Toán 11 năm 2022 – 2023 trường THPT Thuận Thành 1 – Bắc Ninh</b></td>
+      <td>Năm học 2022 - 2023</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Bắc Ninh</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_thi_HSG_Toán_11_năm_2022_–_2023_trường_THPT_Thuận_Thành_1_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">65</td>
+      <td><b>Đề thi học sinh giỏi tỉnh Toán 11 năm 2022 – 2023 sở GD&ĐT Hà Tĩnh</b></td>
+      <td>Năm học 2022 - 2023</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Hà Tĩnh</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2022_–_2023_sở_GD&ĐT_Hà_Tĩnh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">66</td>
+      <td><b>Đề thi Olympic Toán 11 năm 2022 – 2023 cụm các trường THPT – Hà Nội</b></td>
+      <td>Năm học 2022 - 2023</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_thi_Olympic_Toán_11_năm_2022_–_2023_cụm_các_trường_THPT_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">67</td>
+      <td><b>Đề thi chọn HSG Toán 11 năm 2021 – 2022 sở GD&ĐT Quảng Bình</b></td>
+      <td>Năm học 2021 - 2022</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Quảng Bình</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2021_2022/Đề_thi_chọn_HSG_Toán_11_năm_2021_–_2022_sở_GD&ĐT_Quảng_Bình.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">68</td>
+      <td><b>Đề thi học sinh giỏi cấp tỉnh Toán 11 năm 2021 – 2022 sở GD&ĐT Bình Định</b></td>
+      <td>Năm học 2021 - 2022</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Bình Định</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2021_2022/Đề_thi_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2021_–_2022_sở_GD&ĐT_Bình_Định.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">69</td>
+      <td><b>Đề thi học sinh giỏi cấp tỉnh Toán 11 năm 2021 – 2022 sở GD&ĐT Lạng Sơn</b></td>
+      <td>Năm học 2021 - 2022</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Toàn quốc / Khác</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2021_2022/Đề_thi_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2021_–_2022_sở_GD&ĐT_Lạng_Sơn.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">70</td>
+      <td><b>Đề thi học sinh giỏi Toán 11 năm 2021 – 2022 cụm trường THPT – Hà Nội</b></td>
+      <td>Năm học 2021 - 2022</td>
+      <td><span class="badge badge-cum">Cụm trường</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2021_2022/Đề_thi_học_sinh_giỏi_Toán_11_năm_2021_–_2022_cụm_trường_THPT_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">71</td>
+      <td><b>Đề thi học sinh giỏi tỉnh Toán 11 năm 2021 – 2022 sở GD&ĐT Hà Tĩnh</b></td>
+      <td>Năm học 2021 - 2022</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Hà Tĩnh</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2021_2022/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2021_–_2022_sở_GD&ĐT_Hà_Tĩnh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">72</td>
+      <td><b>Đề chọn HSG Toán 11 vòng 1 năm 2020 – 2021 trường THPT Trần Nguyên Hãn – Hải Phòng</b></td>
+      <td>Năm học 2020 - 2021</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Hải Phòng</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_chọn_HSG_Toán_11_vòng_1_năm_2020_–_2021_trường_THPT_Trần_Nguyên_Hãn_–_Hải_Phòng.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">73</td>
+      <td><b>Đề HSG cấp trường Toán 11 năm 2020 – 2021 trường Yên Phong 2 – Bắc Ninh</b></td>
+      <td>Năm học 2020 - 2021</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Bắc Ninh</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_HSG_cấp_trường_Toán_11_năm_2020_–_2021_trường_Yên_Phong_2_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">74</td>
+      <td><b>Đề học sinh giỏi cấp tỉnh Toán 11 chuyên năm 2020 – 2021 sở GD&ĐT Lạng Sơn</b></td>
+      <td>Năm học 2020 - 2021</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Toàn quốc / Khác</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_học_sinh_giỏi_cấp_tỉnh_Toán_11_chuyên_năm_2020_–_2021_sở_GD&ĐT_Lạng_Sơn.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">75</td>
+      <td><b>Đề học sinh giỏi Toán 11 năm 2020 – 2021 trường Phùng Khắc Khoan – Hà Nội</b></td>
+      <td>Năm học 2020 - 2021</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_Phùng_Khắc_Khoan_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">76</td>
+      <td><b>Đề khảo sát học sinh giỏi Toán 11 năm 2020 – 2021 trường THPT Quế Võ 1 – Bắc Ninh</b></td>
+      <td>Năm học 2020 - 2021</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Bắc Ninh</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_khảo_sát_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_THPT_Quế_Võ_1_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">77</td>
+      <td><b>Đề Olympic 27 tháng 4 Toán 11 năm 2020 – 2021 sở GD&ĐT Bà Rịa – Vũng Tàu</b></td>
+      <td>Năm học 2020 - 2021</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Toàn quốc / Khác</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_Olympic_27_tháng_4_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Bà_Rịa_–_Vũng_Tàu.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">78</td>
+      <td><b>Đề Olympic tháng 4 Toán 11 năm 2020 – 2021 sở GD&ĐT TP Hồ Chí Minh</b></td>
+      <td>Năm học 2020 - 2021</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Toàn quốc / Khác</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_Olympic_tháng_4_Toán_11_năm_2020_–_2021_sở_GD&ĐT_TP_Hồ_Chí_Minh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">79</td>
+      <td><b>Đề thi chọn HSG Toán 11 năm 2020 – 2021 sở GD&ĐT Vĩnh Phúc</b></td>
+      <td>Năm học 2020 - 2021</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Vĩnh Phúc</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_chọn_HSG_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Vĩnh_Phúc.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">80</td>
+      <td><b>Đề thi chọn HSG Toán 11 vòng 1 năm học 2020 – 2021 sở GD&ĐT Bình Dương</b></td>
+      <td>Năm học 2020 - 2021</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Toàn quốc / Khác</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_chọn_HSG_Toán_11_vòng_1_năm_học_2020_–_2021_sở_GD&ĐT_Bình_Dương.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">81</td>
+      <td><b>Đề thi chọn HSG tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Quảng Bình (Vòng 1)</b></td>
+      <td>Năm học 2020 - 2021</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Quảng Bình</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_chọn_HSG_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Quảng_Bình_(Vòng_1).pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">82</td>
+      <td><b>Đề thi HSG cấp trường Toán 11 năm 2020 – 2021 trường Cẩm Xuyên – Hà Tĩnh</b></td>
+      <td>Năm học 2020 - 2021</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Hà Tĩnh</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_HSG_cấp_trường_Toán_11_năm_2020_–_2021_trường_Cẩm_Xuyên_–_Hà_Tĩnh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">83</td>
+      <td><b>Đề thi HSG Toán 11 cấp trường năm 2020 – 2021 trường Liễn Sơn – Vĩnh Phúc</b></td>
+      <td>Năm học 2020 - 2021</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Vĩnh Phúc</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_HSG_Toán_11_cấp_trường_năm_2020_–_2021_trường_Liễn_Sơn_–_Vĩnh_Phúc.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">84</td>
+      <td><b>Đề thi HSG Toán 11 năm 2020 – 2021 trường THPT Lưu Hoàng – Hà Nội</b></td>
+      <td>Năm học 2020 - 2021</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_HSG_Toán_11_năm_2020_–_2021_trường_THPT_Lưu_Hoàng_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">85</td>
+      <td><b>Đề thi học sinh giỏi cấp tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Bình Định</b></td>
+      <td>Năm học 2020 - 2021</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Bình Định</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Bình_Định.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">86</td>
+      <td><b>Đề thi học sinh giỏi Toán 11 cấp tỉnh năm 2020 – 2021 sở GD&ĐT Cà Mau</b></td>
+      <td>Năm học 2020 - 2021</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Toàn quốc / Khác</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2020_–_2021_sở_GD&ĐT_Cà_Mau.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">87</td>
+      <td><b>Đề thi học sinh giỏi Toán 11 năm 2020 – 2021 trường THPT Đông Hà – Quảng Trị</b></td>
+      <td>Năm học 2020 - 2021</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Quảng Trị</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_THPT_Đông_Hà_–_Quảng_Trị.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">88</td>
+      <td><b>Đề thi học sinh giỏi tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Bắc Ninh</b></td>
+      <td>Năm học 2020 - 2021</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Bắc Ninh</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">89</td>
+      <td><b>Đề thi học sinh giỏi tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Hà Tĩnh</b></td>
+      <td>Năm học 2020 - 2021</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Hà Tĩnh</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Hà_Tĩnh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">90</td>
+      <td><b>Đề thi học sinh giỏi tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Quảng Ngãi</b></td>
+      <td>Năm học 2020 - 2021</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Quảng Ngãi</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Quảng_Ngãi.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">91</td>
+      <td><b>Đề thi Olympic 243 Toán 11 năm 2021 sở GD&ĐT Quảng Nam</b></td>
+      <td>Năm học 2020 - 2021</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Quảng Nam</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_Olympic_243_Toán_11_năm_2021_sở_GD&ĐT_Quảng_Nam.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">92</td>
+      <td><b>Đề chọn HSG Toán 11 cấp trường năm 2019 – 2020 trường THPT chuyên Vĩnh Phúc</b></td>
+      <td>Năm học 2019 - 2020</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Vĩnh Phúc</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2019_2020/Đề_chọn_HSG_Toán_11_cấp_trường_năm_2019_–_2020_trường_THPT_chuyên_Vĩnh_Phúc.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">93</td>
+      <td><b>Đề giao lưu HSG Toán 11 cấp tỉnh năm 2019 – 2020 cụm Gia Bình – Lương Tài – Bắc Ninh</b></td>
+      <td>Năm học 2019 - 2020</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Bắc Ninh</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2019_2020/Đề_giao_lưu_HSG_Toán_11_cấp_tỉnh_năm_2019_–_2020_cụm_Gia_Bình_–_Lương_Tài_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">94</td>
+      <td><b>Đề giao lưu HSG tỉnh Toán 11 năm 2019 – 2020 trường Bá Thước – Thanh Hóa</b></td>
+      <td>Năm học 2019 - 2020</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Thanh Hóa</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2019_2020/Đề_giao_lưu_HSG_tỉnh_Toán_11_năm_2019_–_2020_trường_Bá_Thước_–_Thanh_Hóa.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">95</td>
+      <td><b>Đề khảo sát HSG Toán 11 lần 1 năm 2019 – 2020 trường Hậu Lộc 4 – Thanh Hóa</b></td>
+      <td>Năm học 2019 - 2020</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Thanh Hóa</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2019_2020/Đề_khảo_sát_HSG_Toán_11_lần_1_năm_2019_–_2020_trường_Hậu_Lộc_4_–_Thanh_Hóa.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">96</td>
+      <td><b>Đề thi chọn HSG Toán 11 năm 2019 – 2020 trường chuyên Lê Quý Đôn – BR VT</b></td>
+      <td>Năm học 2019 - 2020</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>BR VT</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2019_2020/Đề_thi_chọn_HSG_Toán_11_năm_2019_–_2020_trường_chuyên_Lê_Quý_Đôn_–_BR_VT.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">97</td>
+      <td><b>Đề thi chọn học sinh giỏi Toán 11 năm 2019 – 2020 sở GD&ĐT Thái Nguyên</b></td>
+      <td>Năm học 2019 - 2020</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Thái Nguyên</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2019_2020/Đề_thi_chọn_học_sinh_giỏi_Toán_11_năm_2019_–_2020_sở_GD&ĐT_Thái_Nguyên.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">98</td>
+      <td><b>Đề thi HSG Toán 11 năm 2019 – 2020 trường Nguyễn Quán Nho – Thanh Hóa</b></td>
+      <td>Năm học 2019 - 2020</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Thanh Hóa</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2019_2020/Đề_thi_HSG_Toán_11_năm_2019_–_2020_trường_Nguyễn_Quán_Nho_–_Thanh_Hóa.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">99</td>
+      <td><b>Đề thi HSG Toán 11 năm 2019 – 2020 trường THPT Nguyễn Xuân Ôn – Nghệ An</b></td>
+      <td>Năm học 2019 - 2020</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Nghệ An</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2019_2020/Đề_thi_HSG_Toán_11_năm_2019_–_2020_trường_THPT_Nguyễn_Xuân_Ôn_–_Nghệ_An.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">100</td>
+      <td><b>Đề thi học sinh giỏi cấp tỉnh Toán 11 năm 2019 – 2020 sở GD&ĐT Bình Định</b></td>
+      <td>Năm học 2019 - 2020</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Bình Định</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2019_2020/Đề_thi_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2019_–_2020_sở_GD&ĐT_Bình_Định.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">101</td>
+      <td><b>Đề thi Olympic Toán 11 năm 2019 – 2020 trường Lý Thánh Tông – Hà Nội</b></td>
+      <td>Năm học 2019 - 2020</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2019_2020/Đề_thi_Olympic_Toán_11_năm_2019_–_2020_trường_Lý_Thánh_Tông_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">102</td>
+      <td><b>Đề thi Olympic Toán 11 năm học 2019 – 2020 cụm Sóc Sơn – Mê Linh – Hà Nội</b></td>
+      <td>Năm học 2019 - 2020</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2019_2020/Đề_thi_Olympic_Toán_11_năm_học_2019_–_2020_cụm_Sóc_Sơn_–_Mê_Linh_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">103</td>
+      <td><b>Đề thi thử HSG tỉnh Toán 11 năm 2019 – 2020 trường Nguyễn Duy Trinh – Nghệ An</b></td>
+      <td>Năm học 2019 - 2020</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Nghệ An</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2019_2020/Đề_thi_thử_HSG_tỉnh_Toán_11_năm_2019_–_2020_trường_Nguyễn_Duy_Trinh_–_Nghệ_An.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">104</td>
+      <td><b>Đề học sinh giỏi Toán 11 cấp trường năm 2018 – 2019 trường Lưu Hoàng – Hà Nội</b></td>
+      <td>Năm học 2018 - 2019</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_học_sinh_giỏi_Toán_11_cấp_trường_năm_2018_–_2019_trường_Lưu_Hoàng_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">105</td>
+      <td><b>Đề Olympic Toán 11 năm 2019 cụm trường THPT Hà Đông – Hoài Đức – Hà Nội</b></td>
+      <td>Năm học 2018 - 2019</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_Olympic_Toán_11_năm_2019_cụm_trường_THPT_Hà_Đông_–_Hoài_Đức_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">106</td>
+      <td><b>Đề thi chọn HSG cấp tỉnh Toán 11 năm 2018 – 2019 sở GD&ĐT Bắc Ninh</b></td>
+      <td>Năm học 2018 - 2019</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Bắc Ninh</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_chọn_HSG_cấp_tỉnh_Toán_11_năm_2018_–_2019_sở_GD&ĐT_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">107</td>
+      <td><b>Đề thi chọn HSG Toán 11 năm 2018 – 2019 trường THPT Thị xã Quảng Trị</b></td>
+      <td>Năm học 2018 - 2019</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Quảng Trị</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_chọn_HSG_Toán_11_năm_2018_–_2019_trường_THPT_Thị_xã_Quảng_Trị.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">108</td>
+      <td><b>Đề thi chọn HSG Toán 11 THPT năm học 2018 – 2019 sở GD&ĐT Vĩnh Phúc</b></td>
+      <td>Năm học 2018 - 2019</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Vĩnh Phúc</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_chọn_HSG_Toán_11_THPT_năm_học_2018_–_2019_sở_GD&ĐT_Vĩnh_Phúc.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">109</td>
+      <td><b>Đề thi chọn HSG Toán THPT cấp tỉnh năm học 2018 – 2019 sở GD&ĐT Phú Yên</b></td>
+      <td>Năm học 2018 - 2019</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Phú Yên</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_chọn_HSG_Toán_THPT_cấp_tỉnh_năm_học_2018_–_2019_sở_GD&ĐT_Phú_Yên.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">110</td>
+      <td><b>Đề thi HSG Toán 11 cấp trường năm 2018 – 2019 trường Thuận Thành 2 – Bắc Ninh</b></td>
+      <td>Năm học 2018 - 2019</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Bắc Ninh</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_HSG_Toán_11_cấp_trường_năm_2018_–_2019_trường_Thuận_Thành_2_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">111</td>
+      <td><b>Đề thi HSG Toán 11 năm 2018 – 2019 trường Phùng Khắc Khoan – Hà Nội</b></td>
+      <td>Năm học 2018 - 2019</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_HSG_Toán_11_năm_2018_–_2019_trường_Phùng_Khắc_Khoan_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">112</td>
+      <td><b>Đề thi HSG tỉnh Toán 11 THPT năm 2018 – 2019 sở GD&ĐT Nghệ An (Bảng A)</b></td>
+      <td>Năm học 2018 - 2019</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Nghệ An</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_HSG_tỉnh_Toán_11_THPT_năm_2018_–_2019_sở_GD&ĐT_Nghệ_An_(Bảng_A).pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">113</td>
+      <td><b>Đề thi học sinh giỏi cấp tỉnh Toán 11 năm 2018 – 2019 sở GD&ĐT Quảng Ngãi</b></td>
+      <td>Năm học 2018 - 2019</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Quảng Ngãi</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2018_–_2019_sở_GD&ĐT_Quảng_Ngãi.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">114</td>
+      <td><b>Đề thi học sinh giỏi cấp tỉnh Toán 11 năm 2018 – 2019 sở GD&ĐT Vĩnh Long</b></td>
+      <td>Năm học 2018 - 2019</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Toàn quốc / Khác</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2018_–_2019_sở_GD&ĐT_Vĩnh_Long.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">115</td>
+      <td><b>Đề thi học sinh giỏi cấp tỉnh Toán 11 THPT năm 2018 – 2019 sở GD&ĐT Thanh Hóa</b></td>
+      <td>Năm học 2018 - 2019</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Thanh Hóa</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_học_sinh_giỏi_cấp_tỉnh_Toán_11_THPT_năm_2018_–_2019_sở_GD&ĐT_Thanh_Hóa.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">116</td>
+      <td><b>Đề thi học sinh giỏi Toán 11 THPT năm 2018 – 2019 sở GD&ĐT Hà Nam</b></td>
+      <td>Năm học 2018 - 2019</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Hà Nam</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_học_sinh_giỏi_Toán_11_THPT_năm_2018_–_2019_sở_GD&ĐT_Hà_Nam.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">117</td>
+      <td><b>Đề thi Olympic 103 Toán 11 năm 2019 lần 4 trường chuyên Nguyễn Du – Đăk Lăk</b></td>
+      <td>Năm học 2018 - 2019</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Toàn quốc / Khác</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_Olympic_103_Toán_11_năm_2019_lần_4_trường_chuyên_Nguyễn_Du_–_Đăk_Lăk.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">118</td>
+      <td><b>Đề KSCL đội tuyển HSG Toán 11 năm 2017 – 2018 trường Minh Châu – Hưng Yên</b></td>
+      <td>Năm học 2017 - 2018</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Hưng Yên</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2017_2018/Đề_KSCL_đội_tuyển_HSG_Toán_11_năm_2017_–_2018_trường_Minh_Châu_–_Hưng_Yên.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">119</td>
+      <td><b>Đề KSCL đội tuyển HSG Toán 11 năm 2017 – 2018 trường THPT Yên Lạc 2 – Vĩnh Phúc</b></td>
+      <td>Năm học 2017 - 2018</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Vĩnh Phúc</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2017_2018/Đề_KSCL_đội_tuyển_HSG_Toán_11_năm_2017_–_2018_trường_THPT_Yên_Lạc_2_–_Vĩnh_Phúc.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">120</td>
+      <td><b>Đề thi chọn HSG Toán 11 cấp trường năm 2017 – 2018 trường Lê Văn Thịnh – Bắc Ninh</b></td>
+      <td>Năm học 2017 - 2018</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Bắc Ninh</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2017_2018/Đề_thi_chọn_HSG_Toán_11_cấp_trường_năm_2017_–_2018_trường_Lê_Văn_Thịnh_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">121</td>
+      <td><b>Đề thi chọn HSG Toán 11 cấp trường năm 2017 – 2018 trường Lý Thái Tổ – Bắc Ninh</b></td>
+      <td>Năm học 2017 - 2018</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Bắc Ninh</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2017_2018/Đề_thi_chọn_HSG_Toán_11_cấp_trường_năm_2017_–_2018_trường_Lý_Thái_Tổ_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">122</td>
+      <td><b>Đề thi chọn HSG tỉnh Toán 11 năm học 2017 – 2018 sở GD và ĐT Hà Tĩnh</b></td>
+      <td>Năm học 2017 - 2018</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Hà Tĩnh</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2017_2018/Đề_thi_chọn_HSG_tỉnh_Toán_11_năm_học_2017_–_2018_sở_GD_và_ĐT_Hà_Tĩnh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">123</td>
+      <td><b>Đề thi chọn HSG tỉnh Toán 11 THPT năm 2017 – 2018 sở GD và ĐT Nghệ An (Bảng A)</b></td>
+      <td>Năm học 2017 - 2018</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Nghệ An</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2017_2018/Đề_thi_chọn_HSG_tỉnh_Toán_11_THPT_năm_2017_–_2018_sở_GD_và_ĐT_Nghệ_An_(Bảng_A).pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">124</td>
+      <td><b>Đề thi học sinh giỏi Toán 11 cấp tỉnh năm 2017 – 2018 sở GD&ĐT Lai Châu</b></td>
+      <td>Năm học 2017 - 2018</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Lai Châu</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2017_2018/Đề_thi_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2017_–_2018_sở_GD&ĐT_Lai_Châu.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">125</td>
+      <td><b>Đề thi Olympic Toán 11 năm 2017 – 2018 cụm trường Thanh Xuân & Cầu Giấy – Hà Nội</b></td>
+      <td>Năm học 2017 - 2018</td>
+      <td><span class="badge badge-olympic">Olympic / Chuyên đỉnh cao</span></td>
+      <td>Hà Nội</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2017_2018/Đề_thi_Olympic_Toán_11_năm_2017_–_2018_cụm_trường_Thanh_Xuân_&_Cầu_Giấy_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">126</td>
+      <td><b>Đề kiểm tra chất lượng đội tuyển HSG Toán 11 năm học 2016 – 2017 trường Lê Lợi – Thanh Hóa lần 1</b></td>
+      <td>Năm học 2016 - 2017</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>Thanh Hóa</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2016_2017/Đề_kiểm_tra_chất_lượng_đội_tuyển_HSG_Toán_11_năm_học_2016_–_2017_trường_Lê_Lợi_–_Thanh_Hóa_lần_1.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">127</td>
+      <td><b>Đề thi chọn học sinh giỏi tỉnh môn Toán 11 năm học 2016 – 2017 sở GD và ĐT Hà Tĩnh</b></td>
+      <td>Năm học 2016 - 2017</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Hà Tĩnh</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2016_2017/Đề_thi_chọn_học_sinh_giỏi_tỉnh_môn_Toán_11_năm_học_2016_–_2017_sở_GD_và_ĐT_Hà_Tĩnh.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">128</td>
+      <td><b>Đề thi học sinh giỏi Toán 11 cấp tỉnh năm 2016 – 2017 sở GD&ĐT Lai Châu</b></td>
+      <td>Năm học 2016 - 2017</td>
+      <td><span class="badge badge-tinh">Cấp Tỉnh / Sở GD&ĐT</span></td>
+      <td>Lai Châu</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2016_2017/Đề_thi_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2016_–_2017_sở_GD&ĐT_Lai_Châu.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">129</td>
+      <td><b>Đề thi KSCL học sinh giỏi Toán 11 năm học 2016 – 2017 cụm thi THPT Yên Thành – Nghệ An</b></td>
+      <td>Năm học 2016 - 2017</td>
+      <td><span class="badge badge-cum">Cụm trường</span></td>
+      <td>Nghệ An</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2016_2017/Đề_thi_KSCL_học_sinh_giỏi_Toán_11_năm_học_2016_–_2017_cụm_thi_THPT_Yên_Thành_–_Nghệ_An.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; color: #888;">130</td>
+      <td><b>Đề thi học sinh giỏi Toán 11 năm 2012 – 2013 trường THPT Thuận An – TT Huế</b></td>
+      <td>Năm học 2012 - 2013</td>
+      <td><span class="badge badge-truong">Cấp Trường</span></td>
+      <td>TT Huế</td>
+      <td><a class="btn-open" href="downloads_hsg_toan11_tu_luan/Nam_hoc_2012_2013/Đề_thi_học_sinh_giỏi_Toán_11_năm_2012_–_2013_trường_THPT_Thuận_An_–_TT_Huế.pdf" target="_blank">📄 Mở PDF</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+function filterTable() {
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  const year = document.getElementById('yearFilter').value;
+  const level = document.getElementById('levelFilter').value;
+  const table = document.getElementById('examTable');
+  const rows = table.getElementsByTagName('tr');
+  let visibleCount = 0;
+
+  for (let i = 1; i < rows.length; i++) {
+    const title = rows[i].cells[1].innerText.toLowerCase();
+    const rowYear = rows[i].cells[2].innerText;
+    const rowLevel = rows[i].cells[3].innerText;
+    const province = rows[i].cells[4].innerText.toLowerCase();
+
+    const matchSearch = title.includes(search) || province.includes(search);
+    const matchYear = !year || rowYear.includes(year);
+    const matchLevel = !level || rowLevel.includes(level);
+
+    if (matchSearch && matchYear && matchLevel) {
+      rows[i].style.display = '';
+      visibleCount++;
+    } else {
+      rows[i].style.display = 'none';
+    }
+  }
+
+  document.getElementById('resultCount').innerHTML = `Hiển thị: <b>${visibleCount}/130</b> đề`;
+}
+</script>
+
+</body>
+</html>

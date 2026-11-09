@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHUYÊN ĐỀ 3: TỔ HỢP, XÁC SUẤT & NHỊ THỨC NEWTON HSG TOÁN 11</title>
+
+<style>
+  :root {
+    --primary: #1a365d;
+    --primary-light: #2b6cb0;
+    --bg: #f7fafc;
+    --card-bg: #ffffff;
+    --text: #2d3748;
+    --border: #e2e8f0;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 20px 40px;
+    line-height: 1.6;
+  }
+  .top-banner {
+    background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 100%);
+    color: white;
+    padding: 26px 32px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+  .top-banner h1 { margin: 0 0 8px 0; font-size: 22px; }
+  .top-banner p { margin: 0; opacity: 0.92; font-size: 14.5px; }
+  .tabs { display: flex; gap: 12px; margin-bottom: 25px; }
+  .tab-btn {
+    padding: 10px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: white;
+    color: #4a5568;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    transition: all 0.2s;
+  }
+  .tab-btn.active {
+    background: #2b6cb0;
+    color: white;
+    box-shadow: 0 3px 8px rgba(43,108,176,0.3);
+  }
+  .section-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: #1a365d;
+    margin: 25px 0 15px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #cbd5e0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    border-bottom: 1px dashed var(--border);
+    padding-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .q-badge {
+    background: #ebf8ff;
+    color: #2b6cb0;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 13.5px;
+  }
+  .q-source {
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 13.5px;
+  }
+  .actions {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+  }
+  .btn-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-pdf { background: #e2e8f0; color: #2d3748; }
+  .btn-pdf:hover { background: #cbd5e0; }
+  .btn-preview { background: #3182ce; color: white; }
+  .btn-preview:hover { background: #2b6cb0; }
+  .btn-copy { background: #edf2f7; color: #4a5568; }
+  .btn-copy:hover { background: #e2e8f0; }
+  .math-box {
+    background: #f8fafc;
+    border-left: 4px solid #3182ce;
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+    font-size: 15.5px;
+  }
+  .raw-box {
+    background: #fdfdfd;
+    border-left: 3px solid #3182ce;
+    padding: 12px 16px;
+    font-family: 'Consolas', monospace;
+    font-size: 13.5px;
+    white-space: pre-wrap;
+    color: #333;
+    margin-top: 10px;
+  }
+  details.preview-collapse {
+    margin-top: 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  details.preview-collapse summary {
+    background: #edf2f7;
+    padding: 10px 16px;
+    font-weight: 600;
+    font-size: 13.5px;
+    cursor: pointer;
+    user-select: none;
+    color: #2b6cb0;
+  }
+  details.preview-collapse summary:hover { background: #e2e8f0; }
+  details.preview-collapse .preview-content {
+    padding: 15px;
+    background: #fff;
+    text-align: center;
+  }
+  details.preview-collapse img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.75);
+    overflow: auto;
+  }
+  .modal-content {
+    background: white;
+    margin: 3% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 1000px;
+    position: relative;
+  }
+  .close-modal {
+    position: absolute;
+    right: 20px; top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #a0aec0;
+    cursor: pointer;
+  }
+  .close-modal:hover { color: #e53e3e; }
+  .modal img { width: 100%; height: auto; border-radius: 6px; }
+  .floating-print {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    padding: 12px 20px;
+    background: #38a169;
+    color: white;
+    font-weight: bold;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(56,161,105,0.4);
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    z-index: 100;
+  }
+  @media print {
+    .floating-print, .actions, .tabs, .top-banner p, details.preview-collapse { display: none !important; }
+    body { padding: 0; background: white; }
+    .card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+  }
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<button class="floating-print" onclick="window.print()">🖨️ In Tuyển Tập Đề</button>
+
+<div class="top-banner">
+  <h1>📚 CHUYÊN ĐỀ 3: TỔ HỢP, XÁC SUẤT & NHỊ THỨC NEWTON HSG TOÁN 11</h1>
+  <p>Tuyển tập câu hỏi Tự luận Tổ hợp, Xác suất, Nhị thức Newton từ các kỳ thi HSG Toán 11 (2012 – 2026).</p>
+  <p style="margin-top: 8px; font-size: 13.5px; opacity: 0.85;">💡 <i>Mỗi câu hỏi đều tích hợp <b>"Xem nhanh trang đề thi gốc"</b> hoặc <b>"Phóng to đề gốc"</b> để xem hình vẽ, sơ đồ và công thức nguyên bản sắc nét 100%.</i></p>
+</div>
+
+
+            <div class="cards-container">
+              
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 1</span>
+                <span class="q-source">🏷️ Đề KSCL đội tuyển HSG Toán 11 năm 2017 – 2018 trường THPT Yên Lạc 2 – Vĩnh Phúc (Năm học 2017 - 2018)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_KSCL_đội_tuyển_HSG_Toán_11_năm_2017_–_2018_trường_THPT_Yên_Lạc_2_–_Vĩnh_Phúc_trang1.png', 'Đề KSCL đội tuyển HSG Toán 11 năm 2017 – 2018 trường THPT Yên Lạc 2 – Vĩnh Phúc')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2017_2018/Đề_KSCL_đội_tuyển_HSG_Toán_11_năm_2017_–_2018_trường_THPT_Yên_Lạc_2_–_Vĩnh_Phúc.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4 (1,0 điểm). Cho hình đa giác đ ều 
+H  có 24 đỉnh, chọn ngẫu nhiên 4 đỉnh của hình 
+.H  Tính 
+xác suất để 4 đỉnh chọn được tạo thành một hình chữ nhật không phải là hình vuông?</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_KSCL_đội_tuyển_HSG_Toán_11_năm_2017_–_2018_trường_THPT_Yên_Lạc_2_–_Vĩnh_Phúc_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 2</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG tỉnh Toán 11 THPT năm 2017 – 2018 sở GD và ĐT Nghệ An (Bảng A) (Năm học 2017 - 2018)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_tỉnh_Toán_11_THPT_năm_2017_–_2018_sở_GD_và_ĐT_Nghệ_An_(Bảng_A)_trang1.png', 'Đề thi chọn HSG tỉnh Toán 11 THPT năm 2017 – 2018 sở GD và ĐT Nghệ An (Bảng A)')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2017_2018/Đề_thi_chọn_HSG_tỉnh_Toán_11_THPT_năm_2017_–_2018_sở_GD_và_ĐT_Nghệ_An_(Bảng_A).pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2 (2,0 điểm).  
+Một hộp chứa 17 quả cầu đánh số từ 1 đến 17. Lấy ngẫu nhiên đồng thời 3 quả 
+cầu. Tính xác suất sao cho tổng các số ghi trên 3 quả cầu đó là một số chẵn.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_tỉnh_Toán_11_THPT_năm_2017_–_2018_sở_GD_và_ĐT_Nghệ_An_(Bảng_A)_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 3</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 cấp trường năm 2018 – 2019 trường Lưu Hoàng – Hà Nội (Năm học 2018 - 2019)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_cấp_trường_năm_2018_–_2019_trường_Lưu_Hoàng_–_Hà_Nội_trang1.png', 'Đề học sinh giỏi Toán 11 cấp trường năm 2018 – 2019 trường Lưu Hoàng – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_học_sinh_giỏi_Toán_11_cấp_trường_năm_2018_–_2019_trường_Lưu_Hoàng_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3 (5,0 điểm). 
+a) Giải hệ phương trình: 
+2 2
+2 2
+3 4 1
+3 2 9 8 3
+x y x y
+x y x y
+          
+b) Một người bỏ ngẫu nhiên 4 lá thư và 4 chiếc phong bì thư đã để sẵn địa chỉ. Tính 
+xác suất để có ít nhất một lá thư bỏ đúng địa chỉ.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_cấp_trường_năm_2018_–_2019_trường_Lưu_Hoàng_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 4</span>
+                <span class="q-source">🏷️ Đề thi HSG Toán 11 cấp trường năm 2018 – 2019 trường Thuận Thành 2 – Bắc Ninh (Năm học 2018 - 2019)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_HSG_Toán_11_cấp_trường_năm_2018_–_2019_trường_Thuận_Thành_2_–_Bắc_Ninh_trang1.png', 'Đề thi HSG Toán 11 cấp trường năm 2018 – 2019 trường Thuận Thành 2 – Bắc Ninh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_HSG_Toán_11_cấp_trường_năm_2018_–_2019_trường_Thuận_Thành_2_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 
+II 
+(5,0 đi
+ểm)
+.
+ 
+1.
+ 
+Tính t
+ổng 
+2 3 4 n
+n n n n
+S 2.1C 3.2C 4.3C ... n(n 1)C
+     
+  
+ 
+2.
+Ch
+ọn ngẫu nhiên một số tự nhiên có sáu chữ số khác nhau. Tính xác suất 
+đ
+ể chọn 
+đư
+ợc một số có 3 
+ch
+ữ số chẵn và 3 chữ số lẻ.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_HSG_Toán_11_cấp_trường_năm_2018_–_2019_trường_Thuận_Thành_2_–_Bắc_Ninh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 5</span>
+                <span class="q-source">🏷️ Đề thi HSG Toán 11 năm 2018 – 2019 trường Phùng Khắc Khoan – Hà Nội (Năm học 2018 - 2019)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2018_–_2019_trường_Phùng_Khắc_Khoan_–_Hà_Nội_trang1.png', 'Đề thi HSG Toán 11 năm 2018 – 2019 trường Phùng Khắc Khoan – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2018_2019/Đề_thi_HSG_Toán_11_năm_2018_–_2019_trường_Phùng_Khắc_Khoan_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2 ( 6 điểm) 
+1 - Cho n là số dương thỏa mãn 
+135. nnnCC   
+ Tìm số hạng chứa 
+5x  trong khai triển nhị thức Newton   
+2 1
+14
+n
+nxP x . 
+2 - Một tổ gồm 
+9  em, trong đó có 
+3  nữ được chia thành 
+3  nhóm đều nhau. Tính xác xu ất để mỗi 
+nhóm có một nữ. 
+3 - An và Bình thi đấu với nhau một trận bóng bàn có tối đa 5 séc , người nào thắng trước 3 séc sẽ 
+giành chiến thắng chung cuộc. Xác suất An thắng mỗi séc là 
+0, 4  (không có hòa). Tính xác suất để  
+An thắng chung cuộc .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2018_–_2019_trường_Phùng_Khắc_Khoan_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 6</span>
+                <span class="q-source">🏷️ Đề giao lưu HSG tỉnh Toán 11 năm 2019 – 2020 trường Bá Thước – Thanh Hóa (Năm học 2019 - 2020)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_giao_lưu_HSG_tỉnh_Toán_11_năm_2019_–_2020_trường_Bá_Thước_–_Thanh_Hóa_trang1.png', 'Đề giao lưu HSG tỉnh Toán 11 năm 2019 – 2020 trường Bá Thước – Thanh Hóa')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2019_2020/Đề_giao_lưu_HSG_tỉnh_Toán_11_năm_2019_–_2020_trường_Bá_Thước_–_Thanh_Hóa.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu III (4.0 điểm). 
+         1. Cho ,,xyz  là các số thực dương thay đổi thỏa mãn điều kiện xyz x z y++= . Tìm giá trị 
+lớn nhất của biểu thức: 22 2 22
+224 3
+11 1 ( 1) 1
+zzP xy z zz=−− +++ + ++ . 
+ 2. Cho dãy số ( )nu  thỏa mãn điều kiện 1 2u =   và 2123 ... , 1,2,...nnu u u u nu n+ + + + = ∀=   
+Tìm công thức số hạng tổng quát nu  của dãy số ( )nu .  Câu IV (4.0 điểm). 
+ 1. Một hộp đựng 50 chiếc thẻ được đánh số từ 1 đến 50. Chọn ngẫu nhiên từ hộp hai thẻ. 
+Tính xác suất để hiệu bình phương số ghi trên hai thẻ là số chia hết cho 3. 
+2. Trong mặt phẳng với hệ tọa độ Oxy , cho tam giác ABC   cân tại A, M  là trung  điểm  
+của AB . Đường thẳng : 2 70CM x y− +=   và 47;32K   là trọng tâm tam giác ACM . Đường 
+thẳng AB  đi qua điểm ( )3; 1D − . Tìm tọa độ các đỉnh của tam giác ABC , biết điểm M  có hoành 
+độ nguyên và tâm đường tròn ngoại tiếp tam giác ABC  thuộc đường thẳng 6 26 0.xy+−=</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_giao_lưu_HSG_tỉnh_Toán_11_năm_2019_–_2020_trường_Bá_Thước_–_Thanh_Hóa_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 7</span>
+                <span class="q-source">🏷️ Đề thi HSG Toán 11 năm 2019 – 2020 trường THPT Nguyễn Xuân Ôn – Nghệ An (Năm học 2019 - 2020)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2019_–_2020_trường_THPT_Nguyễn_Xuân_Ôn_–_Nghệ_An_trang1.png', 'Đề thi HSG Toán 11 năm 2019 – 2020 trường THPT Nguyễn Xuân Ôn – Nghệ An')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2019_2020/Đề_thi_HSG_Toán_11_năm_2019_–_2020_trường_THPT_Nguyễn_Xuân_Ôn_–_Nghệ_An.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2 (5,0 điểm)  
+ a) Gọi S là tập tất cả các số tự nhiên có tám chữ số đôi một khác nhau. Chọn ngẫu 
+nhiên một số trong tập S. Tính xác suất để số được chọn chia hết cho 45. 
+ b) Cho dãy số (uR
+n
+R)  xác định bởi ( )
+1
+32
+1
+2
+( 1) 3 2 2 1, *nn
+u
+nuu n n n nNn+
+= += + + ++ ∈  
+Tìm số hạng tổng quát của dãy số (uR
+n
+R).</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2019_–_2020_trường_THPT_Nguyễn_Xuân_Ôn_–_Nghệ_An_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 8</span>
+                <span class="q-source">🏷️ Đề thi Olympic Toán 11 năm 2019 – 2020 trường Lý Thánh Tông – Hà Nội (Năm học 2019 - 2020)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2019_–_2020_trường_Lý_Thánh_Tông_–_Hà_Nội_trang1.png', 'Đề thi Olympic Toán 11 năm 2019 – 2020 trường Lý Thánh Tông – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2019_2020/Đề_thi_Olympic_Toán_11_năm_2019_–_2020_trường_Lý_Thánh_Tông_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 5. (3,0 điểm).  
+a)Trong một chiếc hộp đồ chơi có 25 quả bóng nhỏ được đánh số từ 1 đến 25. Một em
+bé khi chơi đã lấy ngẫu nhiên ra 2 quả. Tính xác suất để em bé đó chọn được 2 quả có tổng 
+số ghi trên 2 quả đó là một số lẻ ? 
+b) Xác suất bắn trúng mục tiêu của một vận động viên khi bắn một viên đạn là 0,6.
+Vận động viên đó bắn hai viên một cách độc lập. Tính xác suất để vận động viên đó bắn 
+trúng mục tiêu đúng một viên?</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2019_–_2020_trường_Lý_Thánh_Tông_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 9</span>
+                <span class="q-source">🏷️ Đề thi Olympic Toán 11 năm 2019 – 2020 trường Lý Thánh Tông – Hà Nội (Năm học 2019 - 2020)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2019_–_2020_trường_Lý_Thánh_Tông_–_Hà_Nội_trang1.png', 'Đề thi Olympic Toán 11 năm 2019 – 2020 trường Lý Thánh Tông – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2019_2020/Đề_thi_Olympic_Toán_11_năm_2019_–_2020_trường_Lý_Thánh_Tông_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4 . 
+(2,0 điểm). 
+Cho tập  A = {0,1,2,3,4,5,6,7,8}. Từ các chữ số lấy trong tập A có thể lập được bao nhiêu số 
+tự nhiên gồm 4 chữ số phân biệt ? 
+Số cần tìm có dạng 
+4 3 2 1a a a a 0,25 
+01 a
+Có 8 lựa chọn 0,25 
+2a
+có 8 lựa chọn 0,25 
+3a
+có 7 lựa chọn 0,25 
+4a
+có 6 lựa chọn 0,25 
+Theo quy tắc nhân có 8.8.7.6= 2688 số 0,75</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2019_–_2020_trường_Lý_Thánh_Tông_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 10</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 năm 2020 – 2021 trường Phùng Khắc Khoan – Hà Nội (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_Phùng_Khắc_Khoan_–_Hà_Nội_trang1.png', 'Đề học sinh giỏi Toán 11 năm 2020 – 2021 trường Phùng Khắc Khoan – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_Phùng_Khắc_Khoan_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3. (3,0  điểm)  
+a. Tìm hệ số của 
+9
+x  trong khai triển nhị thức Niu-tơn  
+15
+2 32x x −   
+b. Cho một đa giác lồi 
+()H có 30 đỉnh 
+1 2 30...A A A . Gọi 
+X là tập hợp các tam giác có 3 
+đỉnh là 3 đỉnh của 
+()H . Chọn ngẫu nhiên 2 tam giác trong 
+X . Tính xác suất để chọn được 2 
+tam giác là các tam giác có 1 cạnh là cạnh của đa giác 
+()H .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_Phùng_Khắc_Khoan_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 11</span>
+                <span class="q-source">🏷️ Đề khảo sát học sinh giỏi Toán 11 năm 2020 – 2021 trường THPT Quế Võ 1 – Bắc Ninh (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_khảo_sát_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_THPT_Quế_Võ_1_–_Bắc_Ninh_trang1.png', 'Đề khảo sát học sinh giỏi Toán 11 năm 2020 – 2021 trường THPT Quế Võ 1 – Bắc Ninh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_khảo_sát_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_THPT_Quế_Võ_1_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3 (4 điểm).  
+1. Chứng minh rằng          
+2 2 2 2 21 2 3 2021 2022 1011
+2022 2022 2022 2022 2022 2022 ... 1C C C C C C       . 
+2.Cho đa giác đều 1 2 2020...A A A  nội tiếp đường tròn tâm O , chọn ngẫu nhiên 4 đỉnh bất kỳ của đa giác đó. Tính 
+xác suất để nhận được một tứ giác có đúng một cạnh là cạnh của đa giác.  
+Hỏi gia đình anh A để tiết kiệm tiền thì nên chọn cơ sở nào để thuê, biết rằng hai cơ sở trên có chất lượng khoan là 
+như nhau.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_khảo_sát_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_THPT_Quế_Võ_1_–_Bắc_Ninh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 12</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG Toán 11 vòng 1 năm học 2020 – 2021 sở GD&ĐT Bình Dương (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_vòng_1_năm_học_2020_–_2021_sở_GD&ĐT_Bình_Dương_trang1.png', 'Đề thi chọn HSG Toán 11 vòng 1 năm học 2020 – 2021 sở GD&ĐT Bình Dương')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_chọn_HSG_Toán_11_vòng_1_năm_học_2020_–_2021_sở_GD&ĐT_Bình_Dương.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4. (4 điểm) 
+Có 5 con xúc xắc được đánh số thứ tự 1, 2, 3, 4, 5. Gieo đồng thời cả 5 xúc xắc đó. Tính xác suất để tổng của 
+5 số trên mặt xuất hiện của 5 xúc xắc bằng 14.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_vòng_1_năm_học_2020_–_2021_sở_GD&ĐT_Bình_Dương_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 13</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Quảng Bình (Vòng 1) (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Quảng_Bình_(Vòng_1)_trang1.png', 'Đề thi chọn HSG tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Quảng Bình (Vòng 1)')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_chọn_HSG_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Quảng_Bình_(Vòng_1).pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2. (2,0 điểm). 
+a. Tìm hệ số của 
+8x  trong khai triển thành đa thức của 
+ 
+231 nxx  biết 
+n  là số nguyên 
+lớn hơn 1 thỏa mãn đẳng thức 
+2 3 41.2.C 2.3. 3.4. ... ( 1). . 64. ( 1) nn n n n C C n n C n n       . 
+b. Gọi S là tập hợp tất cả các số tự nhiên có năm chữ số. Một số thuộc S được gọi là “ số 
+đẹp” nếu chữ số ở hàng trăm bằng trung bình cộng của hai chữ số ở hàng đơn vị và hàng 
+chục nghìn. Chọn ngẫu nhiên một số từ S. Tính xác suất để số được chọn là “số đẹp”.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Quảng_Bình_(Vòng_1)_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 14</span>
+                <span class="q-source">🏷️ Đề thi HSG cấp trường Toán 11 năm 2020 – 2021 trường Cẩm Xuyên – Hà Tĩnh (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_HSG_cấp_trường_Toán_11_năm_2020_–_2021_trường_Cẩm_Xuyên_–_Hà_Tĩnh_trang1.png', 'Đề thi HSG cấp trường Toán 11 năm 2020 – 2021 trường Cẩm Xuyên – Hà Tĩnh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_HSG_cấp_trường_Toán_11_năm_2020_–_2021_trường_Cẩm_Xuyên_–_Hà_Tĩnh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 6. (4.0 điểm)  
+            a) Gọi T  là tập hợp các số tự nhiên có 7 chữ số khác nhau được lập từ các chữ số 
+0,1,2,3,4,5,6,7,8 . Chọn ngẫu nhiên một số từ T , tính xác suất để số đó chia hết cho 9. 
+             b) Tính tổng: 1 1 1 1 ...2!.2019! 4!.2017! 6!.2015! 2020!S      .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_HSG_cấp_trường_Toán_11_năm_2020_–_2021_trường_Cẩm_Xuyên_–_Hà_Tĩnh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 15</span>
+                <span class="q-source">🏷️ Đề thi HSG Toán 11 cấp trường năm 2020 – 2021 trường Liễn Sơn – Vĩnh Phúc (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_HSG_Toán_11_cấp_trường_năm_2020_–_2021_trường_Liễn_Sơn_–_Vĩnh_Phúc_trang1.png', 'Đề thi HSG Toán 11 cấp trường năm 2020 – 2021 trường Liễn Sơn – Vĩnh Phúc')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_HSG_Toán_11_cấp_trường_năm_2020_–_2021_trường_Liễn_Sơn_–_Vĩnh_Phúc.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2 (2,0 điểm). Xung quanh bờ ao của gia đình bác Nam trồng 20 cây chuối. Do không còn phù hợp 
+bác muốn thay thế để trồng bưởi, lần đầu bác chặt ngẫu nhiên 4 cây. Tính xác suất để trong 4 cây bác 
+Nam chặt không có hai cây nào gần nhau.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_HSG_Toán_11_cấp_trường_năm_2020_–_2021_trường_Liễn_Sơn_–_Vĩnh_Phúc_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 16</span>
+                <span class="q-source">🏷️ Đề thi HSG Toán 11 năm 2020 – 2021 trường THPT Lưu Hoàng – Hà Nội (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2020_–_2021_trường_THPT_Lưu_Hoàng_–_Hà_Nội_trang1.png', 'Đề thi HSG Toán 11 năm 2020 – 2021 trường THPT Lưu Hoàng – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_HSG_Toán_11_năm_2020_–_2021_trường_THPT_Lưu_Hoàng_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2 (5 điểm). 
+a) Trong m ặt phẳng tọa độ Oxy. Cho hàm số 
+32
+2
+
+ xxy  có đồ thị (C). Viết 
+phương trình tiếp tuyến  với đồ thị (C), biết tiếp tuyến tạo với hai trục tọa độ một tam 
+giác vuông cân. 
+b) Cho đa giác đều 18 cạnh. Nối tất cả các đỉnh với nhau. Chọn hai tam giác  
+trong số các tam giác vuông tạo thành từ 3 đỉnh trong 18 đỉnh. Tính xác suất để chọn 
+được hai tam giác có cùng chu vi.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2020_–_2021_trường_THPT_Lưu_Hoàng_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 17</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi Toán 11 năm 2020 – 2021 trường THPT Đông Hà – Quảng Trị (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_THPT_Đông_Hà_–_Quảng_Trị_trang1.png', 'Đề thi học sinh giỏi Toán 11 năm 2020 – 2021 trường THPT Đông Hà – Quảng Trị')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_THPT_Đông_Hà_–_Quảng_Trị.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 1. (5,0 điểm).  
+1. Tìm số nguyên dương n  biết rằng: 
+         1 3 5 2 12 1 2 1 2 1 2 1 ... 1024nn n n nC C C C         . 
+2. Một trường có 50 học sinh giỏi, trong đó có 4 cặp anh em sinh đôi. Cần chọn ra 3 học 
+sinh trong số 50 học sinh để tham gia trại hè. Tính xác suất để 3 em được chọn không 
+có cặp anh em sinh đôi.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_THPT_Đông_Hà_–_Quảng_Trị_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 18</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi Toán 11 năm 2020 – 2021 trường THPT Đông Hà – Quảng Trị (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_THPT_Đông_Hà_–_Quảng_Trị_trang1.png', 'Đề thi học sinh giỏi Toán 11 năm 2020 – 2021 trường THPT Đông Hà – Quảng Trị')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_THPT_Đông_Hà_–_Quảng_Trị.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 
+1.2 
+(3 
+điểm) 
++Số cách chọn 3 học sinh bất kì từ 50 học sinh là 3 350 50 19600C C      
++Số cách chọn 3 học sinh trong đó có 1 cặp anh em sinh đôi là 4.48 
+Gọi biến cố A: “Chọn được 3 học sinh không có cặp anh em sinh đôi” 
++Ta có 350 4.48 19408A C      
++
+19408 1213( ) 19600 1225AP A     
+1 
+0,5 
+ 
+ 
+1 
+ 
+0.5</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_THPT_Đông_Hà_–_Quảng_Trị_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 19</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Hà Tĩnh (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Hà_Tĩnh_trang1.png', 'Đề thi học sinh giỏi tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Hà Tĩnh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Hà_Tĩnh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3. (2,0 điểm) 
+Một chuồng có 3 con thỏ trắng và 4 con thỏ xám. Người ta bắt ngẫu nhiên lần lượt từng con ra khỏi chuồng 
+cho đến khi bắt được cả 3 thỏ trắng thì mới dừng lại. Tính xác suất để người đó phải bắt ít nhất 5 lần.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Hà_Tĩnh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 20</span>
+                <span class="q-source">🏷️ Đề thi Olympic 243 Toán 11 năm 2021 sở GD&ĐT Quảng Nam (Năm học 2020 - 2021)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_243_Toán_11_năm_2021_sở_GD&ĐT_Quảng_Nam_trang1.png', 'Đề thi Olympic 243 Toán 11 năm 2021 sở GD&ĐT Quảng Nam')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2020_2021/Đề_thi_Olympic_243_Toán_11_năm_2021_sở_GD&ĐT_Quảng_Nam.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3 (6,0 điểm).  
+         a) Cho số nguyên dương n. Chứng minh rằng: 02 12 2 2(C ) (C ) ... (C ) Cnnnn n n+ ++ =    
+         b) Gọi X  là tập hợp tất cả các số tự nhiên có năm chữ số được lập từ các chữ số   0, 1, 2, 
+3, 4, 5. Chọn ngẫu nhiên một số từ tập X . Tính xác suất để số được chọn có đúng ba chữ số 
+giống nhau. 
+         c) Cho hàm số 
+2
+2
+3 12 khi 11()
+( 2) khi 13
+x xxfx
+ax xx
+ +− > −= − ≤ −  .     
+Tìm giá trị của tham số a để hàm số ()fx  liên tục tại 1x= .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_243_Toán_11_năm_2021_sở_GD&ĐT_Quảng_Nam_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 21</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG Toán 11 năm 2021 – 2022 sở GD&ĐT Quảng Bình (Năm học 2021 - 2022)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2021_–_2022_sở_GD&ĐT_Quảng_Bình_trang1.png', 'Đề thi chọn HSG Toán 11 năm 2021 – 2022 sở GD&ĐT Quảng Bình')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2021_2022/Đề_thi_chọn_HSG_Toán_11_năm_2021_–_2022_sở_GD&ĐT_Quảng_Bình.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 5 (1,0 điểm). Gọi 
+S  là tập hợp tất cả các số nguyên dương nhỏ hơn 1000. Một số 
+thuộc 
+S  được gọi là số “thú vị” nếu số đó là hợp số và không chia hết cho ba số 
+2; 3; 5 . 
+Chọn ngẫu nhiên một số từ 
+S , tính xác suất để số được chọn là số “thú vị”.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2021_–_2022_sở_GD&ĐT_Quảng_Bình_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 22</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 năm 2022 – 2023 trường THPT Thị xã Quảng Trị (Năm học 2022 - 2023)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2022_–_2023_trường_THPT_Thị_xã_Quảng_Trị_trang1.png', 'Đề học sinh giỏi Toán 11 năm 2022 – 2023 trường THPT Thị xã Quảng Trị')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_học_sinh_giỏi_Toán_11_năm_2022_–_2023_trường_THPT_Thị_xã_Quảng_Trị.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu I.(5,0 điểm) 1. Tìm m để hàm số sau liên tục tại 
+2x :  
+ 
+326 22
+12
+xx khi xfx x
+m khi x
+     
+ 
+ 
+2. Giải phương trình:  
+222sin 2sin tan4x x x     
+ Câu II. (7,0 điểm) 
+1. Cho hình chóp 
+.S ABCD  có đáy 
+ABCD  là hình thang cân với 
+/ / , , 2 .AD BC AB BC a AD a  
+ Tam giác 
+SAD vuông cân tại 
+S và 
+3.SB a  
+a) Gọi 
+M là trung điểm của 
+SA , chứng minh rằng 
+ //BM SCD . 
+b) Tính cosin của góc giữa hai đường thẳng 
+BM  và 
+.CD  
+c) Gọi 
+G là trọng tâm của tam giác 
+SCD , 
+H  là giao điểm của đường thẳng 
+BG và mặt phẳng 
+ SAC
+. Tính tỉ số 
+.HBHG  
+2. Trong mặt phẳng với hệ tọa độ 
+Oxy , cho hình chữ nhật 
+ABCD . Trên tia đối của tia 
+CD  
+lấy điểm 
+E  sao cho 
+CD CE , điểm 
+N  là hình chiếu vuông góc của 
+D  lên đường thẳng 
+BE
+.  
+a)  Chứng minh 
+AN CN  
+b) Tìm tọa độ điểm 
+D  biết 
+ 3;1A  , 
+ 6; 2N   và điểm 
+C  thuộc đường thẳng 
+: 2 5 0.xy   
+ 
+  Câu III. (4,0 điểm)   1. Giải hệ phương trình sau trên tập số thực 
+   
+2
+22
+4 1 3 5 2 0
+4 2 3 4 7
+x x y y
+x y x
+     
+    . 
+2. Cho bảng hình vuông (6x6) gồm 36 hình vuông đơn vị, mỗi hình   
+có diện tích bằng 1. Hỏi có bao nhiêu hình chữ nhật tạo thành từ các  
+hình vuông đơn vị của bảng. Chọn ngẫu nhiên một hình chữ nhật trên,  
+tính xác suất để hình chữ nhật chọn được có diện tích là số chẵn.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2022_–_2023_trường_THPT_Thị_xã_Quảng_Trị_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 23</span>
+                <span class="q-source">🏷️ Đề KSCL học sinh giỏi Toán 11 lần 1 năm 2022 – 2023 trường THPT Quế Võ 1 – Bắc Ninh (Năm học 2022 - 2023)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_KSCL_học_sinh_giỏi_Toán_11_lần_1_năm_2022_–_2023_trường_THPT_Quế_Võ_1_–_Bắc_Ninh_trang1.png', 'Đề KSCL học sinh giỏi Toán 11 lần 1 năm 2022 – 2023 trường THPT Quế Võ 1 – Bắc Ninh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_KSCL_học_sinh_giỏi_Toán_11_lần_1_năm_2022_–_2023_trường_THPT_Quế_Võ_1_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu IV.(4,0 điểm)  
+1. Cho 
+n  là số nguyên dương thỏa mãn 
+1 2 20
+2 1 2 1 2 1 ... 2 1+ + ++ + + = − nn n nC C C . Tìm hệ số của số hạng chứa 
+15x  
+trong khai triển thành đa thức của biểu thức 
+( )
+3
+22 1 . 2 14 − + − nx x x          
+2.  Gọi 
+X là tập hợp tất cả các số tự nhiên có 5 chữ số khác nhau được lập từ các chữ số   0, 1, 2, 3, 4, 5, 6, 
+7, 8, 9. Chọn ngẫu nhiên từ 
+X  ra một số. Tính xác suất để chọn được số không có hai chữ số chẵn đứng 
+liền kề.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_KSCL_học_sinh_giỏi_Toán_11_lần_1_năm_2022_–_2023_trường_THPT_Quế_Võ_1_–_Bắc_Ninh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 24</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG Toán 11 năm 2022 – 2023 sở GD&ĐT Quảng Bình (Năm học 2022 - 2023)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2022_–_2023_sở_GD&ĐT_Quảng_Bình_trang1.png', 'Đề thi chọn HSG Toán 11 năm 2022 – 2023 sở GD&ĐT Quảng Bình')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_thi_chọn_HSG_Toán_11_năm_2022_–_2023_sở_GD&ĐT_Quảng_Bình.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3 (1,5 điểm): 
+a. Cho  H  là một đa giác đều có 252  đường chéo. Chọn ngẫu nhiên một tam giác có ba đỉnh 
+là ba đỉnh của  H . Tính xác suất để tam giác được chọn là một tam giác vuông không cân.  
+b. Có bao nhiêu số tự nhiên có ba chữ số đôi một khác nhau đồng thời tổng lập phương của ba 
+chữ số đó chia hết cho 3.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2022_–_2023_sở_GD&ĐT_Quảng_Bình_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 25</span>
+                <span class="q-source">🏷️ Đề thi HSG Toán 11 năm 2022 – 2023 trường THPT Thuận Thành 1 – Bắc Ninh (Năm học 2022 - 2023)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2022_–_2023_trường_THPT_Thuận_Thành_1_–_Bắc_Ninh_trang1.png', 'Đề thi HSG Toán 11 năm 2022 – 2023 trường THPT Thuận Thành 1 – Bắc Ninh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_thi_HSG_Toán_11_năm_2022_–_2023_trường_THPT_Thuận_Thành_1_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 6. (1 điểm) Trò chơi quay bánh xe số trong chương trình truyền hình "Hãy chọn giá đúng" của    
+kênh VTV3 Đài truyền hình Việt Nam, bánh xe số có 20 nấc điểm: 5, 10, 15, ..., 100 với vạch chia 
+đều nhau và giả sử rằng khả năng chuyển từ nấc điểm đã có tới các nấc điểm còn lại là như nhau. 
+Trong mỗi lượt chơi có 2 người tham gia, mỗi người được quyền chọn quay 1 hoặc 2 lần, và điểm 
+số của người chơi  được tính như sau 
++ Nếu người chơi chọn quay 1 lần thì điểm của người chơi là điểm quay được. 
++ Nếu người chơi chọn quay 2 lần và tổng điểm quay được không lớn hơn 100 thì điểm của 
+người chơi là tổng điểm quay được. 
++ Nếu người chơi chọn quay 2 lần và tổng điểm quay được lớn hơn 100 thì điểm của người chơi 
+là tổng điểm quay được trừ đi 100. 
+                      Luật chơi quy định, trong mỗi lượt chơi người nào có điểm số cao hơn sẽ thắng cuộc, hòa nhau 
+sẽ chơi lại lượt khác. An và Bình cùng tham gia một lượt chơi, An chơi trước và có điểm số là 75. 
+Tính xác suất để Bình thắng cuộc ngay ở lượt chơi này.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_HSG_Toán_11_năm_2022_–_2023_trường_THPT_Thuận_Thành_1_–_Bắc_Ninh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 26</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi tỉnh Toán 11 năm 2022 – 2023 sở GD&ĐT Hà Tĩnh (Năm học 2022 - 2023)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2022_–_2023_sở_GD&ĐT_Hà_Tĩnh_trang1.png', 'Đề thi học sinh giỏi tỉnh Toán 11 năm 2022 – 2023 sở GD&ĐT Hà Tĩnh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2022_2023/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2022_–_2023_sở_GD&ĐT_Hà_Tĩnh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2. (5,0 điểm) 
+a) Tính giới hạn ( )
+3
+20
+112 13 2L lim .
+x
+x x xx
+x→
++ − + + −−=  
+b) Bảng hình vuông (10 x10) gồm 100  hình vuông đơn vị, mỗi hình 
+có diện tích bằng 1. Hỏi có bao nhiêu hình chữ nhật tạo thành từ các hình 
+vuông đơn vị của bảng. Chọn ngẫu nhiên một hình chữ nhật trên, tính xác 
+suất để hình chữ nhật chọn được có diện tích là số chẵn.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2022_–_2023_sở_GD&ĐT_Hà_Tĩnh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 27</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi cấp tỉnh Toán 11 năm 2023 – 2024 sở GD&ĐT Quảng Ngãi (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2023_–_2024_sở_GD&ĐT_Quảng_Ngãi_trang1.png', 'Đề học sinh giỏi cấp tỉnh Toán 11 năm 2023 – 2024 sở GD&ĐT Quảng Ngãi')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2023_–_2024_sở_GD&ĐT_Quảng_Ngãi.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2. (6,0 điểm)   
+a) Cho đa giác đều có 4n  đỉnh ( )*,2nn∈≥ . Gọi S  là tập hợp tất cả các tam giác có ba đỉnh 
+là ba trong 4n  đỉnh của đa giác đều đã cho. Chọn ngẫu nhiên một tam giác thuộc tập S . Gọi A 
+là biến cố: “Tam giác được chọn là tam giác vuông nhưng không cân”. Tìm giá trị nguyên 
+dương nhỏ nhất của n , biết rằng xác suất của biến cố A nhỏ hơn 27 . 
+b) Cho dãy ( )nu  xác định bằng hệ thức truy hồi                                                         
+( ) ( )
+1
+2 2
+1
+2024
+.1 2 2023nn
+u
+n u n nu +
+= + = ++  Tính giới hạn của dãy số ( ).nu</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2023_–_2024_sở_GD&ĐT_Quảng_Ngãi_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 28</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 cấp tỉnh năm 2023 – 2024 sở GD&ĐT Hà Nam (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2023_–_2024_sở_GD&ĐT_Hà_Nam_trang1.png', 'Đề học sinh giỏi Toán 11 cấp tỉnh năm 2023 – 2024 sở GD&ĐT Hà Nam')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2023_–_2024_sở_GD&ĐT_Hà_Nam.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu IV. (2,0 điểm) Ba hộp chứa các viên bi giống nhau về kích thước. Hộp (I) chứa a  viên bi 
+màu đỏ và 2 viên bi màu xanh. Hộp (II) chứa b  viên bi màu đỏ và 3 viên bi màu xanh. Hộp 
+(III) chứa 6 viên bi màu đỏ và 4 viên bi màu xanh. Từ mỗi hộp lấy ra một viên bi. Biết xác 
+suất lấy ra ít nhất một viên bi màu đỏ là 0,976  và xác suất lấy ra cả ba viên bi màu đỏ là 
+0,336 . Tìm a , b  và tính xác suất lấy được đúng hai viên bi màu đỏ.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2023_–_2024_sở_GD&ĐT_Hà_Nam_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 29</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 lần 1 năm 2023 – 2024 trường THPT Vĩnh Lộc – Thanh Hóa (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_lần_1_năm_2023_–_2024_trường_THPT_Vĩnh_Lộc_–_Thanh_Hóa_trang1.png', 'Đề học sinh giỏi Toán 11 lần 1 năm 2023 – 2024 trường THPT Vĩnh Lộc – Thanh Hóa')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_lần_1_năm_2023_–_2024_trường_THPT_Vĩnh_Lộc_–_Thanh_Hóa.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3: Doanh thu bán hàng trong 20 ngày được lựa chọn ngẫu nhiên c ủa một cửa hàng được ghi 
+lại ở bả ng sau (đơn vị: triệu đồng): 
+Doanh thu [ )5; 7  [ )7;9  [ )9;11  [ )11;13  [ )13;15  
+Số ngày 2 7 7 3 1 
+Số trung bình của mẫu số liệu trên thuộc khoảng nào trong các khoảng dưới đây? 
+A. [ )7;  9 . B. [ )9;  11 . C. [ )11;  13 . D. [ )13;  15 .</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_lần_1_năm_2023_–_2024_trường_THPT_Vĩnh_Lộc_–_Thanh_Hóa_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 30</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 lần 1 năm 2023 – 2024 trường THPT Vĩnh Lộc – Thanh Hóa (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_lần_1_năm_2023_–_2024_trường_THPT_Vĩnh_Lộc_–_Thanh_Hóa_trang1.png', 'Đề học sinh giỏi Toán 11 lần 1 năm 2023 – 2024 trường THPT Vĩnh Lộc – Thanh Hóa')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_lần_1_năm_2023_–_2024_trường_THPT_Vĩnh_Lộc_–_Thanh_Hóa.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 8: Khi khai triển nhị thức Newton thì ta thấy trong đó xuất hiện hai số hạng  và 
+. Tìm a và n 
+A.  B.  C.  D.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_lần_1_năm_2023_–_2024_trường_THPT_Vĩnh_Lộc_–_Thanh_Hóa_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 31</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Nguyễn Đăng Đạo – Bắc Ninh (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Nguyễn_Đăng_Đạo_–_Bắc_Ninh_trang1.png', 'Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Nguyễn Đăng Đạo – Bắc Ninh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Nguyễn_Đăng_Đạo_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu III (4,0 điểm) 
+1) Trong mặt phẳng tọa độ 𝑂𝑂𝑥𝑥𝑂𝑂, cho hai đường thẳng 1 : 10dxy −−= , 2 :3 4 2 0dxy + += và điểm ( )1;1A . 
+Viết phương trình đường tròn ( )C  có tâm thuộc 1d ; đi qua A  và tiếp xúc với 2d . 
+2) Cho 23log 6 , log 5ab= = . Tính log108  theo a  và b . 
+Câu IV(5,0 điểm) 
+1) Chọn ngẫu nhiên hai số tự nhiên thuộc đoạn [ ]1;13 . Tính xác suất để hai số được chọn có tổng là một số 
+chẵn hoặc có tổng là một số chia hết cho 3. 
+x
+y
+1
+2
+I
+A BO
+2) Cho hình chóp .S ABCD  có đáy ABCD  là hình vuông cạnh a , tam giác SAB  là tam giác đều. Hình chiếu 
+vuông góc của S  trên mặt phẳng ( )ABCD  trùng với trung điểm H  của AB . Gọi M  là trung điểm của 
+SB . 
+a) Chứng minh rằng AM  vuông góc với mặt phẳng ( )SBC . 
+b) Trong mặt phẳng ( )ABCD  dựng đường thẳng d  qua B  và vuông góc vớ i SC , đường thẳng d  cắt 
+đường thẳng CD  tại N . Tính độ dài đoạn thẳng AN  theo a . 
+Câu V(3,0 điểm) 
+1) Cho hình chóp .S ABC  có 1SA SB SC= = = . Gọi M  là trung điểm của BC , N  là trung điểm của AM ; 
+I  là trung điểm của SN . Một mặt phẳng ( )α  di động luôn đi qua I  cắt các cạnh ,,SA SB SC  lần lượt tại 
+,,ABC′′′ . Chứng minh rằng biểu thức 111T SA SB SC=++ ′′′  có giá trị không đổi. 
+2) Cho dãy số ( )nu  xác định bởi: 
+1
+2
+*
+1 32
+5
+12 ,2 32nn
+u
+nnuu n nnn+
+= +−= + ∀∈ ++  . Tìm công thức của số hạng tổng quát 
+của dãy số ( )nu . 
+ 
+……… Hết ……… 
+ 
+Ghi chú: -  Cán bộ coi thi không giải thích gì thêm. 
+     - Thí sinh không được sử dụng tài liệu. 
+ 
+Họ và tên thí sinh: ……………………………………. Số báo danh: ……………………………………………</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Nguyễn_Đăng_Đạo_–_Bắc_Ninh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 32</span>
+                <span class="q-source">🏷️ Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Yên Phong 2 – Bắc Ninh (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Yên_Phong_2_–_Bắc_Ninh_trang1.png', 'Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Yên Phong 2 – Bắc Ninh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Yên_Phong_2_–_Bắc_Ninh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4 (2,0 điểm). Chọn ngẫu nhiên một số nguyên dương có5 chữ số. Tính xác suất
+để chọn được số mà hai chữ số kề nhau luôn khác nhau.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_học_sinh_giỏi_Toán_11_năm_2023_–_2024_trường_THPT_Yên_Phong_2_–_Bắc_Ninh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 33</span>
+                <span class="q-source">🏷️ Đề Olimpic Toán 11 năm 2023 – 2024 cụm Thạch Thất & Quốc Oai – Hà Nội (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_Olimpic_Toán_11_năm_2023_–_2024_cụm_Thạch_Thất_&_Quốc_Oai_–_Hà_Nội_trang1.png', 'Đề Olimpic Toán 11 năm 2023 – 2024 cụm Thạch Thất & Quốc Oai – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_Olimpic_Toán_11_năm_2023_–_2024_cụm_Thạch_Thất_&_Quốc_Oai_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 2 (5 điểm) 
+a) Cho các số 
+5 ,  2 3 ,  2x y x y x y   theo thứ tự lập thành cấp số cộng, các số 
+22( 1) ,  1,  ( 1)y xy x  
+ theo thứ tự lập thành cấp số nhân. Tìm 
+,xy . 
+b) Gieo một con xúc sắc 4 lần. Tính xác suất để mặt 6 chấm xuất hiện ít nhất 1 lần.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_Olimpic_Toán_11_năm_2023_–_2024_cụm_Thạch_Thất_&_Quốc_Oai_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 34</span>
+                <span class="q-source">🏷️ Đề thi Olympic Toán 11 năm 2023 – 2024 cụm Hoàn Kiếm & Hai Bà Trưng – Hà Nội (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_cụm_Hoàn_Kiếm_&_Hai_Bà_Trưng_–_Hà_Nội_trang1.png', 'Đề thi Olympic Toán 11 năm 2023 – 2024 cụm Hoàn Kiếm & Hai Bà Trưng – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_cụm_Hoàn_Kiếm_&_Hai_Bà_Trưng_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Bài IV (1,0 điểm) Gọi S  là tập hợp các số tự nhi ên có 7 chữ số sao cho trong mỗi số đó chữ số 0 xuất 
+hiện đúng 3 lần. Chọn ngẫu nhiên một số thuộc ,S  tính xác suất để số đó chia hết cho 5.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_cụm_Hoàn_Kiếm_&_Hai_Bà_Trưng_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 35</span>
+                <span class="q-source">🏷️ Đề thi Olympic Toán 11 năm 2023 – 2024 liên cụm trường THPT – Hà Nội (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_liên_cụm_trường_THPT_–_Hà_Nội_trang1.png', 'Đề thi Olympic Toán 11 năm 2023 – 2024 liên cụm trường THPT – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_liên_cụm_trường_THPT_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu III ( 3 điểm) Gọi 
+S  là tập hợp các số tự nhiên có 
+6  chữ số sao cho trong mỗi số đó , các chữ số 
+1,2,3
+ đều xuất hiện 
+2  lần. 
+a) Tính số phần tử của tập hợp 
+.S  
+b) Chọn ngẫu nhiên một số thuộc 
+.S  Tính xác suất để số đó là số chẵn.   
+c) Chọn ngẫu nhiên một số thuộc 
+.S  Tính xác suất để số đó có  các chữ số giống nhau không 
+đứng cạnh nhau.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2023_–_2024_liên_cụm_trường_THPT_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 36</span>
+                <span class="q-source">🏷️ Đề thi thử HSG tỉnh Toán 11 năm 2023 – 2024 trường THPT Trần Văn Lan – Nam Định (Năm học 2023 - 2024)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_thử_HSG_tỉnh_Toán_11_năm_2023_–_2024_trường_THPT_Trần_Văn_Lan_–_Nam_Định_trang1.png', 'Đề thi thử HSG tỉnh Toán 11 năm 2023 – 2024 trường THPT Trần Văn Lan – Nam Định')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2023_2024/Đề_thi_thử_HSG_tỉnh_Toán_11_năm_2023_–_2024_trường_THPT_Trần_Văn_Lan_–_Nam_Định.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 6. (2,0 điểm) Cho { }* | 2023 .Sn n= ∈≤  Lấy ngẫu nhiên 3 số thuộc tập .S  Tính xác suất để 3 số 
+lấy được có tổng chia hết cho 3.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_thử_HSG_tỉnh_Toán_11_năm_2023_–_2024_trường_THPT_Trần_Văn_Lan_–_Nam_Định_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 37</span>
+                <span class="q-source">🏷️ Đề chọn học sinh giỏi Toán 11 năm 2024 – 2025 sở GD&ĐT Quảng Bình (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Quảng_Bình_trang1.png', 'Đề chọn học sinh giỏi Toán 11 năm 2024 – 2025 sở GD&ĐT Quảng Bình')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Quảng_Bình.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3 (1,5 điểm): 
+a) Biển số xe ôtô của tỉnh Quảng Bình có dạng 
+73A . abc de  (trong đó: 
+73A  là mã số cố định 
+của tỉnh Quảng Bình; 
+, , , ,a b c d e  là các chữ số không đồng thời bằng 
+0 ). Một biển số xe ôtô được 
+gọi là biển số “đẹp” nếu thỏa mãn 
+.a b c d e     Bác An chọn ngẫu nhiên một biển số xe ôtô của 
+tỉnh Quảng Bình. Tính xác suất để bác An chọn được biển số “đẹp”. 
+b) Sắp xếp 
+3  bạn nam 
+1 2 3,,B B B  và 
+5  bạn nữ vào 
+8  cái ghế được xếp theo h àng ngang (m ỗi 
+bạn ngồi một cái ghế). Hỏi có bao nhiêu  cách sắp xếp thỏa mãn tất cả các điều kiện sau: 
+1 2 3,,B B B  
+ngồi theo thứ tự đó từ trái qua phải; giữa 
+1B  và 
+2B  có ít nhất 
+1  bạn nữ; giữa 
+2B  và 
+3B  có nhiều nhất 
+2
+ bạn nữ.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Quảng_Bình_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 38</span>
+                <span class="q-source">🏷️ Đề chọn học sinh giỏi tỉnh Toán 11 năm 2024 – 2025 sở GD&ĐT Hà Nam (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_học_sinh_giỏi_tỉnh_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Hà_Nam_trang1.png', 'Đề chọn học sinh giỏi tỉnh Toán 11 năm 2024 – 2025 sở GD&ĐT Hà Nam')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_chọn_học_sinh_giỏi_tỉnh_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Hà_Nam.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu IV. (2,0 điểm) 
+Ba cầu thủ đá phạt đền 11m, mỗi người đá một lần với xác suất ghi  bàn tương ứng là 
+x , y  và 0, 6 (với xy> ). Biết xác suất để ít nhất một trong ba cầu thủ ghi bàn là 
+0,976  và xác suất để cả ba cầu thủ đều ghi bàn là 0,336 . Tính xác suất để có đúng 
+hai cầu thủ ghi bàn. 
+  
+x
+y
+BA
+O 6π- 6π
+ 
+UBND TỈNH HÀ NAM 
+ SỞ GIÁO DỤC VÀ ĐÀO TẠO 
+ 
+ ĐỀ CHÍNH THỨC 
+(Đề thi gồm 02 trang) 
+ 
+KỲ THI CHỌN HỌC SINH GIỎI LỚP 10, 11 THPT  
+         VÀ LỚP 12 GDTX CẤP TỈNH  NĂM HỌC 2024 - 2025 
+Môn: Toán 11 
+Thời gian làm bài: 180 phút 
+Trang 2/2</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_học_sinh_giỏi_tỉnh_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Hà_Nam_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 39</span>
+                <span class="q-source">🏷️ Đề chọn học sinh giỏi tỉnh Toán 11 năm 2024 – 2025 sở GD&ĐT Hà Tĩnh (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_học_sinh_giỏi_tỉnh_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Hà_Tĩnh_trang1.png', 'Đề chọn học sinh giỏi tỉnh Toán 11 năm 2024 – 2025 sở GD&ĐT Hà Tĩnh')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_chọn_học_sinh_giỏi_tỉnh_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Hà_Tĩnh.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 1. (4,0 điểm) 
+a) Giải phương trình ( )1 tan tan 2 sin 4 cos 4 1 0xx x x+ + −= . 
+b) Cho một tam giác có ba ô tròn ở các đỉnh và ba ô tròn ở trung 
+điểm của các cạnh (xem hình vẽ bên).  
+Viết ngẫu nhiên sáu chữ số 1, 2, 3, 4, 5, 6 vào sáu ô tròn đó sao 
+cho mỗi ô chỉ viết đúng một  chữ số và chữ số ở các ô là đôi một 
+khác nhau. Tính xác suất để tổng ba số trong các ô ở đỉnh và tổng 
+ba số trong các ô còn lại là hai số tự nhiên liên tiếp.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_học_sinh_giỏi_tỉnh_Toán_11_năm_2024_–_2025_sở_GD&ĐT_Hà_Tĩnh_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 40</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi Toán 11 năm 2024 – 2025 trường THPT Bình Chiểu – TP HCM (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2024_–_2025_trường_THPT_Bình_Chiểu_–_TP_HCM_trang1.png', 'Đề thi học sinh giỏi Toán 11 năm 2024 – 2025 trường THPT Bình Chiểu – TP HCM')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_thi_học_sinh_giỏi_Toán_11_năm_2024_–_2025_trường_THPT_Bình_Chiểu_–_TP_HCM.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 4 (3 điểm): Có 10 tấm bìa khác nhau ghi 10 chữ “NƠI”, “NÀO”, “CÓ”, “Ý”, “CHÍ”, 
+“NƠI”, “ĐÓ”, “CÓ”, “CON”, “ĐƯỜNG”. Một người xếp ngẫu nhiên 10 tấm bìa cạnh 
+nhau. Tính xác suất để xếp các tấm bìa được dòng chữ “NƠI NÀO CÓ Ý CHÍ NƠI ĐÓ CÓ 
+CON ĐƯỜNG”.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2024_–_2025_trường_THPT_Bình_Chiểu_–_TP_HCM_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 41</span>
+                <span class="q-source">🏷️ Đề thi học sinh giỏi Toán 11 năm 2024 – 2025 trường THPT Thị xã Quảng Trị (Năm học 2024 - 2025)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2024_–_2025_trường_THPT_Thị_xã_Quảng_Trị_trang1.png', 'Đề thi học sinh giỏi Toán 11 năm 2024 – 2025 trường THPT Thị xã Quảng Trị')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2024_2025/Đề_thi_học_sinh_giỏi_Toán_11_năm_2024_–_2025_trường_THPT_Thị_xã_Quảng_Trị.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 8. (2 điểm) Bạn Dung và Ánh mỗi bạn có một hộp bi. Trong mỗi hộp đều có chứa bi trắng 
+và chứa bi đen, tổng số bi trong hai hộp là 25 (các bi giống nhau về kích thước và trọng lượng). 
+Biết hộp của Dung chứa nhiều bi hơn hộp của Ánh và số bi đen trong hộp của Dung nhiều hơn 
+số bi đen trong hộp của Ánh.Từ mỗi hộp của mình mỗi bạn lấy ngẫu nhiên ra một viên. Tính xác 
+suất để hai viên được lấy ra khác màu và b iết rằng xác suất lấy ra được hai viên cùng màu đen 
+là 0,39.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_học_sinh_giỏi_Toán_11_năm_2024_–_2025_trường_THPT_Thị_xã_Quảng_Trị_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 42</span>
+                <span class="q-source">🏷️ Đề chọn học sinh giỏi cấp tỉnh Toán 11 năm 2025 – 2026 sở GD&ĐT Thái Nguyên (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2025_–_2026_sở_GD&ĐT_Thái_Nguyên_trang1.png', 'Đề chọn học sinh giỏi cấp tỉnh Toán 11 năm 2025 – 2026 sở GD&ĐT Thái Nguyên')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_chọn_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2025_–_2026_sở_GD&ĐT_Thái_Nguyên.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Bài 3.(2,0 điểm) Một đội tuyển học sinh giỏi môn Toán có 12 học sinh, trong đó có 3 bạn
+có tên là Học, Sinh, Giỏi. Xếp tùy ý 12 học sinh đó vào một dãy có 12 chiếc ghế được đánh số
+từ 1 đến 12. Mỗi ghế được đánh một số, không có hai ghế nào được đánh số giống nhau. Mỗi
+ghế chỉ có đúng một học sinh ngồi và không có học sinh nào không ngồi vào ghế. Tính xác suất
+của biến cố A: "Số ghế của Sinh bằng trung bình cộng số ghế của Học và số ghế của Giỏi".
+Biết rằng, trong 12 học sinh đó không có hai học sinh nào có tên trùng nhau và 12 chiếc ghế
+được xếp thành một hàng ngang.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2025_–_2026_sở_GD&ĐT_Thái_Nguyên_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 43</span>
+                <span class="q-source">🏷️ Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Đồng Quan – Hà Nội (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội_trang1.png', 'Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Đồng Quan – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 9.Có sáu tấm thẻ, mỗi thẻ ghi một trong các số của tậpE={1; 2; 3; 4; 6; 8}(hai thẻ
+khác nhau ghi hai số khác nhau). Rút ngẫu nhiên ba thẻ, tính xác suất để rút được ba thẻ ghi
+ba số là số đo ba cạnh của một tam giác có góc tù.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 44</span>
+                <span class="q-source">🏷️ Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Đồng Quan – Hà Nội (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội_trang1.png', 'Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Đồng Quan – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 14 (1,5 điểm).Cho tập hợpX={1; 2; 3; 4; 5; 6; 7}, và lục
+giác đềuABCDEFtâmO. Ta đặt ngẫu nhiên các chữ số trong
+tậpXvào các đỉnh và tâm của lục giác sao cho mỗi vị trí chứa
+đúng một số (hai vị trí khác nhau được đặt hai số khác nhau).
+Tính xác suất để số nằm ở tâmOlà một số lẻ và tổng 3 số ở 3 vị
+trí thẳng hàng luôn bằng nhau.
+A B
+C
+DE
+F O</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_chọn_học_sinh_giỏi_Toán_11_năm_2025_–_2026_trường_THPT_Đồng_Quan_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 45</span>
+                <span class="q-source">🏷️ Đề thi chọn HSG Toán 11 năm 2025 – 2026 trường THPT Hướng Hóa – Quảng Trị (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2025_–_2026_trường_THPT_Hướng_Hóa_–_Quảng_Trị_trang1.png', 'Đề thi chọn HSG Toán 11 năm 2025 – 2026 trường THPT Hướng Hóa – Quảng Trị')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_chọn_HSG_Toán_11_năm_2025_–_2026_trường_THPT_Hướng_Hóa_–_Quảng_Trị.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 3. (3,0 điểm)
+a) Trong năm đầu tiên đi làm, anh Huy nhận được lương là 10 triệu đồng mỗi tháng.
+Cứ hết một năm, anh Huy lại được tăng lương, mỗi tháng năm sau tăng 12%so với mỗi
+tháng năm trước. Kể từ năm thứ hai, mỗi khi lĩnh lương, anh Huy đều cất đi phần lương
+tăng so với năm ngay trước đó để tiết kiệm mua ô tô. Hỏi tính từ khi đi làm, sau ít nhất
+bao nhiêu năm thì anh Huy mua được ô tô giá 500 triệu đồng biết rằng anh Huy được gia
+đình hỗ trợ 32%giá trị chiếc xe?
+b) Hai bạn Hải và Sơn cùng chơi một trò chơi như sau: Hải có một hộp gồm 9 quả
+bóng được đánh số từ 1 đến 9, Sơn có một hộp gồm 8 quả bóng được đánh số từ 1 đến 8.
+ĐỀ CHÍNH THỨC
+Mỗi bạn bốc ngẫu nhiên 3 quả bóng từ hộp của mình rồi xếp các số ghi trên 3 quả bóng
+bốc được theo thứ tự giảm dần để tạo thành một số có 3 chữ số. Bạn nào có số lớn hơn là
+người chiến thắng. Tính xác suất để bạn Sơn thua.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_chọn_HSG_Toán_11_năm_2025_–_2026_trường_THPT_Hướng_Hóa_–_Quảng_Trị_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 46</span>
+                <span class="q-source">🏷️ Đề thi Olympic Toán 11 năm 2025 – 2026 cụm trường THPT số 14 – Hà Nội (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2025_–_2026_cụm_trường_THPT_số_14_–_Hà_Nội_trang1.png', 'Đề thi Olympic Toán 11 năm 2025 – 2026 cụm trường THPT số 14 – Hà Nội')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_Olympic_Toán_11_năm_2025_–_2026_cụm_trường_THPT_số_14_–_Hà_Nội.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 8. ( 1 điểm) Gieo hai đồng xu A và B một cách độc lập. Đồng xu A chế tạo cân đối. Đồng xu B chế tạo 
+không cân đối nên xác suất xuất hiện mặt sấp gấp 3 lần xác suất xuất hiện mặt ngửa. Tính xác suất để khi 
+gieo hai đồng xu cùng lúc được kết quả 1 sấp và 1 ngửa.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_Toán_11_năm_2025_–_2026_cụm_trường_THPT_số_14_–_Hà_Nội_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <span class="q-badge">Câu 47</span>
+                <span class="q-source">🏷️ Đề thi Olympic Toán THPT năm 2025 – 2026 trường THCS&THPT Bình Chánh – An Giang (Năm học 2025 - 2026)</span>
+                <div class="actions">
+                  <button class="btn-action btn-preview" onclick="openModal('../de_thi_previews/Đề_thi_Olympic_Toán_THPT_năm_2025_–_2026_trường_THCS&THPT_Bình_Chánh_–_An_Giang_trang1.png', 'Đề thi Olympic Toán THPT năm 2025 – 2026 trường THCS&THPT Bình Chánh – An Giang')">👁️ Phóng to đề gốc</button><a class="btn-action btn-pdf" href="../downloads_hsg_toan11_tu_luan/Nam_hoc_2025_2026/Đề_thi_Olympic_Toán_THPT_năm_2025_–_2026_trường_THCS&THPT_Bình_Chánh_–_An_Giang.pdf" target="_blank">📄 Mở PDF gốc</a>
+                </div>
+              </div>
+              <div class="raw-box">Câu 6. (2,0 điểm) Một lớp học có 40 học sinh. Trong đó, có 22 học sinh thích môn Toán, 18 học 
+sinh thích môn Vật lý, và 15 học sinh thích môn Hóa học. Biết rằng có 9 học sinh thích cả Toán 
+và Vật lý, 7 học sinh thích cả Vật lý và Hóa học, 6 học sinh thích cả Hóa học và Toán. Ngoài ra, 
+có 3 học sinh thích cả 3 môn học trên. 
+a) Tính số học sinh của lớp ít nhất thích một trong ba môn học (Toán, Lý, Hóa). 
+b)Nhà trường cần chọn ngẫu nhiên từ lớp học đó một nhóm gồm 3 học sinh. Tính số cách chọn 
+nhóm sao cho có ít nhất 1 học sinh không thích bất kỳ môn học nào trong ba môn trên.</div>
+              
+                <details class="preview-collapse">
+                  <summary>🔍 Nhấp xem nhanh trang đề thi gốc sắc nét (Chống lỗi font MathType)</summary>
+                  <div class="preview-content">
+                    <img src="../de_thi_previews/Đề_thi_Olympic_Toán_THPT_năm_2025_–_2026_trường_THCS&THPT_Bình_Chánh_–_An_Giang_trang1.png" alt="Trang đề gốc" loading="lazy">
+                  </div>
+                </details>
+                
+            </div>
+            
+            </div>
+            
+
+
+<div id="examModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <h3 id="modalTitle" style="margin-top:0; color:#1a365d;">Trang Đề Thi Gốc</h3>
+    <img id="modalImg" src="" alt="Đề thi gốc sắc nét">
+  </div>
+</div>
+
+
+<script>
+function openModal(imgSrc, title) {
+  document.getElementById('modalImg').src = imgSrc;
+  document.getElementById('modalTitle').innerText = title;
+  document.getElementById('examModal').style.display = 'block';
+}
+function closeModal() {
+  document.getElementById('examModal').style.display = 'none';
+}
+window.onclick = function(event) {
+  var modal = document.getElementById('examModal');
+  if (event.target == modal) { modal.style.display = 'none'; }
+}
+function copyText(elemId, btn) {
+  var text = document.getElementById(elemId).innerText;
+  navigator.clipboard.writeText(text).then(function() {
+    var oldText = btn.innerHTML;
+    btn.innerHTML = '✅ Đã chép!';
+    setTimeout(function() { btn.innerHTML = oldText; }, 2000);
+  });
+}
+function switchTab(tabId) {
+  document.getElementById('tab-curated').style.display = tabId === 'curated' ? 'block' : 'none';
+  document.getElementById('tab-all').style.display = tabId === 'all' ? 'block' : 'none';
+  document.getElementById('btn-curated').classList.toggle('active', tabId === 'curated');
+  document.getElementById('btn-all').classList.toggle('active', tabId === 'all');
+}
+</script>
+
+</body>
+</html>

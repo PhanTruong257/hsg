@@ -1,0 +1,25 @@
+{
+  "name": "toanmath-scraper",
+  "version": "2.0.0",
+  "description": "Script cào đề thi HSG Toán 11 trong 3 năm gần nhất, tự động lọc bỏ trắc nghiệm chỉ giữ lại tự luận",
+  "main": "toanmath_scraper.js",
+  "scripts": {
+    "start": "node toanmath_scraper.js",
+    "filter": "node filter_existing_downloads.js"
+  },
+  "keywords": [
+    "scraper",
+    "puppeteer",
+    "stealth",
+    "toanmath",
+    "tu-luan"
+  ],
+  "author": "Senior Data Engineer",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "puppeteer": "^23.6.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  }
+}

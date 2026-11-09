@@ -1,0 +1,1023 @@
+{
+  "totalScanned": 204,
+  "tuLuanSaved": 71,
+  "tracNghiemSkipped": 74,
+  "alreadyDownloaded": 59,
+  "items": [
+    {
+      "title": "Đề chọn HSG Toán 11 lần 1 năm 2026 – 2027 trường THPT Hùng Vương – Đồng Nai",
+      "url": "https://toanmath.com/2026/09/de-chon-hsg-toan-11-lan-1-nam-2026-2027-truong-thpt-hung-vuong-dong-nai.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 trường THPT Kiến Thụy – Hải Phòng",
+      "url": "https://toanmath.com/2026/05/de-chon-hoc-sinh-gioi-toan-11-nam-2025-2026-truong-thpt-kien-thuy-hai-phong.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Có thông tin \"mã đề\"; Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 cụm trường THPT – Bắc Ninh",
+      "url": "https://toanmath.com/2026/04/de-chon-hoc-sinh-gioi-toan-11-nam-2025-2026-cum-truong-thpt-bac-ninh.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Có thông tin \"mã đề\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi Olympic Toán 11 năm 2025 – 2026 cụm trường THPT số 10 – Hà Nội",
+      "url": "https://toanmath.com/2026/04/de-thi-olympic-toan-11-nam-2025-2026-cum-truong-thpt-so-10-ha-noi.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi chọn HSG Toán 11 năm 2025 – 2026 trường THPT Thuận Thành 1 – Bắc Ninh",
+      "url": "https://toanmath.com/2026/03/de-thi-chon-hsg-toan-11-nam-2025-2026-truong-thpt-thuan-thanh-1-bac-ninh.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Có thông tin \"mã đề\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề chọn học sinh giỏi tỉnh Toán 11 năm 2025 – 2026 sở GD&ĐT Hà Tĩnh",
+      "url": "https://toanmath.com/2026/03/de-chon-hoc-sinh-gioi-tinh-toan-11-nam-2025-2026-so-gddt-ha-tinh.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi chọn HSG Toán 11 năm 2025 – 2026 trường THPT Lê Hồng Phong 1 – Đắk Lắk",
+      "url": "https://toanmath.com/2026/02/de-thi-chon-hsg-toan-11-nam-2025-2026-truong-thpt-le-hong-phong-1-dak-lak.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề chọn học sinh giỏi Toán 11 năm 2025 – 2026 liên trường THPT – Nghệ An",
+      "url": "https://toanmath.com/2026/02/de-chon-hoc-sinh-gioi-toan-11-nam-2025-2026-lien-truong-thpt-nghe-an.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi HSG Toán 11 năm 2024 – 2025 trường THPT Phan Thúc Trực – Nghệ An",
+      "url": "https://toanmath.com/2025/05/de-thi-hsg-toan-11-nam-2024-2025-truong-thpt-phan-thuc-truc-nghe-an.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi Toán 11 năm 2024 – 2025 cụm Việt Yên – Bắc Giang",
+      "url": "https://toanmath.com/2025/04/de-thi-hoc-sinh-gioi-toan-11-nam-2024-2025-cum-viet-yen-bac-giang.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi HSG Toán 11 lần 2 năm 2024 – 2025 trường THPT Bình Sơn – Vĩnh Phúc",
+      "url": "https://toanmath.com/2025/04/de-thi-hsg-toan-11-lan-2-nam-2024-2025-truong-thpt-binh-son-vinh-phuc.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Có thông tin \"mã đề\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề KSCL học sinh giỏi Toán 11 năm 2024 – 2025 trường THPT Đồng Đậu – Vĩnh Phúc",
+      "url": "https://toanmath.com/2025/04/de-kscl-hoc-sinh-gioi-toan-11-nam-2024-2025-truong-thpt-dong-dau-vinh-phuc.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Có thông tin \"mã đề\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 năm 2024 – 2025 trường THPT Diễn Châu 2 – Nghệ An",
+      "url": "https://toanmath.com/2025/03/de-hoc-sinh-gioi-toan-11-nam-2024-2025-truong-thpt-dien-chau-2-nghe-an.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 năm 2024 – 2025 trường THPT Bố Hạ – Bắc Giang",
+      "url": "https://toanmath.com/2025/03/de-hoc-sinh-gioi-toan-11-nam-2024-2025-truong-thpt-bo-ha-bac-giang.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 năm 2024 – 2025 trường THPT Thuận Thành 1 – Bắc Ninh",
+      "url": "https://toanmath.com/2025/03/de-hoc-sinh-gioi-toan-11-nam-2024-2025-truong-thpt-thuan-thanh-1-bac-ninh.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Có thông tin \"mã đề\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề tham khảo học sinh giỏi Toán 11 năm 2024 – 2025 sở GD&ĐT Nam Định",
+      "url": "https://toanmath.com/2025/01/de-tham-khao-hoc-sinh-gioi-toan-11-nam-2024-2025-so-gddt-nam-dinh.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi HSG Toán 11 lần 15 năm 2024 hội các trường THPT chuyên DH&ĐB Bắc Bộ",
+      "url": "https://toanmath.com/2024/07/de-thi-hsg-toan-11-lan-15-nam-2024-hoi-cac-truong-thpt-chuyen-dhdb-bac-bo.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề KSCL học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Triệu Sơn 4 – Thanh Hóa",
+      "url": "https://toanmath.com/2024/05/de-kscl-hoc-sinh-gioi-toan-11-nam-2023-2024-truong-thpt-trieu-son-4-thanh-hoa.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Tĩnh Gia 2 – Thanh Hóa",
+      "url": "https://toanmath.com/2024/05/de-hoc-sinh-gioi-toan-11-nam-2023-2024-truong-thpt-tinh-gia-2-thanh-hoa.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi HSG Toán 11 lần 2 năm 2023 – 2024 trường THPT Nguyễn Quán Nho – Thanh Hóa",
+      "url": "https://toanmath.com/2024/05/de-thi-hsg-toan-11-lan-2-nam-2023-2024-truong-thpt-nguyen-quan-nho-thanh-hoa.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Tĩnh Gia 1 – Thanh Hóa",
+      "url": "https://toanmath.com/2024/05/de-hoc-sinh-gioi-toan-11-nam-2023-2024-truong-thpt-tinh-gia-1-thanh-hoa.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề khảo sát HSG Toán 11 năm 2023 – 2024 trường THPT Lê Quý Đôn – Thái Bình",
+      "url": "https://toanmath.com/2024/04/de-khao-sat-hsg-toan-11-nam-2023-2024-truong-thpt-le-quy-don-thai-binh.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi chọn HSG Toán 11 năm 2023 – 2024 trường THPT Tiên Lãng – Hải Phòng",
+      "url": "https://toanmath.com/2024/04/de-thi-chon-hsg-toan-11-nam-2023-2024-truong-thpt-tien-lang-hai-phong.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Bỉm Sơn – Thanh Hóa",
+      "url": "https://toanmath.com/2024/04/de-hoc-sinh-gioi-toan-11-nam-2023-2024-truong-thpt-bim-son-thanh-hoa.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề học sinh giỏi cấp tỉnh Toán 11 năm 2023 – 2024 sở GD&ĐT Thái Nguyên",
+      "url": "https://toanmath.com/2024/04/de-hoc-sinh-gioi-cap-tinh-toan-11-nam-2023-2024-so-gddt-thai-nguyen.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi chọn học sinh giỏi Toán 11 năm 2023 – 2024 sở GD&ĐT Nam Định",
+      "url": "https://toanmath.com/2024/04/de-thi-chon-hoc-sinh-gioi-toan-11-nam-2023-2024-so-gddt-nam-dinh.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi chọn học sinh giỏi Toán 11 năm 2023 – 2024 sở GD&ĐT Quảng Bình",
+      "url": "https://toanmath.com/2024/04/de-thi-chon-hoc-sinh-gioi-toan-11-nam-2023-2024-so-gddt-quang-binh.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề HSG cấp trường Toán 11 năm 2023 – 2024 trường THPT Diễn Châu 3 – Nghệ An",
+      "url": "https://toanmath.com/2024/04/de-hsg-cap-truong-toan-11-nam-2023-2024-truong-thpt-dien-chau-3-nghe-an.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Quế Võ 1 – Bắc Ninh",
+      "url": "https://toanmath.com/2024/04/de-hoc-sinh-gioi-toan-11-nam-2023-2024-truong-thpt-que-vo-1-bac-ninh.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi HSG Toán 11 năm 2023 – 2024 trường THPT Đông Sơn 1 – Thanh Hóa",
+      "url": "https://toanmath.com/2024/04/de-thi-hsg-toan-11-nam-2023-2024-truong-thpt-dong-son-1-thanh-hoa.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Có thông tin \"mã đề\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Hậu Lộc 4 – Thanh Hóa",
+      "url": "https://toanmath.com/2024/04/de-hoc-sinh-gioi-toan-11-nam-2023-2024-truong-thpt-hau-loc-4-thanh-hoa.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Có thông tin \"mã đề\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề học sinh giỏi tỉnh Toán 11 năm 2023 – 2024 sở GD&ĐT Hà Tĩnh",
+      "url": "https://toanmath.com/2024/03/de-hoc-sinh-gioi-tinh-toan-11-nam-2023-2024-so-gddt-ha-tinh.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 năm 2023 – 2024 cụm Tân Yên – Bắc Giang",
+      "url": "https://toanmath.com/2024/03/de-hoc-sinh-gioi-toan-11-nam-2023-2024-cum-tan-yen-bac-giang.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi HSG Toán 11 năm 2023 – 2024 cụm huyện Yên Dũng – Bắc Giang",
+      "url": "https://toanmath.com/2024/03/de-thi-hsg-toan-11-nam-2023-2024-cum-huyen-yen-dung-bac-giang.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Có thông tin \"mã đề\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi HSG Toán 11 lần 1 năm 2023 – 2024 trường THPT Ngô Gia Tự – Vĩnh Phúc",
+      "url": "https://toanmath.com/2024/03/de-thi-hsg-toan-11-lan-1-nam-2023-2024-truong-thpt-ngo-gia-tu-vinh-phuc.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Có thông tin \"mã đề\"; Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề KSCL HSG Toán 11 lần 2 năm 2023 – 2024 trường THPT Yên Lạc – Vĩnh Phúc",
+      "url": "https://toanmath.com/2024/01/de-kscl-hsg-toan-11-lan-2-nam-2023-2024-truong-thpt-yen-lac-vinh-phuc.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Có thông tin \"mã đề\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề KSCL đội tuyển HSG Toán 11 năm 2023 – 2024 trường THPT Yên Lạc – Vĩnh Phúc",
+      "url": "https://toanmath.com/2024/01/de-kscl-doi-tuyen-hsg-toan-11-nam-2023-2024-truong-thpt-yen-lac-vinh-phuc.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Có thông tin \"mã đề\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Lương Ngọc Quyến – Thái Nguyên",
+      "url": "https://toanmath.com/2024/01/de-hoc-sinh-gioi-toan-11-nam-2023-2024-truong-thpt-luong-ngoc-quyen-thai-nguyen.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường THPT Ngô Gia Tự – Phú Yên",
+      "url": "https://toanmath.com/2024/01/de-hoc-sinh-gioi-toan-11-nam-2023-2024-truong-thpt-ngo-gia-tu-phu-yen.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 năm 2023 – 2024 trường chuyên Lê Hồng Phong – Nam Định",
+      "url": "https://toanmath.com/2023/12/de-hoc-sinh-gioi-toan-11-nam-2023-2024-truong-chuyen-le-hong-phong-nam-dinh.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Có thông tin \"mã đề\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 THPT năm 2022 – 2023 sở GD&ĐT Vĩnh Phúc",
+      "url": "https://toanmath.com/2023/05/de-hoc-sinh-gioi-toan-11-thpt-nam-2022-2023-so-gddt-vinh-phuc.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Có thông tin \"mã đề\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 năm 2022 – 2023 cụm Tân Yên – Bắc Giang",
+      "url": "https://toanmath.com/2023/03/de-hoc-sinh-gioi-toan-11-nam-2022-2023-cum-tan-yen-bac-giang.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Có thông tin \"mã đề\"; Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi Olympic Toán 11 năm 2022 – 2023 cụm các trường THPT – Hà Nội",
+      "url": "https://toanmath.com/2023/03/de-thi-olympic-toan-11-nam-2022-2023-cum-cac-truong-thpt-ha-noi.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_Olympic_Toán_11_năm_2022_–_2023_cụm_các_trường_THPT_–_Hà_Nội.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 năm 2022 – 2023 cụm THPT huyện Ý Yên – Nam Định",
+      "url": "https://toanmath.com/2023/03/de-hoc-sinh-gioi-toan-11-nam-2022-2023-cum-thpt-huyen-y-yen-nam-dinh.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi HSG Toán 11 năm 2022 – 2023 cụm THPT huyện Yên Dũng – Bắc Giang",
+      "url": "https://toanmath.com/2023/03/de-thi-hsg-toan-11-nam-2022-2023-cum-thpt-huyen-yen-dung-bac-giang.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Có thông tin \"mã đề\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề HSG cấp trường Toán 11 vòng 2 năm 2022 – 2023 trường THPT Bình Sơn – Vĩnh Phúc",
+      "url": "https://toanmath.com/2023/03/de-hsg-cap-truong-toan-11-vong-2-nam-2022-2023-truong-thpt-binh-son-vinh-phuc.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi tỉnh Toán 11 năm 2022 – 2023 sở GD&ĐT Hà Tĩnh",
+      "url": "https://toanmath.com/2023/03/de-thi-hoc-sinh-gioi-tinh-toan-11-nam-2022-2023-so-gddt-ha-tinh.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2022_–_2023_sở_GD&ĐT_Hà_Tĩnh.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 cấp tỉnh năm 2022 – 2023 sở GD&ĐT Hà Nam",
+      "url": "https://toanmath.com/2023/03/de-hoc-sinh-gioi-toan-11-cap-tinh-nam-2022-2023-so-gddt-ha-nam.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2022_–_2023_sở_GD&ĐT_Hà_Nam.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 năm 2022 – 2023 trường THPT Phùng Khắc Khoan – Hà Nội",
+      "url": "https://toanmath.com/2023/03/de-hoc-sinh-gioi-toan-11-nam-2022-2023-truong-thpt-phung-khac-khoan-ha-noi.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_học_sinh_giỏi_Toán_11_năm_2022_–_2023_trường_THPT_Phùng_Khắc_Khoan_–_Hà_Nội.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi HSG Toán 11 năm 2022 – 2023 trường THPT Trần Phú – Vĩnh Phúc",
+      "url": "https://toanmath.com/2023/03/de-thi-hsg-toan-11-nam-2022-2023-truong-thpt-tran-phu-vinh-phuc.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Có thông tin \"mã đề\"; Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 năm 2022 – 2023 trường Nguyễn Đăng Đạo – Bắc Ninh",
+      "url": "https://toanmath.com/2023/01/de-hoc-sinh-gioi-toan-11-nam-2022-2023-truong-nguyen-dang-dao-bac-ninh.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề chọn đội tuyển Toán 11 năm 2022 – 2023 trường THPT Chu Văn An – Hà Nội",
+      "url": "https://toanmath.com/2022/10/de-chon-doi-tuyen-toan-11-nam-2022-2023-truong-thpt-chu-van-an-ha-noi.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_chọn_đội_tuyển_Toán_11_năm_2022_–_2023_trường_THPT_Chu_Văn_An_–_Hà_Nội.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 năm 2022 – 2023 trường THPT Bình Chiểu – TP HCM",
+      "url": "https://toanmath.com/2022/10/de-hoc-sinh-gioi-toan-11-nam-2022-2023-truong-thpt-binh-chieu-tp-hcm.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_học_sinh_giỏi_Toán_11_năm_2022_–_2023_trường_THPT_Bình_Chiểu_–_TP_HCM.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề KSCL học sinh giỏi Toán 11 lần 1 năm 2022 – 2023 trường THPT Quế Võ 1 – Bắc Ninh",
+      "url": "https://toanmath.com/2022/10/de-kscl-hoc-sinh-gioi-toan-11-lan-1-nam-2022-2023-truong-thpt-que-vo-1-bac-ninh.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_KSCL_học_sinh_giỏi_Toán_11_lần_1_năm_2022_–_2023_trường_THPT_Quế_Võ_1_–_Bắc_Ninh.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi chọn HSG Toán 11 năm 2021 – 2022 sở GD&ĐT Quảng Bình",
+      "url": "https://toanmath.com/2022/05/de-thi-chon-hsg-toan-11-nam-2021-2022-so-gddt-quang-binh.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_chọn_HSG_Toán_11_năm_2021_–_2022_sở_GD&ĐT_Quảng_Bình.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 năm 2021 – 2022 trường THPT chuyên Bắc Ninh",
+      "url": "https://toanmath.com/2022/04/de-hoc-sinh-gioi-toan-11-nam-2021-2022-truong-thpt-chuyen-bac-ninh.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi Toán 11 năm 2021 – 2022 cụm trường THPT – Hà Nội",
+      "url": "https://toanmath.com/2022/04/de-thi-hoc-sinh-gioi-toan-11-nam-2021-2022-cum-truong-thpt-ha-noi.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_học_sinh_giỏi_Toán_11_năm_2021_–_2022_cụm_trường_THPT_–_Hà_Nội.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi cấp tỉnh Toán 11 năm 2021 – 2022 sở GD&ĐT Lạng Sơn",
+      "url": "https://toanmath.com/2022/04/de-thi-hoc-sinh-gioi-cap-tinh-toan-11-nam-2021-2022-so-gddt-lang-son.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2021_–_2022_sở_GD&ĐT_Lạng_Sơn.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề HSG lớp 10 & 11 môn Toán năm 2021 – 2022 trường chuyên Nguyễn Huệ – Hà Nội",
+      "url": "https://toanmath.com/2022/03/de-hsg-lop-10-11-mon-toan-nam-2021-2022-truong-chuyen-nguyen-hue-ha-noi.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề khảo sát đội tuyển Toán 11 lần 2 năm 2021 – 2022 trường THPT Trần Phú – Vĩnh Phúc",
+      "url": "https://toanmath.com/2022/03/de-khao-sat-doi-tuyen-toan-11-lan-2-nam-2021-2022-truong-thpt-tran-phu-vinh-phuc.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi cấp tỉnh Toán 11 năm 2021 – 2022 sở GD&ĐT Bình Định",
+      "url": "https://toanmath.com/2022/03/de-thi-hoc-sinh-gioi-cap-tinh-toan-11-nam-2021-2022-so-gddt-binh-dinh.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2021_–_2022_sở_GD&ĐT_Bình_Định.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi tỉnh Toán 11 năm 2021 – 2022 sở GD&ĐT Hà Tĩnh",
+      "url": "https://toanmath.com/2022/03/de-thi-hoc-sinh-gioi-tinh-toan-11-nam-2021-2022-so-gddt-ha-tinh.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2021_–_2022_sở_GD&ĐT_Hà_Tĩnh.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề HSG Toán 11 năm 2020 – 2021 cụm THPT huyện Yên Dũng – Bắc Giang",
+      "url": "https://toanmath.com/2021/06/de-hsg-toan-11-nam-2020-2021-cum-thpt-huyen-yen-dung-bac-giang.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Có thông tin \"mã đề\"; Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi Toán 11 năm 2020 – 2021 trường THPT Đông Hà – Quảng Trị",
+      "url": "https://toanmath.com/2021/05/de-thi-hoc-sinh-gioi-toan-11-nam-2020-2021-truong-thpt-dong-ha-quang-tri.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_THPT_Đông_Hà_–_Quảng_Trị.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 năm 2020 – 2021 trường THPT Minh Châu – Hưng Yên",
+      "url": "https://toanmath.com/2021/05/de-hoc-sinh-gioi-toan-11-nam-2020-2021-truong-thpt-minh-chau-hung-yen.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi HSG Toán 11 năm 2020 – 2021 trường THPT Lưu Hoàng – Hà Nội",
+      "url": "https://toanmath.com/2021/04/de-thi-hsg-toan-11-nam-2020-2021-truong-thpt-luu-hoang-ha-noi.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_HSG_Toán_11_năm_2020_–_2021_trường_THPT_Lưu_Hoàng_–_Hà_Nội.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi Toán 11 cấp tỉnh năm 2020 – 2021 sở GD&ĐT Cà Mau",
+      "url": "https://toanmath.com/2021/04/de-thi-hoc-sinh-gioi-toan-11-cap-tinh-nam-2020-2021-so-gddt-ca-mau.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2020_–_2021_sở_GD&ĐT_Cà_Mau.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề Olympic 30 tháng 4 Toán 11 năm 2021 trường chuyên Lê Hồng Phong – TP HCM",
+      "url": "https://toanmath.com/2021/04/de-olympic-30-thang-4-toan-11-nam-2021-truong-chuyen-le-hong-phong-tp-hcm.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề Olympic tháng 4 Toán 11 năm 2020 – 2021 sở GD&ĐT TP Hồ Chí Minh",
+      "url": "https://toanmath.com/2021/04/de-olympic-thang-4-toan-11-nam-2020-2021-so-gddt-tp-ho-chi-minh.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_Olympic_tháng_4_Toán_11_năm_2020_–_2021_sở_GD&ĐT_TP_Hồ_Chí_Minh.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi Olympic 24/3 Toán 11 năm 2021 sở GD&ĐT Quảng Nam",
+      "url": "https://toanmath.com/2021/04/de-thi-olympic-24-3-toan-11-nam-2021-so-gddt-quang-nam.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_Olympic_243_Toán_11_năm_2021_sở_GD&ĐT_Quảng_Nam.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Quảng Ngãi",
+      "url": "https://toanmath.com/2021/04/de-thi-hoc-sinh-gioi-tinh-toan-11-nam-2020-2021-so-gddt-quang-ngai.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Quảng_Ngãi.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi chọn HSG tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Quảng Bình (Vòng 1)",
+      "url": "https://toanmath.com/2021/04/de-thi-chon-hsg-tinh-toan-11-nam-2020-2021-so-gddt-quang-binh-vong-1.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_chọn_HSG_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Quảng_Bình_(Vòng_1).pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi chọn HSG Toán 11 năm 2020 – 2021 sở GD&ĐT Vĩnh Phúc",
+      "url": "https://toanmath.com/2021/04/de-thi-chon-hsg-toan-11-nam-2020-2021-so-gddt-vinh-phuc.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_chọn_HSG_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Vĩnh_Phúc.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề học sinh giỏi cấp tỉnh Toán 11 chuyên năm 2020 – 2021 sở GD&ĐT Lạng Sơn",
+      "url": "https://toanmath.com/2021/04/de-hoc-sinh-gioi-cap-tinh-toan-11-chuyen-nam-2020-2021-so-gddt-lang-son.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_học_sinh_giỏi_cấp_tỉnh_Toán_11_chuyên_năm_2020_–_2021_sở_GD&ĐT_Lạng_Sơn.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Bắc Ninh",
+      "url": "https://toanmath.com/2021/04/de-thi-hoc-sinh-gioi-tinh-toan-11-nam-2020-2021-so-gddt-bac-ninh.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Bắc_Ninh.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi HSG Toán 11 lần 2 năm 2020 – 2021 trường THPT Đồng Đậu – Vĩnh Phúc",
+      "url": "https://toanmath.com/2021/03/de-thi-hsg-toan-11-lan-2-nam-2020-2021-truong-thpt-dong-dau-vinh-phuc.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề Olympic Toán 11 năm 2020 – 2021 liên cụm trường THPT – Hà Nội",
+      "url": "https://toanmath.com/2021/03/de-olympic-toan-11-nam-2020-2021-lien-cum-truong-thpt-ha-noi.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi cấp tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Bình Định",
+      "url": "https://toanmath.com/2021/03/de-thi-hoc-sinh-gioi-cap-tinh-toan-11-nam-2020-2021-so-gddt-binh-dinh.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Bình_Định.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi cấp tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Lạng Sơn",
+      "url": "https://toanmath.com/2021/03/de-thi-hoc-sinh-gioi-cap-tinh-toan-11-nam-2020-2021-so-gddt-lang-son.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi HSG Toán 11 cấp trường năm 2020 – 2021 trường Liễn Sơn – Vĩnh Phúc",
+      "url": "https://toanmath.com/2021/03/de-thi-hsg-toan-11-cap-truong-nam-2020-2021-truong-lien-son-vinh-phuc.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_HSG_Toán_11_cấp_trường_năm_2020_–_2021_trường_Liễn_Sơn_–_Vĩnh_Phúc.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 năm 2020 – 2021 trường Phùng Khắc Khoan – Hà Nội",
+      "url": "https://toanmath.com/2021/03/de-hoc-sinh-gioi-toan-11-nam-2020-2021-truong-phung-khac-khoan-ha-noi.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_Phùng_Khắc_Khoan_–_Hà_Nội.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi tỉnh Toán 11 năm 2020 – 2021 sở GD&ĐT Hà Tĩnh",
+      "url": "https://toanmath.com/2021/03/de-thi-hoc-sinh-gioi-tinh-toan-11-nam-2020-2021-so-gddt-ha-tinh.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_học_sinh_giỏi_tỉnh_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Hà_Tĩnh.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề Olympic 27 tháng 4 Toán 11 năm 2020 – 2021 sở GD&ĐT Bà Rịa – Vũng Tàu",
+      "url": "https://toanmath.com/2021/03/de-olympic-27-thang-4-toan-11-nam-2020-2021-so-gddt-ba-ria-vung-tau.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_Olympic_27_tháng_4_Toán_11_năm_2020_–_2021_sở_GD&ĐT_Bà_Rịa_–_Vũng_Tàu.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề HSG cấp trường Toán 11 năm 2020 – 2021 trường Yên Phong 2 – Bắc Ninh",
+      "url": "https://toanmath.com/2021/03/de-hsg-cap-truong-toan-11-nam-2020-2021-truong-yen-phong-2-bac-ninh.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_HSG_cấp_trường_Toán_11_năm_2020_–_2021_trường_Yên_Phong_2_–_Bắc_Ninh.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi HSG cấp trường Toán 11 năm 2020 – 2021 trường Cẩm Xuyên – Hà Tĩnh",
+      "url": "https://toanmath.com/2021/01/de-thi-hsg-cap-truong-toan-11-nam-2020-2021-truong-cam-xuyen-ha-tinh.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_HSG_cấp_trường_Toán_11_năm_2020_–_2021_trường_Cẩm_Xuyên_–_Hà_Tĩnh.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề chọn HSG Toán 11 vòng 1 năm 2020 – 2021 trường THPT Trần Nguyên Hãn – Hải Phòng",
+      "url": "https://toanmath.com/2021/01/de-chon-hsg-toan-11-vong-1-nam-2020-2021-truong-thpt-tran-nguyen-han-hai-phong.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_chọn_HSG_Toán_11_vòng_1_năm_2020_–_2021_trường_THPT_Trần_Nguyên_Hãn_–_Hải_Phòng.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề khảo sát học sinh giỏi Toán 11 năm 2020 – 2021 trường THPT Quế Võ 1 – Bắc Ninh",
+      "url": "https://toanmath.com/2020/12/de-khao-sat-hoc-sinh-gioi-toan-11-nam-2020-2021-truong-thpt-que-vo-1-bac-ninh.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_khảo_sát_học_sinh_giỏi_Toán_11_năm_2020_–_2021_trường_THPT_Quế_Võ_1_–_Bắc_Ninh.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi chọn HSG Toán 11 vòng 1 năm học 2020 – 2021 sở GD&ĐT Bình Dương",
+      "url": "https://toanmath.com/2020/09/de-thi-chon-hsg-toan-11-vong-1-nam-hoc-2020-2021-so-gddt-binh-duong.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_chọn_HSG_Toán_11_vòng_1_năm_học_2020_–_2021_sở_GD&ĐT_Bình_Dương.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi Olympic Toán 11 năm học 2019 – 2020 cụm Sóc Sơn – Mê Linh – Hà Nội",
+      "url": "https://toanmath.com/2020/07/de-thi-olympic-toan-11-nam-hoc-2019-2020-cum-soc-son-me-linh-ha-noi.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_Olympic_Toán_11_năm_học_2019_–_2020_cụm_Sóc_Sơn_–_Mê_Linh_–_Hà_Nội.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi chọn HSG Toán 11 năm học 2019 – 2020 trường THPT thị xã Quảng Trị",
+      "url": "https://toanmath.com/2020/06/de-thi-chon-hsg-toan-11-nam-hoc-2019-2020-truong-thpt-thi-xa-quang-tri.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi chọn HSG Toán 11 năm 2019 – 2020 trường chuyên Lê Quý Đôn – BR VT",
+      "url": "https://toanmath.com/2020/06/de-thi-chon-hsg-toan-11-nam-2019-2020-truong-chuyen-le-quy-don-br-vt.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_chọn_HSG_Toán_11_năm_2019_–_2020_trường_chuyên_Lê_Quý_Đôn_–_BR_VT.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề chọn HSG Toán 11 cấp trường năm 2019 – 2020 trường THPT chuyên Vĩnh Phúc",
+      "url": "https://toanmath.com/2020/06/de-chon-hsg-toan-11-cap-truong-nam-2019-2020-truong-thpt-chuyen-vinh-phuc.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_chọn_HSG_Toán_11_cấp_trường_năm_2019_–_2020_trường_THPT_chuyên_Vĩnh_Phúc.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi chọn học sinh giỏi Toán 11 năm 2019 – 2020 sở GD&ĐT Thái Nguyên",
+      "url": "https://toanmath.com/2020/05/de-thi-chon-hoc-sinh-gioi-toan-11-nam-2019-2020-so-gddt-thai-nguyen.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_chọn_học_sinh_giỏi_Toán_11_năm_2019_–_2020_sở_GD&ĐT_Thái_Nguyên.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề giao lưu HSG Toán 11 cấp tỉnh năm 2019 – 2020 cụm Gia Bình – Lương Tài – Bắc Ninh",
+      "url": "https://toanmath.com/2020/05/de-giao-luu-hsg-toan-11-cap-tinh-nam-2019-2020-cum-gia-binh-luong-tai-bac-ninh.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_giao_lưu_HSG_Toán_11_cấp_tỉnh_năm_2019_–_2020_cụm_Gia_Bình_–_Lương_Tài_–_Bắc_Ninh.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi cấp tỉnh Toán 11 năm 2019 – 2020 sở GD&ĐT Bình Định",
+      "url": "https://toanmath.com/2020/05/de-thi-hoc-sinh-gioi-cap-tinh-toan-11-nam-2019-2020-so-gddt-binh-dinh.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2019_–_2020_sở_GD&ĐT_Bình_Định.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề HSG Toán 11 cấp trường năm 2019 – 2020 trường Nguyễn Đăng Đạo – Bắc Ninh",
+      "url": "https://toanmath.com/2020/03/de-hsg-toan-11-cap-truong-nam-2019-2020-truong-nguyen-dang-dao-bac-ninh.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi Olympic Toán 11 năm 2019 – 2020 trường THPT Mỹ Đức A – Hà Nội",
+      "url": "https://toanmath.com/2020/03/de-thi-olympic-toan-11-nam-2019-2020-truong-thpt-my-duc-a-ha-noi.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi HSG Toán 11 lần 2 năm 2019 – 2020 cụm trường THPT Thanh Chương – Nghệ An",
+      "url": "https://toanmath.com/2020/03/de-thi-hsg-toan-11-lan-2-nam-2019-2020-cum-truong-thpt-thanh-chuong-nghe-an.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề giao lưu HSG tỉnh Toán 11 năm 2019 – 2020 trường Bá Thước – Thanh Hóa",
+      "url": "https://toanmath.com/2020/03/de-giao-luu-hsg-tinh-toan-11-nam-2019-2020-truong-ba-thuoc-thanh-hoa.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_giao_lưu_HSG_tỉnh_Toán_11_năm_2019_–_2020_trường_Bá_Thước_–_Thanh_Hóa.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi chọn HSG Toán 11 năm học 2019 – 2020 cụm Tân Yên – Bắc Giang",
+      "url": "https://toanmath.com/2020/02/de-thi-chon-hsg-toan-11-nam-hoc-2019-2020-cum-tan-yen-bac-giang.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi thử HSG tỉnh Toán 11 năm 2019 – 2020 trường Nguyễn Duy Trinh – Nghệ An",
+      "url": "https://toanmath.com/2020/02/de-thi-thu-hsg-tinh-toan-11-nam-2019-2020-truong-nguyen-duy-trinh-nghe-an.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_thử_HSG_tỉnh_Toán_11_năm_2019_–_2020_trường_Nguyễn_Duy_Trinh_–_Nghệ_An.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi HSG Toán 11 năm 2019 – 2020 trường THPT Nguyễn Xuân Ôn – Nghệ An",
+      "url": "https://toanmath.com/2020/02/de-thi-hsg-toan-11-nam-2019-2020-truong-thpt-nguyen-xuan-on-nghe-an.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_HSG_Toán_11_năm_2019_–_2020_trường_THPT_Nguyễn_Xuân_Ôn_–_Nghệ_An.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi HSG Toán 11 năm 2019 – 2020 trường Nguyễn Quán Nho – Thanh Hóa",
+      "url": "https://toanmath.com/2020/02/de-thi-hsg-toan-11-nam-2019-2020-truong-nguyen-quan-nho-thanh-hoa.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_HSG_Toán_11_năm_2019_–_2020_trường_Nguyễn_Quán_Nho_–_Thanh_Hóa.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi Olympic Toán 11 năm 2019 – 2020 trường Lý Thánh Tông – Hà Nội",
+      "url": "https://toanmath.com/2019/11/de-thi-olympic-toan-11-nam-2019-2020-truong-ly-thanh-tong-ha-noi.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_Olympic_Toán_11_năm_2019_–_2020_trường_Lý_Thánh_Tông_–_Hà_Nội.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề khảo sát HSG Toán 11 lần 1 năm 2019 – 2020 trường Hậu Lộc 4 – Thanh Hóa",
+      "url": "https://toanmath.com/2019/10/de-khao-sat-hsg-toan-11-lan-1-nam-2019-2020-truong-hau-loc-4-thanh-hoa.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_khảo_sát_HSG_Toán_11_lần_1_năm_2019_–_2020_trường_Hậu_Lộc_4_–_Thanh_Hóa.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi chọn HSG Toán 11 năm 2018 – 2019 trường Nho Quan A – Ninh Bình",
+      "url": "https://toanmath.com/2019/06/de-thi-chon-hsg-toan-11-nam-2018-2019-truong-nho-quan-a-ninh-binh.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Có thông tin \"mã đề\"; Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi HSG Toán 11 năm 2018 – 2019 trường Nguyễn Đức Cảnh – Thái Bình",
+      "url": "https://toanmath.com/2019/05/de-thi-hsg-toan-11-nam-2018-2019-truong-nguyen-duc-canh-thai-binh.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"; Có thông tin \"mã đề\"; Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi HSG Toán 11 năm 2019 cụm trường THPT chuyên DH&ĐB Bắc Bộ",
+      "url": "https://toanmath.com/2019/05/de-thi-hsg-toan-11-nam-2019-cum-truong-thpt-chuyen-dhdb-bac-bo.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi chọn HSG Toán 11 THPT năm học 2018 – 2019 sở GD&ĐT Vĩnh Phúc",
+      "url": "https://toanmath.com/2019/04/de-thi-chon-hsg-toan-11-thpt-nam-hoc-2018-2019-so-gddt-vinh-phuc.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_chọn_HSG_Toán_11_THPT_năm_học_2018_–_2019_sở_GD&ĐT_Vĩnh_Phúc.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi chọn HSG Toán 11 năm 2018 – 2019 trường THPT Thị xã Quảng Trị",
+      "url": "https://toanmath.com/2019/04/de-thi-chon-hsg-toan-11-nam-2018-2019-truong-thpt-thi-xa-quang-tri.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_chọn_HSG_Toán_11_năm_2018_–_2019_trường_THPT_Thị_xã_Quảng_Trị.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề Olympic Toán 11 năm 2019 cụm trường THPT Hà Đông – Hoài Đức – Hà Nội",
+      "url": "https://toanmath.com/2019/03/de-olympic-toan-11-nam-2019-cum-truong-thpt-ha-dong-hoai-duc-ha-noi.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_Olympic_Toán_11_năm_2019_cụm_trường_THPT_Hà_Đông_–_Hoài_Đức_–_Hà_Nội.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi chọn HSG Toán THPT cấp tỉnh năm học 2018 – 2019 sở GD&ĐT Phú Yên",
+      "url": "https://toanmath.com/2019/03/de-thi-chon-hsg-toan-thpt-cap-tinh-nam-hoc-2018-2019-so-gddt-phu-yen.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_chọn_HSG_Toán_THPT_cấp_tỉnh_năm_học_2018_–_2019_sở_GD&ĐT_Phú_Yên.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi cấp tỉnh Toán 11 năm 2018 – 2019 sở GD&ĐT Quảng Ngãi",
+      "url": "https://toanmath.com/2019/03/de-thi-hoc-sinh-gioi-cap-tinh-toan-11-nam-2018-2019-so-gddt-quang-ngai.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2018_–_2019_sở_GD&ĐT_Quảng_Ngãi.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi cấp tỉnh Toán 11 THPT năm 2018 – 2019 sở GD&ĐT Thanh Hóa",
+      "url": "https://toanmath.com/2019/03/de-thi-hoc-sinh-gioi-cap-tinh-toan-11-thpt-nam-2018-2019-so-gddt-thanh-hoa.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_học_sinh_giỏi_cấp_tỉnh_Toán_11_THPT_năm_2018_–_2019_sở_GD&ĐT_Thanh_Hóa.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi Toán 11 năm học 2018 – 2019 sở GD&ĐT Hà Tĩnh",
+      "url": "https://toanmath.com/2019/03/de-thi-hoc-sinh-gioi-toan-11-nam-hoc-2018-2019-so-gddt-ha-tinh.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi HSG tỉnh Toán 11 THPT năm 2018 – 2019 sở GD&ĐT Nghệ An (Bảng A)",
+      "url": "https://toanmath.com/2019/03/de-thi-hsg-tinh-toan-11-thpt-nam-2018-2019-so-gddt-nghe-an-bang-a.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_HSG_tỉnh_Toán_11_THPT_năm_2018_–_2019_sở_GD&ĐT_Nghệ_An_(Bảng_A).pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi chọn HSG cấp tỉnh Toán 11 năm 2018 – 2019 sở GD&ĐT Bắc Ninh",
+      "url": "https://toanmath.com/2019/03/de-thi-chon-hsg-cap-tinh-toan-11-nam-2018-2019-so-gddt-bac-ninh.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_chọn_HSG_cấp_tỉnh_Toán_11_năm_2018_–_2019_sở_GD&ĐT_Bắc_Ninh.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề học sinh giỏi Toán 11 cấp trường năm 2018 – 2019 trường Lưu Hoàng – Hà Nội",
+      "url": "https://toanmath.com/2019/03/de-hoc-sinh-gioi-toan-11-cap-truong-nam-2018-2019-truong-luu-hoang-ha-noi.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_học_sinh_giỏi_Toán_11_cấp_trường_năm_2018_–_2019_trường_Lưu_Hoàng_–_Hà_Nội.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi Toán 11 THPT năm 2018 – 2019 sở GD&ĐT Hà Nam",
+      "url": "https://toanmath.com/2019/03/de-thi-hoc-sinh-gioi-toan-11-thpt-nam-2018-2019-so-gddt-ha-nam.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_học_sinh_giỏi_Toán_11_THPT_năm_2018_–_2019_sở_GD&ĐT_Hà_Nam.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề KSCL đội tuyển HSG Toán 11 năm 2018 – 2019 trường Yên Lạc 2 – Vĩnh Phúc",
+      "url": "https://toanmath.com/2019/03/de-kscl-doi-tuyen-hsg-toan-11-nam-2018-2019-truong-yen-lac-2-vinh-phuc.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề Olympic Toán 11 năm 2019 cụm THPT Thanh Xuân & Cầu Giấy & Thường Tín – Hà Nội",
+      "url": "https://toanmath.com/2019/03/de-olympic-toan-11-nam-2019-cum-thpt-thanh-xuan-cau-giay-thuong-tin-ha-noi.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa từ khóa \"trắc nghiệm\"",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi Olympic Toán 11 năm 2018 – 2019 trường THPT Kim Liên – Hà Nội",
+      "url": "https://toanmath.com/2019/03/de-thi-olympic-toan-11-nam-2018-2019-truong-thpt-kim-lien-ha-noi.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi cấp tỉnh Toán 11 năm 2018 – 2019 sở GD&ĐT Vĩnh Long",
+      "url": "https://toanmath.com/2019/03/de-thi-hoc-sinh-gioi-cap-tinh-toan-11-nam-2018-2019-so-gddt-vinh-long.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_học_sinh_giỏi_cấp_tỉnh_Toán_11_năm_2018_–_2019_sở_GD&ĐT_Vĩnh_Long.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi Olympic 10/3 Toán 11 năm 2019 lần 4 trường chuyên Nguyễn Du – Đăk Lăk",
+      "url": "https://toanmath.com/2019/03/de-thi-olympic-10-3-toan-11-nam-2019-lan-4-truong-chuyen-nguyen-du-dak-lak.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_Olympic_103_Toán_11_năm_2019_lần_4_trường_chuyên_Nguyễn_Du_–_Đăk_Lăk.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi HSG Toán 11 năm 2018 – 2019 trường Phùng Khắc Khoan – Hà Nội",
+      "url": "https://toanmath.com/2019/02/de-thi-hsg-toan-11-nam-2018-2019-truong-phung-khac-khoan-ha-noi.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_HSG_Toán_11_năm_2018_–_2019_trường_Phùng_Khắc_Khoan_–_Hà_Nội.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi HSG Toán 11 cấp trường năm 2018 – 2019 trường Thuận Thành 2 – Bắc Ninh",
+      "url": "https://toanmath.com/2019/02/de-thi-hsg-toan-11-cap-truong-nam-2018-2019-truong-thuan-thanh-2-bac-ninh.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_HSG_Toán_11_cấp_trường_năm_2018_–_2019_trường_Thuận_Thành_2_–_Bắc_Ninh.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề kiểm tra chất lượng đội tuyển Toán 11 năm 2018 – 2019 trường THPT Hậu Lộc 4 – Thanh Hóa",
+      "url": "https://toanmath.com/2018/10/de-kiem-tra-chat-luong-doi-tuyen-toan-11-nam-2018-2019-truong-thpt-hau-loc-4-thanh-hoa.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề KSCL đội tuyển HSG Toán 11 năm 2017 – 2018 trường Minh Châu – Hưng Yên",
+      "url": "https://toanmath.com/2018/05/de-kscl-doi-tuyen-hsg-toan-11-nam-2017-2018-truong-minh-chau-hung-yen.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_KSCL_đội_tuyển_HSG_Toán_11_năm_2017_–_2018_trường_Minh_Châu_–_Hưng_Yên.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi chọn HSG Toán 11 cấp trường năm 2017 – 2018 trường Lý Thái Tổ – Bắc Ninh",
+      "url": "https://toanmath.com/2018/04/de-thi-chon-hsg-toan-11-cap-truong-nam-2017-2018-truong-ly-thai-to-bac-ninh.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_chọn_HSG_Toán_11_cấp_trường_năm_2017_–_2018_trường_Lý_Thái_Tổ_–_Bắc_Ninh.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi chọn HSG Toán 11 cấp trường năm 2017 – 2018 trường Lê Văn Thịnh – Bắc Ninh",
+      "url": "https://toanmath.com/2018/04/de-thi-chon-hsg-toan-11-cap-truong-nam-2017-2018-truong-le-van-thinh-bac-ninh.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_chọn_HSG_Toán_11_cấp_trường_năm_2017_–_2018_trường_Lê_Văn_Thịnh_–_Bắc_Ninh.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi chọn HSG tỉnh Toán 11 năm học 2017 – 2018 sở GD và ĐT Hà Tĩnh",
+      "url": "https://toanmath.com/2018/04/de-thi-chon-hsg-tinh-toan-11-nam-hoc-2017-2018-so-gd-va-dt-ha-tinh.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_chọn_HSG_tỉnh_Toán_11_năm_học_2017_–_2018_sở_GD_và_ĐT_Hà_Tĩnh.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề KSCL đội tuyển HSG Toán 11 năm 2017 – 2018 trường THPT Yên Lạc 2 – Vĩnh Phúc",
+      "url": "https://toanmath.com/2018/04/de-kscl-doi-tuyen-hsg-toan-11-nam-2017-2018-truong-thpt-yen-lac-2-vinh-phuc.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_KSCL_đội_tuyển_HSG_Toán_11_năm_2017_–_2018_trường_THPT_Yên_Lạc_2_–_Vĩnh_Phúc.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi chọn HSG tỉnh Toán 11 năm 2017 – 2018 sở GD&ĐT Quảng Bình",
+      "url": "https://toanmath.com/2018/03/de-thi-chon-hsg-tinh-toan-11-nam-2017-2018-so-gddt-quang-binh.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi chọn HSG tỉnh Toán 11 THPT năm 2017 – 2018 sở GD và ĐT Nghệ An (Bảng A)",
+      "url": "https://toanmath.com/2018/03/de-thi-chon-hsg-tinh-toan-11-thpt-nam-2017-2018-so-gd-va-dt-nghe-an-bang-a.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_chọn_HSG_tỉnh_Toán_11_THPT_năm_2017_–_2018_sở_GD_và_ĐT_Nghệ_An_(Bảng_A).pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi Olympic Toán 11 năm 2017 – 2018 cụm trường Thanh Xuân & Cầu Giấy – Hà Nội",
+      "url": "https://toanmath.com/2018/03/de-thi-olympic-toan-11-nam-2017-2018-cum-truong-thanh-xuan-cau-giay-ha-noi.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_Olympic_Toán_11_năm_2017_–_2018_cụm_trường_Thanh_Xuân_&_Cầu_Giấy_–_Hà_Nội.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi Olympic 27/4 Toán 11 năm 2017 – 2018 sở GD và ĐT Bà Rịa – Vũng Tàu",
+      "url": "https://toanmath.com/2018/03/de-thi-olympic-27-4-toan-11-nam-2017-2018-so-gd-va-dt-ba-ria-vung-tau.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi chọn HSG Toán 11 cấp tỉnh năm học 2017 – 2018 sở GD và ĐT Thanh Hóa",
+      "url": "https://toanmath.com/2018/03/de-thi-chon-hsg-toan-11-cap-tinh-nam-hoc-2017-2018-so-gd-va-dt-thanh-hoa.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi Toán 11 cấp tỉnh năm 2017 – 2018 sở GD&ĐT Lai Châu",
+      "url": "https://toanmath.com/2018/02/de-thi-hoc-sinh-gioi-toan-11-cap-tinh-nam-2017-2018-so-gddt-lai-chau.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2017_–_2018_sở_GD&ĐT_Lai_Châu.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi chọn học sinh giỏi tỉnh môn Toán 11 năm học 2016 – 2017 sở GD và ĐT Hà Tĩnh",
+      "url": "https://toanmath.com/2017/04/de-thi-chon-hoc-sinh-gioi-tinh-mon-toan-11-nam-hoc-2016-2017-so-gd-va-dt-ha-tinh.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_chọn_học_sinh_giỏi_tỉnh_môn_Toán_11_năm_học_2016_–_2017_sở_GD_và_ĐT_Hà_Tĩnh.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi chọn học sinh giỏi Toán 11 năm học 2016 – 2017 sở GD và ĐT Vĩnh Phúc",
+      "url": "https://toanmath.com/2017/04/de-thi-chon-hoc-sinh-gioi-toan-11-nam-hoc-2016-2017-so-gd-va-dt-vinh-phuc.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề kiểm tra chất lượng đội tuyển HSG Toán 11 năm học 2016 – 2017 trường Lê Lợi – Thanh Hóa lần 1",
+      "url": "https://toanmath.com/2017/03/de-kiem-tra-chat-luong-doi-tuyen-hsg-toan-11-nam-hoc-2016-2017-truong-le-loi-thanh-hoa-lan-1.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_kiểm_tra_chất_lượng_đội_tuyển_HSG_Toán_11_năm_học_2016_–_2017_trường_Lê_Lợi_–_Thanh_Hóa_lần_1.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi KSCL học sinh giỏi Toán 11 năm học 2016 – 2017 cụm thi THPT Yên Thành – Nghệ An",
+      "url": "https://toanmath.com/2017/02/de-thi-kscl-hoc-sinh-gioi-toan-11-nam-hoc-2016-2017-cum-thi-thpt-yen-thanh-nghe-an.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_KSCL_học_sinh_giỏi_Toán_11_năm_học_2016_–_2017_cụm_thi_THPT_Yên_Thành_–_Nghệ_An.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi Toán 11 cấp tỉnh năm 2016 – 2017 sở GD&ĐT Lai Châu",
+      "url": "https://toanmath.com/2017/02/de-thi-hoc-sinh-gioi-toan-11-cap-tinh-nam-2016-2017-so-gddt-lai-chau.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_học_sinh_giỏi_Toán_11_cấp_tỉnh_năm_2016_–_2017_sở_GD&ĐT_Lai_Châu.pdf",
+      "action": "DOWNLOADED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi cấp tỉnh Toán 11 năm 2014 – 2015 sở GD&ĐT Hà Tĩnh",
+      "url": "https://toanmath.com/2015/03/de-thi-hoc-sinh-gioi-cap-tinh-toan-11-nam-2014-2015-so-gddt-ha-tinh.html",
+      "type": "TRẮC NGHIỆM / HỖN HỢP",
+      "reason": "Chứa phương án lựa chọn A. B. C. D.",
+      "action": "SKIPPED"
+    },
+    {
+      "title": "Đề thi học sinh giỏi Toán 11 năm 2012 – 2013 trường THPT Thuận An – TT Huế",
+      "url": "https://toanmath.com/2013/03/de-thi-hoc-sinh-gioi-toan-11-nam-2012-2013-truong-thpt-thuan-an-tt-hue.html",
+      "type": "TỰ LUẬN",
+      "localPath": "C:\\Users\\truongpv\\Downloads\\Nguyệt\\downloads_hsg_toan11_tu_luan\\Đề_thi_học_sinh_giỏi_Toán_11_năm_2012_–_2013_trường_THPT_Thuận_An_–_TT_Huế.pdf",
+      "action": "DOWNLOADED"
+    }
+  ]
+}
